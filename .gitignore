@@ -1,0 +1,38 @@
+# Virtual Environments
+venv/
+env/
+.venv/
+ENV/
+
+# Python Cache & Bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Datasets (Exclude raw satellite imagery, preprocessed rasters, and feature arrays)
+data/raw/*
+!data/raw/**/.gitkeep
+data/processed/*
+!data/processed/**/.gitkeep
+data/features/*
+!data/features/**/.gitkeep
+
+# Exclude dataset file formats inside data directory specifically
+*.SAFE
+*.SAFE/
+*.tif
+*.tiff
+*.nc
+*.npz
+
+# Operating System & IDE junk
+desktop.ini
+**/desktop.ini
+.DS_Store
+.vscode/
+.idea/
+
+# Saved models in checkpoints/ are explicitly KEPT
+!checkpoints/
+!checkpoints/*

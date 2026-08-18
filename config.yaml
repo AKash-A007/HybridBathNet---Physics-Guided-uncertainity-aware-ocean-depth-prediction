@@ -1,0 +1,54 @@
+project:
+  name: hybridbathnet_baseline
+  # Update to the UTM zone EPSG code covering your AOI, e.g. EPSG:32643 for
+  # Kollam/Kerala coast. Use src.utils.utm_epsg_from_lonlat(lon, lat) to find it.
+  crs: "EPSG:32643"
+
+aoi:
+  # WKT polygon in EPSG:4326 (lon, lat order) — UPDATE to your region of interest
+  wkt: "POLYGON((76.30 8.90, 76.55 8.90, 76.55 9.20, 76.30 9.20, 76.30 8.90))"
+  bbox: [76.30, 8.90, 76.55, 9.20]  # [minlon, minlat, maxlon, maxlat]
+
+sentinel2:
+  collection: "SENTINEL-2"
+  product_type: "S2MSI2A"          # L2A, bottom-of-atmosphere reflectance
+  start_date: "2024-01-01"
+  end_date: "2024-04-30"
+  max_cloud_cover: 10               # percent
+  bands: ["B02", "B03", "B04", "B08"]   # blue, green, red, NIR
+  raw_dir: "data/raw/sentinel2"
+
+gebco:
+  # GEBCO has no simple REST API for arbitrary bbox extraction — download
+  # manually from https://download.gebco.net/ using the bbox above (NetCDF),
+  # save to data/raw/gebco/gebco_subset.nc, then run src/download_gebco.py
+  # to reproject/convert it. This path is the CONVERTED GeoTIFF output.
+  raw_path: "data/raw/gebco/gebco_subset.tif"
+
+coastline:
+  raw_path: "data/raw/coastline/coastline.geojson"
+
+preprocessing:
+  processed_dir: "data/processed"
+
+features:
+  patch_size: 64
+  patch_stride: 32
+  train_frac: 0.7
+  val_frac: 0.15
+  test_frac: 0.15
+  split_axis: "lon"        # spatial split (by column) to avoid leakage
+  features_dir: "data/features"
+
+training:
+  batch_size: 32
+  epochs: 60
+  learning_rate: 0.001
+  device: "cuda"            # falls back to CPU automatically if unavailable
+  checkpoint_dir: "checkpoints"
+
+evaluation:
+  results_dir: "results"
+
+export:
+  output_dir: "outputs/rasters"
