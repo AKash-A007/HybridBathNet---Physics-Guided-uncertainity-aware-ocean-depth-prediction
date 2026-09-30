@@ -1,0 +1,285 @@
+<mxfile host="app.diagrams.net" modified="2026-08-19T15:47:30.000Z" agent="Gemini" version="21.0.0" type="device">
+  <diagram id="LR_Architecture_16_9" name="Architecture Diagram (LR)">
+    <mxGraphModel dx="1200" dy="675" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1330" pageHeight="750" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- ==================== LEGEND ==================== -->
+        <mxCell id="legend_bg" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="1110" y="20" width="180" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="legend_title" value="Legend" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1110" y="25" width="180" height="15" as="geometry" />
+        </mxCell>
+        <mxCell id="legend_p1_box" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#DCE6F8;strokeColor=#B0C4DE;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="45" width="25" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="legend_p1_text" value="Phase 1 Implementation" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="1152" y="45" width="130" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="legend_p2_box" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FADBD8;strokeColor=#E6B0AA;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="65" width="25" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="legend_p2_text" value="Phase 2 Implementation" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="1152" y="65" width="130" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="legend_novel_box" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#B03A2E;strokeWidth=1;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="85" width="25" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="legend_novel_text" value="Novel Architecture" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="1152" y="85" width="130" height="12" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== NOVEL ARCHITECTURE CONTAINER ==================== -->
+        <mxCell id="novel_container" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#B03A2E;strokeWidth=2;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="110" width="375" height="425" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== LAYER 1: DATA LAYER ==================== -->
+        <mxCell id="layer_data" value="Data Layer" style="text;html=1;strokeColor=none;fillColor=#DCE6F8;align=center;verticalAlign=top;fontStyle=1;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="20" y="120" width="125" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="node_osm" value="OSM Coastline Data&#xa;Optional" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EBF2FA;strokeColor=#B0C4DE;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="27" y="145" width="110" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="node_gebco" value="GEBCO Bathymetric Grid&#xa;Reference Depths" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EBF2FA;strokeColor=#B0C4DE;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="27" y="195" width="110" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="node_sentinel" value="Sentinel-2 L2A Imagery&#xa;Copernicus Data Space" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EBF2FA;strokeColor=#B0C4DE;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="27" y="245" width="110" height="35" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== LAYER 2: INGESTION & PREPROCESSING ==================== -->
+        <mxCell id="layer_ingest" value="Ingestion and Preprocessing Layer" style="text;html=1;strokeColor=none;fillColor=#DCE6F8;align=center;verticalAlign=top;fontStyle=1;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="165" y="120" width="135" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="node_acquisition" value="Image Acquisition Module" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EBF2FA;strokeColor=#B0C4DE;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="172" y="145" width="120" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="node_atmos" value="Atmospheric and Sunglint&#xa;Correction" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EBF2FA;strokeColor=#B0C4DE;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="172" y="185" width="120" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="node_masking" value="Cloud and Land Masking" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EBF2FA;strokeColor=#B0C4DE;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="172" y="225" width="120" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="node_coreg" value="Co-registration and Reprojection" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EBF2FA;strokeColor=#B0C4DE;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="172" y="265" width="120" height="28" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== LAYER 3: PHYSICS-GUIDED FEATURE ENG ==================== -->
+        <mxCell id="layer_physics" value="Physics-Guided Feature Engineering" style="text;html=1;strokeColor=none;fillColor=#DCE6F8;align=center;verticalAlign=top;fontStyle=1;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="330" y="125" width="150" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="node_bandratio" value="Band Ratio / Log-Transform&#xa;Stumpf Feature Engineering" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EBF2FA;strokeColor=#B0C4DE;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="340" y="150" width="130" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="node_radtransfer" value="Radiative Transfer Prior&#xa;Computation" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EBF2FA;strokeColor=#B0C4DE;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="340" y="195" width="130" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="node_physstack" value="Physics Feature Stack Assembly" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EBF2FA;strokeColor=#B0C4DE;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="340" y="240" width="130" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== LAYER 4: CORE MODULE ==================== -->
+        <mxCell id="layer_core" value="Core Module" style="text;html=1;strokeColor=none;fillColor=#DCE6F8;align=center;verticalAlign=top;fontStyle=1;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="500" y="125" width="180" height="395" as="geometry" />
+        </mxCell>
+        <mxCell id="node_encoder" value="CNN Encoder" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EBF2FA;strokeColor=#B0C4DE;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="535" y="150" width="110" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="node_decoder" value="Physics Constrained Decoder" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EBF2FA;strokeColor=#B0C4DE;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="535" y="195" width="110" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="node_aleatoric" value="Aleatoric Uncertainty&#xa;Head" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EBF2FA;strokeColor=#B0C4DE;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="510" y="245" width="75" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="node_depthreg" value="Depth Regression&#xa;Head" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EBF2FA;strokeColor=#B0C4DE;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="595" y="245" width="75" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="node_epistemic" value="MC Dropout / Deep Ensemble&#xa;Epistemic Uncertainty" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EBF2FA;strokeColor=#B0C4DE;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="520" y="305" width="140" height="35" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== LAYER 5A: INFERENCE & POSTPROCESSING ==================== -->
+        <mxCell id="layer_inf" value="Inference and Postprocessing" style="text;html=1;strokeColor=none;fillColor=#FADBD8;align=center;verticalAlign=top;fontStyle=1;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="715" y="110" width="185" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="node_inf_engine" value="Inference Engine" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FDEDEC;strokeColor=#E6B0AA;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="750" y="135" width="115" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="node_unc_agg" value="Uncertainty Aggregation" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FDEDEC;strokeColor=#E6B0AA;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="750" y="172" width="115" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="node_conf_gen" value="Confidence Map&#xa;Generator" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FDEDEC;strokeColor=#E6B0AA;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="725" y="210" width="75" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="node_depth_gen" value="Depth Map&#xa;Generator" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FDEDEC;strokeColor=#E6B0AA;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="815" y="210" width="75" height="35" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== LAYER 5B: TRAINING & EVALUATION ==================== -->
+        <mxCell id="layer_train" value="Training and Evaluation" style="text;html=1;strokeColor=none;fillColor=#DCE6F8;align=center;verticalAlign=top;fontStyle=1;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="715" y="325" width="185" height="175" as="geometry" />
+        </mxCell>
+        <mxCell id="node_loss" value="Composite Loss Function" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EBF2FA;strokeColor=#B0C4DE;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="745" y="350" width="125" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="node_trainer" value="Trainer / Optimizer" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EBF2FA;strokeColor=#B0C4DE;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="745" y="385" width="125" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="node_eval" value="Evaluator vs GEBCO Ground Truth" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EBF2FA;strokeColor=#B0C4DE;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="740" y="420" width="135" height="25" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== LAYER 6: SERVING & STORAGE ==================== -->
+        <mxCell id="layer_serving" value="Serving and Storage" style="text;html=1;strokeColor=none;fillColor=#FADBD8;align=center;verticalAlign=top;fontStyle=1;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="920" y="110" width="165" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="node_db" value="PostgreSQL/PostGIS&#xa;Metadata and Results DB" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=8;fillColor=#FDEDEC;strokeColor=#E6B0AA;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="935" y="135" width="135" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="node_api" value="Backend API Service" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FDEDEC;strokeColor=#E6B0AA;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="935" y="190" width="135" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== LAYER 7: PRESENTATION LAYER ==================== -->
+        <mxCell id="layer_pres" value="Presentation Layer" style="text;html=1;strokeColor=none;fillColor=#FADBD8;align=center;verticalAlign=top;fontStyle=1;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1110" y="135" width="180" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="node_dashboard" value="GIS Visualization Dashboard" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FDEDEC;strokeColor=#E6B0AA;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="1125" y="160" width="150" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="node_endusers" value="End Users:&#xa;Coastal Planners, Researchers,&#xa;Government Agencies" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FDEDEC;strokeColor=#E6B0AA;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="1125" y="200" width="150" height="38" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== CONNECTIONS / EDGES ==================== -->
+        <!-- Data to Ingestion -->
+        <mxCell id="e1" edge="1" parent="1" source="node_osm" target="node_acquisition">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="node_gebco" target="node_acquisition">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="node_sentinel" target="node_acquisition">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Ingestion Internal Flow -->
+        <mxCell id="e4" edge="1" parent="1" source="node_acquisition" target="node_atmos">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="1" source="node_atmos" target="node_masking">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" edge="1" parent="1" source="node_masking" target="node_coreg">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Ingestion to Physics -->
+        <mxCell id="e7" edge="1" parent="1" source="node_coreg" target="node_bandratio">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Physics Internal Flow -->
+        <mxCell id="e8" edge="1" parent="1" source="node_bandratio" target="node_radtransfer">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e9" edge="1" parent="1" source="node_radtransfer" target="node_physstack">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Physics to Core -->
+        <mxCell id="e10" edge="1" parent="1" source="node_physstack" target="node_encoder">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Core Internal Flow -->
+        <mxCell id="e11" edge="1" parent="1" source="node_encoder" target="node_decoder">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e12" edge="1" parent="1" source="node_decoder" target="node_aleatoric">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e13" edge="1" parent="1" source="node_decoder" target="node_depthreg">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e14" edge="1" parent="1" source="node_aleatoric" target="node_epistemic">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e15" edge="1" parent="1" source="node_depthreg" target="node_epistemic">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Core to Inference and Training -->
+        <mxCell id="e16" edge="1" parent="1" source="node_epistemic" target="node_inf_engine">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="690" y="322" />
+              <mxPoint x="690" y="148" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e17" edge="1" parent="1" source="node_epistemic" target="node_loss">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="690" y="322" />
+              <mxPoint x="690" y="362" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Inference Internal Flow -->
+        <mxCell id="e18" edge="1" parent="1" source="node_inf_engine" target="node_unc_agg">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e19" edge="1" parent="1" source="node_unc_agg" target="node_conf_gen">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e20" edge="1" parent="1" source="node_unc_agg" target="node_depth_gen">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Training Internal Flow -->
+        <mxCell id="e21" edge="1" parent="1" source="node_loss" target="node_trainer">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e22" edge="1" parent="1" source="node_trainer" target="node_eval">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Inference to Serving -->
+        <mxCell id="e23" edge="1" parent="1" source="node_conf_gen" target="node_db">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e24" edge="1" parent="1" source="node_depth_gen" target="node_db">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Serving Internal Flow -->
+        <mxCell id="e25" edge="1" parent="1" source="node_db" target="node_api">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Serving to Presentation -->
+        <mxCell id="e26" edge="1" parent="1" source="node_api" target="node_dashboard">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1002" y="240" />
+              <mxPoint x="1090" y="240" />
+              <mxPoint x="1090" y="174" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Presentation Internal Flow -->
+        <mxCell id="e27" edge="1" parent="1" source="node_dashboard" target="node_endusers">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

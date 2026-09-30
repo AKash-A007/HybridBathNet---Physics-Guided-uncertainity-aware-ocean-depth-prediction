@@ -42,13 +42,30 @@ features:
 
 training:
   batch_size: 32
-  epochs: 60
+  epochs: 80
   learning_rate: 0.001
   device: "cuda"            # falls back to CPU automatically if unavailable
   checkpoint_dir: "checkpoints"
+
+
+# Physics-guided & Uncertainty-aware hyper-parameters
+hybridbathnet:
+  in_channels: 6
+  feature_dim: 128
+  dropout_rate: 0.1
+
+  i0_over_epsilon: 100.0   # Signal-to-noise ratio threshold for Beer-Lambert extinction
+  loss_weights:
+    w_mse: 1.0             # Weight for direct Depth Regression MSE Loss
+    w_nll: 1.0             # Weight for heteroscedastic Gaussian NLL loss (Aleatoric Uncertainty)
+    w_phys: 0.5            # Weight for physical non-negativity depth constraint (\hat{y} >= 0)
+    w_ext: 0.5             # Weight for Beer-Lambert optical extinction depth limit (\hat{y} <= z_ext)
+
+  mc_samples: 20           # Number of MC Dropout forward passes during uncertainty inference
 
 evaluation:
   results_dir: "results"
 
 export:
   output_dir: "outputs/rasters"
+

@@ -41,21 +41,44 @@ FEATURE_DIM = 128
 # ---------------------------------------------------------------------------
 
 class PatchDataset(Dataset):
-    """Loads pre-extracted patches from patches.npz.
+    """Loads pre-extracted patches from patches.npz with global channel z-score standardization.
 
-    Each sample returns:
-        x : (C, patch_size, patch_size) float32 — normalised spectral + physics
-        y : scalar float32 — GEBCO depth at the CENTER pixel of the patch (m)
+    Using dataset-wide global mean/std per channel preserves physical unit scaling
+    (especially for channel 5 Beer-Lambert z_prior in meters) across all patches.
 
-    Center-pixel label is used because the two planned heads (depth + uncertainty)
-    each produce one scalar per patch, not a full depth map.
-    The valid-mask (M) is dropped here — center pixels are guaranteed valid by
-    construction (≥50% water coverage enforced during patch extraction).
+    Normalization stats (mean/std for both inputs and targets) must be computed
+    from the TRAINING split only, and passed to val/test via the constructor.
+
+    Returns three items per sample:
+        x_norm   : (C, H, W) z-score normalized input channels
+        y_norm   : scalar, z-score normalized center-pixel depth
+        y_meters : scalar, original center-pixel depth in meters (for physics loss)
     """
 
-    def __init__(self, X: np.ndarray, Y: np.ndarray, indices: np.ndarray):
+    def __init__(self, X: np.ndarray, Y: np.ndarray, indices: np.ndarray,
+                 mean: np.ndarray = None, std: np.ndarray = None,
+                 y_mean: float = None, y_std: float = None):
         self.X = X[indices]   # (N, C, H, W)
-        self.Y = Y[indices]   # (N, H, W) — full depth patch; center pixel used
+        self.Y = Y[indices]   # (N, H, W)
+
+        # --- Input channel normalization stats ---
+        if mean is None:
+            # Compute channel-wise mean and std across spatial dimensions
+            self.mean = self.X.mean(axis=(0, 2, 3), keepdims=True).astype(np.float32)
+            self.std = (self.X.std(axis=(0, 2, 3), keepdims=True) + 1e-6).astype(np.float32)
+        else:
+            self.mean = mean
+            self.std = std
+
+        # --- Target depth normalization stats ---
+        cy, cx = self.Y.shape[1] // 2, self.Y.shape[2] // 2
+        center_depths = self.Y[:, cy, cx]
+        if y_mean is None:
+            self.y_mean = float(center_depths.mean())
+            self.y_std  = float(center_depths.std()) + 1e-6
+        else:
+            self.y_mean = y_mean
+            self.y_std  = y_std
 
     def __len__(self) -> int:
         return len(self.X)
@@ -63,21 +86,22 @@ class PatchDataset(Dataset):
     def __getitem__(self, idx):
         x = self.X[idx].copy()  # (C, H, W)
 
-        # Per-channel min-max normalisation — robust whether reflectance is
-        # already 0-1 (L2A) or raw DN (L1C scaled integers).
-        for c in range(x.shape[0]):
-            mx = x[c].max()
-            if mx > 0:
-                x[c] = x[c] / mx
+        # Global channel z-score standardization
+        x = (x - self.mean.squeeze()[:, None, None]) / self.std.squeeze()[:, None, None]
 
-        # Scalar depth label: center pixel of the depth patch.
+        # Scalar depth label: center pixel of the depth patch
         cy, cx = x.shape[1] // 2, x.shape[2] // 2
-        y_center = float(self.Y[idx, cy, cx])
+        y_meters = float(self.Y[idx, cy, cx])
+
+        # Normalized depth for loss computation
+        y_norm = (y_meters - self.y_mean) / self.y_std
 
         return (
             torch.from_numpy(x).float(),
-            torch.tensor(y_center, dtype=torch.float32),
+            torch.tensor(y_norm, dtype=torch.float32),
+            torch.tensor(y_meters, dtype=torch.float32),
         )
+
 
 
 # ---------------------------------------------------------------------------
@@ -215,83 +239,93 @@ def compute_metrics(y_true: np.ndarray, y_pred: np.ndarray) -> dict:
 
 
 # ---------------------------------------------------------------------------
-# Training & evaluation
+# Training & evaluation with HybridBathNet (Physics Decoder + Dual Heads + NLL Loss)
 # ---------------------------------------------------------------------------
 
-def train(encoder, head, train_loader, val_loader, epochs, lr, device):
-    """Train encoder + placeholder head end-to-end with scalar MSE loss.
+from .hybridbathnet import HybridBathNetModel, CompositePhysicsNLLLoss, predict_with_uncertainty
 
-    Encoder and head are passed explicitly so either can be swapped
-    independently when the real dual-head is wired in.
-    """
-    params    = list(encoder.parameters()) + list(head.parameters())
-    optimizer = torch.optim.Adam(params, lr=lr)
+
+def train_hybridbathnet(model, criterion, train_loader, val_loader, epochs, lr, device, y_mean, y_std):
+    """Train HybridBathNet model end-to-end with CompositePhysicsNLLLoss."""
+    optimizer = torch.optim.Adam(model.parameters(), lr=lr)
     best_val_rmse = float("inf")
-    best_enc_state, best_head_state = None, None
+    best_state = None
 
-    epoch_bar = tqdm(range(1, epochs + 1), desc="Training CNN encoder", unit="epoch")
+    epoch_bar = tqdm(range(1, epochs + 1), desc="Training HybridBathNet", unit="epoch")
     for epoch in epoch_bar:
-        encoder.train()
-        head.train()
+        model.train()
         train_loss = 0.0
+        train_nll = 0.0
+        train_nonneg = 0.0
+        train_ext = 0.0
 
-        for x, y in train_loader:
-            x, y = x.to(device), y.to(device)
+        for x, y_norm, y_m in train_loader:
+            x, y_norm, y_m = x.to(device), y_norm.to(device), y_m.to(device)
             optimizer.zero_grad()
-            features = encoder(x)       # (B, FEATURE_DIM)
-            pred     = head(features)   # (B,)
-            loss     = scalar_mse(pred, y)
+
+            pred_norm, log_var, kd, z_ext = model(x)
+            loss, loss_dict = criterion(pred_norm, log_var, y_norm, z_ext, y_mean=y_mean, y_std=y_std)
+
             loss.backward()
             optimizer.step()
-            train_loss += loss.item() * x.size(0)
 
-        train_loss /= len(train_loader.dataset)
-        val_metrics = evaluate(encoder, head, val_loader, device)
+            train_loss += loss.item() * x.size(0)
+            train_nll += loss_dict["loss_nll"] * x.size(0)
+            train_nonneg += loss_dict["loss_nonneg"] * x.size(0)
+            train_ext += loss_dict["loss_ext"] * x.size(0)
+
+        n_samples = len(train_loader.dataset)
+        train_loss /= n_samples
+        train_nll /= n_samples
+        train_nonneg /= n_samples
+        train_ext /= n_samples
+
+        val_metrics = evaluate_hybridbathnet(model, val_loader, device, y_mean, y_std)
 
         epoch_bar.set_postfix(
-            train_loss=f"{train_loss:.3f}",
+            loss=f"{train_loss:.3f}",
             val_rmse=f"{val_metrics['rmse']:.2f}m",
+            val_r2=f"{val_metrics['r2']:.3f}",
             val_acc_1m=f"{val_metrics['acc_within_1m_%']:.1f}%",
-            val_acc_2m=f"{val_metrics['acc_within_2m_%']:.1f}%",
         )
         LOG.info(
-            "Epoch %3d/%d | loss: %.4f | Val → RMSE: %.3fm  MAE: %.3fm  R²: %.3f"
-            "  Acc(±1m): %.1f%%  Acc(±2m): %.1f%%  δ<1.25: %.1f%%",
-            epoch, epochs, train_loss,
+            "Epoch %3d/%d | Total Loss: %.4f (NLL: %.4f, NonNeg: %.4f, Ext: %.4f) | "
+            "Val → RMSE: %.3fm  MAE: %.3fm  R²: %.3f  Acc(±1m): %.1f%%  Acc(±2m): %.1f%%  δ<1.25: %.1f%%",
+            epoch, epochs, train_loss, train_nll, train_nonneg, train_ext,
             val_metrics["rmse"], val_metrics["mae"], val_metrics["r2"],
             val_metrics["acc_within_1m_%"], val_metrics["acc_within_2m_%"],
             val_metrics["delta_1.25_%"],
         )
 
         if val_metrics["rmse"] < best_val_rmse:
-            best_val_rmse   = val_metrics["rmse"]
-            best_enc_state  = {k: v.cpu().clone() for k, v in encoder.state_dict().items()}
-            best_head_state = {k: v.cpu().clone() for k, v in head.state_dict().items()}
+            best_val_rmse = val_metrics["rmse"]
+            best_state = {k: v.cpu().clone() for k, v in model.state_dict().items()}
 
-    if best_enc_state is not None:
-        encoder.load_state_dict(best_enc_state)
-        head.load_state_dict(best_head_state)
+    if best_state is not None:
+        model.load_state_dict(best_state)
 
-    return encoder, head
+    return model
 
 
 @torch.no_grad()
-def evaluate(encoder, head, loader, device) -> dict:
-    encoder.eval()
-    head.eval()
-    all_pred, all_true = [], []
+def evaluate_hybridbathnet(model, loader, device, y_mean, y_std) -> dict:
+    model.eval()
+    all_pred, all_true, all_aleatoric = [], [], []
 
-    for x, y in loader:
-        x        = x.to(device)
-        features = encoder(x)
-        pred     = head(features).cpu().numpy()
-        all_pred.append(pred)
-        all_true.append(y.numpy())
+    for x, _, y_m in loader:
+        x = x.to(device)
+        pred_norm, log_var, _, _ = model(x)
+        pred_m = pred_norm.cpu().numpy() * y_std + y_mean
+        all_pred.append(pred_m)
+        all_true.append(y_m.numpy())
+        all_aleatoric.append(torch.exp(log_var).cpu().numpy())
 
-    return compute_metrics(
+    metrics = compute_metrics(
         np.concatenate(all_true),
         np.concatenate(all_pred),
     )
+    metrics["mean_aleatoric_std"] = float(np.sqrt(np.mean(np.concatenate(all_aleatoric))))
+    return metrics
 
 
 # ---------------------------------------------------------------------------
@@ -307,21 +341,21 @@ def main():
     feat_dir = cfg["features"]["features_dir"]
     data = np.load(Path(feat_dir) / "patches.npz")
     X, Y  = data["X"], data["Y"]
-    # M (valid-mask) is no longer used — center-pixel labels are always valid.
     train_idx, val_idx, test_idx = data["train_idx"], data["val_idx"], data["test_idx"]
 
     LOG.info(
-        "Patches — X: %s  Y: %s  |  channels: %d (spectral + stumpf_ratio)",
+        "Patches — X: %s  Y: %s  |  channels: %d (spectral + physics)",
         X.shape, Y.shape, X.shape[1],
     )
 
     train_cfg = cfg["training"]
+    hnet_cfg  = cfg.get("hybridbathnet", {})
     device    = train_cfg["device"] if torch.cuda.is_available() else "cpu"
     LOG.info("Using device: %s", device)
 
     train_ds = PatchDataset(X, Y, train_idx)
-    val_ds   = PatchDataset(X, Y, val_idx  if len(val_idx)  else train_idx)
-    test_ds  = PatchDataset(X, Y, test_idx if len(test_idx) else train_idx)
+    val_ds   = PatchDataset(X, Y, val_idx  if len(val_idx)  else train_idx, mean=train_ds.mean, std=train_ds.std, y_mean=train_ds.y_mean, y_std=train_ds.y_std)
+    test_ds  = PatchDataset(X, Y, test_idx if len(test_idx) else train_idx, mean=train_ds.mean, std=train_ds.std, y_mean=train_ds.y_mean, y_std=train_ds.y_std)
 
     if len(test_idx) == 0:
         LOG.warning("test_idx is empty — falling back to train set for test evaluation.")
@@ -332,39 +366,56 @@ def main():
     val_loader   = DataLoader(val_ds,   batch_size=train_cfg["batch_size"])
     test_loader  = DataLoader(test_ds,  batch_size=train_cfg["batch_size"])
 
-    # Encoder + placeholder head.
-    # Replace _TempDepthHead with real DepthHead + UncertaintyHead when ready.
-    encoder = CNNEncoder(in_channels=X.shape[1]).to(device)
-    head    = _TempDepthHead().to(device)
+    # Instantiate FRESH HybridBathNet (Physics Encoder + Physics Decoder + Dual Heads)
+    # Re-initialized from random weights (no checkpoint loading to prevent overfitting)
+    loss_weights = hnet_cfg.get("loss_weights", {"w_mse": 1.0, "w_nll": 1.0, "w_phys": 0.5, "w_ext": 0.5})
+    model = HybridBathNetModel(
+        in_channels=X.shape[1],
+        feature_dim=hnet_cfg.get("feature_dim", FEATURE_DIM),
+        dropout_rate=hnet_cfg.get("dropout_rate", 0.1),
+        i0_over_epsilon=hnet_cfg.get("i0_over_epsilon", 100.0),
+    ).to(device)
 
-    LOG.info(
-        "CNNEncoder — in_channels: %d  →  feature_dim: %d",
-        X.shape[1], FEATURE_DIM,
+    criterion = CompositePhysicsNLLLoss(
+        w_mse=loss_weights.get("w_mse", 1.0),
+        w_nll=loss_weights.get("w_nll", 1.0),
+        w_phys=loss_weights.get("w_phys", 0.5),
+        w_ext=loss_weights.get("w_ext", 0.5),
     )
-    LOG.info("Head       — _TempDepthHead (placeholder, Linear %d→1)", FEATURE_DIM)
 
-    encoder, head = train(
-        encoder, head,
+    LOG.info("FRESH HybridBathNetModel initialized from random weights (no checkpoint loaded).")
+    LOG.info("Normalization stats (from TRAINING split only):")
+    LOG.info("  Input channels  -> mean: %s  std: %s", train_ds.mean.squeeze().tolist(), train_ds.std.squeeze().tolist())
+    LOG.info("  Target depth    -> y_mean: %.3f m  y_std: %.3f m", train_ds.y_mean, train_ds.y_std)
+    LOG.info("Loss Weights -> Depth MSE: %.2f | Gaussian NLL: %.2f | Non-Negativity: %.2f | Extinction Bound: %.2f",
+             loss_weights["w_mse"], loss_weights["w_nll"], loss_weights["w_phys"], loss_weights["w_ext"])
+
+
+    model = train_hybridbathnet(
+        model, criterion,
         train_loader, val_loader,
         train_cfg["epochs"], train_cfg["learning_rate"], device,
+        y_mean=train_ds.y_mean, y_std=train_ds.y_std,
     )
 
     ensure_dir(train_cfg["checkpoint_dir"])
     torch.save(
-        {"encoder": encoder.state_dict(), "head": head.state_dict()},
-        Path(train_cfg["checkpoint_dir"]) / "cnn_baseline.pt",
+        {"model": model.state_dict(), "y_mean": train_ds.y_mean, "y_std": train_ds.y_std},
+        Path(train_cfg["checkpoint_dir"]) / "hybridbathnet.pt",
     )
 
-    test_metrics = evaluate(encoder, head, test_loader, device)
+    test_metrics = evaluate_hybridbathnet(model, test_loader, device, y_mean=train_ds.y_mean, y_std=train_ds.y_std)
     LOG.info(
-        "CNN baseline (test) → RMSE %.3f  MAE %.3f  R² %.3f",
-        test_metrics["rmse"], test_metrics["mae"], test_metrics["r2"],
+        "HybridBathNet (test) → RMSE %.3f  MAE %.3f  R² %.3f  (Aleatoric std: %.3fm)",
+        test_metrics["rmse"], test_metrics["mae"], test_metrics["r2"], test_metrics["mean_aleatoric_std"],
     )
+
 
     ensure_dir(cfg["evaluation"]["results_dir"])
-    with open(Path(cfg["evaluation"]["results_dir"]) / "cnn_baseline_results.json", "w") as f:
+    with open(Path(cfg["evaluation"]["results_dir"]) / "hybridbathnet_results.json", "w") as f:
         json.dump(test_metrics, f, indent=2)
 
 
 if __name__ == "__main__":
     main()
+

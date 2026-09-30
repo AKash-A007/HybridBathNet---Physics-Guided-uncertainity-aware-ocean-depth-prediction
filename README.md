@@ -2,10 +2,11 @@
 
 This repository contains the baseline pipeline and experimental models for **HybridBathNet**: an end-to-end framework for ocean bathymetry (depth prediction) from Sentinel-2 satellite imagery.
 
-It includes three baseline models to compare performance against:
+It includes:
 1. **Stumpf (2003)** empirical log-band ratio regression.
 2. **Random Forest** on spectral bands, band ratios, and NDWI.
 3. **Simple CNN** (encoder-decoder deep learning model without physics constraints).
+4. **HybridBathNet** (Physics-guided & uncertainty-aware hybrid neural network architecture).
 
 ---
 
@@ -81,13 +82,16 @@ python -m src.preprocess --config config.yaml
 python -m src.features --config config.yaml
 ```
 
-### Step 4: Train & Evaluate Baseline Models
+### Step 4: Train & Evaluate Models
 ```bash
 # Train Stumpf & Random Forest models
 python -m src.baseline_models --config config.yaml
 
 # Train Simple CNN baseline
 python -m src.cnn_baseline --config config.yaml
+
+# Train HybridBathNet model (Physics-Guided & Uncertainty Head)
+python -m src.hybridbathnet --config config.yaml
 
 # Compare all model results (generates comparison table & charts)
 python -m src.compare_baselines --config config.yaml
@@ -113,17 +117,25 @@ hybridbathnet_baseline/
 │   ├── features.py                 # Band ratio, NDWI, spatial train/test splits
 │   ├── baseline_models.py          # Stumpf & Random Forest models
 │   ├── cnn_baseline.py             # Simple PyTorch CNN architecture & training
+│   ├── hybridbathnet.py            # Physics-Guided Uncertainty-Aware Hybrid Model
 │   └── compare_baselines.py        # Benchmark results comparison & plots
 ├── checkpoints/                    # Pre-trained model weights (Git LFS)
 │   ├── cnn_baseline.pt
+│   ├── hybridbathnet.pt
 │   ├── rf_model.joblib
 │   └── stumpf_model.joblib
-├── results/                        # Evaluation metrics & plots
+├── results/                        # Evaluation metrics & benchmark JSONs
 │   ├── cnn_baseline_results.json
+│   ├── hybridbathnet_results.json
 │   ├── tabular_baseline_results.json
 │   ├── baseline_comparison.csv
 │   └── baseline_comparison.png
-└── outputs/                        # Output rasters & GeoTIFFs
+└── outputs/                        # Output visualizations & diagnostic charts
+    ├── sample_cnn_input_patch.png
+    ├── sentinel2_cloud_masking_slide_visualization.png
+    ├── sentinel2_cloudy_scene_bands_visualization.png
+    ├── sentinel2_raw_jp2000_slide_visualization.png
+    └── stack_tif_6bands_visualization.png
 ```
 
 ---
@@ -134,8 +146,9 @@ Trained checkpoint models are included in `checkpoints/` (tracked via **Git LFS*
 - **Stumpf Model**: `checkpoints/stumpf_model.joblib`
 - **Random Forest Model**: `checkpoints/rf_model.joblib`
 - **Simple CNN Model**: `checkpoints/cnn_baseline.pt`
+- **HybridBathNet Model**: `checkpoints/hybridbathnet.pt`
 
-Benchmark results are output to `results/` in JSON and CSV formats.
+Benchmark results are output to `results/` in JSON and CSV formats. Visualizations are saved in `outputs/`.
 
 ---
 
