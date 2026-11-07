@@ -1,6 +1,6 @@
 # HybridBathNet — Physics-Guided & Uncertainty-Aware Ocean Depth Prediction
 
-GitHub publication (7 November 2026): preparing the accumulated source, experiment protocols, metrics, tests and study reports for origin/main. Raw satellite/tide/photon data, feature arrays, downloaded dependencies, experiment checkpoints, external downloads and logs remain local through .gitignore; existing tracked root checkpoint remains versioned. No training or result recalculation is launched. Checks: file-size and credential-pattern review plus Git whitespace checks; publication outcome is verified from Git after pushing.
+GitHub publication (7 November 2026): published the accumulated source, experiment protocols, metrics, tests and study reports to origin/main in commit 049dcef (559 files). Raw satellite/tide/photon data, feature arrays, downloaded dependencies, experiment checkpoints, external downloads and logs remain local through .gitignore; existing tracked root checkpoint remains versioned. No training or result recalculation is launched. Checks: staged payload 39.5 MB, no credential-pattern matches, no whitespace errors apart from historical trailing blank lines; Git confirmed main -> main. No training was run for publication.
 
 <!-- OOF_UNCERTAINTY_STATUS -->
 GEBCO held-region uncertainty study: **complete**. [Status](runs/2026-11-06/gebco_oof_uncertainty_v1/status.json) | [Progress](runs/2026-11-06/gebco_oof_uncertainty_v1/LIVE_PROGRESS.md) | [Report](runs/2026-11-06/gebco_oof_uncertainty_v1/REPORT.md).
