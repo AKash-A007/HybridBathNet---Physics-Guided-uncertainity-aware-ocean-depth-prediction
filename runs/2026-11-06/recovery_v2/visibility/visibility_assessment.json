@@ -1,0 +1,44 @@
+{
+  "source": "Richardson et al.2024 TOA pretrained model; source commit recorded separately",
+  "date": "2024-01-13",
+  "scope": "native10m neighborhood features at fixed GEBCO centres; no operational mask",
+  "calibrated_to_this_aoi": false,
+  "conversion_check": {
+    "max_abs_probability_difference_numpy_vs_torch": 5.513429641723633e-07,
+    "weights_sha256": "749f09e062d766783aa491867cfad6a3f1368f0565d97135b2a42f86425992f9",
+    "tensorflow_runtime_used": false,
+    "scope": "documented HDF5 dense architecture equivalence; not a full original-runtime pipeline comparison"
+  },
+  "splits": {
+    "train": {
+      "n": 637,
+      "valid": 631,
+      "shallow_ge_0_6": 3,
+      "deep_le_0_4": 622
+    },
+    "val": {
+      "n": 208,
+      "valid": 208,
+      "shallow_ge_0_6": 0,
+      "deep_le_0_4": 208,
+      "primary_n": 208,
+      "supported_primary_n": 0,
+      "full_primary_rmse": 1.9631407260894775,
+      "supported_primary_rmse": null,
+      "supported_fraction_primary": 0.0,
+      "supported_groups_2km": 0
+    },
+    "test": {
+      "n": 343,
+      "valid": 343,
+      "shallow_ge_0_6": 0,
+      "deep_le_0_4": 343,
+      "primary_n": 228,
+      "supported_primary_n": 0,
+      "full_primary_rmse": 2.5613343715667725,
+      "supported_primary_rmse": null,
+      "supported_fraction_primary": 0.0,
+      "supported_groups_2km": 0
+    }
+  }
+}

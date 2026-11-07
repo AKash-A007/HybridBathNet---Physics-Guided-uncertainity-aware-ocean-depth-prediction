@@ -1,0 +1,26 @@
+{
+  "dataset_sha256": "844e926d3a84469483db2581b44d02363fb63b7b6e74f3ca69f12502f6f8d029",
+  "cuda": "12.8",
+  "torch": "2.11.0+cu128",
+  "gpu": "NVIDIA GeForce RTX 3050 Laptop GPU",
+  "seed": 42,
+  "batch_size": 8,
+  "pilot_epochs": 15,
+  "full_epochs": 180,
+  "composite": "1 Huber(normalized depth) + 1 betaNLL(metre variance) + .03 extinction(normalized metres) + .1 masked optical Huber(reflectance/.05)",
+  "selection": "validation RMSE; uncertainty calibration reported separately; test after pilot choices frozen",
+  "rinf_training_only": [
+    0.041845664381980896,
+    0.025661656633019447,
+    0.0169773418456316
+  ],
+  "label_reference": "direct native GEBCO; held-out coordinates preserved",
+  "initialization": "matched pilots warm-start from same historical selected state; full_joint starts from scratch",
+  "weights": {
+    "w_depth": 1,
+    "w_nll": 1,
+    "w_ext": 0.03,
+    "w_recon": 0.1
+  },
+  "sentinel_only": "separate fresh model/optical-only splits; no depth truth RMSE"
+}

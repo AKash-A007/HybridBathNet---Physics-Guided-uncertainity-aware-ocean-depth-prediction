@@ -1,0 +1,18 @@
+{
+  "src\\baseline_models.py": "f50d515adba2cc8efad4ed7f834a6946ad4962682eec33d37a6faf5986b1f2cb",
+  "src\\cnn_baseline.py": "9065eae6011293c08d21f76ad484fc7a7339dafb784bdc018b676af524a4c2c5",
+  "src\\compare_baselines.py": "121a281d4a85ced48a41b5feff67f27255603770ae076862a1e724e103995f8c",
+  "src\\download_coastline.py": "023fe12f8d9812e4e35bdcec5b2988db9f1a5ba41f2553ab9d0b1fb4e192ff6a",
+  "src\\download_gebco.py": "92ae62cf205eb13ee35e5bbe319a4ac00b1b6eb397f74e5a973aa86e9550f3e0",
+  "src\\download_sentinel2.py": "1d30cbf96ae745b6ae4919fbf00aa6fdf9766e9f0eb1defc41460946df300855",
+  "src\\features.py": "c2a1ef0c98187b2f9e03e7f4a7fa835e1e69d4aa607d41816ac211074e3ebb45",
+  "src\\generate_synthetic_data.py": "d15d749a1bdcc2b8193a5f91edc689264740cc89a98a650e945ce6a4532f1aea",
+  "src\\hybridbathnet.py": "563c5b32c75dd233b02ac88d201b1c93b9e6cfdf26dc65dd2e70101c55993bd9",
+  "src\\preprocess.py": "ab515e3d2dc3e2083d4b6c308036933d328c221b7c0696ae1a23f30fe5ab8ac1",
+  "src\\utils.py": "cb19cd03c2aea9dd0121e219b7bf7d8577d7cfa266d3ccc17486cd2f53474997",
+  "src\\__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "tests\\test_training_stability.py": "0258fcd3d400da12d7ae9d5e61857af70a97077291c09b78de46f48dd059e34b",
+  "run_baseline_pipeline.py": "3292fc52fa3db92113cb58d642b6d52173a84678d4615f90ad478bbfa5870b7d",
+  "scripts\\run_physics_study.py": "de18b341c1c301a045495d052467381ab4a86b1bdfce0fe57d3388a46c059840",
+  "scripts\\build_study_data.py": "cb88d2657141b9145ee2b046b75e739d91226fe8dc07250f0b341c3cc43e01cc"
+}

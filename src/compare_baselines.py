@@ -65,7 +65,7 @@ def main():
         rows.append({"model": "Random Forest", **tab["random_forest"]})
     if "gradient_boosting" in tab:
         rows.append({"model": "Gradient Boosting", **tab["gradient_boosting"]})
-    if cnn and "rmse" in cnn:
+    if cnn and "rmse" in cnn and not hnet:
         rows.append({"model": "CNN Baseline", **cnn})
     if hnet and "rmse" in hnet:
         rows.append({"model": "HybridBathNet v3", **hnet})

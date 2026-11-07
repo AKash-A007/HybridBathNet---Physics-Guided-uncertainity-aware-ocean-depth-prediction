@@ -1,0 +1,82 @@
+[
+  {
+    "product": "S2A_MSIL2A_20240118T051131_N0510_R019_T43PFK_20240118T081358.SAFE",
+    "files_checked": 86,
+    "failures": []
+  },
+  {
+    "product": "S2A_MSIL2A_20240118T051131_N0510_R019_T43PFL_20240118T081358.SAFE",
+    "files_checked": 86,
+    "failures": []
+  },
+  {
+    "product": "S2A_MSIL2A_20240128T051051_N0510_R019_T43PFK_20240128T084250.SAFE",
+    "files_checked": 86,
+    "failures": []
+  },
+  {
+    "product": "S2A_MSIL2A_20240128T051051_N0510_R019_T43PFL_20240128T084250.SAFE",
+    "files_checked": 86,
+    "failures": []
+  },
+  {
+    "product": "S2A_MSIL2A_20240207T051001_N0510_R019_T43PFK_20240207T085751.SAFE",
+    "files_checked": 86,
+    "failures": []
+  },
+  {
+    "product": "S2A_MSIL2A_20240207T051001_N0510_R019_T43PFL_20240207T085751.SAFE",
+    "files_checked": 86,
+    "failures": []
+  },
+  {
+    "product": "S2A_MSIL2A_20240217T050901_N0510_R019_T43PFL_20240217T091753.SAFE",
+    "files_checked": 86,
+    "failures": []
+  },
+  {
+    "product": "S2A_MSIL2A_20240308T050651_N0510_R019_T43PFK_20240308T084749.SAFE",
+    "files_checked": 86,
+    "failures": []
+  },
+  {
+    "product": "S2A_MSIL2A_20240318T050651_N0510_R019_T43PFK_20240318T084852.SAFE",
+    "files_checked": 86,
+    "failures": []
+  },
+  {
+    "product": "S2B_MSIL2A_20240113T051159_N0510_R019_T43PFK_20240113T074151.SAFE",
+    "files_checked": 86,
+    "failures": []
+  },
+  {
+    "product": "S2B_MSIL2A_20240113T051159_N0510_R019_T43PFL_20240113T074151.SAFE",
+    "files_checked": 86,
+    "failures": []
+  },
+  {
+    "product": "S2B_MSIL2A_20240123T051119_N0510_R019_T43PFL_20240123T073307.SAFE",
+    "files_checked": 86,
+    "failures": []
+  },
+  {
+    "product": "S2B_MSIL2A_20240212T050939_N0510_R019_T43PFL_20240212T074018.SAFE",
+    "files_checked": 86,
+    "failures": []
+  },
+  {
+    "product": "S2B_MSIL2A_20240222T050829_N0510_R019_T43PFK_20240222T074738.SAFE",
+    "files_checked": 86,
+    "failures": []
+  },
+  {
+    "product": "S2B_MSIL2A_20240303T050719_N0510_R019_T43PFL_20240303T073146.SAFE",
+    "files_checked": 86,
+    "failures": []
+  },
+  {
+    "product": "S2B_MSIL2A_20240313T050649_N0510_R019_T43PFK_20240313T145847.SAFE",
+    "files_checked": 86,
+    "failures": []
+  }
+]

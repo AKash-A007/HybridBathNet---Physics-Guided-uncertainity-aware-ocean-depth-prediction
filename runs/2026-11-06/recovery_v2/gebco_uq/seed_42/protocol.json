@@ -1,0 +1,28 @@
+{
+  "seed": 42,
+  "model_options": {
+    "uncertainty_head": "spatial",
+    "detach_uncertainty_features": true,
+    "reconstruction_attenuation": "pixel"
+  },
+  "modules": "full encoder/depth/physics/uncertainty",
+  "dataset_sha256": "ee6def3b7906263056e610eada6899a9815247d2b62c97248ff59e34c8e731ae",
+  "split_sizes": {
+    "train_idx": 447,
+    "calib_idx": 123,
+    "val_idx": 208,
+    "test_idx": 343
+  },
+  "epochs": 180,
+  "patience": 30,
+  "lr": 0.001,
+  "batch": 8,
+  "ema": 0.999,
+  "cosine_period": 180,
+  "nll_warmup": 20,
+  "loss": "Huber1 + detached-mean Gaussian NLL1 + extinction.03 + reconstruction.1",
+  "separate_variance_gradient_clipping": true,
+  "selection": "validation RMSE; calibration untouched until all members complete",
+  "comparison": "Old v1 has more training points; same fixed test coordinates/labels but not a single-change comparison",
+  "optical_limit": "heuristic only; no clipping or masking"
+}

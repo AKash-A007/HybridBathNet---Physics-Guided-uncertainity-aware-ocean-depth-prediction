@@ -1,0 +1,11 @@
+{
+  "stage": "complete",
+  "experiment": "expanded_smooth",
+  "completed_validation": [
+    "long_original",
+    "expanded_restart",
+    "expanded_smooth",
+    "selected_seed_1"
+  ],
+  "utc": "2026-11-05T09:01:42.775907+00:00"
+}

@@ -1,0 +1,23 @@
+{
+  "stage": "stopped_by_user",
+  "experiment": "control",
+  "last_completed_epoch": 8,
+  "best_control_validation_rmse": 2.734785556793213,
+  "best_control_epoch": 6,
+  "utc": "2026-11-05T14:02:26.193102+00:00",
+  "reason": "User requests stopping training and discussing ICESat-2/nearshore evaluation before proceeding",
+  "not_started": [
+    "mask_aware",
+    "joint_composite",
+    "joint_full_coverage",
+    "full_joint",
+    "sentinel_only_training"
+  ],
+  "preserved": [
+    "control/checkpoints/last_training.pt",
+    "control/checkpoints/best_ema.pt",
+    "features/patches.npz",
+    "features/patches_before_invalid_label_fill.npz"
+  ],
+  "note": "Sentinel-only data preparation and backward smoke check completed, but no optimizer training run started."
+}

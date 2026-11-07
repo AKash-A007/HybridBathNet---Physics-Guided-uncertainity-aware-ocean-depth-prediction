@@ -1,0 +1,8 @@
+{
+  "stage": "complete",
+  "experiment": "grid_pilot",
+  "completed_validation": [
+    "old",
+    "direct"
+  ]
+}

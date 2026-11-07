@@ -1,0 +1,45 @@
+{
+  "version": "ATL24.002",
+  "aoi": [
+    76.3,
+    8.9,
+    76.55,
+    9.2
+  ],
+  "granules": 74,
+  "aoi_photons": 8615803,
+  "class_counts": {
+    "0": 5493280,
+    "41": 3118079,
+    "40": 4444
+  },
+  "high_confidence_shallow_photons": 1596,
+  "fields": [
+    "class_ph",
+    "confidence",
+    "delta_time",
+    "ellipse_h",
+    "index_ph",
+    "index_seg",
+    "invalid_kd",
+    "invalid_wind_speed",
+    "lat_ph",
+    "lon_ph",
+    "low_confidence_flag",
+    "night_flag",
+    "ortho_h",
+    "sensor_depth_exceeded",
+    "sigma_thu",
+    "sigma_tvu",
+    "surface_h",
+    "x_atc",
+    "y_atc",
+    "rgt",
+    "cycle",
+    "granule",
+    "beam",
+    "depth_m",
+    "time"
+  ],
+  "total_bytes": 3517325236
+}

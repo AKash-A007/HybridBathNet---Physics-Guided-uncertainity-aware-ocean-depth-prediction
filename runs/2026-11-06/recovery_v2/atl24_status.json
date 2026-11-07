@@ -1,0 +1,15 @@
+{
+  "component": "atl24",
+  "phase": "paired_training_complete",
+  "utc": "2026-11-06T14:02:36.059922+00:00",
+  "results": {
+    "composite_control": {
+      "validation": 6.026808352670412,
+      "test": 6.511860482780834
+    },
+    "matched_tide": {
+      "validation": 6.7129170332458425,
+      "test": 6.092809231835756
+    }
+  }
+}

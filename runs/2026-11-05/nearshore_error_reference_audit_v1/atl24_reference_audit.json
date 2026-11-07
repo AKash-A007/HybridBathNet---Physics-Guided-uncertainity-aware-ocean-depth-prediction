@@ -1,0 +1,83 @@
+{
+  "source": "SlideRule atl24x response (2024 Jan-Apr, bathymetry class, confidence>=0.6); not NSIDC V002 download",
+  "requested_bbox_lonlat": [
+    76.3,
+    8.9,
+    76.55,
+    9.2
+  ],
+  "all_returned_inside_requested_bbox": true,
+  "returned_lon_range": [
+    76.32503835106752,
+    76.54558011816754
+  ],
+  "returned_lat_range": [
+    8.92891852586531,
+    9.189182990964193
+  ],
+  "total_photons": 95,
+  "finite_0_20m": 61,
+  "returned_time_range_utc": [
+    "2024-02-07 01:45:49.819327488",
+    "2024-04-08 22:49:20.760479232"
+  ],
+  "finite_0_20m_inside_scene_valid_composite": 61,
+  "finite_0_20m_with_gebco_0_25m": 12,
+  "atl24_10_15m_with_gebco_0_25m": 0,
+  "unique_tracks": [
+    {
+      "rgt": 767,
+      "cycle": 22,
+      "region": 7
+    },
+    {
+      "rgt": 1339,
+      "cycle": 22,
+      "region": 1
+    },
+    {
+      "rgt": 325,
+      "cycle": 23,
+      "region": 7
+    }
+  ],
+  "nominal_depth_quantiles_m": [
+    1.0271828174591064,
+    6.355307579040527,
+    15.41491985321045
+  ],
+  "valid_quality_flag_values": {
+    "0": 93,
+    "22": 2
+  },
+  "median_vertical_uncertainty_m": 0.1519346833229065,
+  "independent_spatial_group_count": 14,
+  "geographic_match": {
+    "train": {
+      "photons_0_20m_within_50m": 0,
+      "photons_0_20m_within_100m": 0,
+      "photons_0_20m_within_320m": 7,
+      "median_nearest_distance_m": 1911.2822920751398
+    },
+    "val": {
+      "photons_0_20m_within_50m": 0,
+      "photons_0_20m_within_100m": 0,
+      "photons_0_20m_within_320m": 0,
+      "median_nearest_distance_m": 1753.8529014715002
+    },
+    "test": {
+      "photons_0_20m_within_50m": 0,
+      "photons_0_20m_within_100m": 3,
+      "photons_0_20m_within_320m": 3,
+      "median_nearest_distance_m": 2093.2271735289505
+    }
+  },
+  "caveat": "ATL24 depths are sea-surface minus refracted-bottom orthometric heights. GEBCO may represent a different datum/epoch and coarse cells. Nearby-photon differences are not a model score. Preserve original geographic test groups and all GEBCO labels.",
+  "gebco_colocation": {
+    "n": 61,
+    "median_atl24_minus_gebco_m": 2.6268474480354422,
+    "median_absolute_difference_m": 13.274614334106445,
+    "rmse_difference_m": 17.88570265445012,
+    "warning": "Photon counts are highly correlated and this is not independent validation of the trained network."
+  }
+}

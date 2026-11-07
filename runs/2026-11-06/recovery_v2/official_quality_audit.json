@@ -1,0 +1,78 @@
+{
+  "official_version": "002",
+  "bottom_photons": 4444,
+  "product_eligible_photons": 2350,
+  "aggregation": "median per10m pixel/pass/date, before0-20m cutoff; no reflectance/test error exclusions",
+  "quality": "class40, confidence>=.6, 0<depth<=100, 0<sigma_tvu<=1, sensor_depth_exceeded=0, patch inside grid",
+  "sigma_thu_interpretation": "total horizontal1sigma, not independent x/y sigmas",
+  "no_double_refraction": true,
+  "depth_definition": "surface_h minus refraction-corrected ortho_h; relative to acquisition water surface",
+  "counts": {
+    "train": {
+      "pixel_passes": 700,
+      "pixels": 700,
+      "dates": 22,
+      "bins": {
+        "0-5": 127,
+        "5-10": 27,
+        "10-15": 95,
+        "15-20.0001": 451
+      },
+      "median_sigma_thu_m": 7.071210861206055,
+      "single_photon_pct": 65.85714285714286
+    },
+    "val": {
+      "pixel_passes": 143,
+      "pixels": 143,
+      "dates": 16,
+      "bins": {
+        "0-5": 24,
+        "5-10": 2,
+        "10-15": 43,
+        "15-20.0001": 74
+      },
+      "median_sigma_thu_m": 7.071200370788574,
+      "single_photon_pct": 80.41958041958041
+    },
+    "test": {
+      "pixel_passes": 171,
+      "pixels": 171,
+      "dates": 16,
+      "bins": {
+        "0-5": 28,
+        "5-10": 5,
+        "10-15": 25,
+        "15-20.0001": 113
+      },
+      "median_sigma_thu_m": 7.071209907531738,
+      "single_photon_pct": 74.85380116959064
+    },
+    "other": {
+      "pixel_passes": 56,
+      "pixels": 56,
+      "dates": 11,
+      "bins": {
+        "0-5": 38,
+        "5-10": 0,
+        "10-15": 2,
+        "15-20.0001": 16
+      },
+      "median_sigma_thu_m": 7.0710835456848145,
+      "single_photon_pct": 58.92857142857143
+    }
+  },
+  "caveats": [
+    "V002 TPU is documented optimistic; isolated class40 false positives remain possible.",
+    "Adjacent pixels/repeated tracks are correlated; photon counts are not independent sample counts.",
+    "invalid_kd denotes missing auxiliary VIIRS Kd; ATLAS flags are not Sentinel visibility truth."
+  ],
+  "legacy_crossmatch": {
+    "scope": "same UTCdate/rgt/cycle/beam, nearest horizontal distance<=2m; approximate not photon identity",
+    "matched": 231,
+    "finite_depth_pairs": 215,
+    "legacy_high_conf_photons": 3189,
+    "median_abs_depth_difference_m": 0.10495233535766602,
+    "p90_abs_depth_difference_m": 0.4800360202789306,
+    "legacy_exact_source_version_verified": false
+  }
+}

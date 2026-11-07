@@ -1,0 +1,42 @@
+{
+  "folds": [
+    {
+      "fold": 0,
+      "no_held_label_training": true,
+      "dataset_hash_verified": true,
+      "training": 188,
+      "held": 187,
+      "reserved_source_support_disjoint": true,
+      "minimum_centre_gap_to_all_reserved_px": 96.0
+    },
+    {
+      "fold": 1,
+      "no_held_label_training": true,
+      "dataset_hash_verified": true,
+      "training": 236,
+      "held": 151,
+      "reserved_source_support_disjoint": true,
+      "minimum_centre_gap_to_all_reserved_px": 96.0
+    },
+    {
+      "fold": 2,
+      "no_held_label_training": true,
+      "dataset_hash_verified": true,
+      "training": 262,
+      "held": 109,
+      "reserved_source_support_disjoint": true,
+      "minimum_centre_gap_to_all_reserved_px": 96.0
+    }
+  ],
+  "oof_exactly_once": true,
+  "source_ensemble_hashes_unchanged": true,
+  "risk_head_strict_reload": true,
+  "validation_points_checked": 32,
+  "max_abs_sigma_reload_difference_m": 4.440892098500626e-16,
+  "head_selected_epoch": 4,
+  "source_hashes": {
+    "runs\\2026-11-06\\recovery_v2\\gebco_uq\\seed_42\\hybridbathnet.pt": "e670e5a3e5034b979b2abf46aaddd1f7bb84d45c2e8c5889884cf019062201b8",
+    "runs\\2026-11-06\\recovery_v2\\gebco_uq\\seed_1\\hybridbathnet.pt": "531e55f67115ca62e634c362ae78edae46efac82102bd1a6c8fa3e75274bc381",
+    "runs\\2026-11-06\\recovery_v2\\gebco_uq\\seed_7\\hybridbathnet.pt": "97ef992aa7818b4cb2e08e550846ca1b115cd5cfdcd95ca5ef161fbe1ae219b8"
+  }
+}

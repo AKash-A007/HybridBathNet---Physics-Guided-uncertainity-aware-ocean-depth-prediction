@@ -1,0 +1,12 @@
+{
+  "training": "447 spatial OOF single-model errors; three fresh full folds, with strict feature refitting",
+  "validation": "existing208 outer-validation ensemble predictions; checkpoint selected by Gaussian variance NLL",
+  "architecture": "9-channel small CNN + centre9 +4 semantic features, bounded log total-variance multiplier",
+  "loss": "Gaussian NLL, equal2km training group weight",
+  "epochs_max": 200,
+  "patience": 30,
+  "seed": 20261107,
+  "zero_correction_control": "epoch0 identity is eligible for validation selection; never force a worse raw-NLL head",
+  "final_depth_mean": "unchanged source three-member ensemble",
+  "component_interpretation": "conditional total-risk correction, not new identifiable aleatoric variance"
+}

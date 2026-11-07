@@ -1,0 +1,31 @@
+{
+  "arm": "composite_control",
+  "reference": "official ATL24 V002",
+  "seed": 42,
+  "epochs": 180,
+  "patience": 30,
+  "lr": 0.001,
+  "batch": 8,
+  "cosine_period": 180,
+  "ema": 0.999,
+  "nll_warmup": 20,
+  "modules": "full encoder/depth/physics/uncertainty, all modules active",
+  "model_options": {
+    "uncertainty_head": "spatial",
+    "detach_uncertainty_features": true,
+    "reconstruction_attenuation": "pixel"
+  },
+  "dataset_sha256": "d6509c1db9e9ebf07e71b08423cef9a89e269cc81f0a38c60652a8051d6c3a4f",
+  "split_sizes": {
+    "train": 426,
+    "val": 102,
+    "test": 171
+  },
+  "selection": "validation RMSE only",
+  "loss": "Huber1 + detached-mean Gaussian NLL1 + extinction.03 + reconstruction.1",
+  "prediction_datum": "scene-relative for matched data; subtract stored tide_delta for common original-ATL24 scoring",
+  "test_coverage": "all product-eligible original-geography points; unmatched/cloudy samples use explicit2024 fallback",
+  "optical_limit": "heuristic diagnostic; no masking/clipping",
+  "reference_uncertainty": "sigma_tvu/sigma_thu recorded, not yet propagated into likelihood",
+  "device": "NVIDIA GeForce RTX 3050 Laptop GPU"
+}

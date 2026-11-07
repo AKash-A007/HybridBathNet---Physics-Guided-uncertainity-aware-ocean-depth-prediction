@@ -1,0 +1,50 @@
+{
+  "source": "runs\\2026-11-05\\nearshore_error_reference_audit_v1\\atl24_archive_with_original_split.parquet",
+  "target": "median ATL24 bathymetry photon depth per 10m grid pixel",
+  "target_screen": "class40, confidence>=0.6, quality_ph=0, sigma_tvu<=1m; median then 0-20m",
+  "optical_mask": "composite valid-any + finite positive blue/green + green>NIR; no GEBCO",
+  "feature_fitting": "glint, reference reflectance and prior fitted on training footprints only",
+  "input_channels": 16,
+  "rinf_train_only": [
+    0.04126792773604393,
+    0.0236530564725399,
+    0.015481317415833473
+  ],
+  "spatial_assignment": "original 128px train/val/test block IDs; test kept; 96px centre gap across splits",
+  "split_sizes": {
+    "train_idx": 570,
+    "val_idx": 112,
+    "test_idx": 233
+  },
+  "pre_buffer_eligible_sizes": {
+    "train": 861,
+    "val": 163,
+    "test": 233
+  },
+  "split_bins": {
+    "train_idx": {
+      "0-5": 241,
+      "5-10": 193,
+      "10-15": 97,
+      "15-20.0001": 39
+    },
+    "val_idx": {
+      "0-5": 30,
+      "5-10": 50,
+      "10-15": 26,
+      "15-20.0001": 6
+    },
+    "test_idx": {
+      "0-5": 129,
+      "5-10": 55,
+      "10-15": 34,
+      "15-20.0001": 15
+    }
+  },
+  "caveats": [
+    "Public SlideRule archive subset may miss granules that emitted invalid-dataframe alerts.",
+    "2018\u20132024 depth points paired to Jan\u2013Mar 2024 Sentinel composite; seabed change and vertical reference need review.",
+    "Within-split overlapping pixels/tracks are correlated; this is not a 10m independent survey grid.",
+    "Y stores a constant per-patch scalar solely for centre-supervised trainer augmentation."
+  ]
+}

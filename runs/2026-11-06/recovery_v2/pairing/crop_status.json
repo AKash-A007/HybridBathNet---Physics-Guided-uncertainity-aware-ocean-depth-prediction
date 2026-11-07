@@ -1,0 +1,137 @@
+[
+  {
+    "scene_id": "S2A_43PFK_20181225_0_L2A",
+    "status": "downloaded_crop",
+    "bytes": 7537149
+  },
+  {
+    "scene_id": "S2A_43PFK_20200418_1_L2A",
+    "status": "downloaded_crop",
+    "bytes": 6326656
+  },
+  {
+    "scene_id": "S2A_43PFK_20201005_0_L2A",
+    "status": "downloaded_crop",
+    "bytes": 3898811
+  },
+  {
+    "scene_id": "S2A_43PFK_20210212_3_L2A",
+    "status": "downloaded_crop",
+    "bytes": 7455272
+  },
+  {
+    "scene_id": "S2A_43PFK_20210920_0_L2A",
+    "status": "downloaded_crop",
+    "bytes": 4896616
+  },
+  {
+    "scene_id": "S2A_43PFK_20211219_0_L2A",
+    "status": "downloaded_crop",
+    "bytes": 2510734
+  },
+  {
+    "scene_id": "S2A_43PFK_20221224_0_L2A",
+    "status": "downloaded_crop",
+    "bytes": 1565879
+  },
+  {
+    "scene_id": "S2A_43PFK_20230712_0_L2A",
+    "status": "downloaded_crop",
+    "bytes": 59119
+  },
+  {
+    "scene_id": "S2A_43PFK_20231010_0_L2A",
+    "status": "downloaded_crop",
+    "bytes": 806763
+  },
+  {
+    "scene_id": "S2A_43PFK_20240207_0_L2A",
+    "status": "downloaded_crop",
+    "bytes": 1914180
+  },
+  {
+    "scene_id": "S2A_43PFL_20181225_0_L2A",
+    "status": "downloaded_crop",
+    "bytes": 6161492
+  },
+  {
+    "scene_id": "S2A_43PFL_20190325_0_L2A",
+    "status": "downloaded_crop",
+    "bytes": 4527490
+  },
+  {
+    "scene_id": "S2A_43PFL_20201005_0_L2A",
+    "status": "downloaded_crop",
+    "bytes": 4332236
+  },
+  {
+    "scene_id": "S2A_43PFL_20210212_0_L2A",
+    "status": "downloaded_crop",
+    "bytes": 2708859
+  },
+  {
+    "scene_id": "S2A_43PFL_20211219_1_L2A",
+    "status": "downloaded_crop",
+    "bytes": 15857402
+  },
+  {
+    "scene_id": "S2A_43PFL_20221214_0_L2A",
+    "status": "downloaded_crop",
+    "bytes": 11916980
+  },
+  {
+    "scene_id": "S2A_43PFL_20231010_0_L2A",
+    "status": "downloaded_crop",
+    "bytes": 3473268
+  },
+  {
+    "scene_id": "S2A_43PFL_20241103_0_L2A",
+    "status": "downloaded_crop",
+    "bytes": 1903546
+  },
+  {
+    "scene_id": "S2B_43PFK_20230108_0_L2A",
+    "status": "downloaded_crop",
+    "bytes": 2289500
+  },
+  {
+    "scene_id": "S2B_43PFK_20230418_0_L2A",
+    "status": "downloaded_crop",
+    "bytes": 6725378
+  },
+  {
+    "scene_id": "S2B_43PFK_20240313_0_L2A",
+    "status": "downloaded_crop",
+    "bytes": 867197
+  },
+  {
+    "scene_id": "S2B_43PFL_20190119_0_L2A",
+    "status": "downloaded_crop",
+    "bytes": 782477
+  },
+  {
+    "scene_id": "S2B_43PFL_20200413_0_L2A",
+    "status": "downloaded_crop",
+    "bytes": 722868
+  },
+  {
+    "scene_id": "S2B_43PFL_20220113_0_L2A",
+    "status": "downloaded_crop",
+    "bytes": 64852
+  },
+  {
+    "scene_id": "S2B_43PFL_20230108_0_L2A",
+    "status": "downloaded_crop",
+    "bytes": 16309752
+  },
+  {
+    "scene_id": "S2B_43PFL_20230418_0_L2A",
+    "status": "downloaded_crop",
+    "bytes": 92114
+  },
+  {
+    "scene_id": "S2B_43PFL_20240313_0_L2A",
+    "status": "downloaded_crop",
+    "bytes": 7782957
+  }
+]

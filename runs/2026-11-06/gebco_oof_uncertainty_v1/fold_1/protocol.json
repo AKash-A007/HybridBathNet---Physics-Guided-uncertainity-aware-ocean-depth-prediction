@@ -1,0 +1,24 @@
+{
+  "fold": 1,
+  "seed": 43,
+  "model_options": {
+    "uncertainty_head": "spatial",
+    "detach_uncertainty_features": true,
+    "reconstruction_attenuation": "pixel"
+  },
+  "dataset_sha256": "34e08a8f1d6d984c1e686ed4d47fb4ac904f6618c741571dcf85b91b34a3eccb",
+  "split_sizes": {
+    "train_idx": 236,
+    "val_idx": 208,
+    "held_idx": 151
+  },
+  "epochs": 180,
+  "patience": 30,
+  "lr": 0.001,
+  "batch": 8,
+  "cosine_period": 180,
+  "ema": 0.999,
+  "selection": "external validation RMSE only; OOF region never used",
+  "initialization": "fresh random; no checkpoint trained on OOF labels",
+  "loss": "Huber1 + NLL1 + extinction.03 + reconstruction.1"
+}

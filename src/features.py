@@ -47,7 +47,11 @@ def stumpf_ratio(blue: np.ndarray, green: np.ndarray) -> np.ndarray:
     """ln(n·blue) / ln(n·green) — Stumpf, Holderied & Sinclair (2003)."""
     b = np.clip(blue, 1e-6, None)
     g = np.clip(green, 1e-6, None)
-    return np.log(STUMPF_N * b) / np.log(STUMPF_N * g)
+    denominator = np.log(STUMPF_N * g)
+    # The ratio is undefined at n*green=1; use a neutral feature value there.
+    return np.divide(np.log(STUMPF_N * b), denominator,
+                     out=np.zeros_like(b, dtype=np.float32),
+                     where=np.isfinite(denominator) & (np.abs(denominator) > 1e-6))
 
 
 def ndwi(green: np.ndarray, nir: np.ndarray) -> np.ndarray:
@@ -138,6 +142,7 @@ def beer_lambert_depth_prior(
     blue:  np.ndarray,
     green: np.ndarray,
     eps:   float = 1e-6,
+    fit_mask: np.ndarray | None = None,
 ) -> np.ndarray:
     """Two-band Beer-Lambert analytical depth prior (§2.6).
 
@@ -160,7 +165,10 @@ def beer_lambert_depth_prior(
     kd = np.clip(kd, 0.01, 5.0)
 
     # Surface reference: 95th percentile of green over valid water pixels
-    valid_g     = g[g > eps]
+    ref_mask = (g > eps) & np.isfinite(g)
+    if fit_mask is not None:
+        ref_mask &= fit_mask
+    valid_g     = g[ref_mask]
     i_surface   = float(np.percentile(valid_g, 95)) if len(valid_g) > 0 else 0.1
     i_surface   = max(i_surface, 1e-3)
 
@@ -333,6 +341,7 @@ def extract_patches(
     coastline_path: str | None = None,
     transform=None,
     crs: str = None,
+    fit_mask: np.ndarray | None = None,
 ):
     """Extract (image, depth_map, valid-mask) patches for CNN / HybridBathNet.
 
@@ -371,14 +380,17 @@ def extract_patches(
     nir   = arrays[bands[3]] if len(bands) > 3 else None
 
     water_mask = valid & is_water
+    reference_mask = water_mask if fit_mask is None else water_mask & fit_mask
+    if not reference_mask.any():
+        raise ValueError("No training water pixels available to fit feature references")
 
     # §2.3  Sun-glint correction
     if nir is not None:
-        blue, green, red = sun_glint_correction(blue, green, red, nir, water_mask)
+        blue, green, red = sun_glint_correction(blue, green, red, nir, reference_mask)
 
     # §2.1  Lyzenga deep-water reference (2nd percentile over water pixels)
     def _r_inf(band_arr):
-        vals = band_arr[water_mask & np.isfinite(band_arr)]
+        vals = band_arr[reference_mask & np.isfinite(band_arr)]
         return float(np.percentile(vals, 2)) if len(vals) > 0 else 0.0
 
     r_inf_b = _r_inf(blue)
@@ -390,10 +402,10 @@ def extract_patches(
         blue, green, red, r_inf_b, r_inf_g, r_inf_r
     )
     ratio_stumpf = stumpf_ratio(blue, green)
-    z_prior_2d   = beer_lambert_depth_prior(blue, green)
+    z_prior_2d   = beer_lambert_depth_prior(blue, green, fit_mask=reference_mask)
 
     # §2.2  Mask channel (float 0/1)
-    mask_channel = valid.astype(np.float32)
+    mask_channel = water_mask.astype(np.float32)
 
     # §2.4  Temporal std channels (from the composite)
     std_channels = []
@@ -440,6 +452,8 @@ def extract_patches(
                 & is_water[r:r + patch_size, c:c + patch_size]
             )
             if m.mean() < 0.5:
+                continue
+            if not m[patch_size // 2, patch_size // 2]:
                 continue
             patches_x.append(base_stack[:, r:r + patch_size, c:c + patch_size])
             patches_y.append(depth[r:r + patch_size, c:c + patch_size])
@@ -574,7 +588,7 @@ def main():
     patch_size   = feat_cfg["patch_size"]
     patch_stride = feat_cfg["patch_stride"]
 
-    LOG.info("Extracting patches (%d channels)...", "see channel layout in docstring")
+    LOG.info("Extracting patches (see channel layout in docstring)...")
     X, Y, M, coords = extract_patches(
         arrays, bands, patch_size, patch_stride,
         use_distance_to_shore=use_dist,

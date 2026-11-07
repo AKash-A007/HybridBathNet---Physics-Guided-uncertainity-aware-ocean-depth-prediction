@@ -1,0 +1,30 @@
+{
+  "rule": "same pass/beam, leave-one-photon-out linear profile within25m; flag abs residual>max(1m,3sigma_tvu) when>=3 neighbors",
+  "interpretation": "roughness/slope/classification proxy only; not independently verified bad labels; never used to remove a held point",
+  "bins": {
+    "0-5": {
+      "photons": 299,
+      "sparse_profile_pct": 70.23411371237458,
+      "large_residual_pct_all": 3.3444816053511706,
+      "assessable": 89
+    },
+    "5-10": {
+      "photons": 46,
+      "sparse_profile_pct": 60.86956521739131,
+      "large_residual_pct_all": 0.0,
+      "assessable": 18
+    },
+    "10-15": {
+      "photons": 229,
+      "sparse_profile_pct": 68.99563318777294,
+      "large_residual_pct_all": 4.366812227074235,
+      "assessable": 71
+    },
+    "15-20.0001": {
+      "photons": 937,
+      "sparse_profile_pct": 55.70971184631803,
+      "large_residual_pct_all": 5.76307363927428,
+      "assessable": 415
+    }
+  }
+}

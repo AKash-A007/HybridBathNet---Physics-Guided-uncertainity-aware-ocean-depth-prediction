@@ -1,0 +1,35 @@
+{
+  "model": "HybridBathNet only; all modules jointly optimized",
+  "seed": 42,
+  "initialization": "random",
+  "epochs": 180,
+  "patience": 30,
+  "lr": 0.001,
+  "batch": 8,
+  "ema": 0.999,
+  "cosine_period": 180,
+  "depth_supervision": "centre-pixel GEBCO; 0\u201320m",
+  "reconstruction": "masked optical map; shelf <=25m",
+  "weights": {
+    "depth_huber": 1,
+    "beta_nll": 1,
+    "extinction": 0.03,
+    "reconstruction": 0.1
+  },
+  "reflectance_loss_scale": 0.05,
+  "nll_warmup": 20,
+  "rinf_training_only": [
+    0.04790065065026283,
+    0.035544805228710175,
+    0.018818704411387444
+  ],
+  "dataset_sha256": "5a15b02acf58ce7cada2b168bca30cca934dc85b0ac9af89531aa11619609cf8",
+  "torch": "2.11.0+cu128",
+  "gpu": "NVIDIA GeForce RTX 3050 Laptop GPU",
+  "test_regions": "original block IDs retained; denser distinct shallow coordinates",
+  "selection": "validation RMSE on 0\u201320m; test examined after training only",
+  "test_20_to_25m": "extrapolation beyond supervised training depth, sensitivity only",
+  "optical_limit": "heuristic flag only, not an exclusion mask",
+  "augmentation": "spectral jitter, flips; optical reconstruction targets remain unjittered",
+  "warning": "Overlapping patches and coarse GEBCO are not independent 10m survey truths."
+}

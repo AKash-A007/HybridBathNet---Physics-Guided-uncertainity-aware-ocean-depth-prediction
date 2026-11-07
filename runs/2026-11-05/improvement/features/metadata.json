@@ -1,0 +1,21 @@
+{
+  "split_sizes": [
+    2176,
+    65,
+    65
+  ],
+  "feature_fit": "training pixels only",
+  "original_split_sizes": [
+    306,
+    65,
+    65
+  ],
+  "expanded_training": true,
+  "holdout_buffer_pixels": 32,
+  "shared_pixels_across_splits": 0,
+  "patch_size": 64,
+  "stride": 32,
+  "channels": 16,
+  "normalization": "training water pixels only",
+  "limitations": "GEBCO is spatially coarse; neighbouring patches may share coarse reference cells."
+}

@@ -1,0 +1,2387 @@
+{
+  "selected_head_epoch": 4,
+  "original_sigma_scale": 1.7588013057292067,
+  "oof_sigma_scale": 1.2178091916404072,
+  "source_ensemble": "runs\\2026-11-06\\recovery_v2\\gebco_uq",
+  "depth_mean_unchanged": true,
+  "uncertainty_source": "raw components preserved; learned total-risk correction",
+  "splits": {
+    "validation": {
+      "original_raw": {
+        "primary_0_20": {
+          "n": 208,
+          "groups": 39,
+          "rmse_m": 2.2193750061073336,
+          "levels": {
+            "68": {
+              "coverage_pct": 62.019230769230774,
+              "group_balanced_coverage_pct": 55.90409590409591,
+              "width_mean_m": 2.995454133302125,
+              "width_group_balanced_m": 2.8669212693457804,
+              "interval_score_mean_m": 6.644731222351783,
+              "interval_score_group_balanced_m": 6.660207446638229,
+              "unbounded_intervals_n": 0
+            },
+            "80": {
+              "coverage_pct": 70.67307692307693,
+              "group_balanced_coverage_pct": 61.40896140896142,
+              "width_mean_m": 3.8602227393079924,
+              "width_group_balanced_m": 3.6945832529020706,
+              "interval_score_mean_m": 8.286960944351705,
+              "interval_score_group_balanced_m": 8.208052324885754,
+              "unbounded_intervals_n": 0
+            },
+            "90": {
+              "coverage_pct": 80.28846153846155,
+              "group_balanced_coverage_pct": 79.31105931105931,
+              "width_mean_m": 4.954542247305557,
+              "width_group_balanced_m": 4.7419462680986015,
+              "interval_score_mean_m": 11.121795920691142,
+              "interval_score_group_balanced_m": 10.641329999093058,
+              "unbounded_intervals_n": 0
+            },
+            "95": {
+              "coverage_pct": 85.09615384615384,
+              "group_balanced_coverage_pct": 84.66718466718466,
+              "width_mean_m": 5.903701220271271,
+              "width_group_balanced_m": 5.650377486368018,
+              "interval_score_mean_m": 14.987155009265065,
+              "interval_score_group_balanced_m": 14.296075229076003,
+              "unbounded_intervals_n": 0
+            }
+          },
+          "crps_mean_m": 1.1972243943063043,
+          "crps_group_balanced_m": 1.1951195588542651,
+          "sigma_error_spearman": 0.21628047772212527,
+          "gaussian_nll": 2.499226298612666,
+          "mean_sigma_m": 1.5060739041224518
+        },
+        "all_saved": {
+          "n": 208,
+          "groups": 39,
+          "rmse_m": 2.2193750061073336,
+          "levels": {
+            "68": {
+              "coverage_pct": 62.019230769230774,
+              "group_balanced_coverage_pct": 55.90409590409591,
+              "width_mean_m": 2.995454133302125,
+              "width_group_balanced_m": 2.8669212693457804,
+              "interval_score_mean_m": 6.644731222351783,
+              "interval_score_group_balanced_m": 6.660207446638229,
+              "unbounded_intervals_n": 0
+            },
+            "80": {
+              "coverage_pct": 70.67307692307693,
+              "group_balanced_coverage_pct": 61.40896140896142,
+              "width_mean_m": 3.8602227393079924,
+              "width_group_balanced_m": 3.6945832529020706,
+              "interval_score_mean_m": 8.286960944351705,
+              "interval_score_group_balanced_m": 8.208052324885754,
+              "unbounded_intervals_n": 0
+            },
+            "90": {
+              "coverage_pct": 80.28846153846155,
+              "group_balanced_coverage_pct": 79.31105931105931,
+              "width_mean_m": 4.954542247305557,
+              "width_group_balanced_m": 4.7419462680986015,
+              "interval_score_mean_m": 11.121795920691142,
+              "interval_score_group_balanced_m": 10.641329999093058,
+              "unbounded_intervals_n": 0
+            },
+            "95": {
+              "coverage_pct": 85.09615384615384,
+              "group_balanced_coverage_pct": 84.66718466718466,
+              "width_mean_m": 5.903701220271271,
+              "width_group_balanced_m": 5.650377486368018,
+              "interval_score_mean_m": 14.987155009265065,
+              "interval_score_group_balanced_m": 14.296075229076003,
+              "unbounded_intervals_n": 0
+            }
+          },
+          "crps_mean_m": 1.1972243943063043,
+          "crps_group_balanced_m": 1.1951195588542651,
+          "sigma_error_spearman": 0.21628047772212527,
+          "gaussian_nll": 2.499226298612666,
+          "mean_sigma_m": 1.5060739041224518
+        },
+        "bins": {
+          "0-5": {
+            "n": 18,
+            "groups": 3,
+            "rmse_m": 3.3345231822655226,
+            "levels": {
+              "68": {
+                "coverage_pct": 55.55555555555556,
+                "group_balanced_coverage_pct": 54.166666666666664,
+                "width_mean_m": 4.023993634815479,
+                "width_group_balanced_m": 4.434068339246915,
+                "interval_score_mean_m": 11.261634344074206,
+                "interval_score_group_balanced_m": 11.58596663942086,
+                "unbounded_intervals_n": 0
+              },
+              "80": {
+                "coverage_pct": 61.111111111111114,
+                "group_balanced_coverage_pct": 58.33333333333333,
+                "width_mean_m": 5.185695070156699,
+                "width_group_balanced_m": 5.7141557403643874,
+                "interval_score_mean_m": 14.335720840717231,
+                "interval_score_group_balanced_m": 14.517374494562048,
+                "unbounded_intervals_n": 0
+              },
+              "90": {
+                "coverage_pct": 61.111111111111114,
+                "group_balanced_coverage_pct": 58.33333333333333,
+                "width_mean_m": 6.655767566236698,
+                "width_group_balanced_m": 7.334039493377557,
+                "interval_score_mean_m": 19.031452612882518,
+                "interval_score_group_balanced_m": 18.429032738587665,
+                "unbounded_intervals_n": 0
+              },
+              "95": {
+                "coverage_pct": 72.22222222222221,
+                "group_balanced_coverage_pct": 66.66666666666666,
+                "width_mean_m": 7.930836218825813,
+                "width_group_balanced_m": 8.7390470694074,
+                "interval_score_mean_m": 22.88481962545375,
+                "interval_score_group_balanced_m": 19.993336517799538,
+                "unbounded_intervals_n": 0
+              }
+            },
+            "crps_mean_m": 1.923334255462986,
+            "crps_group_balanced_m": 2.0273252635187307,
+            "sigma_error_spearman": 0.5789473684210527,
+            "gaussian_nll": 2.892721278304846,
+            "mean_sigma_m": 2.0232096817551852
+          },
+          "5-10": {
+            "n": 54,
+            "groups": 14,
+            "rmse_m": 1.932617884400225,
+            "levels": {
+              "68": {
+                "coverage_pct": 57.407407407407405,
+                "group_balanced_coverage_pct": 49.957482993197274,
+                "width_mean_m": 3.625777049175012,
+                "width_group_balanced_m": 3.4771967423405945,
+                "interval_score_mean_m": 6.283935140192791,
+                "interval_score_group_balanced_m": 7.145231277136806,
+                "unbounded_intervals_n": 0
+              },
+              "80": {
+                "coverage_pct": 64.81481481481481,
+                "group_balanced_coverage_pct": 54.251700680272094,
+                "width_mean_m": 4.67251588241052,
+                "width_group_balanced_m": 4.481041383542695,
+                "interval_score_mean_m": 7.252286048043136,
+                "interval_score_group_balanced_m": 8.353663031663023,
+                "unbounded_intervals_n": 0
+              },
+              "90": {
+                "coverage_pct": 81.48148148148148,
+                "group_balanced_coverage_pct": 72.36394557823127,
+                "width_mean_m": 5.997109209495816,
+                "width_group_balanced_m": 5.751354350776868,
+                "interval_score_mean_m": 7.888119683997822,
+                "interval_score_group_balanced_m": 9.101658784508356,
+                "unbounded_intervals_n": 0
+              },
+              "95": {
+                "coverage_pct": 90.74074074074075,
+                "group_balanced_coverage_pct": 82.9081632653061,
+                "width_mean_m": 7.1459963788693095,
+                "width_group_balanced_m": 6.853161403025544,
+                "interval_score_mean_m": 8.662743424287683,
+                "interval_score_group_balanced_m": 9.860968074717851,
+                "unbounded_intervals_n": 0
+              }
+            },
+            "crps_mean_m": 1.1736881252689466,
+            "crps_group_balanced_m": 1.2951201857171937,
+            "sigma_error_spearman": -0.4007242233657327,
+            "gaussian_nll": 2.2591437607523424,
+            "mean_sigma_m": 1.822991757816985
+          },
+          "10-15": {
+            "n": 64,
+            "groups": 12,
+            "rmse_m": 1.8190897353164284,
+            "levels": {
+              "68": {
+                "coverage_pct": 62.5,
+                "group_balanced_coverage_pct": 68.62584175084174,
+                "width_mean_m": 3.017836875061509,
+                "width_group_balanced_m": 2.8677122935103663,
+                "interval_score_mean_m": 5.5513647790079474,
+                "interval_score_group_balanced_m": 5.060034042257211,
+                "unbounded_intervals_n": 0
+              },
+              "80": {
+                "coverage_pct": 73.4375,
+                "group_balanced_coverage_pct": 75.64393939393939,
+                "width_mean_m": 3.8890672366237915,
+                "width_group_balanced_m": 3.695602640724948,
+                "interval_score_mean_m": 6.5722928571357055,
+                "interval_score_group_balanced_m": 6.029048283683164,
+                "unbounded_intervals_n": 0
+              },
+              "90": {
+                "coverage_pct": 82.8125,
+                "group_balanced_coverage_pct": 82.52946127946127,
+                "width_mean_m": 4.991563758810107,
+                "width_group_balanced_m": 4.743254638204659,
+                "interval_score_mean_m": 8.212573890420956,
+                "interval_score_group_balanced_m": 7.359724659873468,
+                "unbounded_intervals_n": 0
+              },
+              "95": {
+                "coverage_pct": 87.5,
+                "group_balanced_coverage_pct": 89.28872053872054,
+                "width_mean_m": 5.9478150721139045,
+                "width_group_balanced_m": 5.651936505507656,
+                "interval_score_mean_m": 9.699621560304486,
+                "interval_score_group_balanced_m": 8.182488132801765,
+                "unbounded_intervals_n": 0
+              }
+            },
+            "crps_mean_m": 1.0495643630256806,
+            "crps_group_balanced_m": 0.9311246778324986,
+            "sigma_error_spearman": 0.1617216117216117,
+            "gaussian_nll": 2.120919154281025,
+            "mean_sigma_m": 1.5173276445458974
+          },
+          "15-20.0001": {
+            "n": 72,
+            "groups": 19,
+            "rmse_m": 2.38896490794805,
+            "levels": {
+              "68": {
+                "coverage_pct": 66.66666666666666,
+                "group_balanced_coverage_pct": 58.16359079516974,
+                "width_mean_m": 2.2456813005663347,
+                "width_group_balanced_m": 2.231192941274343,
+                "interval_score_mean_m": 6.732983786512718,
+                "interval_score_group_balanced_m": 6.320045671029073,
+                "unbounded_intervals_n": 0
+              },
+              "80": {
+                "coverage_pct": 75.0,
+                "group_balanced_coverage_pct": 62.200956937799035,
+                "width_mean_m": 2.893995246099321,
+                "width_group_balanced_m": 2.875324189389614,
+                "interval_score_mean_m": 9.074926553350414,
+                "interval_score_group_balanced_m": 8.160287791643592,
+                "unbounded_intervals_n": 0
+              },
+              "90": {
+                "coverage_pct": 81.94444444444444,
+                "group_balanced_coverage_pct": 83.73205741626795,
+                "width_mean_m": 3.7144026857038117,
+                "width_group_balanced_m": 3.690438643855111,
+                "interval_score_mean_m": 14.15561406318123,
+                "interval_score_group_balanced_m": 11.847603962186623,
+                "unbounded_intervals_n": 0
+              },
+              "95": {
+                "coverage_pct": 81.94444444444444,
+                "group_balanced_coverage_pct": 83.73205741626795,
+                "width_mean_m": 4.425983788935101,
+                "width_group_balanced_m": 4.397428871842257,
+                "interval_score_mean_m": 22.456077276360336,
+                "interval_score_group_balanced_m": 18.0719535633176,
+                "unbounded_intervals_n": 0
+              }
+            },
+            "crps_mean_m": 1.1646024919334843,
+            "crps_group_balanced_m": 1.1383857885745352,
+            "sigma_error_spearman": 0.07932986044118595,
+            "gaussian_nll": 2.917187474268543,
+            "mean_sigma_m": 1.129098244622528
+          }
+        }
+      },
+      "original_scaled": {
+        "primary_0_20": {
+          "n": 208,
+          "groups": 39,
+          "rmse_m": 2.2193750061073336,
+          "levels": {
+            "68": {
+              "coverage_pct": 81.73076923076923,
+              "group_balanced_coverage_pct": 81.87516187516188,
+              "width_mean_m": 5.268408640903726,
+              "width_group_balanced_m": 5.042344871948194,
+              "interval_score_mean_m": 7.01363820169069,
+              "interval_score_group_balanced_m": 6.709363832991436,
+              "unbounded_intervals_n": 0
+            },
+            "80": {
+              "coverage_pct": 90.38461538461539,
+              "group_balanced_coverage_pct": 90.01424501424502,
+              "width_mean_m": 6.7893647943004725,
+              "width_group_balanced_m": 6.498037849329421,
+              "interval_score_mean_m": 8.586340203981434,
+              "interval_score_group_balanced_m": 8.222504830934248,
+              "unbounded_intervals_n": 0
+            },
+            "90": {
+              "coverage_pct": 93.75,
+              "group_balanced_coverage_pct": 93.89906389906389,
+              "width_mean_m": 8.714055373851531,
+              "width_group_balanced_m": 8.34014128802956,
+              "interval_score_mean_m": 11.081219200809914,
+              "interval_score_group_balanced_m": 10.624319776837261,
+              "unbounded_intervals_n": 0
+            },
+            "95": {
+              "coverage_pct": 94.71153846153845,
+              "group_balanced_coverage_pct": 94.35490435490436,
+              "width_mean_m": 10.383437414848222,
+              "width_group_balanced_m": 9.93789130088698,
+              "interval_score_mean_m": 13.481280422671226,
+              "interval_score_group_balanced_m": 12.850191815457004,
+              "unbounded_intervals_n": 0
+            }
+          },
+          "crps_mean_m": 1.2187632784484053,
+          "crps_group_balanced_m": 1.1990334497084576,
+          "sigma_error_spearman": 0.21628047772212527,
+          "gaussian_nll": 2.240576355482161,
+          "mean_sigma_m": 2.648884749095252
+        },
+        "all_saved": {
+          "n": 208,
+          "groups": 39,
+          "rmse_m": 2.2193750061073336,
+          "levels": {
+            "68": {
+              "coverage_pct": 81.73076923076923,
+              "group_balanced_coverage_pct": 81.87516187516188,
+              "width_mean_m": 5.268408640903726,
+              "width_group_balanced_m": 5.042344871948194,
+              "interval_score_mean_m": 7.01363820169069,
+              "interval_score_group_balanced_m": 6.709363832991436,
+              "unbounded_intervals_n": 0
+            },
+            "80": {
+              "coverage_pct": 90.38461538461539,
+              "group_balanced_coverage_pct": 90.01424501424502,
+              "width_mean_m": 6.7893647943004725,
+              "width_group_balanced_m": 6.498037849329421,
+              "interval_score_mean_m": 8.586340203981434,
+              "interval_score_group_balanced_m": 8.222504830934248,
+              "unbounded_intervals_n": 0
+            },
+            "90": {
+              "coverage_pct": 93.75,
+              "group_balanced_coverage_pct": 93.89906389906389,
+              "width_mean_m": 8.714055373851531,
+              "width_group_balanced_m": 8.34014128802956,
+              "interval_score_mean_m": 11.081219200809914,
+              "interval_score_group_balanced_m": 10.624319776837261,
+              "unbounded_intervals_n": 0
+            },
+            "95": {
+              "coverage_pct": 94.71153846153845,
+              "group_balanced_coverage_pct": 94.35490435490436,
+              "width_mean_m": 10.383437414848222,
+              "width_group_balanced_m": 9.93789130088698,
+              "interval_score_mean_m": 13.481280422671226,
+              "interval_score_group_balanced_m": 12.850191815457004,
+              "unbounded_intervals_n": 0
+            }
+          },
+          "crps_mean_m": 1.2187632784484053,
+          "crps_group_balanced_m": 1.1990334497084576,
+          "sigma_error_spearman": 0.21628047772212527,
+          "gaussian_nll": 2.240576355482161,
+          "mean_sigma_m": 2.648884749095252
+        },
+        "bins": {
+          "0-5": {
+            "n": 18,
+            "groups": 3,
+            "rmse_m": 3.3345231822655226,
+            "levels": {
+              "68": {
+                "coverage_pct": 61.111111111111114,
+                "group_balanced_coverage_pct": 58.33333333333333,
+                "width_mean_m": 7.077405259159482,
+                "width_group_balanced_m": 7.798645184760009,
+                "interval_score_mean_m": 10.413809167026868,
+                "interval_score_group_balanced_m": 10.682213451253567,
+                "unbounded_intervals_n": 0
+              },
+              "80": {
+                "coverage_pct": 83.33333333333334,
+                "group_balanced_coverage_pct": 87.49999999999999,
+                "width_mean_m": 9.120607260505112,
+                "width_group_balanced_m": 10.050064577292927,
+                "interval_score_mean_m": 11.676562142264721,
+                "interval_score_group_balanced_m": 11.967030738612634,
+                "unbounded_intervals_n": 0
+              },
+              "90": {
+                "coverage_pct": 88.88888888888889,
+                "group_balanced_coverage_pct": 91.66666666666666,
+                "width_mean_m": 11.70617268612721,
+                "width_group_balanced_m": 12.89911823722202,
+                "interval_score_mean_m": 13.670103174256713,
+                "interval_score_group_balanced_m": 14.372066103319145,
+                "unbounded_intervals_n": 0
+              },
+              "95": {
+                "coverage_pct": 94.44444444444444,
+                "group_balanced_coverage_pct": 95.83333333333331,
+                "width_mean_m": 13.948765097195325,
+                "width_group_balanced_m": 15.370247396502732,
+                "interval_score_mean_m": 14.579350285197064,
+                "interval_score_group_balanced_m": 15.843186287504036,
+                "unbounded_intervals_n": 0
+              }
+            },
+            "crps_mean_m": 1.8605870504270934,
+            "crps_group_balanced_m": 1.9615385234638196,
+            "sigma_error_spearman": 0.5789473684210527,
+            "gaussian_nll": 2.564061373875548,
+            "mean_sigma_m": 3.5584238300349913
+          },
+          "5-10": {
+            "n": 54,
+            "groups": 14,
+            "rmse_m": 1.932617884400225,
+            "levels": {
+              "68": {
+                "coverage_pct": 87.03703703703704,
+                "group_balanced_coverage_pct": 79.5068027210884,
+                "width_mean_m": 6.377021408372002,
+                "width_group_balanced_m": 6.115698170705982,
+                "interval_score_mean_m": 6.821239001189002,
+                "interval_score_group_balanced_m": 6.942870031928535,
+                "unbounded_intervals_n": 0
+              },
+              "80": {
+                "coverage_pct": 96.29629629629629,
+                "group_balanced_coverage_pct": 92.85714285714283,
+                "width_mean_m": 8.218027035024077,
+                "width_group_balanced_m": 7.881261436401501,
+                "interval_score_mean_m": 8.424124432719841,
+                "interval_score_group_balanced_m": 8.278734989100471,
+                "unbounded_intervals_n": 0
+              },
+              "90": {
+                "coverage_pct": 98.14814814814815,
+                "group_balanced_coverage_pct": 96.4285714285714,
+                "width_mean_m": 10.54772350826189,
+                "width_group_balanced_m": 10.115489541857707,
+                "interval_score_mean_m": 10.741962478971711,
+                "interval_score_group_balanced_m": 10.490093271083794,
+                "unbounded_intervals_n": 0
+              },
+              "95": {
+                "coverage_pct": 98.14814814814815,
+                "group_balanced_coverage_pct": 96.4285714285714,
+                "width_mean_m": 12.568387761891522,
+                "width_group_balanced_m": 12.05334922401433,
+                "interval_score_mean_m": 12.595299159797154,
+                "interval_score_group_balanced_m": 12.105249777118049,
+                "unbounded_intervals_n": 0
+              }
+            },
+            "crps_mean_m": 1.2316287247630622,
+            "crps_group_balanced_m": 1.3040839716374923,
+            "sigma_error_spearman": -0.4007242233657327,
+            "gaussian_nll": 2.3017768813092334,
+            "mean_sigma_m": 3.206280283982095
+          },
+          "10-15": {
+            "n": 64,
+            "groups": 12,
+            "rmse_m": 1.8190897353164284,
+            "levels": {
+              "68": {
+                "coverage_pct": 82.8125,
+                "group_balanced_coverage_pct": 82.52946127946127,
+                "width_mean_m": 5.30777543633593,
+                "width_group_balanced_m": 5.04373612628173,
+                "interval_score_mean_m": 6.161658474764107,
+                "interval_score_group_balanced_m": 5.70443289720965,
+                "unbounded_intervals_n": 0
+              },
+              "80": {
+                "coverage_pct": 93.75,
+                "group_balanced_coverage_pct": 96.06481481481481,
+                "width_mean_m": 6.840096533842603,
+                "width_group_balanced_m": 6.499830749963342,
+                "interval_score_mean_m": 7.4174829066307035,
+                "interval_score_group_balanced_m": 6.877966543130739,
+                "unbounded_intervals_n": 0
+              },
+              "90": {
+                "coverage_pct": 96.875,
+                "group_balanced_coverage_pct": 97.91666666666666,
+                "width_mean_m": 8.779168856625805,
+                "width_group_balanced_m": 8.342442451080471,
+                "interval_score_mean_m": 9.25108011711028,
+                "interval_score_group_balanced_m": 8.657049958070122,
+                "unbounded_intervals_n": 0
+              },
+              "95": {
+                "coverage_pct": 98.4375,
+                "group_balanced_coverage_pct": 98.95833333333333,
+                "width_mean_m": 10.46102491506979,
+                "width_group_balanced_m": 9.940633305785434,
+                "interval_score_mean_m": 10.8320768946589,
+                "interval_score_group_balanced_m": 10.188001292178175,
+                "unbounded_intervals_n": 0
+              }
+            },
+            "crps_mean_m": 1.0844197127481465,
+            "crps_group_balanced_m": 0.9844126679919372,
+            "sigma_error_spearman": 0.1617216117216117,
+            "gaussian_nll": 2.1414670822122868,
+            "mean_sigma_m": 2.668677842446346
+          },
+          "15-20.0001": {
+            "n": 72,
+            "groups": 19,
+            "rmse_m": 2.38896490794805,
+            "levels": {
+              "68": {
+                "coverage_pct": 81.94444444444444,
+                "group_balanced_coverage_pct": 83.73205741626795,
+                "width_mean_m": 3.949707203687733,
+                "width_group_balanced_m": 3.9242250584471035,
+                "interval_score_mean_m": 7.06521017355654,
+                "interval_score_group_balanced_m": 6.336944396920431,
+                "unbounded_intervals_n": 0
+              },
+              "80": {
+                "coverage_pct": 84.72222222222221,
+                "group_balanced_coverage_pct": 86.8421052631579,
+                "width_mean_m": 5.089962617613604,
+                "width_group_balanced_m": 5.057123938693225,
+                "interval_score_mean_m": 8.97443081216857,
+                "interval_score_group_balanced_m": 7.9298011490100055,
+                "unbounded_intervals_n": 0
+              },
+              "90": {
+                "coverage_pct": 88.88888888888889,
+                "group_balanced_coverage_pct": 91.97994987468672,
+                "width_mean_m": 6.5328962936199355,
+                "width_group_balanced_m": 6.490748305525892,
+                "interval_score_mean_m": 12.31523104544876,
+                "interval_score_group_balanced_m": 10.602641929772737,
+                "unbounded_intervals_n": 0
+              },
+              "95": {
+                "coverage_pct": 88.88888888888889,
+                "group_balanced_coverage_pct": 91.97994987468672,
+                "width_mean_m": 7.784426067115356,
+                "width_group_balanced_m": 7.734203641647474,
+                "interval_score_mean_m": 16.226096484650718,
+                "interval_score_group_balanced_m": 13.495141443980152,
+                "unbounded_intervals_n": 0
+              }
+            },
+            "crps_mean_m": 1.1680747535624152,
+            "crps_group_balanced_m": 1.11510268205564,
+            "sigma_error_spearman": 0.07932986044118595,
+            "gaussian_nll": 2.201901838308954,
+            "mean_sigma_m": 1.9858594669386571
+          }
+        }
+      },
+      "oof_head_raw": {
+        "primary_0_20": {
+          "n": 208,
+          "groups": 39,
+          "rmse_m": 2.2193750061073336,
+          "levels": {
+            "68": {
+              "coverage_pct": 76.4423076923077,
+              "group_balanced_coverage_pct": 68.95881895881897,
+              "width_mean_m": 4.31612873969815,
+              "width_group_balanced_m": 4.139493992784253,
+              "interval_score_mean_m": 6.634202410151206,
+              "interval_score_group_balanced_m": 6.50629688529819,
+              "unbounded_intervals_n": 0
+            },
+            "80": {
+              "coverage_pct": 83.65384615384616,
+              "group_balanced_coverage_pct": 83.39937839937839,
+              "width_mean_m": 5.562167726599963,
+              "width_group_balanced_m": 5.334539648770815,
+              "interval_score_mean_m": 8.083180358686175,
+              "interval_score_group_balanced_m": 7.804506703804582,
+              "unbounded_intervals_n": 0
+            },
+            "90": {
+              "coverage_pct": 90.38461538461539,
+              "group_balanced_coverage_pct": 90.42217042217042,
+              "width_mean_m": 7.13896498961592,
+              "width_group_balanced_m": 6.8468075146616005,
+              "interval_score_mean_m": 10.379033762653153,
+              "interval_score_group_balanced_m": 10.04608376907747,
+              "unbounded_intervals_n": 0
+            },
+            "95": {
+              "coverage_pct": 94.23076923076923,
+              "group_balanced_coverage_pct": 94.18396418396419,
+              "width_mean_m": 8.506601461232862,
+              "width_group_balanced_m": 8.158474357798188,
+              "interval_score_mean_m": 13.1190301276212,
+              "interval_score_group_balanced_m": 12.760211711948127,
+              "unbounded_intervals_n": 0
+            }
+          },
+          "crps_mean_m": 1.1880909707693912,
+          "crps_group_balanced_m": 1.1801471943520632,
+          "sigma_error_spearman": 0.2459207459207459,
+          "gaussian_nll": 2.2226409081247698,
+          "mean_sigma_m": 2.1700912691079655
+        },
+        "all_saved": {
+          "n": 208,
+          "groups": 39,
+          "rmse_m": 2.2193750061073336,
+          "levels": {
+            "68": {
+              "coverage_pct": 76.4423076923077,
+              "group_balanced_coverage_pct": 68.95881895881897,
+              "width_mean_m": 4.31612873969815,
+              "width_group_balanced_m": 4.139493992784253,
+              "interval_score_mean_m": 6.634202410151206,
+              "interval_score_group_balanced_m": 6.50629688529819,
+              "unbounded_intervals_n": 0
+            },
+            "80": {
+              "coverage_pct": 83.65384615384616,
+              "group_balanced_coverage_pct": 83.39937839937839,
+              "width_mean_m": 5.562167726599963,
+              "width_group_balanced_m": 5.334539648770815,
+              "interval_score_mean_m": 8.083180358686175,
+              "interval_score_group_balanced_m": 7.804506703804582,
+              "unbounded_intervals_n": 0
+            },
+            "90": {
+              "coverage_pct": 90.38461538461539,
+              "group_balanced_coverage_pct": 90.42217042217042,
+              "width_mean_m": 7.13896498961592,
+              "width_group_balanced_m": 6.8468075146616005,
+              "interval_score_mean_m": 10.379033762653153,
+              "interval_score_group_balanced_m": 10.04608376907747,
+              "unbounded_intervals_n": 0
+            },
+            "95": {
+              "coverage_pct": 94.23076923076923,
+              "group_balanced_coverage_pct": 94.18396418396419,
+              "width_mean_m": 8.506601461232862,
+              "width_group_balanced_m": 8.158474357798188,
+              "interval_score_mean_m": 13.1190301276212,
+              "interval_score_group_balanced_m": 12.760211711948127,
+              "unbounded_intervals_n": 0
+            }
+          },
+          "crps_mean_m": 1.1880909707693912,
+          "crps_group_balanced_m": 1.1801471943520632,
+          "sigma_error_spearman": 0.2459207459207459,
+          "gaussian_nll": 2.2226409081247698,
+          "mean_sigma_m": 2.1700912691079655
+        },
+        "bins": {
+          "0-5": {
+            "n": 18,
+            "groups": 3,
+            "rmse_m": 3.3345231822655226,
+            "levels": {
+              "68": {
+                "coverage_pct": 61.111111111111114,
+                "group_balanced_coverage_pct": 58.33333333333333,
+                "width_mean_m": 6.24986813773437,
+                "width_group_balanced_m": 6.780808110922236,
+                "interval_score_mean_m": 11.128162818974438,
+                "interval_score_group_balanced_m": 11.340378086689732,
+                "unbounded_intervals_n": 0
+              },
+              "80": {
+                "coverage_pct": 61.111111111111114,
+                "group_balanced_coverage_pct": 58.33333333333333,
+                "width_mean_m": 8.054165421776247,
+                "width_group_balanced_m": 8.738384397096695,
+                "interval_score_mean_m": 12.454617250254302,
+                "interval_score_group_balanced_m": 12.282844499193608,
+                "unbounded_intervals_n": 0
+              },
+              "90": {
+                "coverage_pct": 83.33333333333334,
+                "group_balanced_coverage_pct": 87.49999999999999,
+                "width_mean_m": 10.337409404549428,
+                "width_group_balanced_m": 11.215594952008534,
+                "interval_score_mean_m": 14.71429373894265,
+                "interval_score_group_balanced_m": 14.498258202803452,
+                "unbounded_intervals_n": 0
+              },
+              "95": {
+                "coverage_pct": 88.88888888888889,
+                "group_balanced_coverage_pct": 91.66666666666666,
+                "width_mean_m": 12.317783050345716,
+                "width_group_balanced_m": 13.364205672128472,
+                "interval_score_mean_m": 16.847459561083227,
+                "interval_score_group_balanced_m": 16.761463055181608,
+                "unbounded_intervals_n": 0
+              }
+            },
+            "crps_mean_m": 1.899728821489707,
+            "crps_group_balanced_m": 1.9876483286596351,
+            "sigma_error_spearman": 0.4674922600619195,
+            "gaussian_nll": 2.6490851093220016,
+            "mean_sigma_m": 3.1423493358823986
+          },
+          "5-10": {
+            "n": 54,
+            "groups": 14,
+            "rmse_m": 1.932617884400225,
+            "levels": {
+              "68": {
+                "coverage_pct": 77.77777777777779,
+                "group_balanced_coverage_pct": 65.5612244897959,
+                "width_mean_m": 5.472314620979372,
+                "width_group_balanced_m": 5.316207894009071,
+                "interval_score_mean_m": 6.361938030588907,
+                "interval_score_group_balanced_m": 6.75939044134661,
+                "unbounded_intervals_n": 0
+              },
+              "80": {
+                "coverage_pct": 90.74074074074075,
+                "group_balanced_coverage_pct": 82.9081632653061,
+                "width_mean_m": 7.052137137304499,
+                "width_group_balanced_m": 6.850963388552951,
+                "interval_score_mean_m": 7.515736802253025,
+                "interval_score_group_balanced_m": 7.603147943471655,
+                "unbounded_intervals_n": 0
+              },
+              "90": {
+                "coverage_pct": 98.14814814814815,
+                "group_balanced_coverage_pct": 96.4285714285714,
+                "width_mean_m": 9.051320024820948,
+                "width_group_balanced_m": 8.793116313649332,
+                "interval_score_mean_m": 9.403251596253462,
+                "interval_score_group_balanced_m": 9.471841487126321,
+                "unbounded_intervals_n": 0
+              },
+              "95": {
+                "coverage_pct": 98.14814814814815,
+                "group_balanced_coverage_pct": 96.4285714285714,
+                "width_mean_m": 10.78531303364335,
+                "width_group_balanced_m": 10.477644335177523,
+                "interval_score_mean_m": 11.188029078212594,
+                "interval_score_group_balanced_m": 11.254310992561065,
+                "unbounded_intervals_n": 0
+              }
+            },
+            "crps_mean_m": 1.1896184834624497,
+            "crps_group_balanced_m": 1.2789553333753492,
+            "sigma_error_spearman": -0.356965885267772,
+            "gaussian_nll": 2.2381051665299463,
+            "mean_sigma_m": 2.75140592345485
+          },
+          "10-15": {
+            "n": 64,
+            "groups": 12,
+            "rmse_m": 1.8190897353164284,
+            "levels": {
+              "68": {
+                "coverage_pct": 79.6875,
+                "group_balanced_coverage_pct": 80.5513468013468,
+                "width_mean_m": 4.268876613714839,
+                "width_group_balanced_m": 4.064642736951261,
+                "interval_score_mean_m": 5.5189982667680875,
+                "interval_score_group_balanced_m": 5.226752386310572,
+                "unbounded_intervals_n": 0
+              },
+              "80": {
+                "coverage_pct": 85.9375,
+                "group_balanced_coverage_pct": 84.21296296296296,
+                "width_mean_m": 5.501274211598836,
+                "width_group_balanced_m": 5.238079310213153,
+                "interval_score_mean_m": 6.574879539461005,
+                "interval_score_group_balanced_m": 6.16173129552309,
+                "unbounded_intervals_n": 0
+              },
+              "90": {
+                "coverage_pct": 93.75,
+                "group_balanced_coverage_pct": 96.06481481481481,
+                "width_mean_m": 7.060809009240005,
+                "width_group_balanced_m": 6.723002010459268,
+                "interval_score_mean_m": 7.627650805520534,
+                "interval_score_group_balanced_m": 7.091790126013851,
+                "unbounded_intervals_n": 0
+              },
+              "95": {
+                "coverage_pct": 98.4375,
+                "group_balanced_coverage_pct": 98.95833333333333,
+                "width_mean_m": 8.41347286656446,
+                "width_group_balanced_m": 8.010951000492454,
+                "interval_score_mean_m": 8.491593914655526,
+                "interval_score_group_balanced_m": 8.063031699219833,
+                "unbounded_intervals_n": 0
+              }
+            },
+            "crps_mean_m": 1.0354583069685308,
+            "crps_group_balanced_m": 0.9392306407299359,
+            "sigma_error_spearman": 0.2902472527472527,
+            "gaussian_nll": 2.027701636943441,
+            "mean_sigma_m": 2.1463335379958153
+          },
+          "15-20.0001": {
+            "n": 72,
+            "groups": 19,
+            "rmse_m": 2.38896490794805,
+            "levels": {
+              "68": {
+                "coverage_pct": 76.38888888888889,
+                "group_balanced_coverage_pct": 67.46411483253588,
+                "width_mean_m": 3.0075563689911187,
+                "width_group_balanced_m": 3.0123599532127505,
+                "interval_score_mean_m": 6.706203164513225,
+                "interval_score_group_balanced_m": 6.161032587734092,
+                "unbounded_intervals_n": 0
+              },
+              "80": {
+                "coverage_pct": 81.94444444444444,
+                "group_balanced_coverage_pct": 83.73205741626795,
+                "width_mean_m": 3.8758188136673812,
+                "width_group_balanced_m": 3.8820091621812747,
+                "interval_score_mean_m": 8.756615642430265,
+                "interval_score_group_balanced_m": 7.687553442989829,
+                "unbounded_intervals_n": 0
+              },
+              "90": {
+                "coverage_pct": 83.33333333333334,
+                "group_balanced_coverage_pct": 86.36363636363636,
+                "width_mean_m": 4.974559592035142,
+                "width_group_balanced_m": 4.982504818336547,
+                "interval_score_mean_m": 12.472729133053985,
+                "interval_score_group_balanced_m": 10.560740886573205,
+                "unbounded_intervals_n": 0
+              },
+              "95": {
+                "coverage_pct": 88.88888888888889,
+                "group_balanced_coverage_pct": 91.97994987468672,
+                "width_mean_m": 5.927553357685359,
+                "width_group_balanced_m": 5.937020678755525,
+                "interval_score_mean_m": 17.748450190059412,
+                "interval_score_group_balanced_m": 14.495088275729259,
+                "unbounded_intervals_n": 0
+              }
+            },
+            "crps_mean_m": 1.1447093525036172,
+            "crps_group_balanced_m": 1.107434517250495,
+            "sigma_error_spearman": 0.1375329603189916,
+            "gaussian_nll": 2.27771101618276,
+            "mean_sigma_m": 1.5121587448649936
+          }
+        }
+      },
+      "oof_head_scaled": {
+        "primary_0_20": {
+          "n": 208,
+          "groups": 39,
+          "rmse_m": 2.2193750061073336,
+          "levels": {
+            "68": {
+              "coverage_pct": 82.6923076923077,
+              "group_balanced_coverage_pct": 80.66433566433567,
+              "width_mean_m": 5.256221251507733,
+              "width_group_balanced_m": 5.041113833152911,
+              "interval_score_mean_m": 6.989091761165174,
+              "interval_score_group_balanced_m": 6.739501212114073,
+              "unbounded_intervals_n": 0
+            },
+            "80": {
+              "coverage_pct": 89.90384615384616,
+              "group_balanced_coverage_pct": 90.13727013727014,
+              "width_mean_m": 6.773658982899064,
+              "width_group_balanced_m": 6.496451417443288,
+              "interval_score_mean_m": 8.559867756998791,
+              "interval_score_group_balanced_m": 8.250292857082801,
+              "unbounded_intervals_n": 0
+            },
+            "90": {
+              "coverage_pct": 94.23076923076923,
+              "group_balanced_coverage_pct": 94.18396418396419,
+              "width_mean_m": 8.693897183153332,
+              "width_group_balanced_m": 8.338105124747509,
+              "interval_score_mean_m": 10.900506815134094,
+              "interval_score_group_balanced_m": 10.543434237341387,
+              "unbounded_intervals_n": 0
+            },
+            "95": {
+              "coverage_pct": 96.15384615384616,
+              "group_balanced_coverage_pct": 96.28815628815629,
+              "width_mean_m": 10.359417449111097,
+              "width_group_balanced_m": 9.935465062689204,
+              "interval_score_mean_m": 13.37974524212019,
+              "interval_score_group_balanced_m": 12.858257126851644,
+              "unbounded_intervals_n": 0
+            }
+          },
+          "crps_mean_m": 1.215021386888557,
+          "crps_group_balanced_m": 1.200543109174828,
+          "sigma_error_spearman": 0.2459207459207459,
+          "gaussian_nll": 2.228875144251655,
+          "mean_sigma_m": 2.642757094218277
+        },
+        "all_saved": {
+          "n": 208,
+          "groups": 39,
+          "rmse_m": 2.2193750061073336,
+          "levels": {
+            "68": {
+              "coverage_pct": 82.6923076923077,
+              "group_balanced_coverage_pct": 80.66433566433567,
+              "width_mean_m": 5.256221251507733,
+              "width_group_balanced_m": 5.041113833152911,
+              "interval_score_mean_m": 6.989091761165174,
+              "interval_score_group_balanced_m": 6.739501212114073,
+              "unbounded_intervals_n": 0
+            },
+            "80": {
+              "coverage_pct": 89.90384615384616,
+              "group_balanced_coverage_pct": 90.13727013727014,
+              "width_mean_m": 6.773658982899064,
+              "width_group_balanced_m": 6.496451417443288,
+              "interval_score_mean_m": 8.559867756998791,
+              "interval_score_group_balanced_m": 8.250292857082801,
+              "unbounded_intervals_n": 0
+            },
+            "90": {
+              "coverage_pct": 94.23076923076923,
+              "group_balanced_coverage_pct": 94.18396418396419,
+              "width_mean_m": 8.693897183153332,
+              "width_group_balanced_m": 8.338105124747509,
+              "interval_score_mean_m": 10.900506815134094,
+              "interval_score_group_balanced_m": 10.543434237341387,
+              "unbounded_intervals_n": 0
+            },
+            "95": {
+              "coverage_pct": 96.15384615384616,
+              "group_balanced_coverage_pct": 96.28815628815629,
+              "width_mean_m": 10.359417449111097,
+              "width_group_balanced_m": 9.935465062689204,
+              "interval_score_mean_m": 13.37974524212019,
+              "interval_score_group_balanced_m": 12.858257126851644,
+              "unbounded_intervals_n": 0
+            }
+          },
+          "crps_mean_m": 1.215021386888557,
+          "crps_group_balanced_m": 1.200543109174828,
+          "sigma_error_spearman": 0.2459207459207459,
+          "gaussian_nll": 2.228875144251655,
+          "mean_sigma_m": 2.642757094218277
+        },
+        "bins": {
+          "0-5": {
+            "n": 18,
+            "groups": 3,
+            "rmse_m": 3.3345231822655226,
+            "levels": {
+              "68": {
+                "coverage_pct": 61.111111111111114,
+                "group_balanced_coverage_pct": 58.33333333333333,
+                "width_mean_m": 7.6111468646734295,
+                "width_group_balanced_m": 8.257730444230926,
+                "interval_score_mean_m": 10.883931254155616,
+                "interval_score_group_balanced_m": 11.048621940260555,
+                "unbounded_intervals_n": 0
+              },
+              "80": {
+                "coverage_pct": 83.33333333333334,
+                "group_balanced_coverage_pct": 87.49999999999999,
+                "width_mean_m": 9.808436681631452,
+                "width_group_balanced_m": 10.641684838871473,
+                "interval_score_mean_m": 12.387489830975355,
+                "interval_score_group_balanced_m": 12.575974700879401,
+                "unbounded_intervals_n": 0
+              },
+              "90": {
+                "coverage_pct": 88.88888888888889,
+                "group_balanced_coverage_pct": 91.66666666666666,
+                "width_mean_m": 12.588992190610279,
+                "width_group_balanced_m": 13.65845462227174,
+                "interval_score_mean_m": 14.585151192117321,
+                "interval_score_group_balanced_m": 15.15557387340202,
+                "unbounded_intervals_n": 0
+              },
+              "95": {
+                "coverage_pct": 94.44444444444444,
+                "group_balanced_coverage_pct": 95.83333333333331,
+                "width_mean_m": 15.00070941934343,
+                "width_group_balanced_m": 16.275052506490923,
+                "interval_score_mean_m": 15.659221551912822,
+                "interval_score_group_balanced_m": 16.768936605917965,
+                "unbounded_intervals_n": 0
+              }
+            },
+            "crps_mean_m": 1.9126073462911317,
+            "crps_group_balanced_m": 2.003475171301532,
+            "sigma_error_spearman": 0.4674922600619195,
+            "gaussian_nll": 2.644593277544352,
+            "mean_sigma_m": 3.8267819045827145
+          },
+          "5-10": {
+            "n": 54,
+            "groups": 14,
+            "rmse_m": 1.932617884400225,
+            "levels": {
+              "68": {
+                "coverage_pct": 88.88888888888889,
+                "group_balanced_coverage_pct": 81.8877551020408,
+                "width_mean_m": 6.664235044976873,
+                "width_group_balanced_m": 6.474126837995538,
+                "interval_score_mean_m": 7.04935649768273,
+                "interval_score_group_balanced_m": 7.111673907595873,
+                "unbounded_intervals_n": 0
+              },
+              "80": {
+                "coverage_pct": 98.14814814814815,
+                "group_balanced_coverage_pct": 96.4285714285714,
+                "width_mean_m": 8.588157426518087,
+                "width_group_balanced_m": 8.343166186171691,
+                "interval_score_mean_m": 8.784232877009286,
+                "interval_score_group_balanced_m": 8.72131169783329,
+                "unbounded_intervals_n": 0
+              },
+              "90": {
+                "coverage_pct": 98.14814814814815,
+                "group_balanced_coverage_pct": 96.4285714285714,
+                "width_mean_m": 11.022780722705829,
+                "width_group_balanced_m": 10.708337869925375,
+                "interval_score_mean_m": 11.203517927854417,
+                "interval_score_group_balanced_m": 11.056902479854799,
+                "unbounded_intervals_n": 0
+              },
+              "95": {
+                "coverage_pct": 100.0,
+                "group_balanced_coverage_pct": 99.99999999999997,
+                "width_mean_m": 13.134453347089956,
+                "width_group_balanced_m": 12.759771578118233,
+                "interval_score_mean_m": 13.134453347089956,
+                "interval_score_group_balanced_m": 12.759771578118233,
+                "unbounded_intervals_n": 0
+              }
+            },
+            "crps_mean_m": 1.2461070348543861,
+            "crps_group_balanced_m": 1.3183322922811362,
+            "sigma_error_spearman": -0.356965885267772,
+            "gaussian_nll": 2.3246616960501245,
+            "mean_sigma_m": 3.350687423517178
+          },
+          "10-15": {
+            "n": 64,
+            "groups": 12,
+            "rmse_m": 1.8190897353164284,
+            "levels": {
+              "68": {
+                "coverage_pct": 85.9375,
+                "group_balanced_coverage_pct": 84.21296296296296,
+                "width_mean_m": 5.198677178160707,
+                "width_group_balanced_m": 4.949959285793668,
+                "interval_score_mean_m": 5.991326203372755,
+                "interval_score_group_balanced_m": 5.660720430941328,
+                "unbounded_intervals_n": 0
+              },
+              "80": {
+                "coverage_pct": 92.1875,
+                "group_balanced_coverage_pct": 95.13888888888889,
+                "width_mean_m": 6.699502300619397,
+                "width_group_balanced_m": 6.378981130519022,
+                "interval_score_mean_m": 7.113774096302144,
+                "interval_score_group_balanced_m": 6.645256171480898,
+                "unbounded_intervals_n": 0
+              },
+              "90": {
+                "coverage_pct": 98.4375,
+                "group_balanced_coverage_pct": 98.95833333333333,
+                "width_mean_m": 8.598718111869875,
+                "width_group_balanced_m": 8.187333643754235,
+                "interval_score_mean_m": 8.605752251995435,
+                "interval_score_group_balanced_m": 8.192023070504607,
+                "unbounded_intervals_n": 0
+              },
+              "95": {
+                "coverage_pct": 100.0,
+                "group_balanced_coverage_pct": 100.0,
+                "width_mean_m": 10.246004590519364,
+                "width_group_balanced_m": 9.755809762180629,
+                "interval_score_mean_m": 10.246004590519364,
+                "interval_score_group_balanced_m": 9.755809762180629,
+                "unbounded_intervals_n": 0
+              }
+            },
+            "crps_mean_m": 1.0663076437877916,
+            "crps_group_balanced_m": 0.9755280490803088,
+            "sigma_error_spearman": 0.2902472527472527,
+            "gaussian_nll": 2.107015852395836,
+            "mean_sigma_m": 2.6138247108973793
+          },
+          "15-20.0001": {
+            "n": 72,
+            "groups": 19,
+            "rmse_m": 2.38896490794805,
+            "levels": {
+              "68": {
+                "coverage_pct": 80.55555555555556,
+                "group_balanced_coverage_pct": 78.4688995215311,
+                "width_mean_m": 3.662629790534033,
+                "width_group_balanced_m": 3.668479639551954,
+                "interval_score_mean_m": 6.857086053567101,
+                "interval_score_group_balanced_m": 6.191104000277546,
+                "unbounded_intervals_n": 0
+              },
+              "80": {
+                "coverage_pct": 83.33333333333334,
+                "group_balanced_coverage_pct": 86.36363636363636,
+                "width_mean_m": 4.7200077764169555,
+                "width_group_balanced_m": 4.727546439736633,
+                "interval_score_mean_m": 8.72010498578269,
+                "interval_score_group_balanced_m": 7.730966567850656,
+                "unbounded_intervals_n": 0
+              },
+              "90": {
+                "coverage_pct": 88.88888888888889,
+                "group_balanced_coverage_pct": 91.97994987468672,
+                "width_mean_m": 6.058064395543349,
+                "width_group_balanced_m": 6.0677401651628635,
+                "interval_score_mean_m": 11.791869220249076,
+                "interval_score_group_balanced_m": 10.208925401917433,
+                "unbounded_intervals_n": 0
+              },
+              "95": {
+                "coverage_pct": 90.27777777777779,
+                "group_balanced_coverage_pct": 92.73182957393483,
+                "width_mean_m": 7.2186289629281895,
+                "width_group_balanced_m": 7.2301583535476475,
+                "interval_score_mean_m": 15.779392331812106,
+                "interval_score_group_balanced_m": 13.187983403192483,
+                "unbounded_intervals_n": 0
+              }
+            },
+            "crps_mean_m": 1.1495006549308886,
+            "crps_group_balanced_m": 1.105437265384503,
+            "sigma_error_spearman": 0.1375329603189916,
+            "gaussian_nll": 2.1614250676181337,
+            "mean_sigma_m": 1.8415208187160108
+          }
+        }
+      },
+      "paired_ci95": {
+        "interval_score90_difference": [
+          -0.5029702764724538,
+          0.12856415655799547
+        ],
+        "width90_difference": [
+          -0.23612005022950458,
+          0.226087590798271
+        ],
+        "new_coverage90": [
+          86.80158321966054,
+          99.06998178115957
+        ],
+        "crps_difference": [
+          -0.014745631869495636,
+          0.009757995789669443
+        ]
+      }
+    },
+    "test": {
+      "original_raw": {
+        "primary_0_20": {
+          "n": 228,
+          "groups": 41,
+          "rmse_m": 2.37151871608037,
+          "levels": {
+            "68": {
+              "coverage_pct": 48.68421052631579,
+              "group_balanced_coverage_pct": 45.88075880758807,
+              "width_mean_m": 3.2071261404053883,
+              "width_group_balanced_m": 3.171259123873323,
+              "interval_score_mean_m": 7.543916494620429,
+              "interval_score_group_balanced_m": 7.23842920131893,
+              "unbounded_intervals_n": 0
+            },
+            "80": {
+              "coverage_pct": 59.210526315789465,
+              "group_balanced_coverage_pct": 61.77137225917715,
+              "width_mean_m": 4.1330031120771205,
+              "width_group_balanced_m": 4.086781515402034,
+              "interval_score_mean_m": 8.97554028766308,
+              "interval_score_group_balanced_m": 8.441872869117894,
+              "unbounded_intervals_n": 0
+            },
+            "90": {
+              "coverage_pct": 70.6140350877193,
+              "group_balanced_coverage_pct": 71.88681237461726,
+              "width_mean_m": 5.304652065414831,
+              "width_group_balanced_m": 5.245327288341038,
+              "interval_score_mean_m": 11.036943682088808,
+              "interval_score_group_balanced_m": 10.096684945997406,
+              "unbounded_intervals_n": 0
+            },
+            "95": {
+              "coverage_pct": 80.26315789473685,
+              "group_balanced_coverage_pct": 84.21356421356423,
+              "width_mean_m": 6.320882799765269,
+              "width_group_balanced_m": 6.250192967825025,
+              "interval_score_mean_m": 13.050331058235415,
+              "interval_score_group_balanced_m": 11.767476102568157,
+              "unbounded_intervals_n": 0
+            }
+          },
+          "crps_mean_m": 1.3447247583097337,
+          "crps_group_balanced_m": 1.3083646120775696,
+          "sigma_error_spearman": 0.16193046917160164,
+          "gaussian_nll": 2.4085937084752285,
+          "mean_sigma_m": 1.6124997320419117
+        },
+        "all_saved": {
+          "n": 343,
+          "groups": 52,
+          "rmse_m": 3.65871341854005,
+          "levels": {
+            "68": {
+              "coverage_pct": 32.36151603498542,
+              "group_balanced_coverage_pct": 35.48840048840049,
+              "width_mean_m": 2.882641347724645,
+              "width_group_balanced_m": 3.013193058709116,
+              "interval_score_mean_m": 13.513674853369368,
+              "interval_score_group_balanced_m": 11.991297450950437,
+              "unbounded_intervals_n": 0
+            },
+            "80": {
+              "coverage_pct": 39.35860058309038,
+              "group_balanced_coverage_pct": 47.330724830724826,
+              "width_mean_m": 3.714841618185368,
+              "width_group_balanced_m": 3.8830827799494667,
+              "interval_score_mean_m": 18.247275514918346,
+              "interval_score_group_balanced_m": 15.779375406376086,
+              "unbounded_intervals_n": 0
+            },
+            "90": {
+              "coverage_pct": 47.23032069970846,
+              "group_balanced_coverage_pct": 55.45898545898545,
+              "width_mean_m": 4.767947598445523,
+              "width_group_balanced_m": 4.983882791823878,
+              "interval_score_mean_m": 28.4741006654816,
+              "interval_score_group_balanced_m": 23.763231115858787,
+              "unbounded_intervals_n": 0
+            },
+            "95": {
+              "coverage_pct": 54.22740524781341,
+              "group_balanced_coverage_pct": 64.81490731490732,
+              "width_mean_m": 5.681359982436403,
+              "width_group_balanced_m": 5.93866263543943,
+              "interval_score_mean_m": 45.24338493199525,
+              "interval_score_group_balanced_m": 36.71330045932458,
+              "unbounded_intervals_n": 0
+            }
+          },
+          "crps_mean_m": 2.296544716574902,
+          "crps_group_balanced_m": 2.064945352055654,
+          "sigma_error_spearman": -0.1962937124491342,
+          "gaussian_nll": 5.249578676800983,
+          "mean_sigma_m": 1.449353158336134
+        },
+        "bins": {
+          "0-5": {
+            "n": 17,
+            "groups": 3,
+            "rmse_m": 2.136428693663679,
+            "levels": {
+              "68": {
+                "coverage_pct": 76.47058823529412,
+                "group_balanced_coverage_pct": 52.38095238095237,
+                "width_mean_m": 3.0235366103251016,
+                "width_group_balanced_m": 3.608929963552108,
+                "interval_score_mean_m": 5.5099827354799675,
+                "interval_score_group_balanced_m": 15.04340386490481,
+                "unbounded_intervals_n": 0
+              },
+              "80": {
+                "coverage_pct": 88.23529411764706,
+                "group_balanced_coverage_pct": 61.904761904761905,
+                "width_mean_m": 3.8964124493005423,
+                "width_group_balanced_m": 4.650805150041231,
+                "interval_score_mean_m": 6.980760993488687,
+                "interval_score_group_balanced_m": 20.145307394726448,
+                "unbounded_intervals_n": 0
+              },
+              "90": {
+                "coverage_pct": 88.23529411764706,
+                "group_balanced_coverage_pct": 61.904761904761905,
+                "width_mean_m": 5.000991237217462,
+                "width_group_balanced_m": 5.969243786174964,
+                "interval_score_mean_m": 9.534581574255904,
+                "interval_score_group_balanced_m": 30.37799671096308,
+                "unbounded_intervals_n": 0
+              },
+              "95": {
+                "coverage_pct": 94.11764705882352,
+                "group_balanced_coverage_pct": 66.66666666666666,
+                "width_mean_m": 5.959048605505984,
+                "width_group_balanced_m": 7.11279267902153,
+                "interval_score_mean_m": 12.621151395700469,
+                "interval_score_group_balanced_m": 44.86470849012362,
+                "unbounded_intervals_n": 0
+              }
+            },
+            "crps_mean_m": 0.9475757596395781,
+            "crps_group_balanced_m": 2.542961394665607,
+            "sigma_error_spearman": -0.3602941176470589,
+            "gaussian_nll": 1.8635067671563714,
+            "mean_sigma_m": 1.5201933944986235
+          },
+          "5-10": {
+            "n": 58,
+            "groups": 17,
+            "rmse_m": 2.1726614790823238,
+            "levels": {
+              "68": {
+                "coverage_pct": 67.24137931034483,
+                "group_balanced_coverage_pct": 61.862745098039206,
+                "width_mean_m": 4.108613658713325,
+                "width_group_balanced_m": 3.9743522679657803,
+                "interval_score_mean_m": 6.7120982618846465,
+                "interval_score_group_balanced_m": 7.462175233038183,
+                "unbounded_intervals_n": 0
+              },
+              "80": {
+                "coverage_pct": 75.86206896551724,
+                "group_balanced_coverage_pct": 71.42156862745097,
+                "width_mean_m": 5.2947443581493525,
+                "width_group_balanced_m": 5.121722555607696,
+                "interval_score_mean_m": 7.803451147677039,
+                "interval_score_group_balanced_m": 8.923087776981843,
+                "unbounded_intervals_n": 0
+              },
+              "90": {
+                "coverage_pct": 89.65517241379311,
+                "group_balanced_coverage_pct": 83.18627450980391,
+                "width_mean_m": 6.795730812112776,
+                "width_group_balanced_m": 6.573659732724422,
+                "interval_score_mean_m": 9.642754370325243,
+                "interval_score_group_balanced_m": 11.54368302219719,
+                "unbounded_intervals_n": 0
+              },
+              "95": {
+                "coverage_pct": 93.10344827586206,
+                "group_balanced_coverage_pct": 89.80392156862744,
+                "width_mean_m": 8.097612712844226,
+                "width_group_balanced_m": 7.832998700705169,
+                "interval_score_mean_m": 12.252996332713098,
+                "interval_score_group_balanced_m": 15.310553338494959,
+                "unbounded_intervals_n": 0
+              }
+            },
+            "crps_mean_m": 1.217234688091648,
+            "crps_group_balanced_m": 1.3474685817358272,
+            "sigma_error_spearman": -0.01331938847703713,
+            "gaussian_nll": 2.2614407004269226,
+            "mean_sigma_m": 2.065755487528639
+          },
+          "10-15": {
+            "n": 64,
+            "groups": 15,
+            "rmse_m": 2.6872425905291064,
+            "levels": {
+              "68": {
+                "coverage_pct": 43.75,
+                "group_balanced_coverage_pct": 54.83838383838384,
+                "width_mean_m": 3.443569884660903,
+                "width_group_balanced_m": 3.517633734801957,
+                "interval_score_mean_m": 9.030466319992739,
+                "interval_score_group_balanced_m": 8.31549322672689,
+                "unbounded_intervals_n": 0
+              },
+              "80": {
+                "coverage_pct": 56.25,
+                "group_balanced_coverage_pct": 65.1010101010101,
+                "width_mean_m": 4.4377066653697534,
+                "width_group_balanced_m": 4.533152279207286,
+                "interval_score_mean_m": 10.964885663017213,
+                "interval_score_group_balanced_m": 10.138910891452229,
+                "unbounded_intervals_n": 0
+              },
+              "90": {
+                "coverage_pct": 59.375,
+                "group_balanced_coverage_pct": 66.81818181818183,
+                "width_mean_m": 5.695734842146804,
+                "width_group_balanced_m": 5.818237961270661,
+                "interval_score_mean_m": 13.584119249933167,
+                "interval_score_group_balanced_m": 12.501730474047115,
+                "unbounded_intervals_n": 0
+              },
+              "95": {
+                "coverage_pct": 75.0,
+                "group_balanced_coverage_pct": 82.14141414141413,
+                "width_mean_m": 6.786886670753602,
+                "width_group_balanced_m": 6.9328581405199285,
+                "interval_score_mean_m": 15.195263529046283,
+                "interval_score_group_balanced_m": 13.8906157865435,
+                "unbounded_intervals_n": 0
+              }
+            },
+            "crps_mean_m": 1.58468587599827,
+            "crps_group_balanced_m": 1.43471052761587,
+            "sigma_error_spearman": 0.10966117216117215,
+            "gaussian_nll": 2.6621030547470674,
+            "mean_sigma_m": 1.7313804550205254
+          },
+          "15-20.0001": {
+            "n": 89,
+            "groups": 21,
+            "rmse_m": 2.2949711765653156,
+            "levels": {
+              "68": {
+                "coverage_pct": 34.831460674157306,
+                "group_balanced_coverage_pct": 35.0,
+                "width_mean_m": 2.484680593407092,
+                "width_group_balanced_m": 2.5251968418608315,
+                "interval_score_mean_m": 7.405524838218578,
+                "interval_score_group_balanced_m": 7.2287773695810955,
+                "unbounded_intervals_n": 0
+              },
+              "80": {
+                "coverage_pct": 44.9438202247191,
+                "group_balanced_coverage_pct": 52.294372294372295,
+                "width_mean_m": 3.2019921186421088,
+                "width_group_balanced_m": 3.254205151001301,
+                "interval_score_mean_m": 8.689858423589941,
+                "interval_score_group_balanced_m": 8.463481568216574,
+                "unbounded_intervals_n": 0
+              },
+              "90": {
+                "coverage_pct": 62.92134831460674,
+                "group_balanced_coverage_pct": 66.21212121212122,
+                "width_mean_m": 4.1097123919320016,
+                "width_group_balanced_m": 4.176727093454102,
+                "interval_score_mean_m": 10.400807722239453,
+                "interval_score_group_balanced_m": 10.304563765453564,
+                "unbounded_intervals_n": 0
+              },
+              "95": {
+                "coverage_pct": 73.03370786516854,
+                "group_balanced_coverage_pct": 76.6089466089466,
+                "width_mean_m": 4.897024357075103,
+                "width_group_balanced_m": 4.976877299164211,
+                "interval_score_mean_m": 12.109497240387018,
+                "interval_score_group_balanced_m": 12.447263708760234,
+                "unbounded_intervals_n": 0
+              }
+            },
+            "crps_mean_m": 1.3311117866015907,
+            "crps_group_balanced_m": 1.3122111758904738,
+            "sigma_error_spearman": 0.5728975144705483,
+            "gaussian_nll": 2.426310049012584,
+            "mean_sigma_m": 1.2492638629337594
+          }
+        }
+      },
+      "original_scaled": {
+        "primary_0_20": {
+          "n": 228,
+          "groups": 41,
+          "rmse_m": 2.37151871608037,
+          "levels": {
+            "68": {
+              "coverage_pct": 72.80701754385966,
+              "group_balanced_coverage_pct": 77.44236793017282,
+              "width_mean_m": 5.640697643383268,
+              "width_group_balanced_m": 5.577614687874062,
+              "interval_score_mean_m": 7.149903117269432,
+              "interval_score_group_balanced_m": 6.824011963045352,
+              "unbounded_intervals_n": 0
+            },
+            "80": {
+              "coverage_pct": 86.8421052631579,
+              "group_balanced_coverage_pct": 89.87382536163027,
+              "width_mean_m": 7.269131270104116,
+              "width_group_balanced_m": 7.187836665519084,
+              "interval_score_mean_m": 8.263805352443217,
+              "interval_score_group_balanced_m": 7.998029870610601,
+              "unbounded_intervals_n": 0
+            },
+            "90": {
+              "coverage_pct": 96.49122807017544,
+              "group_balanced_coverage_pct": 96.73828881145955,
+              "width_mean_m": 9.329828979090738,
+              "width_group_balanced_m": 9.225488483711258,
+              "interval_score_mean_m": 9.817369575546023,
+              "interval_score_group_balanced_m": 9.64639106603769,
+              "unbounded_intervals_n": 0
+            },
+            "95": {
+              "coverage_pct": 99.56140350877193,
+              "group_balanced_coverage_pct": 99.6515679442509,
+              "width_mean_m": 11.11717692158844,
+              "width_group_balanced_m": 10.992847552870156,
+              "interval_score_mean_m": 11.464636336436923,
+              "interval_score_group_balanced_m": 11.268878028777662,
+              "unbounded_intervals_n": 0
+            }
+          },
+          "crps_mean_m": 1.3214695258536475,
+          "crps_group_balanced_m": 1.2854501591634877,
+          "sigma_error_spearman": 0.16193046917160164,
+          "gaussian_nll": 2.2557691263524076,
+          "mean_sigma_m": 2.8360666342033105
+        },
+        "all_saved": {
+          "n": 343,
+          "groups": 52,
+          "rmse_m": 3.65871341854005,
+          "levels": {
+            "68": {
+              "coverage_pct": 48.68804664723032,
+              "group_balanced_coverage_pct": 59.26240426240425,
+              "width_mean_m": 5.069993366327107,
+              "width_group_balanced_m": 5.299607886071777,
+              "interval_score_mean_m": 12.046846365012874,
+              "interval_score_group_balanced_m": 10.777771875385596,
+              "unbounded_intervals_n": 0
+            },
+            "80": {
+              "coverage_pct": 58.89212827988338,
+              "group_balanced_coverage_pct": 68.48720723720723,
+              "width_mean_m": 6.533668288641624,
+              "width_group_balanced_m": 6.829571063629719,
+              "interval_score_mean_m": 14.88663026086524,
+              "interval_score_group_balanced_m": 13.248884896670397,
+              "unbounded_intervals_n": 0
+            },
+            "90": {
+              "coverage_pct": 69.67930029154519,
+              "group_balanced_coverage_pct": 77.8617216117216,
+              "width_mean_m": 8.385872461794422,
+              "width_group_balanced_m": 8.765659561861161,
+              "interval_score_mean_m": 19.649181868883723,
+              "interval_score_group_balanced_m": 17.161681060798763,
+              "unbounded_intervals_n": 0
+            },
+            "95": {
+              "coverage_pct": 78.134110787172,
+              "group_balanced_coverage_pct": 85.77533577533576,
+              "width_mean_m": 9.992383355426808,
+              "width_group_balanced_m": 10.444927597496124,
+              "interval_score_mean_m": 25.598077217235765,
+              "interval_score_group_balanced_m": 21.77284950217252,
+              "unbounded_intervals_n": 0
+            }
+          },
+          "crps_mean_m": 2.1317536399568664,
+          "crps_group_balanced_m": 1.934952454949469,
+          "sigma_error_spearman": -0.1962937124491342,
+          "gaussian_nll": 3.093881601588502,
+          "mean_sigma_m": 2.5491242273443424
+        },
+        "bins": {
+          "0-5": {
+            "n": 17,
+            "groups": 3,
+            "rmse_m": 2.136428693663679,
+            "levels": {
+              "68": {
+                "coverage_pct": 88.23529411764706,
+                "group_balanced_coverage_pct": 61.904761904761905,
+                "width_mean_m": 5.317800138159848,
+                "width_group_balanced_m": 6.347390732180706,
+                "interval_score_mean_m": 6.587993411066249,
+                "interval_score_group_balanced_m": 13.385341738441731,
+                "unbounded_intervals_n": 0
+              },
+              "80": {
+                "coverage_pct": 94.11764705882352,
+                "group_balanced_coverage_pct": 66.66666666666666,
+                "width_mean_m": 6.85301530348933,
+                "width_group_balanced_m": 8.179842170584635,
+                "interval_score_mean_m": 8.08059740418092,
+                "interval_score_group_balanced_m": 15.1361407411703,
+                "unbounded_intervals_n": 0
+              },
+              "90": {
+                "coverage_pct": 94.11764705882352,
+                "group_balanced_coverage_pct": 66.66666666666666,
+                "width_mean_m": 8.795749917958393,
+                "width_group_balanced_m": 10.49871376534048,
+                "interval_score_mean_m": 9.347469199707447,
+                "interval_score_group_balanced_m": 13.625123028585126,
+                "unbounded_intervals_n": 0
+              },
+              "95": {
+                "coverage_pct": 100.0,
+                "group_balanced_coverage_pct": 100.0,
+                "width_mean_m": 10.480782468267735,
+                "width_group_balanced_m": 12.50998905124421,
+                "interval_score_mean_m": 10.480782468267735,
+                "interval_score_group_balanced_m": 12.50998905124421,
+                "unbounded_intervals_n": 0
+              }
+            },
+            "crps_mean_m": 1.0379507116463955,
+            "crps_group_balanced_m": 2.326861052227991,
+            "sigma_error_spearman": -0.3602941176470589,
+            "gaussian_nll": 2.064425221828774,
+            "mean_sigma_m": 2.673718127205094
+          },
+          "5-10": {
+            "n": 58,
+            "groups": 17,
+            "rmse_m": 2.1726614790823238,
+            "levels": {
+              "68": {
+                "coverage_pct": 93.10344827586206,
+                "group_balanced_coverage_pct": 89.80392156862744,
+                "width_mean_m": 7.226235067681849,
+                "width_group_balanced_m": 6.990095958326049,
+                "interval_score_mean_m": 8.018729146519,
+                "interval_score_group_balanced_m": 8.380180996087311,
+                "unbounded_intervals_n": 0
+              },
+              "80": {
+                "coverage_pct": 93.10344827586206,
+                "group_balanced_coverage_pct": 89.80392156862744,
+                "width_mean_m": 9.31240329061543,
+                "width_group_balanced_m": 9.008092318385545,
+                "interval_score_mean_m": 10.031797889604865,
+                "interval_score_group_balanced_m": 10.382926403728023,
+                "unbounded_intervals_n": 0
+              },
+              "90": {
+                "coverage_pct": 94.82758620689656,
+                "group_balanced_coverage_pct": 91.76470588235293,
+                "width_mean_m": 11.952340225728152,
+                "width_group_balanced_m": 11.56176132133522,
+                "interval_score_mean_m": 12.380204777111704,
+                "interval_score_group_balanced_m": 12.591264941359732,
+                "unbounded_intervals_n": 0
+              },
+              "95": {
+                "coverage_pct": 100.0,
+                "group_balanced_coverage_pct": 99.99999999999999,
+                "width_mean_m": 14.242091812639847,
+                "width_group_balanced_m": 13.77668834257543,
+                "interval_score_mean_m": 14.242091812639847,
+                "interval_score_group_balanced_m": 13.77668834257543,
+                "unbounded_intervals_n": 0
+              }
+            },
+            "crps_mean_m": 1.332802840682629,
+            "crps_group_balanced_m": 1.4204840416001812,
+            "sigma_error_spearman": -0.01331938847703713,
+            "gaussian_nll": 2.390716966690993,
+            "mean_sigma_m": 3.633253448782644
+          },
+          "10-15": {
+            "n": 64,
+            "groups": 15,
+            "rmse_m": 2.6872425905291064,
+            "levels": {
+              "68": {
+                "coverage_pct": 60.9375,
+                "group_balanced_coverage_pct": 69.04040404040404,
+                "width_mean_m": 6.0565552095113695,
+                "width_group_balanced_m": 6.186818805846789,
+                "interval_score_mean_m": 8.077806482609,
+                "interval_score_group_balanced_m": 7.881801011907301,
+                "unbounded_intervals_n": 0
+              },
+              "80": {
+                "coverage_pct": 81.25,
+                "group_balanced_coverage_pct": 85.7979797979798,
+                "width_mean_m": 7.805044277495526,
+                "width_group_balanced_m": 7.972914147739106,
+                "interval_score_mean_m": 8.933200735872681,
+                "interval_score_group_balanced_m": 8.927166590319342,
+                "unbounded_intervals_n": 0
+              },
+              "90": {
+                "coverage_pct": 96.875,
+                "group_balanced_coverage_pct": 98.06060606060608,
+                "width_mean_m": 10.017665877455133,
+                "width_group_balanced_m": 10.233124523326076,
+                "interval_score_mean_m": 10.196216538962373,
+                "interval_score_group_balanced_m": 10.384770433884647,
+                "unbounded_intervals_n": 0
+              },
+              "95": {
+                "coverage_pct": 100.0,
+                "group_balanced_coverage_pct": 100.0,
+                "width_mean_m": 11.936785138357582,
+                "width_group_balanced_m": 12.193519949981809,
+                "interval_score_mean_m": 11.936785138357582,
+                "interval_score_group_balanced_m": 12.193519949981809,
+                "unbounded_intervals_n": 0
+              }
+            },
+            "crps_mean_m": 1.5199680648691962,
+            "crps_group_balanced_m": 1.4248581574699626,
+            "sigma_error_spearman": 0.10966117216117215,
+            "gaussian_nll": 2.397584411374101,
+            "mean_sigma_m": 3.045154205004128
+          },
+          "15-20.0001": {
+            "n": 89,
+            "groups": 21,
+            "rmse_m": 2.2949711765653156,
+            "levels": {
+              "68": {
+                "coverage_pct": 65.1685393258427,
+                "group_balanced_coverage_pct": 70.18037518037517,
+                "width_mean_m": 4.370059472004414,
+                "width_group_balanced_m": 4.441319502688101,
+                "interval_score_mean_m": 6.023776599598043,
+                "interval_score_group_balanced_m": 6.0723979314330645,
+                "unbounded_intervals_n": 0
+              },
+              "80": {
+                "coverage_pct": 85.39325842696628,
+                "group_balanced_coverage_pct": 86.68109668109668,
+                "width_mean_m": 5.6316679192023695,
+                "width_group_balanced_m": 5.723500268691798,
+                "interval_score_mean_m": 6.665262244865666,
+                "interval_score_group_balanced_m": 6.855671383502238,
+                "unbounded_intervals_n": 0
+              },
+              "90": {
+                "coverage_pct": 97.75280898876404,
+                "group_balanced_coverage_pct": 97.22222222222221,
+                "width_mean_m": 7.228167521101507,
+                "width_group_balanced_m": 7.346033065641629,
+                "interval_score_mean_m": 7.964534283858382,
+                "interval_score_group_balanced_m": 8.143317578209205,
+                "unbounded_intervals_n": 0
+              },
+              "95": {
+                "coverage_pct": 98.87640449438202,
+                "group_balanced_coverage_pct": 98.80952380952381,
+                "width_mean_m": 8.612892833411417,
+                "width_group_balanced_m": 8.753338292224063,
+                "interval_score_mean_m": 9.503013581562584,
+                "interval_score_group_balanced_m": 9.696442418241372,
+                "unbounded_intervals_n": 0
+              }
+            },
+            "crps_mean_m": 1.2254985268024925,
+            "crps_group_balanced_m": 1.2180200513601072,
+            "sigma_error_spearman": 0.5728975144705483,
+            "gaussian_nll": 2.1023948948453905,
+            "mean_sigma_m": 2.1972069133282086
+          }
+        }
+      },
+      "oof_head_raw": {
+        "primary_0_20": {
+          "n": 228,
+          "groups": 41,
+          "rmse_m": 2.37151871608037,
+          "levels": {
+            "68": {
+              "coverage_pct": 63.59649122807017,
+              "group_balanced_coverage_pct": 64.42332735015664,
+              "width_mean_m": 4.671860588918209,
+              "width_group_balanced_m": 4.5531123934821105,
+              "interval_score_mean_m": 7.049454528049964,
+              "interval_score_group_balanced_m": 6.708714960315914,
+              "unbounded_intervals_n": 0
+            },
+            "80": {
+              "coverage_pct": 75.87719298245614,
+              "group_balanced_coverage_pct": 79.03741245204661,
+              "width_mean_m": 6.020597104031814,
+              "width_group_balanced_m": 5.867567057876878,
+              "interval_score_mean_m": 7.965019585979927,
+              "interval_score_group_balanced_m": 7.537104688310311,
+              "unbounded_intervals_n": 0
+            },
+            "90": {
+              "coverage_pct": 89.03508771929825,
+              "group_balanced_coverage_pct": 90.05490444514837,
+              "width_mean_m": 7.727352725578342,
+              "width_group_balanced_m": 7.53094078772274,
+              "interval_score_mean_m": 9.049586135650367,
+              "interval_score_group_balanced_m": 8.661876015788062,
+              "unbounded_intervals_n": 0
+            },
+            "95": {
+              "coverage_pct": 96.49122807017544,
+              "group_balanced_coverage_pct": 96.99081406398481,
+              "width_mean_m": 9.207708692013483,
+              "width_group_balanced_m": 8.973669432821662,
+              "interval_score_mean_m": 10.013507417738019,
+              "interval_score_group_balanced_m": 9.710697229244081,
+              "unbounded_intervals_n": 0
+            }
+          },
+          "crps_mean_m": 1.3058018306998642,
+          "crps_group_balanced_m": 1.270722429331661,
+          "sigma_error_spearman": 0.18695585702613304,
+          "gaussian_nll": 2.218523826497647,
+          "mean_sigma_m": 2.348948441053692
+        },
+        "all_saved": {
+          "n": 343,
+          "groups": 52,
+          "rmse_m": 3.65871341854005,
+          "levels": {
+            "68": {
+              "coverage_pct": 42.27405247813411,
+              "group_balanced_coverage_pct": 49.36063936063936,
+              "width_mean_m": 4.076607248289472,
+              "width_group_balanced_m": 4.2359936534572835,
+              "interval_score_mean_m": 12.716807845066768,
+              "interval_score_group_balanced_m": 11.267433606166001,
+              "unbounded_intervals_n": 0
+            },
+            "80": {
+              "coverage_pct": 50.72886297376093,
+              "group_balanced_coverage_pct": 61.035908535908526,
+              "width_mean_m": 5.25349790007537,
+              "width_group_balanced_m": 5.458898149314737,
+              "interval_score_mean_m": 16.446787437080637,
+              "interval_score_group_balanced_m": 14.314832994851123,
+              "unbounded_intervals_n": 0
+            },
+            "90": {
+              "coverage_pct": 60.05830903790087,
+              "group_balanced_coverage_pct": 69.1000666000666,
+              "width_mean_m": 6.742791556302918,
+              "width_group_balanced_m": 7.006419922122544,
+              "interval_score_mean_m": 23.93952748170751,
+              "interval_score_group_balanced_m": 20.407087962129424,
+              "unbounded_intervals_n": 0
+            },
+            "95": {
+              "coverage_pct": 66.76384839650146,
+              "group_balanced_coverage_pct": 75.15484515484515,
+              "width_mean_m": 8.034531698791941,
+              "width_group_balanced_m": 8.348664271954249,
+              "interval_score_mean_m": 35.33739511075718,
+              "interval_score_group_balanced_m": 29.40226626049322,
+              "unbounded_intervals_n": 0
+            }
+          },
+          "crps_mean_m": 2.2103592962712217,
+          "crps_group_balanced_m": 1.9945340140161036,
+          "sigma_error_spearman": -0.19823823916697295,
+          "gaussian_nll": 3.8477610330215453,
+          "mean_sigma_m": 2.0496630964056743
+        },
+        "bins": {
+          "0-5": {
+            "n": 17,
+            "groups": 3,
+            "rmse_m": 2.136428693663679,
+            "levels": {
+              "68": {
+                "coverage_pct": 88.23529411764706,
+                "group_balanced_coverage_pct": 61.904761904761905,
+                "width_mean_m": 4.997205267181729,
+                "width_group_balanced_m": 6.0075425356192,
+                "interval_score_mean_m": 6.327959006542933,
+                "interval_score_group_balanced_m": 13.504284250169137,
+                "unbounded_intervals_n": 0
+              },
+              "80": {
+                "coverage_pct": 94.11764705882352,
+                "group_balanced_coverage_pct": 66.66666666666666,
+                "width_mean_m": 6.43986672701923,
+                "width_group_balanced_m": 7.7418819555726515,
+                "interval_score_mean_m": 7.841398758222071,
+                "interval_score_group_balanced_m": 15.683896799055415,
+                "unbounded_intervals_n": 0
+              },
+              "90": {
+                "coverage_pct": 94.11764705882352,
+                "group_balanced_coverage_pct": 66.66666666666666,
+                "width_mean_m": 8.26547946084425,
+                "width_group_balanced_m": 9.936597914920696,
+                "interval_score_mean_m": 9.263723380074902,
+                "interval_score_group_balanced_m": 15.593313457227726,
+                "unbounded_intervals_n": 0
+              },
+              "95": {
+                "coverage_pct": 100.0,
+                "group_balanced_coverage_pct": 100.0,
+                "width_mean_m": 9.848926246546934,
+                "width_group_balanced_m": 11.840186702932042,
+                "interval_score_mean_m": 9.848926246546934,
+                "interval_score_group_balanced_m": 11.840186702932042,
+                "unbounded_intervals_n": 0
+              }
+            },
+            "crps_mean_m": 1.0114490311561322,
+            "crps_group_balanced_m": 2.3374538480743094,
+            "sigma_error_spearman": 0.13725490196078433,
+            "gaussian_nll": 2.0139146172178095,
+            "mean_sigma_m": 2.512527353623334
+          },
+          "5-10": {
+            "n": 58,
+            "groups": 17,
+            "rmse_m": 2.1726614790823238,
+            "levels": {
+              "68": {
+                "coverage_pct": 82.75862068965517,
+                "group_balanced_coverage_pct": 76.56862745098039,
+                "width_mean_m": 6.125870644889811,
+                "width_group_balanced_m": 5.917695956286011,
+                "interval_score_mean_m": 7.219756378052403,
+                "interval_score_group_balanced_m": 7.766253190998541,
+                "unbounded_intervals_n": 0
+              },
+              "80": {
+                "coverage_pct": 93.10344827586206,
+                "group_balanced_coverage_pct": 89.80392156862744,
+                "width_mean_m": 7.894370639351023,
+                "width_group_balanced_m": 7.626097238746196,
+                "interval_score_mean_m": 8.80886980398882,
+                "interval_score_group_balanced_m": 9.384253149083461,
+                "unbounded_intervals_n": 0
+              },
+              "90": {
+                "coverage_pct": 94.82758620689656,
+                "group_balanced_coverage_pct": 90.98039215686273,
+                "width_mean_m": 10.132315021688324,
+                "width_group_balanced_m": 9.787989839726617,
+                "interval_score_mean_m": 10.73333524993823,
+                "interval_score_group_balanced_m": 11.406149744603358,
+                "unbounded_intervals_n": 0
+              },
+              "95": {
+                "coverage_pct": 98.27586206896551,
+                "group_balanced_coverage_pct": 94.11764705882352,
+                "width_mean_m": 12.073398019816132,
+                "width_group_balanced_m": 11.663109259432073,
+                "interval_score_mean_m": 12.342993254752548,
+                "interval_score_group_balanced_m": 12.58290476686219,
+                "unbounded_intervals_n": 0
+              }
+            },
+            "crps_mean_m": 1.2681249595219328,
+            "crps_group_balanced_m": 1.3683886256251787,
+            "sigma_error_spearman": 0.0314682088037159,
+            "gaussian_nll": 2.2880164973331225,
+            "mean_sigma_m": 3.080005070258831
+          },
+          "10-15": {
+            "n": 64,
+            "groups": 15,
+            "rmse_m": 2.6872425905291064,
+            "levels": {
+              "68": {
+                "coverage_pct": 60.9375,
+                "group_balanced_coverage_pct": 67.42424242424244,
+                "width_mean_m": 5.129448329454091,
+                "width_group_balanced_m": 5.180062475561,
+                "interval_score_mean_m": 7.9694830819920615,
+                "interval_score_group_balanced_m": 7.7032349892973615,
+                "unbounded_intervals_n": 0
+              },
+              "80": {
+                "coverage_pct": 73.4375,
+                "group_balanced_coverage_pct": 78.73737373737374,
+                "width_mean_m": 6.6102875224586,
+                "width_group_balanced_m": 6.6755136514653435,
+                "interval_score_mean_m": 8.636475109629092,
+                "interval_score_group_balanced_m": 8.49546257322533,
+                "unbounded_intervals_n": 0
+              },
+              "90": {
+                "coverage_pct": 87.5,
+                "group_balanced_coverage_pct": 88.94949494949495,
+                "width_mean_m": 8.484212183758352,
+                "width_group_balanced_m": 8.567929014007905,
+                "interval_score_mean_m": 9.64520508767592,
+                "interval_score_group_balanced_m": 9.567437192870571,
+                "unbounded_intervals_n": 0
+              },
+              "95": {
+                "coverage_pct": 95.3125,
+                "group_balanced_coverage_pct": 96.44444444444444,
+                "width_mean_m": 10.109562361595406,
+                "width_group_balanced_m": 10.209317117581252,
+                "interval_score_mean_m": 10.3730538847622,
+                "interval_score_group_balanced_m": 10.403906652889464,
+                "unbounded_intervals_n": 0
+              }
+            },
+            "crps_mean_m": 1.4948133607146186,
+            "crps_group_balanced_m": 1.3887553828352037,
+            "sigma_error_spearman": 0.3002289377289377,
+            "gaussian_nll": 2.3566708065641784,
+            "mean_sigma_m": 2.5790173802524805
+          },
+          "15-20.0001": {
+            "n": 89,
+            "groups": 21,
+            "rmse_m": 2.2949711765653156,
+            "levels": {
+              "68": {
+                "coverage_pct": 48.31460674157304,
+                "group_balanced_coverage_pct": 55.62770562770562,
+                "width_mean_m": 3.333107126321252,
+                "width_group_balanced_m": 3.3928855605828105,
+                "interval_score_mean_m": 6.414691484377872,
+                "interval_score_group_balanced_m": 6.290384997059426,
+                "unbounded_intervals_n": 0
+              },
+              "80": {
+                "coverage_pct": 62.92134831460674,
+                "group_balanced_coverage_pct": 67.005772005772,
+                "width_mean_m": 4.295354009440638,
+                "width_group_balanced_m": 4.372390098456734,
+                "interval_score_mean_m": 6.955863270404885,
+                "interval_score_group_balanced_m": 6.936427990774597,
+                "unbounded_intervals_n": 0
+              },
+              "90": {
+                "coverage_pct": 85.39325842696628,
+                "group_balanced_coverage_pct": 85.12987012987013,
+                "width_mean_m": 5.513027186281487,
+                "width_group_balanced_m": 5.611901936101198,
+                "interval_score_mean_m": 7.483098554599259,
+                "interval_score_group_balanced_m": 7.706342562252998,
+                "unbounded_intervals_n": 0
+              },
+              "95": {
+                "coverage_pct": 95.50561797752809,
+                "group_balanced_coverage_pct": 95.2020202020202,
+                "width_mean_m": 6.56917707074533,
+                "width_group_balanced_m": 6.686993601925804,
+                "interval_score_mean_m": 8.26830210845553,
+                "interval_score_group_balanced_m": 8.57568745248622,
+                "unbounded_intervals_n": 0
+              }
+            },
+            "crps_mean_m": 1.2506615857517656,
+            "crps_group_balanced_m": 1.2356739275169566,
+            "sigma_error_spearman": 0.5676710929519919,
+            "gaussian_nll": 2.112977477340812,
+            "mean_sigma_m": 1.6758412712075736
+          }
+        }
+      },
+      "oof_head_scaled": {
+        "primary_0_20": {
+          "n": 228,
+          "groups": 41,
+          "rmse_m": 2.37151871608037,
+          "levels": {
+            "68": {
+              "coverage_pct": 72.80701754385966,
+              "group_balanced_coverage_pct": 73.77028120930562,
+              "width_mean_m": 5.689434767247161,
+              "width_group_balanced_m": 5.544822123354369,
+              "interval_score_mean_m": 7.138946353198101,
+              "interval_score_group_balanced_m": 6.8034242365644975,
+              "unbounded_intervals_n": 0
+            },
+            "80": {
+              "coverage_pct": 85.52631578947368,
+              "group_balanced_coverage_pct": 87.23647626086652,
+              "width_mean_m": 7.33193849245356,
+              "width_group_balanced_m": 7.145577095648924,
+              "interval_score_mean_m": 8.21532026216026,
+              "interval_score_group_balanced_m": 7.9099817349216845,
+              "unbounded_intervals_n": 0
+            },
+            "90": {
+              "coverage_pct": 97.80701754385966,
+              "group_balanced_coverage_pct": 97.89005032907474,
+              "width_mean_m": 9.410441176256858,
+              "width_group_balanced_m": 9.1712489129884,
+              "interval_score_mean_m": 9.760900319138058,
+              "interval_score_group_balanced_m": 9.489578483894576,
+              "unbounded_intervals_n": 0
+            },
+            "95": {
+              "coverage_pct": 99.56140350877193,
+              "group_balanced_coverage_pct": 99.6515679442509,
+              "width_mean_m": 11.213232279081291,
+              "width_group_balanced_m": 10.928217118032782,
+              "interval_score_mean_m": 11.53920574578317,
+              "interval_score_group_balanced_m": 11.18717861771232,
+              "unbounded_intervals_n": 0
+            }
+          },
+          "crps_mean_m": 1.320378190026607,
+          "crps_group_balanced_m": 1.2837171405710386,
+          "sigma_error_spearman": 0.18695585702613304,
+          "gaussian_nll": 2.249374255382362,
+          "mean_sigma_m": 2.8605710022045914
+        },
+        "all_saved": {
+          "n": 343,
+          "groups": 52,
+          "rmse_m": 3.65871341854005,
+          "levels": {
+            "68": {
+              "coverage_pct": 48.68804664723032,
+              "group_balanced_coverage_pct": 56.94402819402819,
+              "width_mean_m": 4.9645297776748265,
+              "width_group_balanced_m": 5.15863200691071,
+              "interval_score_mean_m": 12.32933205032953,
+              "interval_score_group_balanced_m": 11.01498295687379,
+              "unbounded_intervals_n": 0
+            },
+            "80": {
+              "coverage_pct": 57.7259475218659,
+              "group_balanced_coverage_pct": 67.09151959151959,
+              "width_mean_m": 6.397758030975363,
+              "width_group_balanced_m": 6.6478963424642945,
+              "interval_score_mean_m": 15.545011612027166,
+              "interval_score_group_balanced_m": 13.804296700214497,
+              "unbounded_intervals_n": 0
+            },
+            "90": {
+              "coverage_pct": 67.93002915451895,
+              "group_balanced_coverage_pct": 76.07753357753357,
+              "width_mean_m": 8.211433534581019,
+              "width_group_balanced_m": 8.532482581653301,
+              "interval_score_mean_m": 21.43809894816614,
+              "interval_score_group_balanced_m": 18.71527415432837,
+              "unbounded_intervals_n": 0
+            },
+            "95": {
+              "coverage_pct": 73.17784256559767,
+              "group_balanced_coverage_pct": 81.22710622710623,
+              "width_mean_m": 9.784526553315041,
+              "width_group_balanced_m": 10.167080088305752,
+              "interval_score_mean_m": 29.538285647489573,
+              "interval_score_group_balanced_m": 25.286268655747072,
+              "unbounded_intervals_n": 0
+            }
+          },
+          "crps_mean_m": 2.16498884503568,
+          "crps_group_balanced_m": 1.9635920406714467,
+          "sigma_error_spearman": -0.19823823916697295,
+          "gaussian_nll": 3.298872631954032,
+          "mean_sigma_m": 2.4960985585689683
+        },
+        "bins": {
+          "0-5": {
+            "n": 17,
+            "groups": 3,
+            "rmse_m": 2.136428693663679,
+            "levels": {
+              "68": {
+                "coverage_pct": 94.11764705882352,
+                "group_balanced_coverage_pct": 66.66666666666666,
+                "width_mean_m": 6.085642506887766,
+                "width_group_balanced_m": 7.316040519047782,
+                "interval_score_mean_m": 7.071034347372668,
+                "interval_score_group_balanced_m": 12.899927615128894,
+                "unbounded_intervals_n": 0
+              },
+              "80": {
+                "coverage_pct": 94.11764705882352,
+                "group_balanced_coverage_pct": 66.66666666666666,
+                "width_mean_m": 7.8425288931032435,
+                "width_group_balanced_m": 9.428135006091384,
+                "interval_score_mean_m": 8.55071756497438,
+                "interval_score_group_balanced_m": 13.441204146694496,
+                "unbounded_intervals_n": 0
+              },
+              "90": {
+                "coverage_pct": 100.0,
+                "group_balanced_coverage_pct": 100.0,
+                "width_mean_m": 10.065776860731125,
+                "width_group_balanced_m": 12.100880274425332,
+                "interval_score_mean_m": 10.065776860731125,
+                "interval_score_group_balanced_m": 12.100880274425332,
+                "unbounded_intervals_n": 0
+              },
+              "95": {
+                "coverage_pct": 100.0,
+                "group_balanced_coverage_pct": 100.0,
+                "width_mean_m": 11.994112910833314,
+                "width_group_balanced_m": 14.419088197569168,
+                "interval_score_mean_m": 11.994112910833314,
+                "interval_score_group_balanced_m": 14.419088197569168,
+                "unbounded_intervals_n": 0
+              }
+            },
+            "crps_mean_m": 1.0804723026866343,
+            "crps_group_balanced_m": 2.2874969914372723,
+            "sigma_error_spearman": 0.13725490196078433,
+            "gaussian_nll": 2.1503116190643423,
+            "mean_sigma_m": 3.0597789054904436
+          },
+          "5-10": {
+            "n": 58,
+            "groups": 17,
+            "rmse_m": 2.1726614790823238,
+            "levels": {
+              "68": {
+                "coverage_pct": 91.37931034482759,
+                "group_balanced_coverage_pct": 83.92156862745097,
+                "width_mean_m": 7.460141578146961,
+                "width_group_balanced_m": 7.206624528898375,
+                "interval_score_mean_m": 8.116867648719214,
+                "interval_score_group_balanced_m": 8.448844067137383,
+                "unbounded_intervals_n": 0
+              },
+              "80": {
+                "coverage_pct": 93.10344827586206,
+                "group_balanced_coverage_pct": 89.80392156862744,
+                "width_mean_m": 9.613837126817838,
+                "width_group_balanced_m": 9.287131313688647,
+                "interval_score_mean_m": 10.037446326332422,
+                "interval_score_group_balanced_m": 10.30302404892075,
+                "unbounded_intervals_n": 0
+              },
+              "90": {
+                "coverage_pct": 98.27586206896551,
+                "group_balanced_coverage_pct": 94.11764705882352,
+                "width_mean_m": 12.339226366008214,
+                "width_group_balanced_m": 11.919903994501992,
+                "interval_score_mean_m": 12.433613912691051,
+                "interval_score_group_balanced_m": 12.24193209494932,
+                "unbounded_intervals_n": 0
+              },
+              "95": {
+                "coverage_pct": 100.0,
+                "group_balanced_coverage_pct": 99.99999999999999,
+                "width_mean_m": 14.70309508286518,
+                "width_group_balanced_m": 14.203441659242724,
+                "interval_score_mean_m": 14.70309508286518,
+                "interval_score_group_balanced_m": 14.203441659242724,
+                "unbounded_intervals_n": 0
+              }
+            },
+            "crps_mean_m": 1.3430847661997005,
+            "crps_group_balanced_m": 1.4251777973113604,
+            "sigma_error_spearman": 0.0314682088037159,
+            "gaussian_nll": 2.395865171411653,
+            "mean_sigma_m": 3.7508584848602626
+          },
+          "10-15": {
+            "n": 64,
+            "groups": 15,
+            "rmse_m": 2.6872425905291064,
+            "levels": {
+              "68": {
+                "coverage_pct": 70.3125,
+                "group_balanced_coverage_pct": 75.90909090909092,
+                "width_mean_m": 6.246689323653724,
+                "width_group_balanced_m": 6.308327696009748,
+                "interval_score_mean_m": 7.816421505496276,
+                "interval_score_group_balanced_m": 7.712822353225299,
+                "unbounded_intervals_n": 0
+              },
+              "80": {
+                "coverage_pct": 85.9375,
+                "group_balanced_coverage_pct": 87.83838383838383,
+                "width_mean_m": 8.050068904235978,
+                "width_group_balanced_m": 8.129501883675513,
+                "interval_score_mean_m": 8.878556937592407,
+                "interval_score_group_balanced_m": 8.870586839878076,
+                "unbounded_intervals_n": 0
+              },
+              "90": {
+                "coverage_pct": 98.4375,
+                "group_balanced_coverage_pct": 98.88888888888889,
+                "width_mean_m": 10.332151581208453,
+                "width_group_balanced_m": 10.43410270658136,
+                "interval_score_mean_m": 10.417102552111427,
+                "interval_score_group_balanced_m": 10.494512285890139,
+                "unbounded_intervals_n": 0
+              },
+              "95": {
+                "coverage_pct": 100.0,
+                "group_balanced_coverage_pct": 100.0,
+                "width_mean_m": 12.311517967412788,
+                "width_group_balanced_m": 12.433000226162196,
+                "interval_score_mean_m": 12.311517967412788,
+                "interval_score_group_balanced_m": 12.433000226162196,
+                "unbounded_intervals_n": 0
+              }
+            },
+            "crps_mean_m": 1.5005409768798021,
+            "crps_group_balanced_m": 1.411763653450723,
+            "sigma_error_spearman": 0.3002289377289377,
+            "gaussian_nll": 2.3828773743810165,
+            "mean_sigma_m": 3.1407510710718345
+          },
+          "15-20.0001": {
+            "n": 89,
+            "groups": 21,
+            "rmse_m": 2.2949711765653156,
+            "levels": {
+              "68": {
+                "coverage_pct": 58.42696629213483,
+                "group_balanced_coverage_pct": 62.56132756132755,
+                "width_mean_m": 4.059088495156165,
+                "width_group_balanced_m": 4.131887221861763,
+                "interval_score_mean_m": 6.027448142093882,
+                "interval_score_group_balanced_m": 6.016052563682693,
+                "unbounded_intervals_n": 0
+              },
+              "80": {
+                "coverage_pct": 78.65168539325843,
+                "group_balanced_coverage_pct": 79.89177489177489,
+                "width_mean_m": 5.230921594046286,
+                "width_group_balanced_m": 5.324736851338116,
+                "interval_score_mean_m": 6.486868429604275,
+                "interval_score_group_balanced_m": 6.642639013526846,
+                "unbounded_intervals_n": 0
+              },
+              "90": {
+                "coverage_pct": 96.62921348314607,
+                "group_balanced_coverage_pct": 95.63492063492063,
+                "width_mean_m": 6.713815181217047,
+                "width_group_balanced_m": 6.834225760368636,
+                "interval_score_mean_m": 7.489021301795905,
+                "interval_score_group_balanced_m": 7.694535713649897,
+                "unbounded_intervals_n": 0
+              },
+              "95": {
+                "coverage_pct": 98.87640449438202,
+                "group_balanced_coverage_pct": 98.80952380952381,
+                "width_mean_m": 8.00000421826707,
+                "width_group_balanced_m": 8.143482272865839,
+                "interval_score_mean_m": 8.835082312739292,
+                "interval_score_group_balanced_m": 9.02826739677093,
+                "unbounded_intervals_n": 0
+              }
+            },
+            "crps_mean_m": 1.2218501036011644,
+            "crps_group_balanced_m": 1.211258817251237,
+            "sigma_error_spearman": 0.5676710929519919,
+            "gaussian_nll": 2.076828098885661,
+            "mean_sigma_m": 2.040854903806928
+          }
+        }
+      },
+      "paired_ci95": {
+        "interval_score90_difference": [
+          -0.388900861080649,
+          0.26939052719385687
+        ],
+        "width90_difference": [
+          -0.21469394172125253,
+          0.3615439730789485
+        ],
+        "new_coverage90": [
+          95.10194077631051,
+          99.57631588357292
+        ],
+        "crps_difference": [
+          -0.013581276621559873,
+          0.01228220579450849
+        ]
+      }
+    }
+  },
+  "validation_narrowing_gate_passed": true
+}

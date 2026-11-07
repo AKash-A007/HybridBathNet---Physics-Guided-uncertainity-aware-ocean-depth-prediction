@@ -1,0 +1,51 @@
+{
+  "validation": {
+    "predefined_raw_variant_validation_style_gate": true,
+    "count_covered90": 188,
+    "n": 208,
+    "width_reduction_pct": 18.075285463092428,
+    "paired_spatial_ci95": {
+      "width_difference": [
+        -1.7661144665456343,
+        -1.3422095767902715
+      ],
+      "score_difference": [
+        -1.4372534149114744,
+        0.31069330709766363
+      ],
+      "coverage_new": [
+        81.38266905508286,
+        96.7348047914818
+      ],
+      "crps_difference": [
+        -0.057351184050283985,
+        0.0003573379223526638
+      ]
+    }
+  },
+  "test": {
+    "predefined_raw_variant_validation_style_gate": false,
+    "count_covered90": 203,
+    "n": 228,
+    "width_reduction_pct": 17.17583738248297,
+    "paired_spatial_ci95": {
+      "width_difference": [
+        -1.7949661842892206,
+        -1.404285900363778
+      ],
+      "score_difference": [
+        -1.3345082508275719,
+        -0.10552183077504096
+      ],
+      "coverage_new": [
+        82.37820678932366,
+        94.42119694802098
+      ],
+      "crps_difference": [
+        -0.046403158916141864,
+        0.01713534851023715
+      ]
+    }
+  },
+  "interpretation": "Both raw and scaled variants were predefined and reported. Raw is promising on validation; test comparison remains exploratory. No new multiplier or coverage was selected from test residuals."
+}

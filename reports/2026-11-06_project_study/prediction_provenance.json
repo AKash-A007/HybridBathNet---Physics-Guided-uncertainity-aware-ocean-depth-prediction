@@ -1,0 +1,98 @@
+[
+  {
+    "path": "runs\\2026-11-05\\nearshore_hybrid_v1\\validation_predictions.npz",
+    "sha256": "90f354787363b04a2903a7978ed66826a51e288c434ceafaa6f937f74b9ac49e"
+  },
+  {
+    "path": "runs\\2026-11-05\\nearshore_hybrid_v1\\test_predictions.npz",
+    "sha256": "3d4abf059c95a874c4d65b6d8e47f0aba0c23518a654349b02d1ccaca3713d69"
+  },
+  {
+    "path": "runs\\2026-11-06\\gebco_component_ablation_v1\\no_physics\\validation_predictions.npz",
+    "sha256": "970c6d97b2ab86034d64ad68ab25674e62d4612f86ff922edc07b265b8edae96"
+  },
+  {
+    "path": "runs\\2026-11-06\\gebco_component_ablation_v1\\no_physics\\test_predictions.npz",
+    "sha256": "62ee120c9e134d97bfb395b5caf3ff074032c0794ded1cc94f96033d579cc0ef"
+  },
+  {
+    "path": "runs\\2026-11-06\\gebco_component_ablation_v1\\no_uncertainty\\validation_predictions.npz",
+    "sha256": "33378eeb3432569351711a14dd9ad0deb0ffaa8c686b40c812bff499c0e7c352"
+  },
+  {
+    "path": "runs\\2026-11-06\\gebco_component_ablation_v1\\no_uncertainty\\test_predictions.npz",
+    "sha256": "22d6ab1008b1e8798e591b1304632b72977ee206aac7c14dcde8d6c83dca034f"
+  },
+  {
+    "path": "runs\\2026-11-06\\gebco_component_ablation_v1\\no_both\\validation_predictions.npz",
+    "sha256": "50378f7418c7c656f8ded0d474efb459d1b0b4e4c740497a757877314ce0e832"
+  },
+  {
+    "path": "runs\\2026-11-06\\gebco_component_ablation_v1\\no_both\\test_predictions.npz",
+    "sha256": "b3eeffffb4a5ef9a56b803ec3b2a16e92b04cc8e80fb5606ef2c470bea65d5ad"
+  },
+  {
+    "path": "runs\\2026-11-06\\integrated_head_research_v1\\validation_predictions.npz",
+    "sha256": "a1ed8d561687c67514f05e36c0561163e0413ca516be2c7c039ee5eb7f38e31e"
+  },
+  {
+    "path": "runs\\2026-11-06\\integrated_head_research_v1\\test_predictions.npz",
+    "sha256": "597ce516aaabfc94cc3b13c8dcafab533119286cabe026d20e39467cb1b2b7cf"
+  },
+  {
+    "path": "runs\\2026-11-05\\nearshore_no_ext_v2\\validation_predictions.npz",
+    "sha256": "6fdd8acc0e4895180a9d3518b27b5d7cb87b47e8284ea1aa47e7691befd9d6b8"
+  },
+  {
+    "path": "runs\\2026-11-05\\nearshore_no_ext_v2\\test_predictions.npz",
+    "sha256": "8c1fcaf7a7c2b936d3f0588035a89332e70beca997b6152de435b7351b24d775"
+  },
+  {
+    "path": "runs\\2026-11-05\\nearshore_squared_depth_v3\\validation_predictions.npz",
+    "sha256": "e68d7360b7840a48ef79d3a7010923413fbebf76abcb490173ee8b0c3e75ecca"
+  },
+  {
+    "path": "runs\\2026-11-05\\nearshore_squared_depth_v3\\test_predictions.npz",
+    "sha256": "5d55d902533d32d0f8f1a879e110a69ea16143e452e824baad773705a7379513"
+  },
+  {
+    "path": "runs\\2026-11-06\\recovery_v2\\gebco_uq\\seed_42\\validation_predictions.npz",
+    "sha256": "9e4c0100712eaa800b94c4cd524cb94c9eadfa455c6882b76e7e8df1ba244506"
+  },
+  {
+    "path": "runs\\2026-11-06\\recovery_v2\\gebco_uq\\seed_42\\test_predictions.npz",
+    "sha256": "56091c8ab97c78a250cbcecd0596e1b53a27dab98af866464fbaf44df8e639f7"
+  },
+  {
+    "path": "runs\\2026-11-06\\recovery_v2\\gebco_uq\\seed_1\\validation_predictions.npz",
+    "sha256": "c77ff081be62ec4c230817d47a9dd70f7fb269519c32c6571441bd1f21c16733"
+  },
+  {
+    "path": "runs\\2026-11-06\\recovery_v2\\gebco_uq\\seed_1\\test_predictions.npz",
+    "sha256": "ce87f8c78ab078663e52a55e105c6422eb5525614e8675c37ba764b8d33bd6a1"
+  },
+  {
+    "path": "runs\\2026-11-06\\recovery_v2\\gebco_uq\\seed_7\\validation_predictions.npz",
+    "sha256": "c0ef789b8d7dbde0006a3a39367a3f3a346dd530b0939d8b7ec9e919f941e511"
+  },
+  {
+    "path": "runs\\2026-11-06\\recovery_v2\\gebco_uq\\seed_7\\test_predictions.npz",
+    "sha256": "1bd42e26b608bfb6da7ec2bc9c19aa71edf6ba9de51f2dff82a805e1fb9729cb"
+  },
+  {
+    "path": "runs\\2026-11-06\\recovery_v2\\gebco_uq\\ensemble3_validation_predictions.npz",
+    "sha256": "094bb4dac4e353c52b57c259e3bce2984de2747a173579ed2952c865ccae6d27"
+  },
+  {
+    "path": "runs\\2026-11-06\\gebco_oof_uncertainty_v1\\validation_predictions.csv",
+    "sha256": "0c38383afffef0109ef71bf8963f43a4426e4deaf86b29ea4284de4ccf6381d6"
+  },
+  {
+    "path": "runs\\2026-11-06\\recovery_v2\\gebco_uq\\ensemble3_test_predictions.npz",
+    "sha256": "c4e8e8a5b2949cea84e0e19dda2ffc56849c58fc7bbee6d6efcf00b54d777b19"
+  },
+  {
+    "path": "runs\\2026-11-06\\gebco_oof_uncertainty_v1\\test_predictions.csv",
+    "sha256": "f0446985bde76609aec601cfd4bab6418cffac553220133682ebe242c1dffdfc"
+  }
+]

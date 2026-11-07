@@ -1,0 +1,31 @@
+{
+  "reference": "GEBCO centre depths; 0-20m primary",
+  "arm": "no_uncertainty",
+  "physics_enabled": true,
+  "uncertainty_enabled": false,
+  "physics_off_definition": "Zero normalized engineered channels 4:11; no FiLM conditioning, extinction loss or optical reconstruction loss/head",
+  "uncertainty_off_definition": "NLL loss and curriculum base weight zero; log-variance output has no supervised gradient and must not be interpreted",
+  "unchanged": "Same 16-channel tensor shape/backbone, dataset, split, augmentation, seed42, 180-epoch cosine schedule, optimizer and validation checkpoint rule as GEBCO v1",
+  "dataset_sha256": "5a15b02acf58ce7cada2b168bca30cca934dc85b0ac9af89531aa11619609cf8",
+  "split_sizes": {
+    "train_idx": 637,
+    "val_idx": 208,
+    "test_idx": 343
+  },
+  "weights": {
+    "depth_huber": 1,
+    "beta_nll": 0,
+    "extinction": 0.03,
+    "reconstruction": 0.1
+  },
+  "epochs": 180,
+  "patience": 30,
+  "lr": 0.001,
+  "batch": 8,
+  "ema": 0.999,
+  "cosine_period": 180,
+  "nll_warmup": 20,
+  "selection": "EMA validation RMSE",
+  "test_policy": "Evaluate all original test centres once after training; report 0-20m and depth bins",
+  "caveat": "GEBCO is a coarse reference, not independent seabed survey truth; test already inspected in earlier studies."
+}

@@ -1,0 +1,65 @@
+{
+  "checks": [
+    {
+      "checkpoint": "runs\\2026-11-06\\recovery_v2\\gebco_uq\\seed_42\\hybridbathnet.pt",
+      "strict_reload": true,
+      "validation_points": 8,
+      "max_abs_depth_difference_m": 0.0,
+      "max_abs_sigma_difference_m": 0.0,
+      "checkpoint_sha256": "e670e5a3e5034b979b2abf46aaddd1f7bb84d45c2e8c5889884cf019062201b8",
+      "dataset_sha256_matches_protocol": true
+    },
+    {
+      "checkpoint": "runs\\2026-11-06\\recovery_v2\\gebco_uq\\seed_1\\hybridbathnet.pt",
+      "strict_reload": true,
+      "validation_points": 8,
+      "max_abs_depth_difference_m": 0.0,
+      "max_abs_sigma_difference_m": 1.1920928955078125e-07,
+      "checkpoint_sha256": "531e55f67115ca62e634c362ae78edae46efac82102bd1a6c8fa3e75274bc381",
+      "dataset_sha256_matches_protocol": true
+    },
+    {
+      "checkpoint": "runs\\2026-11-06\\recovery_v2\\gebco_uq\\seed_7\\hybridbathnet.pt",
+      "strict_reload": true,
+      "validation_points": 8,
+      "max_abs_depth_difference_m": 0.0,
+      "max_abs_sigma_difference_m": 1.1920928955078125e-07,
+      "checkpoint_sha256": "97ef992aa7818b4cb2e08e550846ca1b115cd5cfdcd95ca5ef161fbe1ae219b8",
+      "dataset_sha256_matches_protocol": true
+    },
+    {
+      "checkpoint": "runs\\2026-11-06\\recovery_v2\\atl24_paired\\composite_control\\hybridbathnet.pt",
+      "strict_reload": true,
+      "validation_points": 8,
+      "max_abs_depth_difference_m": 0.0,
+      "max_abs_sigma_difference_m": 4.76837158203125e-07,
+      "checkpoint_sha256": "2b1aa303a93dc9838ada8e1ae8d8390ae46bbe69a347377fad1f866bb62f2b72",
+      "dataset_sha256_matches_protocol": true
+    },
+    {
+      "checkpoint": "runs\\2026-11-06\\recovery_v2\\atl24_paired\\matched_tide\\hybridbathnet.pt",
+      "strict_reload": true,
+      "validation_points": 8,
+      "max_abs_depth_difference_m": 0.0,
+      "max_abs_sigma_difference_m": 4.76837158203125e-07,
+      "checkpoint_sha256": "0ff3aa401dfc2b37edb32da4b13106177b6a5c21efd768ad066420f035410b4b",
+      "dataset_sha256_matches_protocol": true
+    }
+  ],
+  "packages": {
+    "torch": "2.11.0+cu128",
+    "numpy": "2.5.2",
+    "scipy": "1.18.0",
+    "pandas": "3.0.5",
+    "rasterio": "1.5.1",
+    "pyarrow": "26.0.1",
+    "h5py": "3.16.0",
+    "pyTMD": "2.2.8",
+    "timescale": "0.1.3",
+    "lxml": "6.1.3",
+    "netCDF4": "1.7.4",
+    "requests": "2.34.2"
+  },
+  "scope": "strict state reload; first8 validation points same CUDA device vs saved evaluation, not retraining or new model selection",
+  "cpu_probe": "Initial CPU comparison differed by about1.5mm, exceeding the tight equivalence tolerance; final checks use original evaluation backend."
+}

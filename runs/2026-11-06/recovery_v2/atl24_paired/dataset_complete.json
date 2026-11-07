@@ -1,0 +1,85 @@
+{
+  "reference": "official ATL24 V002; 0-20m acquisition-relative median per10m pixel/pass",
+  "test_geography": "all171 product-eligible test points preserved; original geographic blocks;96px buffer",
+  "training_eligibility": "2024 optical mask >=50% patch and valid water centre, before historical matching",
+  "scene_quality": "SCL6 water at centre and >=50% patch, positive finite B/G, NDWI>0; otherwise explicit2024 fallback",
+  "tide_formula": "scene depth = ATL24 depth + EOT20(scene)-EOT20(ATL24); revert predictions before common-target scoring",
+  "tide_limit": "coastal extrapolation<=10km; held-date surface RMSE0.269m; other water-level/seabed changes unresolved",
+  "horizontal_uncertainty": "median~7m; recorded per sample; no fabricated per-axis covariance or positional correction",
+  "single_scene_std": "matched inputs have zero temporal std; fallback uses original composite std",
+  "split_sizes": {
+    "train_idx": 426,
+    "val_idx": 102,
+    "test_idx": 171
+  },
+  "arms": {
+    "composite_control": {
+      "feature_fit": {
+        "fit_unique_source_pixels": 710890,
+        "nir_reference": 0.012496321462094784,
+        "glint_slopes": [
+          1.0363415479660034,
+          2.051523208618164,
+          1.461370825767517
+        ],
+        "rinf_train_only": [
+          0.04102505370974541,
+          0.02344582974910736,
+          0.015571585856378078
+        ],
+        "green_surface_reference": 0.04713357239961624
+      },
+      "quality": {
+        "train": {
+          "n": 426,
+          "historical_clear_used": 86,
+          "fallback": 340
+        },
+        "val": {
+          "n": 102,
+          "historical_clear_used": 26,
+          "fallback": 76
+        },
+        "test": {
+          "n": 171,
+          "historical_clear_used": 29,
+          "fallback": 142
+        }
+      }
+    },
+    "matched_tide": {
+      "feature_fit": {
+        "fit_unique_source_pixels": 751283,
+        "nir_reference": 0.012516559101641178,
+        "glint_slopes": [
+          0.6868193745613098,
+          0.7857778668403625,
+          0.8749846816062927
+        ],
+        "rinf_train_only": [
+          0.029284410178661346,
+          0.025658609345555305,
+          0.016464918851852417
+        ],
+        "green_surface_reference": 0.05680544674396515
+      },
+      "quality": {
+        "train": {
+          "n": 426,
+          "historical_clear_used": 86,
+          "fallback": 340
+        },
+        "val": {
+          "n": 102,
+          "historical_clear_used": 26,
+          "fallback": 76
+        },
+        "test": {
+          "n": 171,
+          "historical_clear_used": 29,
+          "fallback": 142
+        }
+      }
+    }
+  }
+}

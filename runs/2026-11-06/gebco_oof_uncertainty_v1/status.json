@@ -1,0 +1,10 @@
+{
+  "stage": "complete",
+  "utc": "2026-11-06T16:19:35.678584+00:00",
+  "selected_head_epoch": 4,
+  "test_original_width": 9.329828979090738,
+  "test_raw_head_width": 7.727352725578342,
+  "test_raw_head_coverage": 89.03508771929825,
+  "test_scaled_head_width": 9.410441176256858,
+  "interpretation": "raw learned head is promising; added scaling does not narrow; no automatic deployment"
+}

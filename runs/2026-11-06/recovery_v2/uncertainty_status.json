@@ -1,0 +1,26 @@
+{
+  "component": "uncertainty",
+  "phase": "complete",
+  "utc": "2026-11-06T12:46:28.086668+00:00",
+  "seeds": [
+    42,
+    1,
+    7
+  ],
+  "ensemble_test": {
+    "n": 228,
+    "rmse": 2.37151871608037,
+    "mae": 1.825577095935219,
+    "mean_sigma_m": 1.6124997320419117,
+    "coverage90_raw_pct": 70.6140350877193,
+    "coverage90_calibrated_pct": 100.0,
+    "raw_interval90_mean_width_m": 5.30512411841789,
+    "calibrated_interval90_mean_width_m": 17.11867891542935,
+    "mixture_nll": 2.4163805914959244,
+    "sigma_error_spearman": 0.16193046917160164,
+    "rmse_ci95_spatial": [
+      1.8900573979949153,
+      2.834707683645711
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "source": "https://www.seanoe.org/data/00683/79489/data/85762.zip",
+  "doi": "10.17882/79489",
+  "licence": "CC BY4.0; Hart-Davis et al.2021",
+  "archive_bytes": 2330678793,
+  "ocean_constituent_files": 18,
+  "paths": [
+    "runs\\2026-11-06\\recovery_v2\\tides\\EOT20\\ocean_tides\\2N2_ocean_eot20.nc",
+    "runs\\2026-11-06\\recovery_v2\\tides\\EOT20\\ocean_tides\\J1_ocean_eot20.nc",
+    "runs\\2026-11-06\\recovery_v2\\tides\\EOT20\\ocean_tides\\K1_ocean_eot20.nc",
+    "runs\\2026-11-06\\recovery_v2\\tides\\EOT20\\ocean_tides\\K2_ocean_eot20.nc",
+    "runs\\2026-11-06\\recovery_v2\\tides\\EOT20\\ocean_tides\\M2_ocean_eot20.nc",
+    "runs\\2026-11-06\\recovery_v2\\tides\\EOT20\\ocean_tides\\M4_ocean_eot20.nc",
+    "runs\\2026-11-06\\recovery_v2\\tides\\EOT20\\ocean_tides\\MF_ocean_eot20.nc",
+    "runs\\2026-11-06\\recovery_v2\\tides\\EOT20\\ocean_tides\\MM_ocean_eot20.nc",
+    "runs\\2026-11-06\\recovery_v2\\tides\\EOT20\\ocean_tides\\N2_ocean_eot20.nc",
+    "runs\\2026-11-06\\recovery_v2\\tides\\EOT20\\ocean_tides\\O1_ocean_eot20.nc",
+    "runs\\2026-11-06\\recovery_v2\\tides\\EOT20\\ocean_tides\\P1_ocean_eot20.nc",
+    "runs\\2026-11-06\\recovery_v2\\tides\\EOT20\\ocean_tides\\Q1_ocean_eot20.nc",
+    "runs\\2026-11-06\\recovery_v2\\tides\\EOT20\\ocean_tides\\S1_ocean_eot20.nc",
+    "runs\\2026-11-06\\recovery_v2\\tides\\EOT20\\ocean_tides\\S2_ocean_eot20.nc",
+    "runs\\2026-11-06\\recovery_v2\\tides\\EOT20\\ocean_tides\\SA_ocean_eot20.nc",
+    "runs\\2026-11-06\\recovery_v2\\tides\\EOT20\\ocean_tides\\SSA_ocean_eot20.nc",
+    "runs\\2026-11-06\\recovery_v2\\tides\\EOT20\\ocean_tides\\T2_ocean_eot20.nc",
+    "runs\\2026-11-06\\recovery_v2\\tides\\EOT20\\__MACOSX\\ocean_tides\\._K2_ocean_eot20.nc"
+  ]
+}

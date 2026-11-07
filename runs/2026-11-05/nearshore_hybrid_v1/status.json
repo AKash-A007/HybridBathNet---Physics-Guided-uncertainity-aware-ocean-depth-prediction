@@ -1,0 +1,7 @@
+{
+  "stage": "complete",
+  "experiment": "hybridbathnet_only",
+  "utc": "2026-11-05T14:31:14.138334+00:00",
+  "validation_rmse_0_20": 1.9631408263268093,
+  "test_rmse_0_20": 2.561334411831001
+}

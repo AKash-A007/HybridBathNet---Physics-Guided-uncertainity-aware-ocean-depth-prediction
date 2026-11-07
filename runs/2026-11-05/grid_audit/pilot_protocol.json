@@ -1,0 +1,14 @@
+{
+  "epochs": 10,
+  "seed": 42,
+  "lr": 1e-05,
+  "ema": 0.999,
+  "training_patches": 2171,
+  "excluded_new_land_training_centres": 5,
+  "validation_locations": 65,
+  "test_evaluated": false,
+  "initial_checkpoint": "runs\\2026-11-05\\improvement\\expanded_smooth\\checkpoints\\hybridbathnet.pt",
+  "fixed": "features, masks, normalization, split coordinates, seed and initialization",
+  "augmentation": "disabled; centre-label-only diagnostic",
+  "selection_metric": "direct-label validation RMSE"
+}

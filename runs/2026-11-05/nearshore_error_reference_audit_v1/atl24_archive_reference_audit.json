@@ -1,0 +1,232 @@
+{
+  "source": "SlideRule atl24x response (2018\u2013Nov 2024, bathymetry class, confidence>=0.6); not NSIDC V002 download",
+  "requested_bbox_lonlat": [
+    76.3,
+    8.9,
+    76.55,
+    9.2
+  ],
+  "all_returned_inside_requested_bbox": true,
+  "returned_lon_range": [
+    76.3004027456375,
+    76.54957839373905
+  ],
+  "returned_lat_range": [
+    8.900003376880836,
+    9.199908168003386
+  ],
+  "total_photons": 3189,
+  "finite_0_20m": 2757,
+  "returned_time_range_utc": [
+    "2018-12-25 07:01:58.027117824",
+    "2024-11-05 12:44:49.413533440"
+  ],
+  "finite_0_20m_inside_scene_valid_composite": 2750,
+  "finite_0_20m_with_gebco_0_25m": 1285,
+  "atl24_10_15m_with_gebco_0_25m": 94,
+  "unique_tracks": [
+    {
+      "rgt": 1339,
+      "cycle": 1,
+      "region": 1
+    },
+    {
+      "rgt": 325,
+      "cycle": 2,
+      "region": 7
+    },
+    {
+      "rgt": 1339,
+      "cycle": 2,
+      "region": 1
+    },
+    {
+      "rgt": 1339,
+      "cycle": 3,
+      "region": 1
+    },
+    {
+      "rgt": 394,
+      "cycle": 5,
+      "region": 1
+    },
+    {
+      "rgt": 394,
+      "cycle": 7,
+      "region": 1
+    },
+    {
+      "rgt": 325,
+      "cycle": 4,
+      "region": 7
+    },
+    {
+      "rgt": 1339,
+      "cycle": 9,
+      "region": 1
+    },
+    {
+      "rgt": 325,
+      "cycle": 9,
+      "region": 7
+    },
+    {
+      "rgt": 767,
+      "cycle": 10,
+      "region": 7
+    },
+    {
+      "rgt": 325,
+      "cycle": 11,
+      "region": 7
+    },
+    {
+      "rgt": 325,
+      "cycle": 12,
+      "region": 7
+    },
+    {
+      "rgt": 1339,
+      "cycle": 12,
+      "region": 1
+    },
+    {
+      "rgt": 1339,
+      "cycle": 13,
+      "region": 1
+    },
+    {
+      "rgt": 325,
+      "cycle": 14,
+      "region": 7
+    },
+    {
+      "rgt": 325,
+      "cycle": 16,
+      "region": 7
+    },
+    {
+      "rgt": 325,
+      "cycle": 17,
+      "region": 7
+    },
+    {
+      "rgt": 325,
+      "cycle": 18,
+      "region": 7
+    },
+    {
+      "rgt": 767,
+      "cycle": 17,
+      "region": 7
+    },
+    {
+      "rgt": 1339,
+      "cycle": 17,
+      "region": 1
+    },
+    {
+      "rgt": 394,
+      "cycle": 18,
+      "region": 1
+    },
+    {
+      "rgt": 394,
+      "cycle": 19,
+      "region": 1
+    },
+    {
+      "rgt": 325,
+      "cycle": 20,
+      "region": 7
+    },
+    {
+      "rgt": 767,
+      "cycle": 20,
+      "region": 7
+    },
+    {
+      "rgt": 767,
+      "cycle": 22,
+      "region": 7
+    },
+    {
+      "rgt": 767,
+      "cycle": 21,
+      "region": 7
+    },
+    {
+      "rgt": 325,
+      "cycle": 21,
+      "region": 7
+    },
+    {
+      "rgt": 767,
+      "cycle": 25,
+      "region": 7
+    },
+    {
+      "rgt": 767,
+      "cycle": 23,
+      "region": 7
+    },
+    {
+      "rgt": 1339,
+      "cycle": 22,
+      "region": 1
+    },
+    {
+      "rgt": 325,
+      "cycle": 23,
+      "region": 7
+    },
+    {
+      "rgt": 1339,
+      "cycle": 24,
+      "region": 1
+    }
+  ],
+  "nominal_depth_quantiles_m": [
+    0.6449486017227173,
+    3.460604429244995,
+    10.809834671020509
+  ],
+  "valid_quality_flag_values": {
+    "0": 2901,
+    "20": 265,
+    "10": 11,
+    "4": 7,
+    "12": 3,
+    "22": 2
+  },
+  "median_vertical_uncertainty_m": 0.14587607979774475,
+  "independent_spatial_group_count": 162,
+  "geographic_match": {
+    "train": {
+      "photons_0_20m_within_50m": 20,
+      "photons_0_20m_within_100m": 92,
+      "photons_0_20m_within_320m": 432,
+      "median_nearest_distance_m": 1103.992619824712
+    },
+    "val": {
+      "photons_0_20m_within_50m": 3,
+      "photons_0_20m_within_100m": 13,
+      "photons_0_20m_within_320m": 76,
+      "median_nearest_distance_m": 2549.215565620138
+    },
+    "test": {
+      "photons_0_20m_within_50m": 3,
+      "photons_0_20m_within_100m": 34,
+      "photons_0_20m_within_320m": 208,
+      "median_nearest_distance_m": 1945.379140424817
+    }
+  },
+  "caveat": "ATL24 depths are sea-surface minus refracted-bottom orthometric heights. GEBCO may represent a different datum/epoch and coarse cells. Nearby-photon differences are not a model score. Preserve original geographic test groups and all GEBCO labels.",
+  "gebco_colocation": {
+    "n": 2673,
+    "median_atl24_minus_gebco_m": -8.013857196996618,
+    "median_absolute_difference_m": 11.995938404529227,
+    "rmse_difference_m": 21.001136815376125,
+    "warning": "Photon counts are highly correlated and this is not independent validation of the trained network."
+  }
+}

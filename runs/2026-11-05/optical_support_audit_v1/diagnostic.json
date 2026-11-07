@@ -1,0 +1,52 @@
+{
+  "assumptions": {
+    "bands": "B02 and B03; either band detects bottom",
+    "k": "model learned per-band optical K treated as both downward and upward attenuation; not measured",
+    "contrast": "absolute learned A minus train-fitted shallow R_inf; not measured",
+    "noise": "per-pixel temporal standard deviation across Sentinel scenes; includes environmental changes, not sensor noise",
+    "snr": 3,
+    "operationally_calibrated": false
+  },
+  "splits": {
+    "val_idx": {
+      "all": {
+        "n": 208,
+        "coverage_pct": 100.0,
+        "rmse_m": 1.9631408263268093
+      },
+      "point_mask": {
+        "n": 7,
+        "coverage_pct": 3.3653846153846154,
+        "rmse_m": 1.3119373743586373
+      },
+      "upper_depth_mask": {
+        "n": 4,
+        "coverage_pct": 1.9230769230769231,
+        "rmse_m": 1.316988108968628
+      },
+      "median_limit_m": 0.0,
+      "fraction_zero_limit_pct": 93.75,
+      "n_invalid_limit": 0
+    },
+    "test_idx": {
+      "all": {
+        "n": 228,
+        "coverage_pct": 100.0,
+        "rmse_m": 2.561334411831001
+      },
+      "point_mask": {
+        "n": 4,
+        "coverage_pct": 1.7543859649122806,
+        "rmse_m": 2.047949945690896
+      },
+      "upper_depth_mask": {
+        "n": 1,
+        "coverage_pct": 0.43859649122807015,
+        "rmse_m": 0.5295062065124512
+      },
+      "median_limit_m": 0.0,
+      "fraction_zero_limit_pct": 97.37609329446065,
+      "n_invalid_limit": 0
+    }
+  }
+}

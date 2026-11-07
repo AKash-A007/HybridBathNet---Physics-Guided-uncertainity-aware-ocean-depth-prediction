@@ -1,0 +1,7 @@
+{
+  "stage": "complete",
+  "experiment": "ATL24-supervised HybridBathNet only",
+  "utc": "2026-11-05T19:10:18.024107+00:00",
+  "validation_rmse_m": 3.4432736189252218,
+  "test_rmse_m": 4.740648838058827
+}

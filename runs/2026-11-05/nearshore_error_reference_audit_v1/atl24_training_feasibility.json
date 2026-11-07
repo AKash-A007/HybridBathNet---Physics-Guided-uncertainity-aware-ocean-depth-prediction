@@ -1,0 +1,136 @@
+{
+  "source": "SlideRule current ATL24 archive AOI subset, 2018\u2013Nov 2024",
+  "screens": {
+    "basic": {
+      "train": {
+        "photons": 1401,
+        "unique_10m_pixels": 901,
+        "spatial_2km_groups": 125,
+        "unique_rgt": 4,
+        "depth_0_5": 726,
+        "depth_5_10": 442,
+        "depth_10_15": 146,
+        "depth_15_20": 87
+      },
+      "val": {
+        "photons": 227,
+        "unique_10m_pixels": 164,
+        "spatial_2km_groups": 41,
+        "unique_rgt": 4,
+        "depth_0_5": 72,
+        "depth_5_10": 94,
+        "depth_10_15": 46,
+        "depth_15_20": 15
+      },
+      "test": {
+        "photons": 520,
+        "unique_10m_pixels": 234,
+        "spatial_2km_groups": 39,
+        "unique_rgt": 4,
+        "depth_0_5": 391,
+        "depth_5_10": 66,
+        "depth_10_15": 45,
+        "depth_15_20": 18
+      },
+      "other": {
+        "photons": 602,
+        "unique_10m_pixels": 99,
+        "spatial_2km_groups": 19,
+        "unique_rgt": 3,
+        "depth_0_5": 366,
+        "depth_5_10": 216,
+        "depth_10_15": 17,
+        "depth_15_20": 3
+      }
+    },
+    "quality_ph_zero": {
+      "train": {
+        "photons": 1401,
+        "unique_10m_pixels": 901,
+        "spatial_2km_groups": 125,
+        "unique_rgt": 4,
+        "depth_0_5": 726,
+        "depth_5_10": 442,
+        "depth_10_15": 146,
+        "depth_15_20": 87
+      },
+      "val": {
+        "photons": 225,
+        "unique_10m_pixels": 164,
+        "spatial_2km_groups": 41,
+        "unique_rgt": 4,
+        "depth_0_5": 72,
+        "depth_5_10": 93,
+        "depth_10_15": 45,
+        "depth_15_20": 15
+      },
+      "test": {
+        "photons": 518,
+        "unique_10m_pixels": 233,
+        "spatial_2km_groups": 39,
+        "unique_rgt": 4,
+        "depth_0_5": 391,
+        "depth_5_10": 66,
+        "depth_10_15": 45,
+        "depth_15_20": 16
+      },
+      "other": {
+        "photons": 326,
+        "unique_10m_pixels": 90,
+        "spatial_2km_groups": 18,
+        "unique_rgt": 3,
+        "depth_0_5": 101,
+        "depth_5_10": 205,
+        "depth_10_15": 17,
+        "depth_15_20": 3
+      }
+    },
+    "2022_plus_quality_zero": {
+      "train": {
+        "photons": 526,
+        "unique_10m_pixels": 353,
+        "spatial_2km_groups": 80,
+        "unique_rgt": 4,
+        "depth_0_5": 259,
+        "depth_5_10": 211,
+        "depth_10_15": 36,
+        "depth_15_20": 20
+      },
+      "val": {
+        "photons": 117,
+        "unique_10m_pixels": 84,
+        "spatial_2km_groups": 25,
+        "unique_rgt": 4,
+        "depth_0_5": 36,
+        "depth_5_10": 50,
+        "depth_10_15": 26,
+        "depth_15_20": 5
+      },
+      "test": {
+        "photons": 289,
+        "unique_10m_pixels": 77,
+        "spatial_2km_groups": 25,
+        "unique_rgt": 4,
+        "depth_0_5": 249,
+        "depth_5_10": 20,
+        "depth_10_15": 15,
+        "depth_15_20": 5
+      },
+      "other": {
+        "photons": 280,
+        "unique_10m_pixels": 61,
+        "spatial_2km_groups": 13,
+        "unique_rgt": 3,
+        "depth_0_5": 64,
+        "depth_5_10": 201,
+        "depth_10_15": 12,
+        "depth_15_20": 3
+      }
+    }
+  },
+  "caveats": [
+    "Public SlideRule query emitted invalid-dataframe alerts for some granules; returned set may be incomplete.",
+    "Repeated photons/dates along the same RGT are correlated. Unique row/col cells and 2km groups are more informative than photon count.",
+    "Historical block assignment is descriptive; it does not yet construct leak-free ATL24 patches or certify ground truth."
+  ]
+}

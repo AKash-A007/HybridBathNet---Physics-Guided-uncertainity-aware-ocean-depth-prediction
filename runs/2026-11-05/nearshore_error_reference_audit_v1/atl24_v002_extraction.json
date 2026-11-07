@@ -1,0 +1,164 @@
+{
+  "source": "Official NSIDC ATL24 V002 HDF5 (four CMR bbox-intersecting granules)",
+  "aoi_bbox_lonlat": [
+    76.3,
+    8.9,
+    76.55,
+    9.2
+  ],
+  "all_output_rows_inside_aoi": true,
+  "all_aoi_photons": 562626,
+  "class_counts": {
+    "0": 292053,
+    "41": 270521,
+    "40": 52
+  },
+  "bathymetry_class_confidence_ge_0_6_depth_0_20": 32,
+  "granule_beam_counts": [
+    {
+      "granule": "ATL24_20240109030511_03252207_006_01_002_01.h5",
+      "beam": "gt1l",
+      "photon_rows_in_granule_beam": 13668,
+      "photon_rows_inside_aoi": 0
+    },
+    {
+      "granule": "ATL24_20240109030511_03252207_006_01_002_01.h5",
+      "beam": "gt1r",
+      "photon_rows_in_granule_beam": 77707,
+      "photon_rows_inside_aoi": 0
+    },
+    {
+      "granule": "ATL24_20240109030511_03252207_006_01_002_01.h5",
+      "beam": "gt2l",
+      "photon_rows_in_granule_beam": 8159,
+      "photon_rows_inside_aoi": 0
+    },
+    {
+      "granule": "ATL24_20240109030511_03252207_006_01_002_01.h5",
+      "beam": "gt2r",
+      "photon_rows_in_granule_beam": 178872,
+      "photon_rows_inside_aoi": 0
+    },
+    {
+      "granule": "ATL24_20240109030511_03252207_006_01_002_01.h5",
+      "beam": "gt3l",
+      "photon_rows_in_granule_beam": 24973,
+      "photon_rows_inside_aoi": 0
+    },
+    {
+      "granule": "ATL24_20240109030511_03252207_006_01_002_01.h5",
+      "beam": "gt3r",
+      "photon_rows_in_granule_beam": 208539,
+      "photon_rows_inside_aoi": 0
+    },
+    {
+      "granule": "ATL24_20240207014110_07672207_006_01_002_01.h5",
+      "beam": "gt1l",
+      "photon_rows_in_granule_beam": 134113,
+      "photon_rows_inside_aoi": 14138
+    },
+    {
+      "granule": "ATL24_20240207014110_07672207_006_01_002_01.h5",
+      "beam": "gt1r",
+      "photon_rows_in_granule_beam": 352488,
+      "photon_rows_inside_aoi": 40840
+    },
+    {
+      "granule": "ATL24_20240207014110_07672207_006_01_002_01.h5",
+      "beam": "gt2l",
+      "photon_rows_in_granule_beam": 119567,
+      "photon_rows_inside_aoi": 34516
+    },
+    {
+      "granule": "ATL24_20240207014110_07672207_006_01_002_01.h5",
+      "beam": "gt2r",
+      "photon_rows_in_granule_beam": 251996,
+      "photon_rows_inside_aoi": 71164
+    },
+    {
+      "granule": "ATL24_20240207014110_07672207_006_01_002_01.h5",
+      "beam": "gt3l",
+      "photon_rows_in_granule_beam": 111567,
+      "photon_rows_inside_aoi": 28047
+    },
+    {
+      "granule": "ATL24_20240207014110_07672207_006_01_002_01.h5",
+      "beam": "gt3r",
+      "photon_rows_in_granule_beam": 313934,
+      "photon_rows_inside_aoi": 72721
+    },
+    {
+      "granule": "ATL24_20240408224440_03252307_006_01_002_01.h5",
+      "beam": "gt1l",
+      "photon_rows_in_granule_beam": 84750,
+      "photon_rows_inside_aoi": 10176
+    },
+    {
+      "granule": "ATL24_20240408224440_03252307_006_01_002_01.h5",
+      "beam": "gt1r",
+      "photon_rows_in_granule_beam": 338969,
+      "photon_rows_inside_aoi": 41539
+    },
+    {
+      "granule": "ATL24_20240408224440_03252307_006_01_002_01.h5",
+      "beam": "gt2l",
+      "photon_rows_in_granule_beam": 85233,
+      "photon_rows_inside_aoi": 11442
+    },
+    {
+      "granule": "ATL24_20240408224440_03252307_006_01_002_01.h5",
+      "beam": "gt2r",
+      "photon_rows_in_granule_beam": 287498,
+      "photon_rows_inside_aoi": 39807
+    },
+    {
+      "granule": "ATL24_20240408224440_03252307_006_01_002_01.h5",
+      "beam": "gt3l",
+      "photon_rows_in_granule_beam": 82852,
+      "photon_rows_inside_aoi": 11791
+    },
+    {
+      "granule": "ATL24_20240408224440_03252307_006_01_002_01.h5",
+      "beam": "gt3r",
+      "photon_rows_in_granule_beam": 348248,
+      "photon_rows_inside_aoi": 50212
+    },
+    {
+      "granule": "ATL24_20240413103033_03942301_006_01_002_01.h5",
+      "beam": "gt1l",
+      "photon_rows_in_granule_beam": 138874,
+      "photon_rows_inside_aoi": 5633
+    },
+    {
+      "granule": "ATL24_20240413103033_03942301_006_01_002_01.h5",
+      "beam": "gt1r",
+      "photon_rows_in_granule_beam": 719600,
+      "photon_rows_inside_aoi": 97594
+    },
+    {
+      "granule": "ATL24_20240413103033_03942301_006_01_002_01.h5",
+      "beam": "gt2l",
+      "photon_rows_in_granule_beam": 167422,
+      "photon_rows_inside_aoi": 1821
+    },
+    {
+      "granule": "ATL24_20240413103033_03942301_006_01_002_01.h5",
+      "beam": "gt2r",
+      "photon_rows_in_granule_beam": 810442,
+      "photon_rows_inside_aoi": 31185
+    },
+    {
+      "granule": "ATL24_20240413103033_03942301_006_01_002_01.h5",
+      "beam": "gt3l",
+      "photon_rows_in_granule_beam": 121789,
+      "photon_rows_inside_aoi": 0
+    },
+    {
+      "granule": "ATL24_20240413103033_03942301_006_01_002_01.h5",
+      "beam": "gt3r",
+      "photon_rows_in_granule_beam": 668959,
+      "photon_rows_inside_aoi": 0
+    }
+  ],
+  "note": "No depth labels or splits modified. Photon and quality checks follow."
+}

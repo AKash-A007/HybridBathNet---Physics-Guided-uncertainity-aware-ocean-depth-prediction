@@ -1,0 +1,1158 @@
+{
+  "scope": "Frozen v1. No data, model, split, or predictions modified.",
+  "reference": "GEBCO interpolated from ~15-arc-second source; no native quality/type flag in saved patches.",
+  "proxy_caveat": "SCL counts are centre classifications across distinct dates, not a whole-patch image-quality assessment. Temporal standard deviation is across-date variability, not sensor noise; NIR/red/NDWI do not independently distinguish glint, turbidity, bottom type or cloud.",
+  "scene_dates": [
+    "20240113",
+    "20240118",
+    "20240123",
+    "20240128",
+    "20240207",
+    "20240212",
+    "20240217",
+    "20240222",
+    "20240303",
+    "20240308",
+    "20240313",
+    "20240318"
+  ],
+  "crs": "EPSG:32643",
+  "grid_transform": [
+    9.99742425894957,
+    0.0,
+    642938.9642970185,
+    0.0,
+    -9.998403762037459,
+    1017332.0812208673
+  ],
+  "splits": {
+    "train": {
+      "10_15_m": {
+        "n": 191,
+        "proxy_summary": {
+          "composite_blue": {
+            "n": 191,
+            "median": 0.05524750053882599,
+            "p10": 0.050458185374736786,
+            "p90": 0.058882467448711395
+          },
+          "composite_green": {
+            "n": 191,
+            "median": 0.046318911015987396,
+            "p10": 0.04157465696334839,
+            "p90": 0.05239493027329445
+          },
+          "composite_red": {
+            "n": 191,
+            "median": 0.023241613060235977,
+            "p10": 0.021484248340129852,
+            "p90": 0.026521706953644753
+          },
+          "composite_nir": {
+            "n": 191,
+            "median": 0.01573355682194233,
+            "p10": 0.014192578382790089,
+            "p90": 0.01757776364684105
+          },
+          "composite_ndwi": {
+            "n": 191,
+            "median": 0.5012321834534303,
+            "p10": 0.4375744808220986,
+            "p90": 0.5402055136474391
+          },
+          "composite_bg_temporal_std_l2": {
+            "n": 191,
+            "median": 0.016674745827913284,
+            "p10": 0.012796944007277489,
+            "p90": 0.02130011096596718
+          },
+          "valid_patch_fraction": {
+            "n": 191,
+            "median": 1.0,
+            "p10": 1.0,
+            "p90": 1.0
+          },
+          "patch_gebco_depth_range_m": {
+            "n": 191,
+            "median": 1.7579469680786133,
+            "p10": 0.9551811218261719,
+            "p90": 3.7059364318847656
+          },
+          "scl_available_scene_count": {
+            "n": 191,
+            "median": 8.0,
+            "p10": 8.0,
+            "p90": 12.0
+          },
+          "scl_clear_scene_count": {
+            "n": 191,
+            "median": 7.0,
+            "p10": 6.0,
+            "p90": 12.0
+          },
+          "scl_water_scene_count": {
+            "n": 191,
+            "median": 7.0,
+            "p10": 6.0,
+            "p90": 12.0
+          },
+          "scl_cloud_shadow_scene_count": {
+            "n": 191,
+            "median": 1.0,
+            "p10": 0.0,
+            "p90": 2.0
+          }
+        }
+      },
+      "other_0_20_m": {
+        "n": 446,
+        "proxy_summary": {
+          "composite_blue": {
+            "n": 446,
+            "median": 0.053893424570560455,
+            "p10": 0.04955076240003109,
+            "p90": 0.06117091327905655
+          },
+          "composite_green": {
+            "n": 446,
+            "median": 0.043279921635985374,
+            "p10": 0.037494784221053123,
+            "p90": 0.06067460589110851
+          },
+          "composite_red": {
+            "n": 446,
+            "median": 0.02227378450334072,
+            "p10": 0.0197478411719203,
+            "p90": 0.03327728249132633
+          },
+          "composite_nir": {
+            "n": 446,
+            "median": 0.01609678566455841,
+            "p10": 0.01349908160045743,
+            "p90": 0.020162777975201607
+          },
+          "composite_ndwi": {
+            "n": 446,
+            "median": 0.48223304834387637,
+            "p10": 0.42649787649263343,
+            "p90": 0.5216665590983913
+          },
+          "composite_bg_temporal_std_l2": {
+            "n": 446,
+            "median": 0.016574776731431484,
+            "p10": 0.010388318449258804,
+            "p90": 0.02654112409800291
+          },
+          "valid_patch_fraction": {
+            "n": 446,
+            "median": 1.0,
+            "p10": 0.92041015625,
+            "p90": 1.0
+          },
+          "patch_gebco_depth_range_m": {
+            "n": 446,
+            "median": 1.8170475959777832,
+            "p10": 0.8871278762817383,
+            "p90": 5.596357345581055
+          },
+          "scl_available_scene_count": {
+            "n": 446,
+            "median": 8.0,
+            "p10": 8.0,
+            "p90": 12.0
+          },
+          "scl_clear_scene_count": {
+            "n": 446,
+            "median": 8.0,
+            "p10": 6.0,
+            "p90": 12.0
+          },
+          "scl_water_scene_count": {
+            "n": 446,
+            "median": 8.0,
+            "p10": 6.0,
+            "p90": 12.0
+          },
+          "scl_cloud_shadow_scene_count": {
+            "n": 446,
+            "median": 1.0,
+            "p10": 0.0,
+            "p90": 2.0
+          }
+        }
+      }
+    },
+    "val": {
+      "10_15_m": {
+        "n": 64,
+        "proxy_summary": {
+          "composite_blue": {
+            "n": 64,
+            "median": 0.05602451600134373,
+            "p10": 0.05038064606487751,
+            "p90": 0.05999343916773796
+          },
+          "composite_green": {
+            "n": 64,
+            "median": 0.04520064406096935,
+            "p10": 0.041085248440504075,
+            "p90": 0.05590291693806648
+          },
+          "composite_red": {
+            "n": 64,
+            "median": 0.023720795288681984,
+            "p10": 0.02120363526046276,
+            "p90": 0.027872757613658906
+          },
+          "composite_nir": {
+            "n": 64,
+            "median": 0.016493440605700016,
+            "p10": 0.014099725056439638,
+            "p90": 0.017704382166266443
+          },
+          "composite_ndwi": {
+            "n": 64,
+            "median": 0.4882510633387171,
+            "p10": 0.4457011630487199,
+            "p90": 0.5229360728688266
+          },
+          "composite_bg_temporal_std_l2": {
+            "n": 64,
+            "median": 0.017129620537161827,
+            "p10": 0.012980632949620485,
+            "p90": 0.0337810330092907
+          },
+          "valid_patch_fraction": {
+            "n": 64,
+            "median": 1.0,
+            "p10": 1.0,
+            "p90": 1.0
+          },
+          "patch_gebco_depth_range_m": {
+            "n": 64,
+            "median": 2.246736526489258,
+            "p10": 1.3804919242858886,
+            "p90": 3.5697166442871096
+          },
+          "scl_available_scene_count": {
+            "n": 64,
+            "median": 8.0,
+            "p10": 8.0,
+            "p90": 12.0
+          },
+          "scl_clear_scene_count": {
+            "n": 64,
+            "median": 7.5,
+            "p10": 6.0,
+            "p90": 12.0
+          },
+          "scl_water_scene_count": {
+            "n": 64,
+            "median": 7.5,
+            "p10": 6.0,
+            "p90": 12.0
+          },
+          "scl_cloud_shadow_scene_count": {
+            "n": 64,
+            "median": 1.0,
+            "p10": 0.0,
+            "p90": 2.0
+          }
+        },
+        "rmse_m": 1.6647205037821209,
+        "bias_m": 0.37621909379959106,
+        "grid_group_count": 12,
+        "groups": [
+          {
+            "grid_group": [
+              14,
+              10
+            ],
+            "n": 6,
+            "bias_m": -3.1230772336324057,
+            "rmse_m": 3.155161921447584,
+            "squared_error_fraction_of_bin": 0.33676885710119564,
+            "proxy_medians": {
+              "composite_blue": 0.05739603564143181,
+              "composite_green": 0.04937273636460304,
+              "composite_red": 0.02606764156371355,
+              "composite_nir": 0.016359789296984673,
+              "composite_ndwi": 0.4984895645930565,
+              "composite_bg_temporal_std_l2": 0.013179613277316093,
+              "valid_patch_fraction": 1.0,
+              "patch_gebco_depth_range_m": 2.3048391342163086,
+              "scl_available_scene_count": 8.0,
+              "scl_clear_scene_count": 8.0,
+              "scl_water_scene_count": 8.0,
+              "scl_cloud_shadow_scene_count": 0.0
+            }
+          },
+          {
+            "grid_group": [
+              5,
+              6
+            ],
+            "n": 9,
+            "bias_m": 1.6082756254408095,
+            "rmse_m": 1.9037934217542547,
+            "squared_error_fraction_of_bin": 0.18391600383404846,
+            "proxy_medians": {
+              "composite_blue": 0.05140231177210808,
+              "composite_green": 0.043849050998687744,
+              "composite_red": 0.022301336750388145,
+              "composite_nir": 0.014355639927089214,
+              "composite_ndwi": 0.5013992442439401,
+              "composite_bg_temporal_std_l2": 0.022954288870096207,
+              "valid_patch_fraction": 1.0,
+              "patch_gebco_depth_range_m": 2.3650197982788086,
+              "scl_available_scene_count": 8.0,
+              "scl_clear_scene_count": 6.0,
+              "scl_water_scene_count": 6.0,
+              "scl_cloud_shadow_scene_count": 2.0
+            }
+          },
+          {
+            "grid_group": [
+              11,
+              9
+            ],
+            "n": 11,
+            "bias_m": 1.3512894890525124,
+            "rmse_m": 1.547669071992392,
+            "squared_error_fraction_of_bin": 0.14855465385982,
+            "proxy_medians": {
+              "composite_blue": 0.05418834462761879,
+              "composite_green": 0.0424811951816082,
+              "composite_red": 0.023267501965165138,
+              "composite_nir": 0.016553442925214767,
+              "composite_ndwi": 0.44555379650096905,
+              "composite_bg_temporal_std_l2": 0.015758628025650978,
+              "valid_patch_fraction": 1.0,
+              "patch_gebco_depth_range_m": 1.7482452392578125,
+              "scl_available_scene_count": 12.0,
+              "scl_clear_scene_count": 12.0,
+              "scl_water_scene_count": 12.0,
+              "scl_cloud_shadow_scene_count": 0.0
+            }
+          },
+          {
+            "grid_group": [
+              8,
+              9
+            ],
+            "n": 8,
+            "bias_m": -0.13671743869781494,
+            "rmse_m": 1.5279837732503543,
+            "squared_error_fraction_of_bin": 0.10530884271205679,
+            "proxy_medians": {
+              "composite_blue": 0.05723741091787815,
+              "composite_green": 0.04940861836075783,
+              "composite_red": 0.02511679381132126,
+              "composite_nir": 0.016921029426157475,
+              "composite_ndwi": 0.4884288960263449,
+              "composite_bg_temporal_std_l2": 0.027975902892649174,
+              "valid_patch_fraction": 1.0,
+              "patch_gebco_depth_range_m": 3.836465835571289,
+              "scl_available_scene_count": 8.0,
+              "scl_clear_scene_count": 6.5,
+              "scl_water_scene_count": 6.5,
+              "scl_cloud_shadow_scene_count": 1.5
+            }
+          },
+          {
+            "grid_group": [
+              6,
+              7
+            ],
+            "n": 8,
+            "bias_m": 1.1728882789611816,
+            "rmse_m": 1.2171337814443581,
+            "squared_error_fraction_of_bin": 0.06681961800987207,
+            "proxy_medians": {
+              "composite_blue": 0.049541961401700974,
+              "composite_green": 0.040892038494348526,
+              "composite_red": 0.02121421881020069,
+              "composite_nir": 0.014453121926635504,
+              "composite_ndwi": 0.48182709290298853,
+              "composite_bg_temporal_std_l2": 0.018325913697481155,
+              "valid_patch_fraction": 1.0,
+              "patch_gebco_depth_range_m": 2.256777763366699,
+              "scl_available_scene_count": 8.0,
+              "scl_clear_scene_count": 6.0,
+              "scl_water_scene_count": 6.0,
+              "scl_cloud_shadow_scene_count": 2.0
+            }
+          },
+          {
+            "grid_group": [
+              11,
+              10
+            ],
+            "n": 5,
+            "bias_m": 1.3380226135253905,
+            "rmse_m": 1.455529601253562,
+            "squared_error_fraction_of_bin": 0.05972407847297547,
+            "proxy_medians": {
+              "composite_blue": 0.05781819671392441,
+              "composite_green": 0.04919252172112465,
+              "composite_red": 0.024362750351428986,
+              "composite_nir": 0.01737358421087265,
+              "composite_ndwi": 0.48703471409346805,
+              "composite_bg_temporal_std_l2": 0.016508661210536957,
+              "valid_patch_fraction": 1.0,
+              "patch_gebco_depth_range_m": 1.6581659317016602,
+              "scl_available_scene_count": 12.0,
+              "scl_clear_scene_count": 12.0,
+              "scl_water_scene_count": 12.0,
+              "scl_cloud_shadow_scene_count": 0.0
+            }
+          },
+          {
+            "grid_group": [
+              12,
+              9
+            ],
+            "n": 2,
+            "bias_m": 2.186819076538086,
+            "rmse_m": 2.22051622755214,
+            "squared_error_fraction_of_bin": 0.055600060882409985,
+            "proxy_medians": {
+              "composite_blue": 0.0515255369246006,
+              "composite_green": 0.04070194810628891,
+              "composite_red": 0.020978898741304874,
+              "composite_nir": 0.01520489202812314,
+              "composite_ndwi": 0.45602658728339684,
+              "composite_bg_temporal_std_l2": 0.018524519633501768,
+              "valid_patch_fraction": 1.0,
+              "patch_gebco_depth_range_m": 2.380286693572998,
+              "scl_available_scene_count": 12.0,
+              "scl_clear_scene_count": 10.5,
+              "scl_water_scene_count": 10.5,
+              "scl_cloud_shadow_scene_count": 1.5
+            }
+          },
+          {
+            "grid_group": [
+              1,
+              6
+            ],
+            "n": 5,
+            "bias_m": -0.8282752990722656,
+            "rmse_m": 1.0160256702501647,
+            "squared_error_fraction_of_bin": 0.029101591116602002,
+            "proxy_medians": {
+              "composite_blue": 0.06290463358163834,
+              "composite_green": 0.056859396398067474,
+              "composite_red": 0.028491990640759468,
+              "composite_nir": 0.018695756793022156,
+              "composite_ndwi": 0.5148335043582744,
+              "composite_bg_temporal_std_l2": 0.016273286193609238,
+              "valid_patch_fraction": 1.0,
+              "patch_gebco_depth_range_m": 1.7497053146362305,
+              "scl_available_scene_count": 8.0,
+              "scl_clear_scene_count": 6.0,
+              "scl_water_scene_count": 6.0,
+              "scl_cloud_shadow_scene_count": 2.0
+            }
+          },
+          {
+            "grid_group": [
+              0,
+              6
+            ],
+            "n": 2,
+            "bias_m": -0.5570530891418457,
+            "rmse_m": 0.7931495065896143,
+            "squared_error_fraction_of_bin": 0.007093776172975183,
+            "proxy_medians": {
+              "composite_blue": 0.06057971343398094,
+              "composite_green": 0.05668863281607628,
+              "composite_red": 0.02747005596756935,
+              "composite_nir": 0.017249129712581635,
+              "composite_ndwi": 0.5335649855947326,
+              "composite_bg_temporal_std_l2": 0.02005030121654272,
+              "valid_patch_fraction": 1.0,
+              "patch_gebco_depth_range_m": 5.4270148277282715,
+              "scl_available_scene_count": 8.0,
+              "scl_clear_scene_count": 8.0,
+              "scl_water_scene_count": 8.0,
+              "scl_cloud_shadow_scene_count": 0.0
+            }
+          },
+          {
+            "grid_group": [
+              2,
+              5
+            ],
+            "n": 4,
+            "bias_m": -0.06693530082702637,
+            "rmse_m": 0.37402055519355254,
+            "squared_error_fraction_of_bin": 0.003154919636625045,
+            "proxy_medians": {
+              "composite_blue": 0.05624137632548809,
+              "composite_green": 0.0447649285197258,
+              "composite_red": 0.0214346656575799,
+              "composite_nir": 0.014099956955760717,
+              "composite_ndwi": 0.5195002083216349,
+              "composite_bg_temporal_std_l2": 0.018896114081144333,
+              "valid_patch_fraction": 1.0,
+              "patch_gebco_depth_range_m": 1.6390671730041504,
+              "scl_available_scene_count": 8.0,
+              "scl_clear_scene_count": 7.0,
+              "scl_water_scene_count": 7.0,
+              "scl_cloud_shadow_scene_count": 1.0
+            }
+          },
+          {
+            "grid_group": [
+              2,
+              7
+            ],
+            "n": 1,
+            "bias_m": -0.746307373046875,
+            "rmse_m": 0.746307373046875,
+            "squared_error_fraction_of_bin": 0.0031403122488369555,
+            "proxy_medians": {
+              "composite_blue": 0.0600435808300972,
+              "composite_green": 0.05582922324538231,
+              "composite_red": 0.029031524434685707,
+              "composite_nir": 0.016524663195014,
+              "composite_ndwi": 0.5432191519331064,
+              "composite_bg_temporal_std_l2": 0.015561346895992756,
+              "valid_patch_fraction": 1.0,
+              "patch_gebco_depth_range_m": 2.3522424697875977,
+              "scl_available_scene_count": 8.0,
+              "scl_clear_scene_count": 6.0,
+              "scl_water_scene_count": 6.0,
+              "scl_cloud_shadow_scene_count": 2.0
+            }
+          },
+          {
+            "grid_group": [
+              12,
+              10
+            ],
+            "n": 3,
+            "bias_m": 0.1314112345377604,
+            "rmse_m": 0.21981519255446566,
+            "squared_error_fraction_of_bin": 0.0008172859525824185,
+            "proxy_medians": {
+              "composite_blue": 0.056900449097156525,
+              "composite_green": 0.04901507496833801,
+              "composite_red": 0.02557608298957348,
+              "composite_nir": 0.017174024134874344,
+              "composite_ndwi": 0.4810545876931366,
+              "composite_bg_temporal_std_l2": 0.01562357135117054,
+              "valid_patch_fraction": 1.0,
+              "patch_gebco_depth_range_m": 1.9592695236206055,
+              "scl_available_scene_count": 12.0,
+              "scl_clear_scene_count": 12.0,
+              "scl_water_scene_count": 12.0,
+              "scl_cloud_shadow_scene_count": 0.0
+            }
+          }
+        ],
+        "top_four_squared_error_fraction": 0.7745483575071209
+      },
+      "other_0_20_m": {
+        "n": 144,
+        "proxy_summary": {
+          "composite_blue": {
+            "n": 144,
+            "median": 0.0545840784907341,
+            "p10": 0.051223478838801385,
+            "p90": 0.06089230887591839
+          },
+          "composite_green": {
+            "n": 144,
+            "median": 0.04823371395468712,
+            "p10": 0.03801604881882668,
+            "p90": 0.06274504289031028
+          },
+          "composite_red": {
+            "n": 144,
+            "median": 0.02388364914804697,
+            "p10": 0.019368964619934557,
+            "p90": 0.03459648825228214
+          },
+          "composite_nir": {
+            "n": 144,
+            "median": 0.015921921469271183,
+            "p10": 0.013385053910315036,
+            "p90": 0.02019935715943575
+          },
+          "composite_ndwi": {
+            "n": 144,
+            "median": 0.4915408140758212,
+            "p10": 0.45835384620144276,
+            "p90": 0.5311447258803162
+          },
+          "composite_bg_temporal_std_l2": {
+            "n": 144,
+            "median": 0.017784422263503075,
+            "p10": 0.01346345068886876,
+            "p90": 0.02475290969014168
+          },
+          "valid_patch_fraction": {
+            "n": 144,
+            "median": 1.0,
+            "p10": 1.0,
+            "p90": 1.0
+          },
+          "patch_gebco_depth_range_m": {
+            "n": 144,
+            "median": 1.651850700378418,
+            "p10": 0.6961021423339844,
+            "p90": 4.355974531173712
+          },
+          "scl_available_scene_count": {
+            "n": 144,
+            "median": 8.0,
+            "p10": 8.0,
+            "p90": 12.0
+          },
+          "scl_clear_scene_count": {
+            "n": 144,
+            "median": 8.0,
+            "p10": 6.0,
+            "p90": 12.0
+          },
+          "scl_water_scene_count": {
+            "n": 144,
+            "median": 8.0,
+            "p10": 6.0,
+            "p90": 12.0
+          },
+          "scl_cloud_shadow_scene_count": {
+            "n": 144,
+            "median": 0.0,
+            "p10": 0.0,
+            "p90": 2.0
+          }
+        }
+      }
+    },
+    "test": {
+      "10_15_m": {
+        "n": 64,
+        "proxy_summary": {
+          "composite_blue": {
+            "n": 64,
+            "median": 0.05512707866728306,
+            "p10": 0.051705322414636615,
+            "p90": 0.05923371464014053
+          },
+          "composite_green": {
+            "n": 64,
+            "median": 0.049590785056352615,
+            "p10": 0.04326639138162136,
+            "p90": 0.05705468803644181
+          },
+          "composite_red": {
+            "n": 64,
+            "median": 0.025411181151866913,
+            "p10": 0.022635013982653617,
+            "p90": 0.029719947837293148
+          },
+          "composite_nir": {
+            "n": 64,
+            "median": 0.017029370181262493,
+            "p10": 0.015697821229696273,
+            "p90": 0.01889877412468195
+          },
+          "composite_ndwi": {
+            "n": 64,
+            "median": 0.48516766123915056,
+            "p10": 0.45634720288263403,
+            "p90": 0.5117056186333738
+          },
+          "composite_bg_temporal_std_l2": {
+            "n": 64,
+            "median": 0.020168962888419628,
+            "p10": 0.01310970988124609,
+            "p90": 0.03652787357568741
+          },
+          "valid_patch_fraction": {
+            "n": 64,
+            "median": 1.0,
+            "p10": 1.0,
+            "p90": 1.0
+          },
+          "patch_gebco_depth_range_m": {
+            "n": 64,
+            "median": 2.783557891845703,
+            "p10": 1.170422649383545,
+            "p90": 6.409034252166749
+          },
+          "scl_available_scene_count": {
+            "n": 64,
+            "median": 8.0,
+            "p10": 8.0,
+            "p90": 12.0
+          },
+          "scl_clear_scene_count": {
+            "n": 64,
+            "median": 6.0,
+            "p10": 6.0,
+            "p90": 12.0
+          },
+          "scl_water_scene_count": {
+            "n": 64,
+            "median": 6.0,
+            "p10": 6.0,
+            "p90": 12.0
+          },
+          "scl_cloud_shadow_scene_count": {
+            "n": 64,
+            "median": 2.0,
+            "p10": 0.0,
+            "p90": 2.0
+          }
+        },
+        "rmse_m": 3.2548281711719373,
+        "bias_m": -1.8628464862704277,
+        "grid_group_count": 15,
+        "groups": [
+          {
+            "grid_group": [
+              9,
+              11
+            ],
+            "n": 5,
+            "bias_m": -6.239458084106445,
+            "rmse_m": 6.3526352113090665,
+            "squared_error_fraction_of_bin": 0.2976060343187419,
+            "proxy_medians": {
+              "composite_blue": 0.05875443294644356,
+              "composite_green": 0.057967618107795715,
+              "composite_red": 0.02991757169365883,
+              "composite_nir": 0.01857294887304306,
+              "composite_ndwi": 0.5137656362225597,
+              "composite_bg_temporal_std_l2": 0.01868300884962082,
+              "valid_patch_fraction": 1.0,
+              "patch_gebco_depth_range_m": 4.331159591674805,
+              "scl_available_scene_count": 12.0,
+              "scl_clear_scene_count": 12.0,
+              "scl_water_scene_count": 12.0,
+              "scl_cloud_shadow_scene_count": 0.0
+            }
+          },
+          {
+            "grid_group": [
+              6,
+              8
+            ],
+            "n": 11,
+            "bias_m": -3.1943165172230112,
+            "rmse_m": 3.384166537157188,
+            "squared_error_fraction_of_bin": 0.1858061276322663,
+            "proxy_medians": {
+              "composite_blue": 0.05436912178993225,
+              "composite_green": 0.04944252967834473,
+              "composite_red": 0.025112107396125793,
+              "composite_nir": 0.01689625158905983,
+              "composite_ndwi": 0.49150496351836753,
+              "composite_bg_temporal_std_l2": 0.024498233571648598,
+              "valid_patch_fraction": 1.0,
+              "patch_gebco_depth_range_m": 2.2670516967773438,
+              "scl_available_scene_count": 8.0,
+              "scl_clear_scene_count": 6.0,
+              "scl_water_scene_count": 6.0,
+              "scl_cloud_shadow_scene_count": 2.0
+            }
+          },
+          {
+            "grid_group": [
+              7,
+              9
+            ],
+            "n": 3,
+            "bias_m": -6.159769852956136,
+            "rmse_m": 6.161770525664525,
+            "squared_error_fraction_of_bin": 0.1679949354192673,
+            "proxy_medians": {
+              "composite_blue": 0.05930490046739578,
+              "composite_green": 0.055112071335315704,
+              "composite_red": 0.029889008030295372,
+              "composite_nir": 0.020316004753112793,
+              "composite_ndwi": 0.46130840236476056,
+              "composite_bg_temporal_std_l2": 0.01712751016020775,
+              "valid_patch_fraction": 1.0,
+              "patch_gebco_depth_range_m": 11.407776832580566,
+              "scl_available_scene_count": 8.0,
+              "scl_clear_scene_count": 6.0,
+              "scl_water_scene_count": 6.0,
+              "scl_cloud_shadow_scene_count": 2.0
+            }
+          },
+          {
+            "grid_group": [
+              10,
+              11
+            ],
+            "n": 3,
+            "bias_m": -4.993966738382976,
+            "rmse_m": 5.033582614471371,
+            "squared_error_fraction_of_bin": 0.11210876028779285,
+            "proxy_medians": {
+              "composite_blue": 0.062456294894218445,
+              "composite_green": 0.057984717190265656,
+              "composite_red": 0.030956950038671494,
+              "composite_nir": 0.020237987861037254,
+              "composite_ndwi": 0.48254847177683874,
+              "composite_bg_temporal_std_l2": 0.023019414395093918,
+              "valid_patch_fraction": 1.0,
+              "patch_gebco_depth_range_m": 3.6233396530151367,
+              "scl_available_scene_count": 12.0,
+              "scl_clear_scene_count": 12.0,
+              "scl_water_scene_count": 12.0,
+              "scl_cloud_shadow_scene_count": 0.0
+            }
+          },
+          {
+            "grid_group": [
+              3,
+              5
+            ],
+            "n": 6,
+            "bias_m": 2.9639600118001304,
+            "rmse_m": 2.973056562310517,
+            "squared_error_fraction_of_bin": 0.07822066203426069,
+            "proxy_medians": {
+              "composite_blue": 0.05264408700168133,
+              "composite_green": 0.04092683456838131,
+              "composite_red": 0.020311174914240837,
+              "composite_nir": 0.013559106271713972,
+              "composite_ndwi": 0.5004487858652044,
+              "composite_bg_temporal_std_l2": 0.018281920813024044,
+              "valid_patch_fraction": 1.0,
+              "patch_gebco_depth_range_m": 1.3011846542358398,
+              "scl_available_scene_count": 8.0,
+              "scl_clear_scene_count": 7.5,
+              "scl_water_scene_count": 7.5,
+              "scl_cloud_shadow_scene_count": 0.5
+            }
+          },
+          {
+            "grid_group": [
+              8,
+              8
+            ],
+            "n": 4,
+            "bias_m": -2.4870922565460205,
+            "rmse_m": 2.854873543482007,
+            "squared_error_fraction_of_bin": 0.04808367319373185,
+            "proxy_medians": {
+              "composite_blue": 0.05303317308425903,
+              "composite_green": 0.04589872993528843,
+              "composite_red": 0.023101603612303734,
+              "composite_nir": 0.01657988503575325,
+              "composite_ndwi": 0.46744225139447154,
+              "composite_bg_temporal_std_l2": 0.023511718958616257,
+              "valid_patch_fraction": 1.0,
+              "patch_gebco_depth_range_m": 2.204616069793701,
+              "scl_available_scene_count": 8.0,
+              "scl_clear_scene_count": 6.0,
+              "scl_water_scene_count": 6.0,
+              "scl_cloud_shadow_scene_count": 2.0
+            }
+          },
+          {
+            "grid_group": [
+              5,
+              8
+            ],
+            "n": 11,
+            "bias_m": -0.952617731961337,
+            "rmse_m": 1.7130851568739673,
+            "squared_error_fraction_of_bin": 0.04761178710042563,
+            "proxy_medians": {
+              "composite_blue": 0.056257300078868866,
+              "composite_green": 0.05112143233418465,
+              "composite_red": 0.026430564001202583,
+              "composite_nir": 0.01780150830745697,
+              "composite_ndwi": 0.48453570853119515,
+              "composite_bg_temporal_std_l2": 0.02586851269006729,
+              "valid_patch_fraction": 1.0,
+              "patch_gebco_depth_range_m": 2.7535905838012695,
+              "scl_available_scene_count": 8.0,
+              "scl_clear_scene_count": 6.0,
+              "scl_water_scene_count": 6.0,
+              "scl_cloud_shadow_scene_count": 2.0
+            }
+          },
+          {
+            "grid_group": [
+              8,
+              9
+            ],
+            "n": 5,
+            "bias_m": -1.3369770050048828,
+            "rmse_m": 2.0341698521113383,
+            "squared_error_fraction_of_bin": 0.030514645206805885,
+            "proxy_medians": {
+              "composite_blue": 0.05635024979710579,
+              "composite_green": 0.0504237525165081,
+              "composite_red": 0.02534020133316517,
+              "composite_nir": 0.017315039411187172,
+              "composite_ndwi": 0.4861504927441889,
+              "composite_bg_temporal_std_l2": 0.02598271146416664,
+              "valid_patch_fraction": 1.0,
+              "patch_gebco_depth_range_m": 6.456411361694336,
+              "scl_available_scene_count": 8.0,
+              "scl_clear_scene_count": 6.0,
+              "scl_water_scene_count": 6.0,
+              "scl_cloud_shadow_scene_count": 2.0
+            }
+          },
+          {
+            "grid_group": [
+              13,
+              10
+            ],
+            "n": 3,
+            "bias_m": -1.8923781712849934,
+            "rmse_m": 2.0046318395391696,
+            "squared_error_fraction_of_bin": 0.017780926886682803,
+            "proxy_medians": {
+              "composite_blue": 0.05454207956790924,
+              "composite_green": 0.04564188793301582,
+              "composite_red": 0.024289710447192192,
+              "composite_nir": 0.01690492033958435,
+              "composite_ndwi": 0.4594400409393729,
+              "composite_bg_temporal_std_l2": 0.012598495930433273,
+              "valid_patch_fraction": 1.0,
+              "patch_gebco_depth_range_m": 2.3802080154418945,
+              "scl_available_scene_count": 8.0,
+              "scl_clear_scene_count": 8.0,
+              "scl_water_scene_count": 8.0,
+              "scl_cloud_shadow_scene_count": 0.0
+            }
+          },
+          {
+            "grid_group": [
+              6,
+              9
+            ],
+            "n": 1,
+            "bias_m": -2.0386743545532227,
+            "rmse_m": 2.0386743545532227,
+            "squared_error_fraction_of_bin": 0.006129987840454496,
+            "proxy_medians": {
+              "composite_blue": 0.05731320008635521,
+              "composite_green": 0.05186910554766655,
+              "composite_red": 0.02743665501475334,
+              "composite_nir": 0.017949778586626053,
+              "composite_ndwi": 0.4858118483238895,
+              "composite_bg_temporal_std_l2": 0.030901862308382988,
+              "valid_patch_fraction": 1.0,
+              "patch_gebco_depth_range_m": 4.230329513549805,
+              "scl_available_scene_count": 8.0,
+              "scl_clear_scene_count": 6.0,
+              "scl_water_scene_count": 6.0,
+              "scl_cloud_shadow_scene_count": 2.0
+            }
+          },
+          {
+            "grid_group": [
+              9,
+              9
+            ],
+            "n": 6,
+            "bias_m": 0.22308619817097983,
+            "rmse_m": 0.6064342780781261,
+            "squared_error_fraction_of_bin": 0.0032544876411220603,
+            "proxy_medians": {
+              "composite_blue": 0.051906805485486984,
+              "composite_green": 0.04428737983107567,
+              "composite_red": 0.02347504161298275,
+              "composite_nir": 0.0166948065161705,
+              "composite_ndwi": 0.4565067316405912,
+              "composite_bg_temporal_std_l2": 0.01615834515541792,
+              "valid_patch_fraction": 1.0,
+              "patch_gebco_depth_range_m": 2.3947367668151855,
+              "scl_available_scene_count": 12.0,
+              "scl_clear_scene_count": 12.0,
+              "scl_water_scene_count": 12.0,
+              "scl_cloud_shadow_scene_count": 0.0
+            }
+          },
+          {
+            "grid_group": [
+              10,
+              9
+            ],
+            "n": 3,
+            "bias_m": -0.5394938786824545,
+            "rmse_m": 0.732803966710644,
+            "squared_error_fraction_of_bin": 0.0023760784272248,
+            "proxy_medians": {
+              "composite_blue": 0.052377160638570786,
+              "composite_green": 0.045333776623010635,
+              "composite_red": 0.02265307493507862,
+              "composite_nir": 0.016732031479477882,
+              "composite_ndwi": 0.4608219113878677,
+              "composite_bg_temporal_std_l2": 0.02361014112830162,
+              "valid_patch_fraction": 1.0,
+              "patch_gebco_depth_range_m": 3.115311622619629,
+              "scl_available_scene_count": 12.0,
+              "scl_clear_scene_count": 12.0,
+              "scl_water_scene_count": 12.0,
+              "scl_cloud_shadow_scene_count": 0.0
+            }
+          },
+          {
+            "grid_group": [
+              13,
+              9
+            ],
+            "n": 1,
+            "bias_m": -1.0899982452392578,
+            "rmse_m": 1.0899982452392578,
+            "squared_error_fraction_of_bin": 0.0017523283655507364,
+            "proxy_medians": {
+              "composite_blue": 0.055499542504549026,
+              "composite_green": 0.044274307787418365,
+              "composite_red": 0.02387917786836624,
+              "composite_nir": 0.016009539365768433,
+              "composite_ndwi": 0.46885361341014514,
+              "composite_bg_temporal_std_l2": 0.012005907483398914,
+              "valid_patch_fraction": 1.0,
+              "patch_gebco_depth_range_m": 2.380197525024414,
+              "scl_available_scene_count": 8.0,
+              "scl_clear_scene_count": 8.0,
+              "scl_water_scene_count": 8.0,
+              "scl_cloud_shadow_scene_count": 0.0
+            }
+          },
+          {
+            "grid_group": [
+              7,
+              10
+            ],
+            "n": 1,
+            "bias_m": -0.5433950424194336,
+            "rmse_m": 0.5433950424194336,
+            "squared_error_fraction_of_bin": 0.00043550709765382157,
+            "proxy_medians": {
+              "composite_blue": 0.05798795074224472,
+              "composite_green": 0.05457751825451851,
+              "composite_red": 0.028796620666980743,
+              "composite_nir": 0.018682532012462616,
+              "composite_ndwi": 0.4899600280264317,
+              "composite_bg_temporal_std_l2": 0.015610787086188793,
+              "valid_patch_fraction": 1.0,
+              "patch_gebco_depth_range_m": 9.542709350585938,
+              "scl_available_scene_count": 8.0,
+              "scl_clear_scene_count": 7.0,
+              "scl_water_scene_count": 7.0,
+              "scl_cloud_shadow_scene_count": 1.0
+            }
+          },
+          {
+            "grid_group": [
+              2,
+              7
+            ],
+            "n": 1,
+            "bias_m": -0.4687376022338867,
+            "rmse_m": 0.4687376022338867,
+            "squared_error_fraction_of_bin": 0.0003240585480188727,
+            "proxy_medians": {
+              "composite_blue": 0.05906761437654495,
+              "composite_green": 0.05728336423635483,
+              "composite_red": 0.028753669932484627,
+              "composite_nir": 0.01841951347887516,
+              "composite_ndwi": 0.5133667115926493,
+              "composite_bg_temporal_std_l2": 0.015596878714859486,
+              "valid_patch_fraction": 1.0,
+              "patch_gebco_depth_range_m": 2.362640380859375,
+              "scl_available_scene_count": 8.0,
+              "scl_clear_scene_count": 6.0,
+              "scl_water_scene_count": 6.0,
+              "scl_cloud_shadow_scene_count": 2.0
+            }
+          }
+        ],
+        "top_four_squared_error_fraction": 0.7635158576580683
+      },
+      "other_0_20_m": {
+        "n": 164,
+        "proxy_summary": {
+          "composite_blue": {
+            "n": 164,
+            "median": 0.054758504033088684,
+            "p10": 0.05127749629318714,
+            "p90": 0.060273736342787744
+          },
+          "composite_green": {
+            "n": 164,
+            "median": 0.04673010855913162,
+            "p10": 0.03924478031694889,
+            "p90": 0.060672020912170416
+          },
+          "composite_red": {
+            "n": 164,
+            "median": 0.024244400672614574,
+            "p10": 0.019868507236242294,
+            "p90": 0.032446035370230684
+          },
+          "composite_nir": {
+            "n": 164,
+            "median": 0.016852923668920994,
+            "p10": 0.013383797835558653,
+            "p90": 0.020174172148108484
+          },
+          "composite_ndwi": {
+            "n": 164,
+            "median": 0.48698327846404865,
+            "p10": 0.44661116643814835,
+            "p90": 0.5189233818172478
+          },
+          "composite_bg_temporal_std_l2": {
+            "n": 164,
+            "median": 0.015894540585577488,
+            "p10": 0.012156985234469175,
+            "p90": 0.026099870353937155
+          },
+          "valid_patch_fraction": {
+            "n": 164,
+            "median": 1.0,
+            "p10": 1.0,
+            "p90": 1.0
+          },
+          "patch_gebco_depth_range_m": {
+            "n": 164,
+            "median": 2.2165727615356445,
+            "p10": 0.8615457057952881,
+            "p90": 4.90828824043274
+          },
+          "scl_available_scene_count": {
+            "n": 164,
+            "median": 8.0,
+            "p10": 8.0,
+            "p90": 12.0
+          },
+          "scl_clear_scene_count": {
+            "n": 164,
+            "median": 8.0,
+            "p10": 6.0,
+            "p90": 12.0
+          },
+          "scl_water_scene_count": {
+            "n": 164,
+            "median": 8.0,
+            "p10": 6.0,
+            "p90": 12.0
+          },
+          "scl_cloud_shadow_scene_count": {
+            "n": 164,
+            "median": 0.0,
+            "p10": 0.0,
+            "p90": 2.0
+          }
+        }
+      }
+    }
+  }
+}

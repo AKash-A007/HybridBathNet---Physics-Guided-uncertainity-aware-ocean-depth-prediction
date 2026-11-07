@@ -1,0 +1,38 @@
+{
+  "component": "visibility",
+  "phase": "assessed_uncalibrated",
+  "utc": "2026-11-06T12:32:53.654445+00:00",
+  "summary": {
+    "train": {
+      "n": 637,
+      "valid": 631,
+      "shallow_ge_0_6": 3,
+      "deep_le_0_4": 622
+    },
+    "val": {
+      "n": 208,
+      "valid": 208,
+      "shallow_ge_0_6": 0,
+      "deep_le_0_4": 208,
+      "primary_n": 208,
+      "supported_primary_n": 0,
+      "full_primary_rmse": 1.9631407260894775,
+      "supported_primary_rmse": null,
+      "supported_fraction_primary": 0.0,
+      "supported_groups_2km": 0
+    },
+    "test": {
+      "n": 343,
+      "valid": 343,
+      "shallow_ge_0_6": 0,
+      "deep_le_0_4": 343,
+      "primary_n": 228,
+      "supported_primary_n": 0,
+      "full_primary_rmse": 2.5613343715667725,
+      "supported_primary_rmse": null,
+      "supported_fraction_primary": 0.0,
+      "supported_groups_2km": 0
+    }
+  },
+  "local_visibility_truth_available": false
+}

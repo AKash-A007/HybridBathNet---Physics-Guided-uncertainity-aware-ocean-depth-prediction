@@ -1,0 +1,122 @@
+{
+  "validation": {
+    "primary_0_20": {
+      "n": 208,
+      "clusters": 39,
+      "baseline_rmse": 1.9631408263268093,
+      "new_rmse": 2.1001934450386033,
+      "new_minus_baseline_rmse": 0.13705261871179397,
+      "difference_ci95": [
+        -0.06806163224066453,
+        0.36468442929450273
+      ]
+    },
+    "bins": {
+      "0-5": {
+        "n": 18,
+        "clusters": 3,
+        "baseline_rmse": 3.016410724773516,
+        "new_rmse": 3.7033434055111205,
+        "new_minus_baseline_rmse": 0.6869326807376046,
+        "difference_ci95": [
+          -0.6600869465572775,
+          1.6283753137530619
+        ]
+      },
+      "5-10": {
+        "n": 54,
+        "clusters": 14,
+        "baseline_rmse": 1.086686557099092,
+        "new_rmse": 1.7085091565911237,
+        "new_minus_baseline_rmse": 0.6218225994920317,
+        "difference_ci95": [
+          0.43085186475367215,
+          0.8233953662213447
+        ]
+      },
+      "10-15": {
+        "n": 64,
+        "clusters": 12,
+        "baseline_rmse": 1.6647205037821209,
+        "new_rmse": 1.6467046222591781,
+        "new_minus_baseline_rmse": -0.018015881522942756,
+        "difference_ci95": [
+          -0.18170267347352453,
+          0.13894831615266168
+        ]
+      },
+      "15-20": {
+        "n": 67,
+        "clusters": 14,
+        "baseline_rmse": 2.408107005845815,
+        "new_rmse": 2.2369297905244077,
+        "new_minus_baseline_rmse": -0.1711772153214075,
+        "difference_ci95": [
+          -0.2966273691280686,
+          -0.02699434627527063
+        ]
+      }
+    },
+    "method": "Same coordinates and corrected targets; 2000 approximately 2km spatial-cluster bootstrap resamples, seed42. Exploratory because this test set has already been inspected."
+  },
+  "test": {
+    "primary_0_20": {
+      "n": 228,
+      "clusters": 41,
+      "baseline_rmse": 2.561334411831001,
+      "new_rmse": 2.5903295161396005,
+      "new_minus_baseline_rmse": 0.02899510430859964,
+      "difference_ci95": [
+        -0.2094268034662656,
+        0.3158475062147075
+      ]
+    },
+    "bins": {
+      "0-5": {
+        "n": 17,
+        "clusters": 3,
+        "baseline_rmse": 1.0938808870115715,
+        "new_rmse": 1.3993151241007311,
+        "new_minus_baseline_rmse": 0.3054342370891596,
+        "difference_ci95": [
+          -0.3025664173116269,
+          1.247861385345459
+        ]
+      },
+      "5-10": {
+        "n": 58,
+        "clusters": 17,
+        "baseline_rmse": 1.3100440921242367,
+        "new_rmse": 2.0877053529394995,
+        "new_minus_baseline_rmse": 0.7776612608152629,
+        "difference_ci95": [
+          0.5080856237035859,
+          1.029704129656125
+        ]
+      },
+      "10-15": {
+        "n": 64,
+        "clusters": 15,
+        "baseline_rmse": 3.2548281711719373,
+        "new_rmse": 3.2698982875845046,
+        "new_minus_baseline_rmse": 0.01507011641256728,
+        "difference_ci95": [
+          -0.4640262585022909,
+          0.47445439815159185
+        ]
+      },
+      "15-20": {
+        "n": 89,
+        "clusters": 21,
+        "baseline_rmse": 2.8002541052258416,
+        "new_rmse": 2.507184663858575,
+        "new_minus_baseline_rmse": -0.29306944136726676,
+        "difference_ci95": [
+          -0.4519832009134819,
+          -0.11629563965813075
+        ]
+      }
+    },
+    "method": "Same coordinates and corrected targets; 2000 approximately 2km spatial-cluster bootstrap resamples, seed42. Exploratory because this test set has already been inspected."
+  }
+}

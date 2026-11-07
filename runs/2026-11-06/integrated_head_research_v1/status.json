@@ -1,0 +1,7 @@
+{
+  "stage": "complete",
+  "experiment": "integrated_head_research_v1",
+  "utc": "2026-11-06T05:32:25.116491+00:00",
+  "validation_rmse_0_20": 1.9606296760479394,
+  "test_rmse_0_20": 2.526853473389103
+}

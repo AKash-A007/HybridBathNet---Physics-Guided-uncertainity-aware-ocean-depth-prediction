@@ -1,0 +1,31 @@
+{
+  "aoi_bbox_lonlat": [
+    76.3,
+    8.9,
+    76.55,
+    9.2
+  ],
+  "catalogue_intersection_only": "Whole granules must be spatially subset after download",
+  "granules": [
+    {
+      "granule": "ATL24_20240109030511_03252207_006_01_002_01.h5",
+      "status": "downloaded_valid_hdf5",
+      "bytes": 16468989
+    },
+    {
+      "granule": "ATL24_20240207014110_07672207_006_01_002_01.h5",
+      "status": "downloaded_valid_hdf5",
+      "bytes": 39920787
+    },
+    {
+      "granule": "ATL24_20240408224440_03252307_006_01_002_01.h5",
+      "status": "downloaded_valid_hdf5",
+      "bytes": 32916501
+    },
+    {
+      "granule": "ATL24_20240413103033_03942301_006_01_002_01.h5",
+      "status": "downloaded_valid_hdf5",
+      "bytes": 82613857
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "n": 171,
+  "paired_spatial_difference_ci95_m": [
+    -1.3625910883289494,
+    0.5011918758883999
+  ],
+  "scope": "matched minus composite RMSE; same reference/locations; conditional exploratory comparison"
+}

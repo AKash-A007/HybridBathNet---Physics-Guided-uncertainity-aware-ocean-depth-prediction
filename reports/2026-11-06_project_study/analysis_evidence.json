@@ -1,0 +1,13 @@
+{
+  "mid_bin_top4_spatial_group_sse_share_pct": 76.35158576580683,
+  "cloud_medians": {
+    "10_15_m": {
+      "scl_clear_scene_count": 6.0,
+      "scl_cloud_shadow_scene_count": 2.0
+    },
+    "other_0_20_m": {
+      "scl_clear_scene_count": 8.0,
+      "scl_cloud_shadow_scene_count": 0.0
+    }
+  }
+}

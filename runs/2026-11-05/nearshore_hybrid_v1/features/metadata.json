@@ -1,0 +1,56 @@
+{
+  "split_sizes": {
+    "train_idx": 637,
+    "val_idx": 208,
+    "test_idx": 343
+  },
+  "candidate_sizes_before_reference_exclusion": {
+    "train_idx": 1069,
+    "val_idx": 239,
+    "test_idx": 343
+  },
+  "test_region": "unchanged original test block IDs; more distinct coordinates within them",
+  "pre_extraction_shelf_max_depth_m": 25,
+  "training_and_validation_max_depth_m": 20,
+  "test_sensitivity_cutoffs_m": [
+    15,
+    20,
+    25
+  ],
+  "test_20_to_25m": "outside supervised training-depth domain; extrapolation sensitivity only",
+  "train_heldout_pixel_buffer": 32,
+  "train_heldout_shared_bilinear_source_cells": 0,
+  "validation_test_shared_bilinear_source_cells": 0,
+  "feature_fitting": "training footprints only",
+  "patch_size": 64,
+  "stride": 32,
+  "sample_duplication": false,
+  "native_support_cell_counts": {
+    "train_idx": 828,
+    "val_idx": 261,
+    "test_idx": 413
+  },
+  "bin_counts": {
+    "train_idx": {
+      "0-5": 56,
+      "5-10": 131,
+      "10-15": 191,
+      "15-20": 258,
+      "20-25.0001": 1
+    },
+    "val_idx": {
+      "0-5": 18,
+      "5-10": 54,
+      "10-15": 64,
+      "15-20": 67,
+      "20-25.0001": 5
+    },
+    "test_idx": {
+      "0-5": 17,
+      "5-10": 58,
+      "10-15": 64,
+      "15-20": 89,
+      "20-25.0001": 115
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "component": "tides",
+  "phase": "validation_complete",
+  "utc": "2026-11-06T13:14:32.109137+00:00",
+  "cases": {
+    "tide_strict": {
+      "finite_groups": 1609,
+      "fit_groups": 1044,
+      "held_groups": 565,
+      "offset_m": 0.5190491841690081,
+      "held_rmse_m": 0.1733174688353791,
+      "held_constant_rmse_m": 0.30139774084091187,
+      "held_tide_surface_correlation": 0.7716216106689157,
+      "gate_passed": true
+    },
+    "tide_coastal_10km": {
+      "finite_groups": 2503,
+      "fit_groups": 1519,
+      "held_groups": 984,
+      "offset_m": 0.545123887019273,
+      "held_rmse_m": 0.2685060345017514,
+      "held_constant_rmse_m": 0.33256423473358154,
+      "held_tide_surface_correlation": 0.5844155121265175,
+      "gate_passed": true
+    }
+  }
+}

@@ -16,6 +16,7 @@ Usage:
 import argparse
 import subprocess
 import sys
+from pathlib import Path
 
 
 def run(cmd: list, stage_name: str = ""):
@@ -49,6 +50,10 @@ def main():
                         help="Disable AMP (useful for debugging)")
     parser.add_argument("--no-rotations",    action="store_true",
                         help="Disable 90° rotation augmentation (ablation §3.8)")
+    parser.add_argument("--hybrid-only", action="store_true",
+                        help="Train HybridBathNet without the optional tabular benchmarks")
+    parser.add_argument("--physics-study", action="store_true",
+                        help="Run controlled HybridBathNet ablations with validation-only selection")
     args = parser.parse_args()
 
     py = sys.executable
@@ -72,12 +77,24 @@ def main():
             "Preprocess: BOA offset, median composite, temporal std")
 
     # ── Feature engineering ───────────────────────────────────────────────
-    run([py, "-m", "src.features", "--config", args.config],
-        "Feature engineering: Lyzenga channels, glint correction, mask, split")
+    if args.physics_study:
+        run([py, "scripts/build_study_data.py", "--config", args.config,
+             "--output", str(Path(args.config).parent / "study/features")],
+            "Rebuild spatial patches and fit features on training pixels only")
+        run([py, "scripts/run_physics_study.py", "--config", args.config],
+            "Training-only feature construction, HybridBathNet ablations, and final evaluation")
+        return
+    if args.hybrid_only:
+        run([py, "scripts/build_study_data.py", "--config", args.config],
+            "Training-only feature fitting and buffered spatial patch construction")
+    else:
+        run([py, "-m", "src.features", "--config", args.config],
+            "Feature engineering: Lyzenga channels, glint correction, mask, split")
 
     # ── Tabular baselines ─────────────────────────────────────────────────
-    run([py, "-m", "src.baseline_models", "--config", args.config],
-        "Tabular baselines: Stumpf (Lyzenga), RandomForest, GradientBoosting")
+    if not args.hybrid_only:
+        run([py, "-m", "src.baseline_models", "--config", args.config],
+            "Tabular baselines: Stumpf (Lyzenga), RandomForest, GradientBoosting")
 
     # ── HybridBathNet v3 ──────────────────────────────────────────────────
     train_cmd = [py, "-m", "src.cnn_baseline", "--config", args.config,
@@ -89,8 +106,9 @@ def main():
     run(train_cmd, f"HybridBathNet v3 training (seed={args.seed})")
 
     # ── Comparison & plots ────────────────────────────────────────────────
-    run([py, "-m", "src.compare_baselines", "--config", args.config],
-        "Compare all baselines + generate plots")
+    if not args.hybrid_only:
+        run([py, "-m", "src.compare_baselines", "--config", args.config],
+            "Compare all baselines + generate plots")
 
     print("\n" + "=" * 60)
     print("  PIPELINE COMPLETE")

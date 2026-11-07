@@ -1,0 +1,24 @@
+{
+  "source_bands_read": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    10
+  ],
+  "depth_reference_loaded": false,
+  "water_mask": "NDWI > 0 and optical clear-scene validity",
+  "splits": "contiguous latitude bands with at least 64-pixel gaps; all composite dates grouped",
+  "split_sizes": [
+    1097,
+    237,
+    290
+  ],
+  "feature_fit": "training region only",
+  "reference": "none; no verified depth accuracy or calibrated metre-depth uncertainty",
+  "input": "Sentinel-2 median and temporal standard deviation, not individual-scene model"
+}

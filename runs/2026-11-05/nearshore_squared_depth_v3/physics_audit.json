@@ -1,0 +1,118 @@
+{
+  "baseline": {
+    "val_idx": {
+      "reflectance_rmse": 0.0018232131253832012,
+      "reflectance_mae": 0.0013039236222669706,
+      "attenuation_k_quantiles_per_m": [
+        0.012641382403671741,
+        0.04961584508419037,
+        0.19921928644180276
+      ],
+      "bottom_albedo_quantiles": [
+        0.026556065306067467,
+        0.0505073107779026,
+        0.06296472400426864
+      ],
+      "centre_bottom_signal_transmission_quantiles": [
+        0.0008486118371365592,
+        0.333998903632164,
+        0.8784615695476532
+      ],
+      "centre_reconstruction_depth_slope_quantiles_reflectance_per_m": [
+        3.3047214515136165e-06,
+        0.00026590886409394443,
+        0.000594070163788274
+      ],
+      "primary_target_above_heuristic_zext_pct": 89.90384615384616,
+      "primary_prediction_above_heuristic_zext_pct": 89.90384615384616,
+      "primary_mean_heuristic_zext_m": 6.25808429488769,
+      "n_primary": 208
+    },
+    "test_idx": {
+      "reflectance_rmse": 0.0015267539413501732,
+      "reflectance_mae": 0.0011122527237093414,
+      "attenuation_k_quantiles_per_m": [
+        0.013137437170371413,
+        0.0578807108104229,
+        0.2491945758461952
+      ],
+      "bottom_albedo_quantiles": [
+        0.027110179606825113,
+        0.04898783378303051,
+        0.06111641973257065
+      ],
+      "centre_bottom_signal_transmission_quantiles": [
+        8.294704457512128e-05,
+        0.15417608618736267,
+        0.8675454020500183
+      ],
+      "centre_reconstruction_depth_slope_quantiles_reflectance_per_m": [
+        6.441976097448789e-07,
+        0.00014564211596734822,
+        0.0005962994182482362
+      ],
+      "primary_target_above_heuristic_zext_pct": 89.91228070175438,
+      "primary_prediction_above_heuristic_zext_pct": 88.59649122807018,
+      "primary_mean_heuristic_zext_m": 6.190255211110701,
+      "n_primary": 228
+    }
+  },
+  "candidate": {
+    "val_idx": {
+      "reflectance_rmse": 0.0016746981760614173,
+      "reflectance_mae": 0.001199878220158283,
+      "attenuation_k_quantiles_per_m": [
+        0.013939914852380752,
+        0.04959488660097122,
+        0.1862163960933685
+      ],
+      "bottom_albedo_quantiles": [
+        0.02631034776568413,
+        0.05053430050611496,
+        0.06246998757123946
+      ],
+      "centre_bottom_signal_transmission_quantiles": [
+        0.0014229734078980984,
+        0.26830749213695526,
+        0.8831724941730499
+      ],
+      "centre_reconstruction_depth_slope_quantiles_reflectance_per_m": [
+        4.332452249400376e-06,
+        0.0002605268527986482,
+        0.0006625377514865251
+      ],
+      "primary_target_above_heuristic_zext_pct": 89.90384615384616,
+      "primary_prediction_above_heuristic_zext_pct": 88.9423076923077,
+      "primary_mean_heuristic_zext_m": 6.25808429488769,
+      "n_primary": 208
+    },
+    "test_idx": {
+      "reflectance_rmse": 0.0014794676186715785,
+      "reflectance_mae": 0.0010567847465499612,
+      "attenuation_k_quantiles_per_m": [
+        0.014686661958694459,
+        0.05635470896959305,
+        0.1957172356545925
+      ],
+      "bottom_albedo_quantiles": [
+        0.024495015479624273,
+        0.04876292869448662,
+        0.061182741075754166
+      ],
+      "centre_bottom_signal_transmission_quantiles": [
+        0.0008230535779148341,
+        0.16901583969593048,
+        0.8692495584487915
+      ],
+      "centre_reconstruction_depth_slope_quantiles_reflectance_per_m": [
+        1.6548364328627942e-06,
+        0.00013015884906053543,
+        0.0006270699785090982
+      ],
+      "primary_target_above_heuristic_zext_pct": 89.91228070175438,
+      "primary_prediction_above_heuristic_zext_pct": 84.21052631578947,
+      "primary_mean_heuristic_zext_m": 6.190255211110701,
+      "n_primary": 228
+    }
+  }
+}

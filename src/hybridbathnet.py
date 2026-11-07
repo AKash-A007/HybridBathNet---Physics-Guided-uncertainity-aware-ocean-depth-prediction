@@ -59,19 +59,28 @@ def compute_kd_and_extinction(
     red:             torch.Tensor | None = None,
     i0_over_epsilon: float = 100.0,
     eps:             float = 1e-6,
+    mask:            torch.Tensor | None = None,
+    aggregation:     str = "mean",
+    z_ext_min:       float | None = 1.0,
+    z_ext_max:       float | None = 50.0,
 ) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
-    """Per-pixel K_d map and patch-average extinction depth.
+    """Legacy empirical attenuation proxy and heuristic depth prior.
+
+    This is not a locally calibrated Sentinel-2 Kd retrieval. The added red
+    ratio is a heuristic contribution, not an independently estimated red-band
+    Kd. The fixed signal ratio does not estimate bottom contrast or observation
+    error, so z_ext must not be used as a validated bottom-detection mask.
 
     §3.2: returns the full (B, 1, H, W) K_d map in addition to the
     patch-average scalar (B, 1) kd_avg and (B, 1) z_ext.
 
     Args:
         blue, green, red: (B, 1, H, W) raw surface reflectance (not z-scored).
-        i0_over_epsilon:  signal-to-noise ratio for Beer-Lambert extinction.
+        i0_over_epsilon:  declared signal-ratio assumption for the depth prior.
     Returns:
         kd_map: (B, 1, H, W)  per-pixel diffuse attenuation (m⁻¹)
         kd_avg: (B, 1)        spatial average of kd_map
-        z_ext:  (B, 1)        maximum optical extinction depth (m)
+        z_ext:  (B, 1)        uncalibrated heuristic depth prior (m)
     """
     b = torch.clamp(blue,  min=eps)
     g = torch.clamp(green, min=eps)
@@ -86,9 +95,21 @@ def compute_kd_and_extinction(
 
     kd_map = torch.clamp(kd_map, 0.01, 6.0)   # (B, 1, H, W)
 
-    kd_avg = kd_map.mean(dim=(-2, -1))          # (B, 1)
+    if not math.isfinite(i0_over_epsilon) or i0_over_epsilon <= 1:
+        raise ValueError("The physical signal ratio must be finite and greater than one")
+    if aggregation == "center":
+        kd_avg = kd_map[:, :, kd_map.shape[-2] // 2, kd_map.shape[-1] // 2]
+    elif aggregation == "mean":
+        if mask is None:
+            kd_avg = kd_map.mean(dim=(-2, -1))
+        else:
+            weights = mask.float()
+            kd_avg = (kd_map * weights).sum(dim=(-2, -1)) / weights.sum(dim=(-2, -1)).clamp_min(1)
+    else:
+        raise ValueError(f"Unknown Kd aggregation: {aggregation}")
     z_ext  = math.log(i0_over_epsilon) / (2.0 * kd_avg + eps)
-    z_ext  = torch.clamp(z_ext, 1.0, 50.0)     # (B, 1)
+    if z_ext_min is not None or z_ext_max is not None:
+        z_ext = torch.clamp(z_ext, min=z_ext_min, max=z_ext_max)
 
     return kd_map, kd_avg, z_ext
 
@@ -159,6 +180,8 @@ class FiLM(nn.Module):
         Returns:
             modulated feat (same shape)
         """
+        if cond is None:
+            return feat
         if cond.shape[-2:] != feat.shape[-2:]:
             cond = F.interpolate(
                 cond, size=feat.shape[-2:], mode="bilinear", align_corners=False
@@ -247,8 +270,10 @@ class UNetDecoder(nn.Module):
     The final 1×1 convolution produces two maps: depth and log-variance.
     """
 
-    def __init__(self, dropout_rate: float = 0.1):
+    def __init__(self, dropout_rate: float = 0.1, uncertainty_head: str = 'linear'):
         super().__init__()
+        self.nonnegative_depth = True
+        self.detach_uncertainty_features = False
 
         # Decoder stages (reverse order)
         self.up3  = nn.ConvTranspose2d(FEATURE_DIM, 96, kernel_size=2, stride=2)
@@ -263,6 +288,13 @@ class UNetDecoder(nn.Module):
         # Dual output: depth mean and log-variance
         self.depth_conv = nn.Conv2d(32 + 32, 1, kernel_size=1)
         self.logvar_conv = nn.Conv2d(32 + 32, 1, kernel_size=1)
+        self.uncertainty_head_type = uncertainty_head
+        if uncertainty_head == 'spatial':
+            self.uncertainty_head = nn.Sequential(
+                nn.Conv2d(64, 32, 3, padding=1), nn.GroupNorm(8, 32), nn.SiLU(),
+                nn.Conv2d(32, 16, 3, padding=1), nn.SiLU(), nn.Conv2d(16, 1, 1))
+        elif uncertainty_head != 'linear':
+            raise ValueError(f'Unknown uncertainty head: {uncertainty_head}')
 
     def forward(
         self, bottleneck: torch.Tensor, skips: list[torch.Tensor]
@@ -287,8 +319,12 @@ class UNetDecoder(nn.Module):
         d = self.dec1(d)
 
         # §3.5: softplus for non-negativity — depth ≥ 0 by construction
-        depth   = F.softplus(self.depth_conv(d))              # (B, 1, H, W)
-        log_var = torch.clamp(self.logvar_conv(d), -10.0, 10.0)  # (B, 1, H, W)
+        depth   = self.depth_conv(d)
+        if self.nonnegative_depth:
+            depth = F.softplus(depth)
+        variance_features = d.detach() if self.detach_uncertainty_features else d
+        variance_head = self.uncertainty_head if self.uncertainty_head_type == 'spatial' else self.logvar_conv
+        log_var = torch.clamp(variance_head(variance_features), -10.0, 10.0)
         return depth, log_var
 
 
@@ -313,6 +349,7 @@ class ReconstructionHead(nn.Module):
     def __init__(self, n_bands: int = 3, feature_dim: int = FEATURE_DIM):
         super().__init__()
         self.n_bands = n_bands
+        self.attenuation_scope = 'pixel'
         # Predict K_λ (positive) and A_λ (positive) for each band
         self.kl_head = nn.Sequential(
             nn.Conv2d(feature_dim, feature_dim // 2, 3, padding=1),
@@ -330,6 +367,7 @@ class ReconstructionHead(nn.Module):
         feat_full_res: torch.Tensor,
         depth_map:     torch.Tensor,
         r_inf:         torch.Tensor,
+        mask:          torch.Tensor | None = None,
     ) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
         """
         Args:
@@ -341,7 +379,15 @@ class ReconstructionHead(nn.Module):
             kl_map: (B, n_bands, H, W) K_λ
             al_map: (B, n_bands, H, W) A_λ
         """
-        kl_map = F.softplus(self.kl_head(feat_full_res)) + 0.01   # (B, n, H, W)
+        kl_logits = self.kl_head(feat_full_res)
+        if self.attenuation_scope == 'patch':
+            if mask is None or not (mask.flatten(1).sum(1) > 0).all():
+                raise ValueError('Patch attenuation requires nonempty water masks')
+            kl_logits = ((kl_logits * mask).sum((-2, -1), keepdim=True)
+                         / mask.sum((-2, -1), keepdim=True)).expand_as(kl_logits)
+        elif self.attenuation_scope != 'pixel':
+            raise ValueError(f'Unknown attenuation scope: {self.attenuation_scope}')
+        kl_map = F.softplus(kl_logits) + 0.01   # effective half two-way attenuation
         al_map = torch.sigmoid(self.al_head(feat_full_res))         # ∈ (0, 1)
 
         exp_term = torch.exp(-2.0 * kl_map * depth_map)            # (B, n, H, W)
@@ -430,12 +476,31 @@ class HybridBathNetModel(nn.Module):
         use_recon_head:  bool           = True,
         n_recon_bands:   int            = 3,
         r_inf:           np.ndarray | None = None,
+        kd_aggregation:  str = "mean",
+        physics_conditioning: str = "spatial",
+        z_ext_min: float | None = 1.0,
+        z_ext_max: float | None = 50.0,
+        physics_enabled: bool = True,
+        uncertainty_enabled: bool = True,
+        detach_uncertainty_features: bool = False,
+        reconstruction_attenuation: str = 'pixel',
+        uncertainty_head: str = 'linear',
+        nonnegative_depth: bool = True,
+        use_explicit_reflectance: bool = True,
+        mask_aware_physics: bool = False,
     ):
         super().__init__()
         self.n_spectral      = n_spectral
         self.i0_over_epsilon = i0_over_epsilon
         self.use_red_kd      = use_red_kd
         self.use_recon_head  = use_recon_head
+        self.kd_aggregation = kd_aggregation
+        self.physics_conditioning = physics_conditioning
+        self.z_ext_min, self.z_ext_max = z_ext_min, z_ext_max
+        self.physics_enabled = physics_enabled
+        self.uncertainty_enabled = uncertainty_enabled
+        self.use_explicit_reflectance = use_explicit_reflectance
+        self.mask_aware_physics = mask_aware_physics
 
         # §1.2 — store de-normalization buffers so physics can use real reflectance
         if mean is not None and std is not None:
@@ -460,7 +525,9 @@ class HybridBathNetModel(nn.Module):
 
         # U-Net encoder + decoder
         self.encoder = UNetEncoder(in_channels=in_channels, dropout_rate=dropout_rate)
-        self.decoder = UNetDecoder(dropout_rate=dropout_rate)
+        self.decoder = UNetDecoder(dropout_rate=dropout_rate, uncertainty_head=uncertainty_head)
+        self.decoder.nonnegative_depth = nonnegative_depth
+        self.decoder.detach_uncertainty_features = detach_uncertainty_features
 
         # z_prior conditioning projection (H, W map → N_COND channels)
         # cond = [kd_map (1), z_prior_map (1), mask_ch (1)] — 3 channels total
@@ -469,15 +536,17 @@ class HybridBathNetModel(nn.Module):
         # Optional reconstruction head
         if use_recon_head:
             self.recon_head = ReconstructionHead(
-                n_bands=n_recon_bands, feature_dim=32 + 32   # final decoder channels
+                n_bands=n_recon_bands, feature_dim=32   # full-resolution encoder skip
             )
+            self.recon_head.attenuation_scope = reconstruction_attenuation
 
         # Global average pool head for scalar-output compat and for loss/eval
         # (used to compute the patch-level extinction check, not for depth pred)
         self.gap = nn.AdaptiveAvgPool2d(1)
 
     def forward(
-        self, x: torch.Tensor, mask: torch.Tensor | None = None
+        self, x: torch.Tensor, mask: torch.Tensor | None = None,
+        raw_reflectance: torch.Tensor | None = None,
     ) -> dict[str, torch.Tensor]:
         """
         Args:
@@ -493,20 +562,33 @@ class HybridBathNetModel(nn.Module):
         """
         # §1.2 — undo z-scoring for the spectral channels to get real reflectance
         raw = x * self.sig + self.mu            # (B, C, H, W) — partial undo
+        if raw_reflectance is not None and self.use_explicit_reflectance:
+            raw = raw_reflectance.float()
         blue  = raw[:, 0:1]                     # B02
         green = raw[:, 1:2]                     # B03
         red   = raw[:, 2:3] if (self.use_red_kd and self.n_spectral > 2) else None
 
         # §3.2 — per-pixel Kd map + patch-average statistics
         kd_map, kd_avg, z_ext = compute_kd_and_extinction(
-            blue, green, red, self.i0_over_epsilon
+            blue, green, red, self.i0_over_epsilon, mask=mask,
+            aggregation=self.kd_aggregation, z_ext_min=self.z_ext_min,
+            z_ext_max=self.z_ext_max,
         )
 
         # Build z_prior map from Beer-Lambert (in raw reflectance space)
         g = torch.clamp(green, 1e-6)
         kd_clamped = torch.clamp(kd_map, 0.01, 5.0)
         with torch.no_grad():
-            i_surface = torch.quantile(g.reshape(g.shape[0], -1), 0.95, dim=1)
+            if self.mask_aware_physics:
+                if mask is None:
+                    raise ValueError('Mask-aware physics requires an explicit water mask')
+                valid = mask.bool() & torch.isfinite(g)
+                if not valid.flatten(1).any(1).all():
+                    raise ValueError('No valid water for physics reference')
+                samples = g.masked_fill(~valid, float('nan')).flatten(1)
+                i_surface = torch.nanquantile(samples.float(), 0.95, dim=1)
+            else:
+                i_surface = torch.quantile(g.reshape(g.shape[0], -1), 0.95, dim=1)
             i_surface = i_surface.view(-1, 1, 1, 1).clamp(min=1e-3)
         trans  = torch.clamp(i_surface / g, 1.0, 1e4)
         z_prior_map = (1.0 / (2.0 * kd_clamped + 1e-6)) * torch.log(trans)
@@ -518,13 +600,33 @@ class HybridBathNetModel(nn.Module):
             mask_ch_idx = min(11, x.shape[1] - 1)
             mask = x[:, mask_ch_idx:mask_ch_idx + 1]
         cond_raw = torch.cat([kd_map, z_prior_map, mask], dim=1)   # (B, 3, H, W)
+        if self.mask_aware_physics:
+            cond_raw = cond_raw * mask
+        if self.physics_conditioning == "mean":
+            weights = mask.float()
+            cond_raw = ((cond_raw * weights).sum((-2, -1), keepdim=True)
+                        / weights.sum((-2, -1), keepdim=True).clamp_min(1)).expand_as(cond_raw)
+        elif self.physics_conditioning == "center":
+            cy, cx = x.shape[-2] // 2, x.shape[-1] // 2
+            cond_raw = cond_raw[:, :, cy:cy+1, cx:cx+1].expand_as(cond_raw)
+        elif self.physics_conditioning != "spatial":
+            raise ValueError(f"Unknown conditioning: {self.physics_conditioning}")
         cond     = self.cond_proj(cond_raw)
+        if not self.physics_enabled:
+            # CNN-only control sees spectral/temporal/mask inputs, with no physics channels.
+            x = x.clone()
+            x[:, 4:11] = 0
+            cond = None
 
         # Encode with skip connections
         bottleneck, skips = self.encoder(x, cond)
 
         # Decode to full-resolution depth and log-variance maps
         depth, log_var = self.decoder(bottleneck, skips)
+        if not self.uncertainty_enabled:
+            # A fixed placeholder keeps the common output interface without
+            # letting an untrained uncertainty head affect evaluation.
+            log_var = torch.zeros_like(depth)
         # depth already has softplus applied in UNetDecoder → depth ≥ 0
 
         out = {
@@ -533,6 +635,8 @@ class HybridBathNetModel(nn.Module):
             "kd_map":  kd_map,    # (B, 1, H, W)
             "kd_avg":  kd_avg,    # (B, 1)
             "z_ext":   z_ext,     # (B, 1)
+            "z_prior": z_prior_map,
+            "r_inf": self.r_inf_buf,
         }
 
         # §3.6 — Optical reconstruction (requires the final decoder feature map)
@@ -540,12 +644,14 @@ class HybridBathNetModel(nn.Module):
         if self.use_recon_head and hasattr(self, "recon_head"):
             # Reconstruct using the full-res skip (s1) as feature map
             # We grab it from skips[0] (s1, full resolution)
-            r_hat, _, _ = self.recon_head(
+            r_hat, kl_map, al_map = self.recon_head(
                 skips[0],          # (B, 32, H, W)  — full-res decoder feature
                 depth,
-                self.r_inf_buf.to(x.device)
+                self.r_inf_buf.to(x.device), mask=mask
             )
             out["r_hat"] = r_hat
+            out['kl_map'] = kl_map
+            out['al_map'] = al_map
 
         return out
 
@@ -555,14 +661,15 @@ class HybridBathNetModel(nn.Module):
     # ------------------------------------------------------------------
     def forward_scalar(
         self, x: torch.Tensor, y_mean: float, y_std: float,
-        mask: torch.Tensor | None = None
+        mask: torch.Tensor | None = None,
+        raw_reflectance: torch.Tensor | None = None,
     ) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor]:
         """Returns (pred_norm_scalar, log_var_scalar, kd_avg, z_ext).
 
         Averages dense depth / log_var maps over valid water pixels
         so the existing scalar loss functions continue to work.
         """
-        out = self.forward(x, mask)
+        out = self.forward(x, mask, raw_reflectance=raw_reflectance)
         depth   = out["depth"].squeeze(1)     # (B, H, W)
         log_var = out["log_var"].squeeze(1)   # (B, H, W)
 
@@ -725,6 +832,7 @@ class CompositePhysicsNLLLoss(nn.Module):
         use_depth_weighting: bool  = True,
         beta_nll:            float = 0.5,
         huber_delta:         float = 0.5,
+        detach_nll_mean:     bool = False,
     ):
         super().__init__()
         self.w_mse               = w_mse
@@ -735,6 +843,7 @@ class CompositePhysicsNLLLoss(nn.Module):
         self.use_depth_weighting = use_depth_weighting
         self.beta_nll            = beta_nll
         self.huber_delta         = huber_delta
+        self.detach_nll_mean = detach_nll_mean
 
     def forward(
         self,
@@ -746,6 +855,11 @@ class CompositePhysicsNLLLoss(nn.Module):
         y_std:  float = 1.0,
     ) -> tuple[torch.Tensor, dict]:
 
+        # Keep variance arithmetic in float32 even under autocast.
+        pred_depth_norm = pred_depth_norm.float()
+        target_depth_norm = target_depth_norm.float()
+        log_var = log_var.float()
+        z_ext = z_ext.float()
         pred_m   = pred_depth_norm   * y_std + y_mean
         target_m = target_depth_norm * y_std + y_mean
 
@@ -765,17 +879,24 @@ class CompositePhysicsNLLLoss(nn.Module):
         )
 
         # §4.2 β-NLL
-        var     = torch.exp(log_var)
-        nll     = 0.5 * (diff_sq / (var + 1e-8) + log_var)
-        beta_w  = var.detach() ** self.beta_nll
-        l_nll   = torch.mean(w * beta_w * nll)
+        if self.w_nll:
+            var = torch.exp(log_var)
+            # log_var represents variance in metres squared, as reported at inference.
+            nll_error_sq = ((pred_depth_norm.detach() - target_depth_norm) ** 2
+                            if self.detach_nll_mean else diff_sq)
+            nll = 0.5 * (nll_error_sq * y_std ** 2 / (var + 1e-8) + log_var)
+            beta_w = var.detach() ** self.beta_nll
+            l_nll = torch.mean(w * beta_w * nll)
+        else:
+            l_nll = pred_depth_norm.new_zeros(())
 
         # Physics: non-negativity (depth ≥ 0) — soft via ReLU on metres
         l_nonneg = torch.mean(F.relu(-pred_m))
 
         # Physics: extinction bound
         z_ext_f = z_ext.squeeze(-1)
-        l_ext   = torch.mean(F.relu(pred_m - z_ext_f - 1.0))   # 1m margin
+        l_ext = (torch.mean(F.relu(pred_m - z_ext_f - 1.0))
+                 if self.w_ext else pred_depth_norm.new_zeros(()))   # 1m margin
 
         total = (
             self.w_mse  * l_huber
@@ -918,18 +1039,27 @@ def conformal_recalibrate(
     errors_val: np.ndarray,
     target_coverage: float = 0.68,
 ) -> float:
-    """Conformal recalibration (§5.5).
+    """Finite-sample split-conformal residual scale from calibration examples.
 
-    Computes the scaling factor k such that:
-        P(|y − ŷ| ≤ k · σ_val) ≈ target_coverage
-    on the validation set.  Apply k * sigma_test at test time.
-
-    Returns:
-        k: float scaling factor for σ
+    Use calibration examples independent of fitting/model selection. Marginal
+    coverage requires exchangeability; nearby track pixels/geographic shift do
+    not automatically satisfy it. If too few examples support the requested
+    quantile, return infinity rather than an unjustified finite interval.
+    This interval adjustment cannot improve the predicted depth or its RMSE.
     """
-    z_scores   = np.abs(errors_val) / (np.asarray(sigma_val) + 1e-6)
-    k          = float(np.quantile(z_scores, target_coverage))
-    return k
+    sigma = np.asarray(sigma_val, dtype=float).ravel()
+    error = np.asarray(errors_val, dtype=float).ravel()
+    if not 0 < target_coverage < 1:
+        raise ValueError('target_coverage must be between zero and one')
+    if not len(sigma) or sigma.shape != error.shape:
+        raise ValueError('Nonempty matching calibration errors and sigmas required')
+    if not (np.isfinite(sigma).all() and np.isfinite(error).all() and (sigma > 0).all()):
+        raise ValueError('Calibration inputs must be finite with positive sigma')
+    rank = math.ceil((len(sigma) + 1) * target_coverage)
+    if rank > len(sigma):
+        return float('inf')
+    scores = np.abs(error) / sigma
+    return float(np.partition(scores, rank-1)[rank-1])
 
 
 # ---------------------------------------------------------------------------

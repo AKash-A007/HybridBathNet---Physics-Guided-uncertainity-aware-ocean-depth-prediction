@@ -1,0 +1,86 @@
+{
+  "source": "runs\\2026-11-05\\nearshore_hybrid_v1\\features\\patches.npz",
+  "source_sha256": "5a15b02acf58ce7cada2b168bca30cca934dc85b0ac9af89531aa11619609cf8",
+  "split_sizes": {
+    "train_idx": 447,
+    "calib_idx": 123,
+    "val_idx": 208,
+    "test_idx": 343
+  },
+  "calibration_group_seed": 20261106,
+  "calibration_groups_2km": [
+    [
+      6,
+      8
+    ],
+    [
+      3,
+      9
+    ],
+    [
+      9,
+      11
+    ],
+    [
+      14,
+      9
+    ],
+    [
+      15,
+      12
+    ],
+    [
+      2,
+      8
+    ],
+    [
+      11,
+      11
+    ],
+    [
+      13,
+      11
+    ],
+    [
+      15,
+      11
+    ],
+    [
+      1,
+      6
+    ],
+    [
+      11,
+      9
+    ],
+    [
+      6,
+      9
+    ],
+    [
+      0,
+      6
+    ],
+    [
+      5,
+      8
+    ],
+    [
+      12,
+      8
+    ]
+  ],
+  "calibration_group_count": 15,
+  "selection": "spatial groups selected randomly before candidate training; no labels or residuals used",
+  "train_calib_gap_pixels": 96,
+  "native_support_disjoint_all_splits": true,
+  "validation_test_coordinates_and_targets_identical_to_v1": true,
+  "feature_fitting": "new training footprints only; no calibration/validation/test footprint used",
+  "rinf": [
+    0.04865385964512825,
+    0.03537454456090927,
+    0.018630800768733025
+  ],
+  "input_channels": 16,
+  "uncertainty_caveat": "Calibration groups need exchangeability for coverage guarantees; fixed geographic shift is not removed."
+}

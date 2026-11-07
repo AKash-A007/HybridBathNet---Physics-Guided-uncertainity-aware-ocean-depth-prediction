@@ -1,0 +1,56 @@
+{
+  "candidate": "model-learned per-band K/A plus temporal-std proxy, SNR3",
+  "predeclared_gate": {
+    "minimum_coverage_pct": 20,
+    "minimum_spatial_clusters": 10,
+    "maximum_upper95_error_exceedance_pct": 10,
+    "tolerances_m": [
+      2,
+      3
+    ]
+  },
+  "caveat": "GEBCO residual risk is not independent seabed truth or an optical-bottom-detection label. Test set has been previously inspected; this is exploratory.",
+  "splits": {
+    "val_idx": {
+      "2": {
+        "n_retained": 7,
+        "coverage_pct": 3.3653846153846154,
+        "rmse_m": 1.3119373743586373,
+        "error_exceedance_pct": 0.0,
+        "upper95_exceedance_pct": 0.0,
+        "retained_clusters": 4,
+        "passes_empirical_gate": false
+      },
+      "3": {
+        "n_retained": 7,
+        "coverage_pct": 3.3653846153846154,
+        "rmse_m": 1.3119373743586373,
+        "error_exceedance_pct": 0.0,
+        "upper95_exceedance_pct": 0.0,
+        "retained_clusters": 4,
+        "passes_empirical_gate": false
+      }
+    },
+    "test_idx": {
+      "2": {
+        "n_retained": 4,
+        "coverage_pct": 1.7543859649122806,
+        "rmse_m": 2.047949945690896,
+        "error_exceedance_pct": 25.0,
+        "upper95_exceedance_pct": 50.0,
+        "retained_clusters": 4,
+        "passes_empirical_gate": false
+      },
+      "3": {
+        "n_retained": 4,
+        "coverage_pct": 1.7543859649122806,
+        "rmse_m": 2.047949945690896,
+        "error_exceedance_pct": 25.0,
+        "upper95_exceedance_pct": 50.0,
+        "retained_clusters": 4,
+        "passes_empirical_gate": false
+      }
+    }
+  },
+  "operational_mask_enabled": false
+}

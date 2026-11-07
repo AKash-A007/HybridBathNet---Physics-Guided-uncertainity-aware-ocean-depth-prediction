@@ -1,0 +1,12 @@
+{
+  "tested_points": 3,
+  "tested_features": 20,
+  "max_abs_feature_difference": 0.0,
+  "scope": "native interior fast-path features; inspected original numerical functions; no original TensorFlow runtime",
+  "geography_convention_preserved": [
+    -75,
+    12,
+    12
+  ],
+  "local_classification_accuracy_verified": false
+}

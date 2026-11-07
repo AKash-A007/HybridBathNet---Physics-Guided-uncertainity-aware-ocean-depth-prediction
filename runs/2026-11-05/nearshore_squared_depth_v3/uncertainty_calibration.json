@@ -1,0 +1,34 @@
+{
+  "baseline": {
+    "validation_n": 208,
+    "test_n": 228,
+    "calibration_quantiles": {
+      "0.68": 1.1221081506392578,
+      "0.9": 1.8434637344511005
+    },
+    "validation_nominal_68_pct": 62.980769230769226,
+    "validation_nominal_90_pct": 83.65384615384616,
+    "test_raw_68_pct": 52.19298245614035,
+    "test_raw_90_pct": 71.05263157894737,
+    "test_calibrated_68_pct": 56.57894736842105,
+    "test_calibrated_90_pct": 78.0701754385965,
+    "median_calibrated_90_halfwidth_m": 3.021078632826838,
+    "method": "Validation absolute-residual / predicted-sigma conformal order statistics; no test fitting. Nominal marginal coverage requires exchangeability, weakened by spatial autocorrelation and geographic shift."
+  },
+  "candidate": {
+    "validation_n": 208,
+    "test_n": 228,
+    "calibration_quantiles": {
+      "0.68": 1.1396532383850957,
+      "0.9": 2.0232163549344233
+    },
+    "validation_nominal_68_pct": 61.057692307692314,
+    "validation_nominal_90_pct": 83.65384615384616,
+    "test_raw_68_pct": 50.0,
+    "test_raw_90_pct": 75.43859649122807,
+    "test_calibrated_68_pct": 55.70175438596491,
+    "test_calibrated_90_pct": 82.45614035087719,
+    "median_calibrated_90_halfwidth_m": 3.552527059164289,
+    "method": "Validation absolute-residual / predicted-sigma conformal order statistics; no test fitting. Nominal marginal coverage requires exchangeability, weakened by spatial autocorrelation and geographic shift."
+  }
+}

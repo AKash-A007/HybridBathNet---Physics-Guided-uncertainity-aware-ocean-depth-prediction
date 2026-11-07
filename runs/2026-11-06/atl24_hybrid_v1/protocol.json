@@ -1,0 +1,35 @@
+{
+  "source": "SlideRule ATL24 archive AOI subset, 2018\u2013Nov 2024, current V003 catalogue",
+  "reference": "ATL24 median bathymetry depth per 10m pixel; no GEBCO target",
+  "imagery": "Jan\u2013Mar 2024 Sentinel-2 L2A composite at same AOI",
+  "model": "HybridBathNet 16 input channels; joint physics/depth/uncertainty/reconstruction",
+  "seed": 42,
+  "epochs_max": 180,
+  "patience": 30,
+  "batch": 8,
+  "lr": 0.001,
+  "cosine_period": 180,
+  "ema": 0.999,
+  "nll_warmup": 20,
+  "weights": {
+    "depth_huber": 1,
+    "beta_nll": 1,
+    "extinction": 0.03,
+    "reconstruction": 0.1
+  },
+  "dataset_sha256": "f55e769c246439985cab204cdabfc9f9bbb7b05060dad01462ce671e2c43721a",
+  "split_sizes": {
+    "train_idx": 570,
+    "val_idx": 112,
+    "test_idx": 233
+  },
+  "selection": "validation RMSE only; fixed historical geographic test blocks",
+  "optical_limit": "uncalibrated diagnostic flag only, never used to exclude",
+  "torch": "2.11.0+cu128",
+  "gpu": "NVIDIA GeForce RTX 3050 Laptop GPU",
+  "limitations": [
+    "ATL24 V003 public service returned invalid-dataframe alerts for some granules.",
+    "Repeated points along four RGT tracks and 2018\u20132024-to-2024 temporal mismatch.",
+    "Different reference/locations from GEBCO v1; RMSEs are not matched model gains."
+  ]
+}

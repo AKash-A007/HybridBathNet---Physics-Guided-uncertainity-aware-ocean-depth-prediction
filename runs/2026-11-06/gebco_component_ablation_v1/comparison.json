@@ -1,0 +1,29 @@
+{
+  "no_physics": {
+    "delta_test_rmse_m": -0.06669691917284881,
+    "paired_spatial_bootstrap_ci95_m": [
+      -0.22012921471281885,
+      0.09407599615420253
+    ],
+    "clusters": 41,
+    "resamples": 2000
+  },
+  "no_uncertainty": {
+    "delta_test_rmse_m": -0.09402941576177293,
+    "paired_spatial_bootstrap_ci95_m": [
+      -0.28965665668419854,
+      0.1462155742908278
+    ],
+    "clusters": 41,
+    "resamples": 2000
+  },
+  "no_both": {
+    "delta_test_rmse_m": -0.06997536999990128,
+    "paired_spatial_bootstrap_ci95_m": [
+      -0.3776772978850099,
+      0.24842342188293487
+    ],
+    "clusters": 41,
+    "resamples": 2000
+  }
+}

@@ -1,0 +1,570 @@
+{
+  "composite_control": {
+    "validation": {
+      "primary_0_20": {
+        "n": 102,
+        "rmse": 6.026808352670412,
+        "mae": 4.648824791095217,
+        "bias": 0.48345748348760265,
+        "mape_pct": 290.3329986406517,
+        "delta_lt_1_25_pct": 53.92156862745098,
+        "coverage_pct": 100.0,
+        "small_sample": false,
+        "rmse_ci95": [
+          4.757381203416785,
+          7.419807372978205
+        ],
+        "clusters": 32
+      },
+      "primary_bins": {
+        "0-5": {
+          "n": 20,
+          "rmse": 11.060987220414829,
+          "mae": 10.400626824475129,
+          "bias": 10.400626824475129,
+          "mape_pct": 1395.5193367815975,
+          "delta_lt_1_25_pct": 0.0,
+          "coverage_pct": 19.607843137254903,
+          "small_sample": false,
+          "rmse_ci95": [
+            9.327301080014934,
+            12.944990775218185
+          ],
+          "clusters": 14
+        },
+        "5-10": {
+          "n": 2,
+          "rmse": 5.48397340974824,
+          "mae": 5.459513152954102,
+          "bias": 5.459513152954102,
+          "mape_pct": 82.31486180140645,
+          "delta_lt_1_25_pct": 0.0,
+          "coverage_pct": 1.9607843137254901,
+          "small_sample": true,
+          "rmse_ci95": [
+            4.9421346729736335,
+            5.976891632934571
+          ],
+          "clusters": 2
+        },
+        "10-15": {
+          "n": 27,
+          "rmse": 2.3764560345159285,
+          "mae": 2.1036585311256695,
+          "bias": 1.065433867253056,
+          "mape_pct": 17.700667313321286,
+          "delta_lt_1_25_pct": 85.18518518518519,
+          "coverage_pct": 26.47058823529412,
+          "small_sample": false,
+          "rmse_ci95": [
+            1.6549003330551624,
+            3.095374204590862
+          ],
+          "clusters": 10
+        },
+        "15-+": {
+          "n": 53,
+          "rmse": 4.441116565860082,
+          "mae": 3.7443355765265696,
+          "bias": -3.743124790481279,
+          "mape_pct": 20.019460087774235,
+          "delta_lt_1_25_pct": 60.37735849056604,
+          "coverage_pct": 51.9607843137255,
+          "small_sample": false,
+          "rmse_ci95": [
+            3.3238440461381846,
+            5.8058410649351835
+          ],
+          "clusters": 16
+        }
+      },
+      "cutoff_sensitivity": {
+        "15": {
+          "n": 49,
+          "rmse": 7.36724737894899,
+          "mae": 5.627149859914364,
+          "bias": 5.055066881862108,
+          "mape_pct": 582.712948503968,
+          "delta_lt_1_25_pct": 46.93877551020408,
+          "coverage_pct": 48.03921568627451,
+          "small_sample": false,
+          "rmse_ci95": [
+            5.442217450607851,
+            9.231791375701787
+          ],
+          "clusters": 23
+        },
+        "20": {
+          "n": 102,
+          "rmse": 6.026808352670412,
+          "mae": 4.648824791095217,
+          "bias": 0.48345748348760265,
+          "mape_pct": 290.3329986406517,
+          "delta_lt_1_25_pct": 53.92156862745098,
+          "coverage_pct": 100.0,
+          "small_sample": false,
+          "rmse_ci95": [
+            4.757381203416785,
+            7.419807372978205
+          ],
+          "clusters": 32
+        },
+        "25": {
+          "n": 102,
+          "rmse": 6.026808352670412,
+          "mae": 4.648824791095217,
+          "bias": 0.48345748348760265,
+          "mape_pct": 290.3329986406517,
+          "delta_lt_1_25_pct": 53.92156862745098,
+          "coverage_pct": 100.0,
+          "small_sample": false,
+          "rmse_ci95": [
+            4.757381203416785,
+            7.419807372978205
+          ],
+          "clusters": 32
+        }
+      },
+      "optical_flagged_pct": 97.05882352941177,
+      "optical_limit_calibrated": false,
+      "bootstrap": "2000 resamples of approximately 2km spatial groups; seed42; conditional on this model/reference",
+      "no_clipping_or_test_error_based_exclusion": true,
+      "raw_coverage90_pct": 92.15686274509804,
+      "mean_sigma_m": 6.517891883850098,
+      "clear_historical_n": 26,
+      "historical_clear": {
+        "n": 26,
+        "rmse": 6.383575458623055
+      },
+      "fallback": {
+        "n": 76,
+        "rmse": 5.899805754259071
+      }
+    },
+    "test": {
+      "primary_0_20": {
+        "n": 171,
+        "rmse": 6.511860482780834,
+        "mae": 5.04257438239132,
+        "bias": -1.179296124216878,
+        "mape_pct": 214.62934304825077,
+        "delta_lt_1_25_pct": 41.52046783625731,
+        "coverage_pct": 100.0,
+        "small_sample": false,
+        "rmse_ci95": [
+          5.267152329915047,
+          7.742028928312244
+        ],
+        "clusters": 40
+      },
+      "primary_bins": {
+        "0-5": {
+          "n": 28,
+          "rmse": 10.727482909501736,
+          "mae": 9.312467032854942,
+          "bias": 9.019439185495802,
+          "mape_pct": 1173.6096151041697,
+          "delta_lt_1_25_pct": 3.571428571428571,
+          "coverage_pct": 16.374269005847953,
+          "small_sample": false,
+          "rmse_ci95": [
+            8.231908672562783,
+            12.899547412864505
+          ],
+          "clusters": 14
+        },
+        "5-10": {
+          "n": 5,
+          "rmse": 8.275831443490736,
+          "mae": 8.204730380292968,
+          "bias": 8.204730380292968,
+          "mape_pct": 128.07774948516024,
+          "delta_lt_1_25_pct": 0.0,
+          "coverage_pct": 2.923976608187134,
+          "small_sample": true,
+          "rmse_ci95": [
+            8.275831443490736,
+            8.275831443490736
+          ],
+          "clusters": 1
+        },
+        "10-15": {
+          "n": 25,
+          "rmse": 2.9786258047052425,
+          "mae": 2.2659383923828127,
+          "bias": 0.3068344326367188,
+          "mape_pct": 18.235156023669102,
+          "delta_lt_1_25_pct": 72.0,
+          "coverage_pct": 14.619883040935672,
+          "small_sample": false,
+          "rmse_ci95": [
+            1.651713313881232,
+            4.315886062094686
+          ],
+          "clusters": 13
+        },
+        "15-+": {
+          "n": 113,
+          "rmse": 5.5372262132062255,
+          "mae": 4.458929475734002,
+          "bias": -4.450428735861516,
+          "mape_pct": 24.285670710766333,
+          "delta_lt_1_25_pct": 46.017699115044245,
+          "coverage_pct": 66.08187134502924,
+          "small_sample": false,
+          "rmse_ci95": [
+            4.147443225948078,
+            6.998974223196746
+          ],
+          "clusters": 27
+        }
+      },
+      "cutoff_sensitivity": {
+        "15": {
+          "n": 58,
+          "rmse": 8.079839886791671,
+          "mae": 6.179675666051266,
+          "bias": 5.193772584676987,
+          "mape_pct": 585.471325360936,
+          "delta_lt_1_25_pct": 32.758620689655174,
+          "coverage_pct": 33.91812865497076,
+          "small_sample": false,
+          "rmse_ci95": [
+            6.293062685675603,
+            9.82904493551999
+          ],
+          "clusters": 24
+        },
+        "20": {
+          "n": 171,
+          "rmse": 6.511860482780834,
+          "mae": 5.04257438239132,
+          "bias": -1.179296124216878,
+          "mape_pct": 214.62934304825077,
+          "delta_lt_1_25_pct": 41.52046783625731,
+          "coverage_pct": 100.0,
+          "small_sample": false,
+          "rmse_ci95": [
+            5.267152329915047,
+            7.742028928312244
+          ],
+          "clusters": 40
+        },
+        "25": {
+          "n": 171,
+          "rmse": 6.511860482780834,
+          "mae": 5.04257438239132,
+          "bias": -1.179296124216878,
+          "mape_pct": 214.62934304825077,
+          "delta_lt_1_25_pct": 41.52046783625731,
+          "coverage_pct": 100.0,
+          "small_sample": false,
+          "rmse_ci95": [
+            5.267152329915047,
+            7.742028928312244
+          ],
+          "clusters": 40
+        }
+      },
+      "optical_flagged_pct": 91.22807017543859,
+      "optical_limit_calibrated": false,
+      "bootstrap": "2000 resamples of approximately 2km spatial groups; seed42; conditional on this model/reference",
+      "no_clipping_or_test_error_based_exclusion": true,
+      "raw_coverage90_pct": 88.30409356725146,
+      "mean_sigma_m": 6.393765926361084,
+      "clear_historical_n": 29,
+      "historical_clear": {
+        "n": 29,
+        "rmse": 5.207099322247902
+      },
+      "fallback": {
+        "n": 142,
+        "rmse": 6.747371575246322
+      }
+    }
+  },
+  "matched_tide": {
+    "validation": {
+      "primary_0_20": {
+        "n": 102,
+        "rmse": 6.7129170332458425,
+        "mae": 5.466505518132289,
+        "bias": -0.12162040340914541,
+        "mape_pct": 321.0208475615668,
+        "delta_lt_1_25_pct": 38.23529411764706,
+        "coverage_pct": 100.0,
+        "small_sample": false,
+        "rmse_ci95": [
+          5.535362882104463,
+          8.035442800848985
+        ],
+        "clusters": 32
+      },
+      "primary_bins": {
+        "0-5": {
+          "n": 20,
+          "rmse": 11.854938055271711,
+          "mae": 11.659734648482894,
+          "bias": 11.659734648482894,
+          "mape_pct": 1537.8858402561452,
+          "delta_lt_1_25_pct": 0.0,
+          "coverage_pct": 19.607843137254903,
+          "small_sample": false,
+          "rmse_ci95": [
+            10.85950504610534,
+            12.481507419555546
+          ],
+          "clusters": 14
+        },
+        "5-10": {
+          "n": 2,
+          "rmse": 6.265870422765001,
+          "mae": 6.104991878387452,
+          "bias": 6.104991878387452,
+          "mape_pct": 94.8259311688956,
+          "delta_lt_1_25_pct": 0.0,
+          "coverage_pct": 1.9607843137254901,
+          "small_sample": true,
+          "rmse_ci95": [
+            4.6942451542358405,
+            7.515738602539063
+          ],
+          "clusters": 2
+        },
+        "10-15": {
+          "n": 27,
+          "rmse": 1.769487070594853,
+          "mae": 1.6028655762072608,
+          "bias": 0.4107984330110735,
+          "mape_pct": 13.10427414978284,
+          "delta_lt_1_25_pct": 92.5925925925926,
+          "coverage_pct": 26.47058823529412,
+          "small_sample": false,
+          "rmse_ci95": [
+            1.332713696640729,
+            2.235842383535894
+          ],
+          "clusters": 10
+        },
+        "15-+": {
+          "n": 53,
+          "rmse": 5.533089737357139,
+          "mae": 5.073613501235182,
+          "bias": -5.073613501235182,
+          "mape_pct": 27.225327958018646,
+          "delta_lt_1_25_pct": 26.41509433962264,
+          "coverage_pct": 51.9607843137255,
+          "small_sample": false,
+          "rmse_ci95": [
+            4.51241701613833,
+            6.851859329515375
+          ],
+          "clusters": 16
+        }
+      },
+      "cutoff_sensitivity": {
+        "15": {
+          "n": 49,
+          "rmse": 7.790434573699345,
+          "mae": 5.891470352735281,
+          "bias": 5.2346170289333,
+          "mape_pct": 638.7996748878538,
+          "delta_lt_1_25_pct": 51.02040816326531,
+          "coverage_pct": 48.03921568627451,
+          "small_sample": false,
+          "rmse_ci95": [
+            5.694597126591669,
+            9.742240384651552
+          ],
+          "clusters": 23
+        },
+        "20": {
+          "n": 102,
+          "rmse": 6.7129170332458425,
+          "mae": 5.466505518132289,
+          "bias": -0.12162040340914541,
+          "mape_pct": 321.0208475615668,
+          "delta_lt_1_25_pct": 38.23529411764706,
+          "coverage_pct": 100.0,
+          "small_sample": false,
+          "rmse_ci95": [
+            5.535362882104463,
+            8.035442800848985
+          ],
+          "clusters": 32
+        },
+        "25": {
+          "n": 102,
+          "rmse": 6.7129170332458425,
+          "mae": 5.466505518132289,
+          "bias": -0.12162040340914541,
+          "mape_pct": 321.0208475615668,
+          "delta_lt_1_25_pct": 38.23529411764706,
+          "coverage_pct": 100.0,
+          "small_sample": false,
+          "rmse_ci95": [
+            5.535362882104463,
+            8.035442800848985
+          ],
+          "clusters": 32
+        }
+      },
+      "optical_flagged_pct": 97.05882352941177,
+      "optical_limit_calibrated": false,
+      "bootstrap": "2000 resamples of approximately 2km spatial groups; seed42; conditional on this model/reference",
+      "no_clipping_or_test_error_based_exclusion": true,
+      "raw_coverage90_pct": 85.29411764705883,
+      "mean_sigma_m": 6.24100923538208,
+      "clear_historical_n": 26,
+      "historical_clear": {
+        "n": 26,
+        "rmse": 6.51734469186707
+      },
+      "fallback": {
+        "n": 76,
+        "rmse": 6.778528108422189
+      }
+    },
+    "test": {
+      "primary_0_20": {
+        "n": 171,
+        "rmse": 6.092809231835756,
+        "mae": 4.938452734014077,
+        "bias": -1.8779891645030236,
+        "mape_pct": 201.13631851157635,
+        "delta_lt_1_25_pct": 29.239766081871345,
+        "coverage_pct": 100.0,
+        "small_sample": false,
+        "rmse_ci95": [
+          5.128962696462198,
+          7.041625581552187
+        ],
+        "clusters": 40
+      },
+      "primary_bins": {
+        "0-5": {
+          "n": 28,
+          "rmse": 10.166039959900552,
+          "mae": 8.893401055254406,
+          "bias": 8.79882116741359,
+          "mape_pct": 1108.832785100596,
+          "delta_lt_1_25_pct": 3.571428571428571,
+          "coverage_pct": 16.374269005847953,
+          "small_sample": false,
+          "rmse_ci95": [
+            7.926342081992935,
+            12.17249833618045
+          ],
+          "clusters": 14
+        },
+        "5-10": {
+          "n": 5,
+          "rmse": 0.9195381881021366,
+          "mae": 0.9105557496040403,
+          "bias": -0.9105557496040403,
+          "mape_pct": 14.158680192332582,
+          "delta_lt_1_25_pct": 100.0,
+          "coverage_pct": 2.923976608187134,
+          "small_sample": true,
+          "rmse_ci95": [
+            0.9195381881021366,
+            0.9195381881021366
+          ],
+          "clusters": 1
+        },
+        "10-15": {
+          "n": 25,
+          "rmse": 2.1213142008940684,
+          "mae": 1.2246297144936795,
+          "bias": -0.10634778842624265,
+          "mape_pct": 9.595737419057643,
+          "delta_lt_1_25_pct": 96.0,
+          "coverage_pct": 14.619883040935672,
+          "small_sample": false,
+          "rmse_ci95": [
+            0.8480312176263621,
+            3.807631417664068
+          ],
+          "clusters": 13
+        },
+        "15-+": {
+          "n": 113,
+          "rmse": 5.434595867489746,
+          "mae": 4.958333330609924,
+          "bias": -4.958333330609924,
+          "mape_pct": 26.869961471015486,
+          "delta_lt_1_25_pct": 17.699115044247787,
+          "coverage_pct": 66.08187134502924,
+          "small_sample": false,
+          "rmse_ci95": [
+            4.642669181363221,
+            6.41755621621575
+          ],
+          "clusters": 27
+        }
+      },
+      "cutoff_sensitivity": {
+        "15": {
+          "n": 58,
+          "rmse": 7.20450220578821,
+          "mae": 4.899719847542856,
+          "bias": 4.123371021188005,
+          "mape_pct": 540.6552555043933,
+          "delta_lt_1_25_pct": 51.724137931034484,
+          "coverage_pct": 33.91812865497076,
+          "small_sample": false,
+          "rmse_ci95": [
+            5.296758020528145,
+            9.028407309815613
+          ],
+          "clusters": 24
+        },
+        "20": {
+          "n": 171,
+          "rmse": 6.092809231835756,
+          "mae": 4.938452734014077,
+          "bias": -1.8779891645030236,
+          "mape_pct": 201.13631851157635,
+          "delta_lt_1_25_pct": 29.239766081871345,
+          "coverage_pct": 100.0,
+          "small_sample": false,
+          "rmse_ci95": [
+            5.128962696462198,
+            7.041625581552187
+          ],
+          "clusters": 40
+        },
+        "25": {
+          "n": 171,
+          "rmse": 6.092809231835756,
+          "mae": 4.938452734014077,
+          "bias": -1.8779891645030236,
+          "mape_pct": 201.13631851157635,
+          "delta_lt_1_25_pct": 29.239766081871345,
+          "coverage_pct": 100.0,
+          "small_sample": false,
+          "rmse_ci95": [
+            5.128962696462198,
+            7.041625581552187
+          ],
+          "clusters": 40
+        }
+      },
+      "optical_flagged_pct": 90.05847953216374,
+      "optical_limit_calibrated": false,
+      "bootstrap": "2000 resamples of approximately 2km spatial groups; seed42; conditional on this model/reference",
+      "no_clipping_or_test_error_based_exclusion": true,
+      "raw_coverage90_pct": 90.05847953216374,
+      "mean_sigma_m": 6.457953453063965,
+      "clear_historical_n": 29,
+      "historical_clear": {
+        "n": 29,
+        "rmse": 5.869414572857906
+      },
+      "fallback": {
+        "n": 142,
+        "rmse": 6.137432289844012
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "analytical_metric_identity_and_tolerance_checks": true,
+  "full_shallow_expected_counts": true,
+  "historical_primary_rmse_reproduced": true,
+  "uncertainty_off_reported_unavailable": true,
+  "postprocessing_depth_metrics_unchanged": true,
+  "prediction_hashes_unchanged": 30,
+  "local_markdown_links_checked": 20,
+  "html_tables": 21,
+  "html_images": 4,
+  "scope": "No training or source prediction/checkpoint modification; statistical/algebraic and document checks, not external causal validation"
+}

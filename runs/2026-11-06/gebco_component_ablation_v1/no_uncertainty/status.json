@@ -1,0 +1,7 @@
+{
+  "arm": "no_uncertainty",
+  "stage": "complete",
+  "utc": "2026-11-05T19:51:59.389602+00:00",
+  "validation_rmse_0_20": 2.032925988497584,
+  "test_rmse_0_20": 2.467304996069228
+}

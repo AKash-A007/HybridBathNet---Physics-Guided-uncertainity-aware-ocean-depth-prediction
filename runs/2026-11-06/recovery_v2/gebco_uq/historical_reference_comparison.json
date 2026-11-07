@@ -1,0 +1,74 @@
+{
+  "common_test_n": 228,
+  "paired_spatial_bootstrap_difference_m": [
+    -0.5621372941705952,
+    0.2779366036592982
+  ],
+  "training_bin_counts_original": [
+    56,
+    131,
+    191,
+    259
+  ],
+  "training_bin_counts_recovery": [
+    28,
+    52,
+    156,
+    211
+  ],
+  "interpretation": "exploratory same-target comparison; changed training/calibration allocation, feature references and ensemble size; no isolated causal claim",
+  "bins": {
+    "0-5": {
+      "n": 17,
+      "original_rmse": 1.0938808917999268,
+      "ensemble_rmse": 2.136428693663679,
+      "ensemble_rmse_ci95_spatial": [
+        0.6393203818418159,
+        7.79414701461792
+      ],
+      "difference_ci95_spatial": [
+        -0.09983395699485398,
+        5.048192501068115
+      ]
+    },
+    "5-10": {
+      "n": 58,
+      "original_rmse": 1.3100440502166748,
+      "ensemble_rmse": 2.1726614790823238,
+      "ensemble_rmse_ci95_spatial": [
+        1.4209295481095978,
+        2.7790828306593847
+      ],
+      "difference_ci95_spatial": [
+        0.21752614175172502,
+        1.368616317296237
+      ]
+    },
+    "10-15": {
+      "n": 64,
+      "original_rmse": 3.2548282146453857,
+      "ensemble_rmse": 2.6872425905291064,
+      "ensemble_rmse_ci95_spatial": [
+        1.9562656144733048,
+        3.4306729835558616
+      ],
+      "difference_ci95_spatial": [
+        -0.881615679509937,
+        -0.14868267463388515
+      ]
+    },
+    "15-20.0001": {
+      "n": 89,
+      "original_rmse": 2.8002541065216064,
+      "ensemble_rmse": 2.2949711765653156,
+      "ensemble_rmse_ci95_spatial": [
+        1.6817425865176845,
+        2.9525798786126645
+      ],
+      "difference_ci95_spatial": [
+        -0.9871255552744617,
+        -0.019349042421441098
+      ]
+    }
+  }
+}

@@ -23,9 +23,8 @@ from pathlib import Path
 import numpy as np
 import rasterio
 from rasterio.enums import Resampling
-from rasterio.transform import from_bounds
-from rasterio.warp import reproject
-from pyproj import Transformer
+from rasterio.transform import from_origin
+from rasterio.warp import reproject, transform_bounds
 
 from .utils import load_config, get_logger, ensure_dir
 
@@ -91,12 +90,11 @@ def find_scl_path(safe_dir: Path) -> Path:
 
 def get_target_grid(bbox_geo: list, dst_crs: str, resolution: float = 10.0):
     """Compute target transform, CRS, and shape covering the AOI bbox."""
-    transformer = Transformer.from_crs("EPSG:4326", dst_crs, always_xy=True)
-    minx, miny = transformer.transform(bbox_geo[0], bbox_geo[1])
-    maxx, maxy = transformer.transform(bbox_geo[2], bbox_geo[3])
+    minx, miny, maxx, maxy = transform_bounds(
+        "EPSG:4326", dst_crs, *bbox_geo, densify_pts=21)
     dst_width  = int(np.ceil((maxx - minx) / resolution))
     dst_height = int(np.ceil((maxy - miny) / resolution))
-    dst_transform = from_bounds(minx, miny, maxx, maxy, dst_width, dst_height)
+    dst_transform = from_origin(minx, maxy, resolution, resolution)
     dst_shape = (dst_height, dst_width)
     return dst_transform, dst_crs, dst_shape
 
@@ -195,15 +193,51 @@ def temporal_composite(safe_dirs: list, bands: list, dst_transform, dst_crs, dst
 
 
 def resample_gebco(gebco_path: str, ref_transform, ref_crs, ref_shape):
+    """Warp native GEBCO once; retain missing coverage as NaN, never zero depth.
+
+    Prefer the downloaded NetCDF next to an intermediate TIFF. This avoids
+    nearest-neighbour coarse reprojection followed by a second interpolation.
+    """
+    native_path = Path(gebco_path).with_suffix('.nc')
+    if native_path.exists():
+        import xarray as xr
+        with xr.open_dataset(native_path) as ds:
+            if 'elevation' not in ds:
+                raise ValueError('GEBCO NetCDF must contain elevation')
+            lat = np.asarray(ds['latitude'].values)
+            lon = np.asarray(ds['longitude'].values)
+            values = ds['elevation'].transpose('latitude', 'longitude').values.astype(np.float32)
+            units = str(ds['elevation'].attrs.get('units', '')).lower()
+            if units not in ('m', 'metres', 'meters'):
+                raise ValueError(f'Unsupported GEBCO elevation units: {units}')
+        lat_order, lon_order = np.argsort(lat), np.argsort(lon)
+        lat, lon = lat[lat_order], lon[lon_order]
+        values = values[np.ix_(lat_order, lon_order)]
+        if len(lat) < 2 or len(lon) < 2:
+            raise ValueError('GEBCO requires at least two coordinates per axis')
+        dx, dy = float(np.diff(lon).mean()), float(np.diff(lat).mean())
+        if dx <= 0 or dy <= 0 or not np.allclose(np.diff(lon), dx) or not np.allclose(np.diff(lat), dy):
+            raise ValueError('GEBCO coordinates must form a regular grid')
+        native_transform = from_origin(lon[0]-dx/2, lat[-1]+dy/2, dx, dy)
+        depth = np.full(ref_shape, np.nan, dtype=np.float32)
+        reproject(source=values[::-1].copy(), destination=depth,
+                  src_transform=native_transform, src_crs='EPSG:4326', src_nodata=np.nan,
+                  dst_transform=ref_transform, dst_crs=ref_crs, dst_nodata=np.nan,
+                  resampling=Resampling.bilinear)
+        LOG.info('GEBCO: direct native-NetCDF reprojection from %s', native_path)
+        return depth
+    LOG.warning('Native GEBCO NetCDF unavailable; using raster %s', gebco_path)
     with rasterio.open(gebco_path) as src:
-        depth = np.zeros(ref_shape, dtype=np.float32)
+        depth = np.full(ref_shape, np.nan, dtype=np.float32)
         reproject(
             source=rasterio.band(src, 1),
             destination=depth,
             src_transform=src.transform,
             src_crs=src.crs,
+            src_nodata=src.nodata,
             dst_transform=ref_transform,
             dst_crs=ref_crs,
+            dst_nodata=np.nan,
             resampling=Resampling.bilinear,
         )
     return depth

@@ -1,0 +1,7 @@
+{
+  "mask_aware": false,
+  "reconstruction_weight": 0,
+  "sampler": "depth_quantile_replacement",
+  "epochs": 15,
+  "warm_start": true
+}

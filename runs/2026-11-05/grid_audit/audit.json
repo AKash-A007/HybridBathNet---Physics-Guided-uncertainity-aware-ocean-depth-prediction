@@ -1,0 +1,179 @@
+{
+  "source_attributes": {
+    "ioos_category": "Location",
+    "long_name": "Elevation relative to sea level",
+    "sdn_P02_urn": "SDN:P02::MBAN",
+    "sdn_parameter_name": "Sea floor height (above mean sea level) {bathymetric height}",
+    "sdn_parameter_urn": "SDN:P01::BATHHGHT",
+    "sdn_uom_name": "Metres",
+    "sdn_uom_urn": "SDN:P06::ULAA",
+    "standard_name": "height_above_reference_ellipsoid",
+    "units": "m"
+  },
+  "source_shape": [
+    72,
+    61
+  ],
+  "source_resolution_degrees": [
+    0.004166666666666667,
+    0.00416666666666668
+  ],
+  "source_transform": [
+    0.004166666666666667,
+    0.0,
+    76.29999999999998,
+    0.0,
+    -0.00416666666666668,
+    9.200000000000005,
+    0.0,
+    0.0,
+    1.0
+  ],
+  "intermediate": {
+    "shape": [
+      72,
+      61
+    ],
+    "crs": "EPSG:32643",
+    "transform": [
+      459.65163776844275,
+      0.0,
+      642820.5425944737,
+      0.0,
+      -459.65163776844173,
+      1017334.064805739,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "nodata": 32767.0,
+    "range": {
+      "n": 4392,
+      "min": -112.0,
+      "max": 18.0,
+      "mean": -16.715846994535518,
+      "rmse": 25.174590725867546
+    },
+    "dtype": [
+      "int16"
+    ]
+  },
+  "training_grid": {
+    "shape": [
+      3329,
+      2736
+    ],
+    "crs": "EPSG:32643",
+    "transform": [
+      9.99742425894957,
+      0.0,
+      642938.9642970185,
+      0.0,
+      -9.998403762037459,
+      1017332.0812208673,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "bounds": [
+      642938.9642970185,
+      984047.3950970446,
+      670291.9170695045,
+      1017332.0812208673
+    ]
+  },
+  "all_corner_projected_aoi_bounds": [
+    642820.5425944752,
+    984047.3950970446,
+    670433.1372589417,
+    1017332.0812208673
+  ],
+  "shared_native_support_cells": {
+    "train_validation": 0,
+    "train_test": 0
+  },
+  "water_pixel_old_minus_direct": {
+    "n": 7151934,
+    "min": -14.654520034790039,
+    "max": 14.343891143798828,
+    "mean": -0.04866228625178337,
+    "rmse": 0.5532944798469543
+  },
+  "split_comparisons": {
+    "train_idx": {
+      "old_minus_direct": {
+        "n": 2176,
+        "min": -8.608491897583008,
+        "max": 12.945995330810547,
+        "mean": -0.02942107990384102,
+        "rmse": 0.703595757484436
+      },
+      "direct_minus_independent": {
+        "n": 2166,
+        "min": -0.2079200201385305,
+        "max": 0.3306066456922778,
+        "mean": -0.0018779542209821397,
+        "rmse": 0.01666127926617098
+      },
+      "old_minus_independent": {
+        "n": 2166,
+        "min": -8.752618894056889,
+        "max": 13.276601499665666,
+        "mean": -0.03137389826037777,
+        "rmse": 0.7199576580852111
+      },
+      "new_nonwater_centres": 5,
+      "new_missing_centres": 0
+    },
+    "val_idx": {
+      "old_minus_direct": {
+        "n": 65,
+        "min": -0.8067054748535156,
+        "max": 0.8281135559082031,
+        "mean": -0.0396878682076931,
+        "rmse": 0.23813313245773315
+      },
+      "direct_minus_independent": {
+        "n": 65,
+        "min": -0.00936607149930424,
+        "max": 0.012710674928232635,
+        "mean": -0.001507407687952307,
+        "rmse": 0.0035758218308247903
+      },
+      "old_minus_independent": {
+        "n": 65,
+        "min": -0.8120493294163964,
+        "max": 0.8279063302346543,
+        "mean": -0.04119527411896849,
+        "rmse": 0.24033755847046764
+      },
+      "new_nonwater_centres": 0,
+      "new_missing_centres": 0
+    },
+    "test_idx": {
+      "old_minus_direct": {
+        "n": 65,
+        "min": -0.7807559967041016,
+        "max": 0.652155876159668,
+        "mean": -0.05874525383114815,
+        "rmse": 0.21792574226856232
+      },
+      "direct_minus_independent": {
+        "n": 65,
+        "min": -0.010130568276526475,
+        "max": 0.018415424309896622,
+        "mean": -0.0017078568455619852,
+        "rmse": 0.00405362246135192
+      },
+      "old_minus_independent": {
+        "n": 65,
+        "min": -0.7866102524284386,
+        "max": 0.6705713004695646,
+        "mean": -0.06045310901465754,
+        "rmse": 0.22107777201413115
+      },
+      "new_nonwater_centres": 0,
+      "new_missing_centres": 0
+    }
+  }
+}

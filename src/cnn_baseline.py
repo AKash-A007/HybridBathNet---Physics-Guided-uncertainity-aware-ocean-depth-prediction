@@ -30,6 +30,7 @@ Usage:
 import argparse
 import copy
 import json
+import time
 from pathlib import Path
 
 import numpy as np
@@ -84,6 +85,10 @@ class PatchDataset(Dataset):
         self.X = X[indices]   # (N, C, H, W)
         self.Y = Y[indices]   # (N, H, W)
         self.M = M[indices]   # (N, H, W)
+        if len(indices) == 0:
+            raise ValueError("Empty dataset split; rebuild spatial splits before training")
+        if not np.isfinite(self.X).all() or not np.isfinite(self.Y).all():
+            raise ValueError("Non-finite input features or labels; rebuild preprocessing")
 
         # Channel normalisation (water pixels only — §4.6)
         if mean is None:
@@ -101,6 +106,11 @@ class PatchDataset(Dataset):
 
             self.mean = ch_mean.astype(np.float32)[None, :, None, None]
             self.std  = ch_std.astype(np.float32)[None,  :, None, None]
+            # Constant water-mask channels otherwise turn land into -1e6.
+            self.std[self.std < 1e-5] = 1.0
+            if self.X.shape[1] > 11:
+                self.mean[:, 11] = 0.0
+                self.std[:, 11] = 1.0
         else:
             self.mean = mean
             self.std  = std
@@ -126,6 +136,7 @@ class PatchDataset(Dataset):
             torch.from_numpy(x.astype(np.float32)),
             torch.from_numpy(y.astype(np.float32)),
             torch.from_numpy(m.astype(np.float32)),
+            torch.from_numpy(self.X[idx, :3].astype(np.float32).copy()),
         )
 
 
@@ -160,7 +171,7 @@ class SpectralAugDataset(Dataset):
     def std(self):    return self.base.std
 
     def __getitem__(self, idx):
-        x, y, m = self.base[idx]   # x: (C, H, W)
+        x, y, m, raw = self.base[idx]   # raw remains unjittered for physics
 
         if self.augment:
             n_spectral = min(4, x.shape[0])
@@ -173,12 +184,14 @@ class SpectralAugDataset(Dataset):
                 x = torch.flip(x, [2])
                 y = torch.flip(y, [1])
                 m = torch.flip(m, [1])
+                raw = torch.flip(raw, [2])
 
             # Vertical flip
             if torch.rand(1).item() > 0.5:
                 x = torch.flip(x, [1])
                 y = torch.flip(y, [0])
                 m = torch.flip(m, [0])
+                raw = torch.flip(raw, [1])
 
             # 90° rotation (§3.8 — ablate with use_rotations=False)
             if self.use_rotations:
@@ -187,8 +200,9 @@ class SpectralAugDataset(Dataset):
                     x = torch.rot90(x, k=k, dims=[1, 2])
                     y = torch.rot90(y.unsqueeze(0), k=k, dims=[1, 2]).squeeze(0)
                     m = torch.rot90(m.unsqueeze(0), k=k, dims=[1, 2]).squeeze(0)
+                    raw = torch.rot90(raw, k=k, dims=[1, 2])
 
-        return x, y, m
+        return x, y, m, raw
 
 
 # ---------------------------------------------------------------------------
@@ -268,8 +282,9 @@ def compute_depth_bin_metrics(y_true: np.ndarray, y_pred: np.ndarray) -> dict:
     for lo, hi in bins:
         label = f"{lo}-{hi}m" if hi < 9999 else f">{lo}m"
         mask  = (y_true >= lo) & (y_true < hi)
+        out[f"n_{label}"] = int(mask.sum())
         if mask.sum() < 10:
-            out[f"rmse_{label}"] = float("nan")
+            out[f"rmse_{label}"] = None
         else:
             out[f"rmse_{label}"] = float(np.sqrt(np.mean((y_pred[mask] - y_true[mask]) ** 2)))
     return out
@@ -294,6 +309,9 @@ class EMA:
                 self.shadow[name] = (
                     self.decay * self.shadow[name] + (1.0 - self.decay) * param.data
                 )
+        # BatchNorm running statistics must track the trained model too.
+        for name, buffer in self._model.named_buffers():
+            self.shadow[name].copy_(buffer)
 
     def apply_shadow(self):
         self._model.load_state_dict(self.shadow)
@@ -306,6 +324,19 @@ class EMA:
 # Training
 # ---------------------------------------------------------------------------
 
+def clip_hybrid_gradients(model, max_norm, separate_uncertainty=False):
+    """Prevent variance-gradient magnitude from rescaling depth/physics updates."""
+    if not separate_uncertainty:
+        return torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=max_norm,
+                                             error_if_nonfinite=True)
+    variance, depth_physics = [], []
+    for name, parameter in model.named_parameters():
+        destination = variance if name.startswith(('decoder.logvar_conv.', 'decoder.uncertainty_head.')) else depth_physics
+        destination.append(parameter)
+    return tuple(torch.nn.utils.clip_grad_norm_(group, max_norm=max_norm,
+                 error_if_nonfinite=True) for group in (depth_physics, variance))
+
+
 def train_hybridbathnet(
     model, criterion, train_loader, val_loader,
     epochs, lr, device, y_mean, y_std,
@@ -317,6 +348,7 @@ def train_hybridbathnet(
     early_stop_patience: int = 15,
     checkpoint_dir:    str   = "checkpoints",
     use_amp:           bool  = True,
+    separate_uncertainty_clip: bool = False,
 ):
     """Train HybridBathNet v3.
 
@@ -348,18 +380,41 @@ def train_hybridbathnet(
     best_state  = None
     no_improve  = 0
     snapshots   = []    # §5.2 — one per cosine cycle
+    history = []
 
     # AMP setup (§6.3)
+    use_amp = use_amp and str(device).startswith("cuda")
     amp_dtype  = torch.bfloat16 if torch.cuda.is_bf16_supported() else torch.float16
     amp_device = "cuda" if device != "cpu" else "cpu"
     scaler     = torch.amp.GradScaler(enabled=(use_amp and device != "cpu"))
 
     ensure_dir(checkpoint_dir)
+    resume_path = Path(checkpoint_dir) / "last_training.pt"
+    start_epoch = 1
+    if resume_path.exists():
+        saved = torch.load(resume_path, map_location=device, weights_only=False)
+        model.load_state_dict(saved["model"])
+        optimizer.load_state_dict(saved["optimizer"])
+        scheduler.load_state_dict(saved["scheduler"])
+        ema.shadow = saved["ema"]
+        scaler.load_state_dict(saved["scaler"])
+        history = saved["history"]
+        best_val, no_improve = saved["best_val"], saved["no_improve"]
+        snapshots = saved["snapshots"]
+        start_epoch = saved["epoch"] + 1
+        best_state = torch.load(Path(checkpoint_dir) / "best_ema.pt", map_location="cpu", weights_only=False)["model"]
+        torch.set_rng_state(saved["torch_rng"].cpu())
+        np.random.set_state(saved["numpy_rng"])
+        if torch.cuda.is_available() and saved["cuda_rng"] is not None:
+            torch.cuda.set_rng_state_all([state.cpu() for state in saved["cuda_rng"]])
+        if hasattr(train_loader.sampler, "rng") and saved["sampler_rng"] is not None:
+            train_loader.sampler.rng.set_state(saved["sampler_rng"])
+        LOG.info("Resuming at epoch %d from %s", start_epoch, resume_path)
 
-    epoch_bar = tqdm(range(1, epochs + 1), desc="Training HybridBathNet v3", unit="epoch")
+    epoch_bar = tqdm(range(start_epoch, epochs + 1), desc="Training HybridBathNet v3", unit="epoch")
     for epoch in epoch_bar:
         model.train()
-        totals = {"loss": 0.0, "nll": 0.0, "ext": 0.0}
+        totals = {"loss": 0.0, "nll": 0.0, "ext": 0.0, "depth": 0.0, "recon": 0.0}
         n_batches = 0
 
         # Curriculum NLL annealing
@@ -368,7 +423,7 @@ def train_hybridbathnet(
 
         current_lr = optimizer.param_groups[0]["lr"]
 
-        for x, y_patch, m_patch in train_loader:
+        for x, y_patch, m_patch, raw in train_loader:
             x      = x.to(device)
             y_patch = y_patch.to(device).unsqueeze(1)   # (B, 1, H, W)
             m_patch = m_patch.to(device).unsqueeze(1)   # (B, 1, H, W)
@@ -377,21 +432,31 @@ def train_hybridbathnet(
 
             with torch.autocast(device_type=amp_device, dtype=amp_dtype, enabled=use_amp):
                 # Use forward_scalar for compatibility with scalar CompositePhysicsNLLLoss
-                pred_norm, log_var_sc, kd_avg, z_ext = model.forward_scalar(
-                    x, y_mean, y_std, mask=m_patch
-                )
+                if hasattr(criterion, 'forward_joint'):
+                    outputs = model(x, mask=m_patch, raw_reflectance=raw.to(device))
+                    cy, cx = y_patch.shape[-2] // 2, y_patch.shape[-1] // 2
+                    pred_norm = (outputs['depth'][:,0,cy,cx]-y_mean)/(y_std+1e-6)
+                    log_var_sc, z_ext = outputs['log_var'][:,0,cy,cx], outputs['z_ext']
+                else:
+                    pred_norm, log_var_sc, kd_avg, z_ext = model.forward_scalar(
+                        x, y_mean, y_std, mask=m_patch, raw_reflectance=raw.to(device))
                 # Compute centre-pixel ground truth in normalised form
                 cy, cx = y_patch.shape[2] // 2, y_patch.shape[3] // 2
                 y_norm_sc = (y_patch[:, 0, cy, cx] - y_mean) / (y_std + 1e-6)
 
-                loss, loss_dict = criterion(
-                    pred_norm, log_var_sc, y_norm_sc, z_ext,
-                    y_mean=y_mean, y_std=y_std
-                )
+                if hasattr(criterion, 'forward_joint'):
+                    loss, loss_dict = criterion.forward_joint(
+                        outputs, raw.to(device), m_patch, y_norm_sc, y_mean, y_std)
+                else:
+                    loss, loss_dict = criterion(
+                        pred_norm, log_var_sc, y_norm_sc, z_ext,
+                        y_mean=y_mean, y_std=y_std)
 
+            if not torch.isfinite(loss):
+                raise FloatingPointError(f"Non-finite loss at epoch {epoch}: {loss_dict}")
             scaler.scale(loss).backward()
             scaler.unscale_(optimizer)
-            torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=grad_clip_norm)
+            clip_hybrid_gradients(model, grad_clip_norm, separate_uncertainty_clip)
             scaler.step(optimizer)
             scaler.update()
 
@@ -400,6 +465,8 @@ def train_hybridbathnet(
             totals["loss"] += loss_dict["loss_total"]
             totals["nll"]  += loss_dict["loss_nll"]
             totals["ext"]  += loss_dict.get("loss_ext", 0.0)
+            totals['depth'] += loss_dict.get('loss_depth', 0.0)
+            totals['recon'] += loss_dict.get('loss_recon', 0.0)
             n_batches      += 1
 
         scheduler.step()
@@ -421,7 +488,17 @@ def train_hybridbathnet(
         backup = copy.deepcopy(model.state_dict())
         ema.apply_shadow()
         val_metrics = evaluate_hybridbathnet(model, val_loader, device, y_mean, y_std)
+        candidate_state = {k: v.cpu().clone() for k, v in model.state_dict().items()}
         ema.restore(backup)
+        if not np.isfinite(val_metrics["rmse"]):
+            raise FloatingPointError(f"Non-finite validation RMSE at epoch {epoch}")
+        history.append({"epoch": epoch, "learning_rate": current_lr,
+                        "loss": totals["loss"], "val_rmse": val_metrics["rmse"],
+                        "val_mae": val_metrics["mae"], "val_r2": val_metrics["r2"],
+                        "loss_depth": totals['depth'], "loss_nll": totals['nll'],
+                        "loss_ext": totals['ext'], "loss_recon": totals['recon']})
+        (Path(checkpoint_dir) / "training_history.json").write_text(
+            json.dumps(history, indent=2), encoding="utf-8")
 
         epoch_bar.set_postfix(
             loss=f"{totals['loss']:.3f}",
@@ -443,16 +520,28 @@ def train_hybridbathnet(
         # Early stopping
         if val_metrics["rmse"] < best_val:
             best_val   = val_metrics["rmse"]
-            best_state = {k: v.cpu().clone() for k, v in model.state_dict().items()}
+            best_state = candidate_state
+            torch.save({"model": best_state, "epoch": epoch,
+                        "val_rmse": best_val}, Path(checkpoint_dir) / "best_ema.pt")
             no_improve = 0
         else:
             no_improve += 1
-            if no_improve >= early_stop_patience:
-                LOG.info(
-                    "Early stopping triggered at epoch %d (no improvement for %d epochs).",
-                    epoch, early_stop_patience
-                )
-                break
+        resume_tmp = resume_path.with_suffix(".tmp")
+        torch.save({"model": model.state_dict(), "optimizer": optimizer.state_dict(),
+                    "scheduler": scheduler.state_dict(), "ema": ema.shadow,
+                    "scaler": scaler.state_dict(), "epoch": epoch,
+                    "history": history, "best_val": best_val, "no_improve": no_improve,
+                    "snapshots": snapshots, "torch_rng": torch.get_rng_state(),
+                    "numpy_rng": np.random.get_state(),
+                    "cuda_rng": torch.cuda.get_rng_state_all() if torch.cuda.is_available() else None,
+                    "sampler_rng": train_loader.sampler.rng.get_state() if hasattr(train_loader.sampler, "rng") else None}, resume_tmp)
+        resume_tmp.replace(resume_path)
+        if no_improve >= early_stop_patience:
+            LOG.info(
+                "Early stopping triggered at epoch %d (no improvement for %d epochs).",
+                epoch, early_stop_patience
+            )
+            break
 
     # Restore best EMA weights
     if best_state is not None:
@@ -470,6 +559,7 @@ def train_hybridbathnet(
 def evaluate_hybridbathnet(
     model, loader, device, y_mean, y_std,
     compute_calibration: bool = False,
+    predictions_path=None,
 ) -> dict:
     """Evaluate model on a DataLoader.
 
@@ -478,12 +568,13 @@ def evaluate_hybridbathnet(
     """
     model.eval()
     all_pred, all_true, all_sigma = [], [], []
+    all_ext, all_kd = [], []
 
-    for x, y_patch, m_patch in loader:
+    for x, y_patch, m_patch, raw in loader:
         x       = x.to(device)
         m_patch = m_patch.to(device).unsqueeze(1)
 
-        out = model(x, mask=m_patch)
+        out = model(x, mask=m_patch, raw_reflectance=raw.to(device))
         depth   = out["depth"].squeeze(1).cpu()    # (B, H, W) metres
         log_var = out["log_var"].squeeze(1).cpu()  # (B, H, W)
 
@@ -501,15 +592,29 @@ def evaluate_hybridbathnet(
         all_pred.append(depth_sc)
         all_true.append(y_centre)
         all_sigma.append(sigma_sc)
+        all_ext.append(out["z_ext"].flatten().cpu().numpy())
+        all_kd.append(out["kd_avg"].flatten().cpu().numpy())
 
     all_pred  = np.concatenate(all_pred)
     all_true  = np.concatenate(all_true)
     all_sigma = np.concatenate(all_sigma)
+    all_ext = np.concatenate(all_ext)
+    all_kd = np.concatenate(all_kd)
+    if not all(np.isfinite(a).all() for a in (all_pred, all_true, all_sigma, all_ext, all_kd)):
+        raise FloatingPointError("Non-finite prediction, target, uncertainty, or physics bound")
+    if predictions_path is not None:
+        np.savez(predictions_path, target=all_true, prediction=all_pred,
+                 sigma=all_sigma, z_ext=all_ext, kd=all_kd)
 
     metrics = compute_metrics(all_true, all_pred)
 
     # §1.1 fix — report σ in metres
     metrics["mean_aleatoric_std_m"] = float(np.mean(all_sigma))
+    metrics["mean_z_ext_m"] = float(all_ext.mean())
+    metrics["reference_above_bound_pct"] = float(100 * np.mean(all_true > all_ext))
+    metrics["mean_extinction_excess_m"] = float(np.maximum(all_pred-all_ext-1, 0).mean())
+    unbounded = np.log(model.i0_over_epsilon) / (2 * all_kd + 1e-6)
+    metrics["bound_clipped_pct"] = float(100 * np.mean(np.abs(unbounded-all_ext) > 1e-4))
 
     # Depth-bin breakdown
     metrics.update(compute_depth_bin_metrics(all_true, all_pred))
@@ -532,17 +637,28 @@ def main():
     parser.add_argument("--no-amp",    action="store_true",  help="Disable AMP")
     parser.add_argument("--no-rotations", action="store_true",
                         help="Disable 90° rotation augmentation (ablation §3.8)")
+    parser.add_argument("--validation-only", action="store_true")
+    parser.add_argument("--evaluate-only", action="store_true")
     args = parser.parse_args()
+    started = time.perf_counter()
 
     torch.manual_seed(args.seed)
     np.random.seed(args.seed)
+    torch.backends.cudnn.benchmark = False
+    torch.backends.cudnn.deterministic = True
 
     cfg      = load_config(args.config)
+    torch.set_num_threads(cfg["training"].get("cpu_threads", 4))
     feat_dir = cfg["features"]["features_dir"]
     data     = np.load(Path(feat_dir) / "patches.npz")
     X, Y     = data["X"], data["Y"]
+    expected_channels = cfg.get("hybridbathnet", {}).get("in_channels", 16)
+    if X.shape[1] != expected_channels:
+        raise ValueError(f"Stale feature data: expected {expected_channels} channels, got {X.shape[1]}. Rebuild features.")
     M        = data.get("M", np.ones_like(Y))   # fall back to all-water if no mask saved
     train_idx, val_idx, test_idx = data["train_idx"], data["val_idx"], data["test_idx"]
+    if any(len(idx) == 0 for idx in (train_idx, val_idx, test_idx)):
+        raise ValueError("Train, validation, and test splits must all be nonempty")
 
     LOG.info("Patches — X: %s  Y: %s  channels: %d", X.shape, Y.shape, X.shape[1])
 
@@ -606,6 +722,13 @@ def main():
         use_red_kd      = hnet_cfg.get("use_red_kd", True),
         use_recon_head  = hnet_cfg.get("use_recon_head", True),
         n_recon_bands   = hnet_cfg.get("n_recon_bands", 3),
+        kd_aggregation = hnet_cfg.get("kd_aggregation", "mean"),
+        physics_conditioning = hnet_cfg.get("physics_conditioning", "spatial"),
+        z_ext_min = hnet_cfg.get("z_ext_min", 1.0),
+        z_ext_max = hnet_cfg.get("z_ext_max", 50.0),
+        physics_enabled = hnet_cfg.get("physics_enabled", True),
+        nonnegative_depth = hnet_cfg.get("nonnegative_depth", True),
+        use_explicit_reflectance = hnet_cfg.get("use_explicit_reflectance", True),
     ).to(device)
 
     n_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
@@ -637,23 +760,29 @@ def main():
              loss_weights.get("w_mse", 1.0), loss_weights.get("w_nll", 1.0),
              loss_weights.get("w_phys", 0.3), loss_weights.get("w_ext", 0.3))
 
-    model, snapshots = train_hybridbathnet(
-        model, criterion, train_loader, val_loader,
-        epochs=epochs, lr=lr, device=device,
-        y_mean=base_train_ds.y_mean, y_std=base_train_ds.y_std,
-        nll_warmup_epochs=nll_warmup,
-        base_nll_weight=loss_weights.get("w_nll", 1.0),
-        grad_clip_norm=grad_clip,
-        lr_restart_period=lr_restart,
-        ema_decay=ema_decay,
-        early_stop_patience=patience,
-        checkpoint_dir=ckpt_dir,
-        use_amp=(not args.no_amp),
-    )
+    if args.evaluate_only:
+        checkpoint = torch.load(Path(ckpt_dir) / "hybridbathnet.pt", map_location=device, weights_only=False)
+        model.load_state_dict(checkpoint["model"])
+        snapshots = checkpoint.get("snapshots", [])
+    else:
+        model, snapshots = train_hybridbathnet(
+            model, criterion, train_loader, val_loader,
+            epochs=epochs, lr=lr, device=device,
+            y_mean=base_train_ds.y_mean, y_std=base_train_ds.y_std,
+            nll_warmup_epochs=nll_warmup,
+            base_nll_weight=loss_weights.get("w_nll", 1.0),
+            grad_clip_norm=grad_clip,
+            lr_restart_period=lr_restart,
+            ema_decay=ema_decay,
+            early_stop_patience=patience,
+            checkpoint_dir=ckpt_dir,
+            use_amp=(not args.no_amp),
+        )
 
     # Save final checkpoint with all metadata
     ensure_dir(ckpt_dir)
-    torch.save({
+    if not args.evaluate_only:
+        torch.save({
         "model":    model.state_dict(),
         "y_mean":   base_train_ds.y_mean,
         "y_std":    base_train_ds.y_std,
@@ -663,17 +792,21 @@ def main():
         "n_channels": X.shape[1],
         "snapshots": snapshots,
         "seed":     args.seed,
+        "configuration": cfg,
+        "runtime_seconds": time.perf_counter() - started,
     }, Path(ckpt_dir) / "hybridbathnet.pt")
     LOG.info("Saved final checkpoint → %s/hybridbathnet.pt", ckpt_dir)
 
     # Test evaluation with calibration metrics
+    results_dir = ensure_dir(cfg["evaluation"]["results_dir"])
     test_metrics = evaluate_hybridbathnet(
-        model, test_loader, device,
+        model, val_loader if args.validation_only else test_loader, device,
         y_mean=base_train_ds.y_mean, y_std=base_train_ds.y_std,
         compute_calibration=True,
+        predictions_path=results_dir / ("validation_predictions.npz" if args.validation_only else "test_predictions.npz"),
     )
     LOG.info(
-        "HybridBathNet v3 (TEST) → RMSE %.3f m  MAE %.3f m  R² %.3f  "
+        "HybridBathNet v3 (EVALUATION) → RMSE %.3f m  MAE %.3f m  R² %.3f  "
         "Acc±1m %.1f%%  Acc±2m %.1f%%  σ_ale %.3f m  "
         "NLL %.3f  Cov68 %.1f%%  Cov90 %.1f%%  σ-|e|corr %.3f",
         test_metrics["rmse"], test_metrics["mae"], test_metrics["r2"],
@@ -702,7 +835,10 @@ def main():
 
     # Write results file (also write the cnn_baseline_results.json for compare_baselines.py)
     ensure_dir(cfg["evaluation"]["results_dir"])
-    results_path = Path(cfg["evaluation"]["results_dir"]) / "hybridbathnet_results.json"
+    test_metrics["evaluation_split"] = "validation" if args.validation_only else "test"
+    test_metrics["runtime_seconds"] = time.perf_counter() - started
+    results_path = Path(cfg["evaluation"]["results_dir"]) / (
+        "validation_results.json" if args.validation_only else "hybridbathnet_results.json")
     with open(results_path, "w") as f:
         json.dump(test_metrics, f, indent=2)
     LOG.info("Saved results → %s", results_path)

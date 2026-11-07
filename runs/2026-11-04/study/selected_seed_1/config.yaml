@@ -1,0 +1,78 @@
+project:
+  name: hybridbathnet_v3
+  crs: EPSG:32643
+aoi:
+  wkt: POLYGON((76.30 8.90, 76.55 8.90, 76.55 9.20, 76.30 9.20, 76.30 8.90))
+  bbox:
+  - 76.3
+  - 8.9
+  - 76.55
+  - 9.2
+sentinel2:
+  collection: SENTINEL-2
+  product_type: S2MSI2A
+  start_date: '2024-01-01'
+  end_date: '2024-04-30'
+  max_cloud_cover: 10
+  bands:
+  - B02
+  - B03
+  - B04
+  - B08
+  raw_dir: data/raw/sentinel2
+gebco:
+  raw_path: data/raw/gebco/gebco_subset.tif
+coastline:
+  raw_path: data/raw/coastline/coastline.geojson
+preprocessing:
+  processed_dir: runs/2026-11-04/processed
+features:
+  patch_size: 64
+  patch_stride: 32
+  train_frac: 0.7
+  val_frac: 0.15
+  test_frac: 0.15
+  split_axis: lon
+  features_dir: runs\2026-11-04\study\features
+  use_distance_to_shore: false
+training:
+  batch_size: 8
+  epochs: 90
+  learning_rate: 0.001
+  device: cuda
+  checkpoint_dir: runs\2026-11-04\study\selected_seed_1\checkpoints
+hybridbathnet:
+  in_channels: 16
+  n_spectral: 3
+  feature_dim: 128
+  i0_over_epsilon: 100.0
+  use_red_kd: true
+  use_recon_head: true
+  n_recon_bands: 3
+  dropout_rate: 0.1
+  mc_samples: 30
+  use_depth_sampler: true
+  use_depth_weighting: false
+  depth_strata: 5
+  loss_weights:
+    w_mse: 1.0
+    w_nll: 1.0
+    w_phys: 0.0
+    w_ext: 0.03
+    w_recon: 0.1
+    w_lowres: 0.5
+  beta_nll: 0.5
+  huber_delta: 0.5
+  nll_warmup_epochs: 20
+  lr_restart_period: 30
+  grad_clip_norm: 1.0
+  ema_decay: 0.999
+  early_stop_patience: 90
+  aug_noise_std: 0.02
+  use_explicit_reflectance: true
+  kd_aggregation: center
+  physics_conditioning: spatial
+evaluation:
+  results_dir: runs\2026-11-04\study\selected_seed_1\results
+export:
+  output_dir: runs/2026-11-04/rasters

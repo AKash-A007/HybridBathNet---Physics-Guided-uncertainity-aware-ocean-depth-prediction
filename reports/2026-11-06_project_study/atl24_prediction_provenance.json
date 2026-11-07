@@ -1,0 +1,26 @@
+[
+  {
+    "path": "runs\\2026-11-06\\atl24_hybrid_v1\\validation_predictions.npz",
+    "sha256": "904e0192604cda69933a593b28e43c74a2a0951024b3dfc469f461f0a6f4a65e"
+  },
+  {
+    "path": "runs\\2026-11-06\\atl24_hybrid_v1\\test_predictions.npz",
+    "sha256": "c3df7f86b9946d98937ece12e7551ea2c884dfd884a1fe78f64042e2f6d73dd5"
+  },
+  {
+    "path": "runs\\2026-11-06\\recovery_v2\\atl24_paired\\composite_control\\validation_acquisition_predictions.npz",
+    "sha256": "165f623aaa151e83550e9e9670100caffb8d4805825a53cb1c683634de5db715"
+  },
+  {
+    "path": "runs\\2026-11-06\\recovery_v2\\atl24_paired\\composite_control\\test_acquisition_predictions.npz",
+    "sha256": "06e3f3ea9e5f437e72df98f2cb07677ab363547af415ba83b37a69430875dc46"
+  },
+  {
+    "path": "runs\\2026-11-06\\recovery_v2\\atl24_paired\\matched_tide\\validation_acquisition_predictions.npz",
+    "sha256": "1088dfc04eae1a05fec01981302ce989cb0352e4f41d77195c6fb75b2cb2a3d5"
+  },
+  {
+    "path": "runs\\2026-11-06\\recovery_v2\\atl24_paired\\matched_tide\\test_acquisition_predictions.npz",
+    "sha256": "55477717b1577ce17bff6a9e054fe87c9e0e7da5e434b72678ee3041f71e997b"
+  }
+]

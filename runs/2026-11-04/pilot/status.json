@@ -1,0 +1,8 @@
+{
+  "stage": "pilot_complete",
+  "experiment": "compatibility_reference",
+  "utc": "2026-11-05T04:26:13.363094+00:00",
+  "completed_validation": [
+    "compatibility_reference"
+  ]
+}

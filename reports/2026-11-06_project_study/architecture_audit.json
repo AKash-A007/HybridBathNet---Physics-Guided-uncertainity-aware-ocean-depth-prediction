@@ -1,0 +1,8404 @@
+{
+  "Full v1": {
+    "parameters_registered": 2212436,
+    "parameters_in_executed_leaves": 2212436,
+    "registered_leaf_types": {
+      "Conv2d": 33,
+      "BatchNorm2d": 22,
+      "ReLU": 35,
+      "Dropout2d": 11,
+      "AdaptiveAvgPool2d": 12,
+      "Flatten": 11,
+      "Linear": 22,
+      "Sigmoid": 11,
+      "MaxPool2d": 3,
+      "ConvTranspose2d": 3
+    },
+    "executed_leaf_types": {
+      "Conv2d": 33,
+      "BatchNorm2d": 22,
+      "ReLU": 35,
+      "Dropout2d": 11,
+      "AdaptiveAvgPool2d": 11,
+      "Flatten": 11,
+      "Linear": 22,
+      "Sigmoid": 11,
+      "MaxPool2d": 3,
+      "ConvTranspose2d": 3
+    },
+    "stages": {
+      "cond_proj": {
+        "input": [
+          [
+            1,
+            3,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          3,
+          64,
+          64
+        ]
+      },
+      "encoder.stem1": {
+        "input": [
+          [
+            1,
+            16,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          32,
+          64,
+          64
+        ]
+      },
+      "encoder.res1": {
+        "input": [
+          [
+            1,
+            32,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          32,
+          64,
+          64
+        ]
+      },
+      "encoder.film1": {
+        "input": [
+          [
+            1,
+            32,
+            64,
+            64
+          ],
+          [
+            1,
+            3,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          32,
+          64,
+          64
+        ]
+      },
+      "encoder.pool1": {
+        "input": [
+          [
+            1,
+            32,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          32,
+          32,
+          32
+        ]
+      },
+      "encoder.stem2": {
+        "input": [
+          [
+            1,
+            32,
+            32,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          64,
+          32,
+          32
+        ]
+      },
+      "encoder.pool2": {
+        "input": [
+          [
+            1,
+            64,
+            32,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          64,
+          16,
+          16
+        ]
+      },
+      "encoder.stem3": {
+        "input": [
+          [
+            1,
+            64,
+            16,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          96,
+          16,
+          16
+        ]
+      },
+      "encoder.pool3": {
+        "input": [
+          [
+            1,
+            96,
+            16,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          96,
+          8,
+          8
+        ]
+      },
+      "encoder.bottleneck": {
+        "input": [
+          [
+            1,
+            96,
+            8,
+            8
+          ]
+        ],
+        "output": [
+          1,
+          128,
+          8,
+          8
+        ]
+      },
+      "encoder.film_btn": {
+        "input": [
+          [
+            1,
+            128,
+            8,
+            8
+          ],
+          [
+            1,
+            3,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          128,
+          8,
+          8
+        ]
+      },
+      "decoder.up3": {
+        "input": [
+          [
+            1,
+            128,
+            8,
+            8
+          ]
+        ],
+        "output": [
+          1,
+          96,
+          16,
+          16
+        ]
+      },
+      "decoder.dec3": {
+        "input": [
+          [
+            1,
+            192,
+            16,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          192,
+          16,
+          16
+        ]
+      },
+      "decoder.up2": {
+        "input": [
+          [
+            1,
+            192,
+            16,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          64,
+          32,
+          32
+        ]
+      },
+      "decoder.dec2": {
+        "input": [
+          [
+            1,
+            128,
+            32,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          128,
+          32,
+          32
+        ]
+      },
+      "decoder.up1": {
+        "input": [
+          [
+            1,
+            128,
+            32,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          32,
+          64,
+          64
+        ]
+      },
+      "decoder.dec1": {
+        "input": [
+          [
+            1,
+            64,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          64,
+          64,
+          64
+        ]
+      },
+      "decoder.depth_conv": {
+        "input": [
+          [
+            1,
+            64,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          1,
+          64,
+          64
+        ]
+      },
+      "decoder.logvar_conv": {
+        "input": [
+          [
+            1,
+            64,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          1,
+          64,
+          64
+        ]
+      },
+      "recon_head": {
+        "input": [
+          [
+            1,
+            32,
+            64,
+            64
+          ],
+          [
+            1,
+            1,
+            64,
+            64
+          ],
+          [
+            1,
+            3,
+            1,
+            1
+          ]
+        ],
+        "output": [
+          [
+            1,
+            3,
+            64,
+            64
+          ],
+          [
+            1,
+            3,
+            64,
+            64
+          ],
+          [
+            1,
+            3,
+            64,
+            64
+          ]
+        ]
+      }
+    },
+    "output_shapes": {
+      "depth": [
+        1,
+        1,
+        64,
+        64
+      ],
+      "log_var": [
+        1,
+        1,
+        64,
+        64
+      ],
+      "kd_map": [
+        1,
+        1,
+        64,
+        64
+      ],
+      "kd_avg": [
+        1,
+        1
+      ],
+      "z_ext": [
+        1,
+        1
+      ],
+      "z_prior": [
+        1,
+        1,
+        64,
+        64
+      ],
+      "r_inf": [
+        1,
+        3,
+        1,
+        1
+      ],
+      "r_hat": [
+        1,
+        3,
+        64,
+        64
+      ],
+      "kl_map": [
+        1,
+        3,
+        64,
+        64
+      ],
+      "al_map": [
+        1,
+        3,
+        64,
+        64
+      ]
+    },
+    "layers": [
+      {
+        "model": "Full v1",
+        "module": "encoder.stem1.0",
+        "type": "Conv2d",
+        "parameters": 4608,
+        "specification": "Conv2d(16, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            16,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          32,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.stem1.1",
+        "type": "BatchNorm2d",
+        "parameters": 64,
+        "specification": "BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            32,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          32,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.stem1.2",
+        "type": "ReLU",
+        "parameters": 0,
+        "specification": "ReLU(inplace=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            32,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          32,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.stem1.3",
+        "type": "Dropout2d",
+        "parameters": 0,
+        "specification": "Dropout2d(p=0.1, inplace=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            32,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          32,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.stem1.4",
+        "type": "Conv2d",
+        "parameters": 9216,
+        "specification": "Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            32,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          32,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.stem1.5",
+        "type": "BatchNorm2d",
+        "parameters": 64,
+        "specification": "BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            32,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          32,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.stem1.6",
+        "type": "ReLU",
+        "parameters": 0,
+        "specification": "ReLU(inplace=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            32,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          32,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.stem1.7.se.0",
+        "type": "AdaptiveAvgPool2d",
+        "parameters": 0,
+        "specification": "AdaptiveAvgPool2d(output_size=1)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            32,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          32,
+          1,
+          1
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.stem1.7.se.1",
+        "type": "Flatten",
+        "parameters": 0,
+        "specification": "Flatten(start_dim=1, end_dim=-1)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            32,
+            1,
+            1
+          ]
+        ],
+        "output": [
+          1,
+          32
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.stem1.7.se.2",
+        "type": "Linear",
+        "parameters": 132,
+        "specification": "Linear(in_features=32, out_features=4, bias=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          4
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.stem1.7.se.3",
+        "type": "ReLU",
+        "parameters": 0,
+        "specification": "ReLU(inplace=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            4
+          ]
+        ],
+        "output": [
+          1,
+          4
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.stem1.7.se.4",
+        "type": "Linear",
+        "parameters": 160,
+        "specification": "Linear(in_features=4, out_features=32, bias=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            4
+          ]
+        ],
+        "output": [
+          1,
+          32
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.stem1.7.se.5",
+        "type": "Sigmoid",
+        "parameters": 0,
+        "specification": "Sigmoid()",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          32
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.res1.conv.0",
+        "type": "Conv2d",
+        "parameters": 9216,
+        "specification": "Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            32,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          32,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.res1.conv.1",
+        "type": "BatchNorm2d",
+        "parameters": 64,
+        "specification": "BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            32,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          32,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.res1.conv.2",
+        "type": "ReLU",
+        "parameters": 0,
+        "specification": "ReLU(inplace=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            32,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          32,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.res1.conv.3",
+        "type": "Dropout2d",
+        "parameters": 0,
+        "specification": "Dropout2d(p=0.1, inplace=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            32,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          32,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.res1.conv.4",
+        "type": "Conv2d",
+        "parameters": 9216,
+        "specification": "Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            32,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          32,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.res1.conv.5",
+        "type": "BatchNorm2d",
+        "parameters": 64,
+        "specification": "BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            32,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          32,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.res1.se.se.0",
+        "type": "AdaptiveAvgPool2d",
+        "parameters": 0,
+        "specification": "AdaptiveAvgPool2d(output_size=1)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            32,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          32,
+          1,
+          1
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.res1.se.se.1",
+        "type": "Flatten",
+        "parameters": 0,
+        "specification": "Flatten(start_dim=1, end_dim=-1)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            32,
+            1,
+            1
+          ]
+        ],
+        "output": [
+          1,
+          32
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.res1.se.se.2",
+        "type": "Linear",
+        "parameters": 132,
+        "specification": "Linear(in_features=32, out_features=4, bias=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          4
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.res1.se.se.3",
+        "type": "ReLU",
+        "parameters": 0,
+        "specification": "ReLU(inplace=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            4
+          ]
+        ],
+        "output": [
+          1,
+          4
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.res1.se.se.4",
+        "type": "Linear",
+        "parameters": 160,
+        "specification": "Linear(in_features=4, out_features=32, bias=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            4
+          ]
+        ],
+        "output": [
+          1,
+          32
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.res1.se.se.5",
+        "type": "Sigmoid",
+        "parameters": 0,
+        "specification": "Sigmoid()",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          32
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.res1.act",
+        "type": "ReLU",
+        "parameters": 0,
+        "specification": "ReLU(inplace=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            32,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          32,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.film1.net",
+        "type": "Conv2d",
+        "parameters": 256,
+        "specification": "Conv2d(3, 64, kernel_size=(1, 1), stride=(1, 1))",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            3,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          64,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.pool1",
+        "type": "MaxPool2d",
+        "parameters": 0,
+        "specification": "MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            32,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          32,
+          32,
+          32
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.stem2.0",
+        "type": "Conv2d",
+        "parameters": 18432,
+        "specification": "Conv2d(32, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            32,
+            32,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          64,
+          32,
+          32
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.stem2.1",
+        "type": "BatchNorm2d",
+        "parameters": 128,
+        "specification": "BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64,
+            32,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          64,
+          32,
+          32
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.stem2.2",
+        "type": "ReLU",
+        "parameters": 0,
+        "specification": "ReLU(inplace=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64,
+            32,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          64,
+          32,
+          32
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.stem2.3",
+        "type": "Dropout2d",
+        "parameters": 0,
+        "specification": "Dropout2d(p=0.1, inplace=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64,
+            32,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          64,
+          32,
+          32
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.stem2.4",
+        "type": "Conv2d",
+        "parameters": 36864,
+        "specification": "Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64,
+            32,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          64,
+          32,
+          32
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.stem2.5",
+        "type": "BatchNorm2d",
+        "parameters": 128,
+        "specification": "BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64,
+            32,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          64,
+          32,
+          32
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.stem2.6",
+        "type": "ReLU",
+        "parameters": 0,
+        "specification": "ReLU(inplace=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64,
+            32,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          64,
+          32,
+          32
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.stem2.7.se.0",
+        "type": "AdaptiveAvgPool2d",
+        "parameters": 0,
+        "specification": "AdaptiveAvgPool2d(output_size=1)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64,
+            32,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          64,
+          1,
+          1
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.stem2.7.se.1",
+        "type": "Flatten",
+        "parameters": 0,
+        "specification": "Flatten(start_dim=1, end_dim=-1)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64,
+            1,
+            1
+          ]
+        ],
+        "output": [
+          1,
+          64
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.stem2.7.se.2",
+        "type": "Linear",
+        "parameters": 520,
+        "specification": "Linear(in_features=64, out_features=8, bias=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          8
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.stem2.7.se.3",
+        "type": "ReLU",
+        "parameters": 0,
+        "specification": "ReLU(inplace=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            8
+          ]
+        ],
+        "output": [
+          1,
+          8
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.stem2.7.se.4",
+        "type": "Linear",
+        "parameters": 576,
+        "specification": "Linear(in_features=8, out_features=64, bias=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            8
+          ]
+        ],
+        "output": [
+          1,
+          64
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.stem2.7.se.5",
+        "type": "Sigmoid",
+        "parameters": 0,
+        "specification": "Sigmoid()",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          64
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.res2.conv.0",
+        "type": "Conv2d",
+        "parameters": 36864,
+        "specification": "Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64,
+            32,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          64,
+          32,
+          32
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.res2.conv.1",
+        "type": "BatchNorm2d",
+        "parameters": 128,
+        "specification": "BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64,
+            32,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          64,
+          32,
+          32
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.res2.conv.2",
+        "type": "ReLU",
+        "parameters": 0,
+        "specification": "ReLU(inplace=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64,
+            32,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          64,
+          32,
+          32
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.res2.conv.3",
+        "type": "Dropout2d",
+        "parameters": 0,
+        "specification": "Dropout2d(p=0.1, inplace=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64,
+            32,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          64,
+          32,
+          32
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.res2.conv.4",
+        "type": "Conv2d",
+        "parameters": 36864,
+        "specification": "Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64,
+            32,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          64,
+          32,
+          32
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.res2.conv.5",
+        "type": "BatchNorm2d",
+        "parameters": 128,
+        "specification": "BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64,
+            32,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          64,
+          32,
+          32
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.res2.se.se.0",
+        "type": "AdaptiveAvgPool2d",
+        "parameters": 0,
+        "specification": "AdaptiveAvgPool2d(output_size=1)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64,
+            32,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          64,
+          1,
+          1
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.res2.se.se.1",
+        "type": "Flatten",
+        "parameters": 0,
+        "specification": "Flatten(start_dim=1, end_dim=-1)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64,
+            1,
+            1
+          ]
+        ],
+        "output": [
+          1,
+          64
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.res2.se.se.2",
+        "type": "Linear",
+        "parameters": 520,
+        "specification": "Linear(in_features=64, out_features=8, bias=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          8
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.res2.se.se.3",
+        "type": "ReLU",
+        "parameters": 0,
+        "specification": "ReLU(inplace=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            8
+          ]
+        ],
+        "output": [
+          1,
+          8
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.res2.se.se.4",
+        "type": "Linear",
+        "parameters": 576,
+        "specification": "Linear(in_features=8, out_features=64, bias=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            8
+          ]
+        ],
+        "output": [
+          1,
+          64
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.res2.se.se.5",
+        "type": "Sigmoid",
+        "parameters": 0,
+        "specification": "Sigmoid()",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          64
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.res2.act",
+        "type": "ReLU",
+        "parameters": 0,
+        "specification": "ReLU(inplace=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64,
+            32,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          64,
+          32,
+          32
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.film2.net",
+        "type": "Conv2d",
+        "parameters": 512,
+        "specification": "Conv2d(3, 128, kernel_size=(1, 1), stride=(1, 1))",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            3,
+            32,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          128,
+          32,
+          32
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.pool2",
+        "type": "MaxPool2d",
+        "parameters": 0,
+        "specification": "MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64,
+            32,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          64,
+          16,
+          16
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.stem3.0",
+        "type": "Conv2d",
+        "parameters": 55296,
+        "specification": "Conv2d(64, 96, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64,
+            16,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          96,
+          16,
+          16
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.stem3.1",
+        "type": "BatchNorm2d",
+        "parameters": 192,
+        "specification": "BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            96,
+            16,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          96,
+          16,
+          16
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.stem3.2",
+        "type": "ReLU",
+        "parameters": 0,
+        "specification": "ReLU(inplace=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            96,
+            16,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          96,
+          16,
+          16
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.stem3.3",
+        "type": "Dropout2d",
+        "parameters": 0,
+        "specification": "Dropout2d(p=0.1, inplace=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            96,
+            16,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          96,
+          16,
+          16
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.stem3.4",
+        "type": "Conv2d",
+        "parameters": 82944,
+        "specification": "Conv2d(96, 96, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            96,
+            16,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          96,
+          16,
+          16
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.stem3.5",
+        "type": "BatchNorm2d",
+        "parameters": 192,
+        "specification": "BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            96,
+            16,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          96,
+          16,
+          16
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.stem3.6",
+        "type": "ReLU",
+        "parameters": 0,
+        "specification": "ReLU(inplace=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            96,
+            16,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          96,
+          16,
+          16
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.stem3.7.se.0",
+        "type": "AdaptiveAvgPool2d",
+        "parameters": 0,
+        "specification": "AdaptiveAvgPool2d(output_size=1)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            96,
+            16,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          96,
+          1,
+          1
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.stem3.7.se.1",
+        "type": "Flatten",
+        "parameters": 0,
+        "specification": "Flatten(start_dim=1, end_dim=-1)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            96,
+            1,
+            1
+          ]
+        ],
+        "output": [
+          1,
+          96
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.stem3.7.se.2",
+        "type": "Linear",
+        "parameters": 1164,
+        "specification": "Linear(in_features=96, out_features=12, bias=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            96
+          ]
+        ],
+        "output": [
+          1,
+          12
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.stem3.7.se.3",
+        "type": "ReLU",
+        "parameters": 0,
+        "specification": "ReLU(inplace=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            12
+          ]
+        ],
+        "output": [
+          1,
+          12
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.stem3.7.se.4",
+        "type": "Linear",
+        "parameters": 1248,
+        "specification": "Linear(in_features=12, out_features=96, bias=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            12
+          ]
+        ],
+        "output": [
+          1,
+          96
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.stem3.7.se.5",
+        "type": "Sigmoid",
+        "parameters": 0,
+        "specification": "Sigmoid()",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            96
+          ]
+        ],
+        "output": [
+          1,
+          96
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.res3.conv.0",
+        "type": "Conv2d",
+        "parameters": 82944,
+        "specification": "Conv2d(96, 96, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            96,
+            16,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          96,
+          16,
+          16
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.res3.conv.1",
+        "type": "BatchNorm2d",
+        "parameters": 192,
+        "specification": "BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            96,
+            16,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          96,
+          16,
+          16
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.res3.conv.2",
+        "type": "ReLU",
+        "parameters": 0,
+        "specification": "ReLU(inplace=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            96,
+            16,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          96,
+          16,
+          16
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.res3.conv.3",
+        "type": "Dropout2d",
+        "parameters": 0,
+        "specification": "Dropout2d(p=0.1, inplace=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            96,
+            16,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          96,
+          16,
+          16
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.res3.conv.4",
+        "type": "Conv2d",
+        "parameters": 82944,
+        "specification": "Conv2d(96, 96, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            96,
+            16,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          96,
+          16,
+          16
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.res3.conv.5",
+        "type": "BatchNorm2d",
+        "parameters": 192,
+        "specification": "BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            96,
+            16,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          96,
+          16,
+          16
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.res3.se.se.0",
+        "type": "AdaptiveAvgPool2d",
+        "parameters": 0,
+        "specification": "AdaptiveAvgPool2d(output_size=1)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            96,
+            16,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          96,
+          1,
+          1
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.res3.se.se.1",
+        "type": "Flatten",
+        "parameters": 0,
+        "specification": "Flatten(start_dim=1, end_dim=-1)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            96,
+            1,
+            1
+          ]
+        ],
+        "output": [
+          1,
+          96
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.res3.se.se.2",
+        "type": "Linear",
+        "parameters": 1164,
+        "specification": "Linear(in_features=96, out_features=12, bias=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            96
+          ]
+        ],
+        "output": [
+          1,
+          12
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.res3.se.se.3",
+        "type": "ReLU",
+        "parameters": 0,
+        "specification": "ReLU(inplace=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            12
+          ]
+        ],
+        "output": [
+          1,
+          12
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.res3.se.se.4",
+        "type": "Linear",
+        "parameters": 1248,
+        "specification": "Linear(in_features=12, out_features=96, bias=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            12
+          ]
+        ],
+        "output": [
+          1,
+          96
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.res3.se.se.5",
+        "type": "Sigmoid",
+        "parameters": 0,
+        "specification": "Sigmoid()",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            96
+          ]
+        ],
+        "output": [
+          1,
+          96
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.res3.act",
+        "type": "ReLU",
+        "parameters": 0,
+        "specification": "ReLU(inplace=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            96,
+            16,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          96,
+          16,
+          16
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.film3.net",
+        "type": "Conv2d",
+        "parameters": 768,
+        "specification": "Conv2d(3, 192, kernel_size=(1, 1), stride=(1, 1))",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            3,
+            16,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          192,
+          16,
+          16
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.pool3",
+        "type": "MaxPool2d",
+        "parameters": 0,
+        "specification": "MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            96,
+            16,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          96,
+          8,
+          8
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.bottleneck.0",
+        "type": "Conv2d",
+        "parameters": 110592,
+        "specification": "Conv2d(96, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            96,
+            8,
+            8
+          ]
+        ],
+        "output": [
+          1,
+          128,
+          8,
+          8
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.bottleneck.1",
+        "type": "BatchNorm2d",
+        "parameters": 256,
+        "specification": "BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            128,
+            8,
+            8
+          ]
+        ],
+        "output": [
+          1,
+          128,
+          8,
+          8
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.bottleneck.2",
+        "type": "ReLU",
+        "parameters": 0,
+        "specification": "ReLU(inplace=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            128,
+            8,
+            8
+          ]
+        ],
+        "output": [
+          1,
+          128,
+          8,
+          8
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.bottleneck.3",
+        "type": "Dropout2d",
+        "parameters": 0,
+        "specification": "Dropout2d(p=0.1, inplace=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            128,
+            8,
+            8
+          ]
+        ],
+        "output": [
+          1,
+          128,
+          8,
+          8
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.bottleneck.4",
+        "type": "Conv2d",
+        "parameters": 147456,
+        "specification": "Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            128,
+            8,
+            8
+          ]
+        ],
+        "output": [
+          1,
+          128,
+          8,
+          8
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.bottleneck.5",
+        "type": "BatchNorm2d",
+        "parameters": 256,
+        "specification": "BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            128,
+            8,
+            8
+          ]
+        ],
+        "output": [
+          1,
+          128,
+          8,
+          8
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.bottleneck.6",
+        "type": "ReLU",
+        "parameters": 0,
+        "specification": "ReLU(inplace=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            128,
+            8,
+            8
+          ]
+        ],
+        "output": [
+          1,
+          128,
+          8,
+          8
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.bottleneck.7.se.0",
+        "type": "AdaptiveAvgPool2d",
+        "parameters": 0,
+        "specification": "AdaptiveAvgPool2d(output_size=1)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            128,
+            8,
+            8
+          ]
+        ],
+        "output": [
+          1,
+          128,
+          1,
+          1
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.bottleneck.7.se.1",
+        "type": "Flatten",
+        "parameters": 0,
+        "specification": "Flatten(start_dim=1, end_dim=-1)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            128,
+            1,
+            1
+          ]
+        ],
+        "output": [
+          1,
+          128
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.bottleneck.7.se.2",
+        "type": "Linear",
+        "parameters": 2064,
+        "specification": "Linear(in_features=128, out_features=16, bias=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            128
+          ]
+        ],
+        "output": [
+          1,
+          16
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.bottleneck.7.se.3",
+        "type": "ReLU",
+        "parameters": 0,
+        "specification": "ReLU(inplace=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          16
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.bottleneck.7.se.4",
+        "type": "Linear",
+        "parameters": 2176,
+        "specification": "Linear(in_features=16, out_features=128, bias=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          128
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.bottleneck.7.se.5",
+        "type": "Sigmoid",
+        "parameters": 0,
+        "specification": "Sigmoid()",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            128
+          ]
+        ],
+        "output": [
+          1,
+          128
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.res_btn.conv.0",
+        "type": "Conv2d",
+        "parameters": 147456,
+        "specification": "Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            128,
+            8,
+            8
+          ]
+        ],
+        "output": [
+          1,
+          128,
+          8,
+          8
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.res_btn.conv.1",
+        "type": "BatchNorm2d",
+        "parameters": 256,
+        "specification": "BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            128,
+            8,
+            8
+          ]
+        ],
+        "output": [
+          1,
+          128,
+          8,
+          8
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.res_btn.conv.2",
+        "type": "ReLU",
+        "parameters": 0,
+        "specification": "ReLU(inplace=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            128,
+            8,
+            8
+          ]
+        ],
+        "output": [
+          1,
+          128,
+          8,
+          8
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.res_btn.conv.3",
+        "type": "Dropout2d",
+        "parameters": 0,
+        "specification": "Dropout2d(p=0.1, inplace=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            128,
+            8,
+            8
+          ]
+        ],
+        "output": [
+          1,
+          128,
+          8,
+          8
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.res_btn.conv.4",
+        "type": "Conv2d",
+        "parameters": 147456,
+        "specification": "Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            128,
+            8,
+            8
+          ]
+        ],
+        "output": [
+          1,
+          128,
+          8,
+          8
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.res_btn.conv.5",
+        "type": "BatchNorm2d",
+        "parameters": 256,
+        "specification": "BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            128,
+            8,
+            8
+          ]
+        ],
+        "output": [
+          1,
+          128,
+          8,
+          8
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.res_btn.se.se.0",
+        "type": "AdaptiveAvgPool2d",
+        "parameters": 0,
+        "specification": "AdaptiveAvgPool2d(output_size=1)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            128,
+            8,
+            8
+          ]
+        ],
+        "output": [
+          1,
+          128,
+          1,
+          1
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.res_btn.se.se.1",
+        "type": "Flatten",
+        "parameters": 0,
+        "specification": "Flatten(start_dim=1, end_dim=-1)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            128,
+            1,
+            1
+          ]
+        ],
+        "output": [
+          1,
+          128
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.res_btn.se.se.2",
+        "type": "Linear",
+        "parameters": 2064,
+        "specification": "Linear(in_features=128, out_features=16, bias=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            128
+          ]
+        ],
+        "output": [
+          1,
+          16
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.res_btn.se.se.3",
+        "type": "ReLU",
+        "parameters": 0,
+        "specification": "ReLU(inplace=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          16
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.res_btn.se.se.4",
+        "type": "Linear",
+        "parameters": 2176,
+        "specification": "Linear(in_features=16, out_features=128, bias=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          128
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.res_btn.se.se.5",
+        "type": "Sigmoid",
+        "parameters": 0,
+        "specification": "Sigmoid()",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            128
+          ]
+        ],
+        "output": [
+          1,
+          128
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.res_btn.act",
+        "type": "ReLU",
+        "parameters": 0,
+        "specification": "ReLU(inplace=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            128,
+            8,
+            8
+          ]
+        ],
+        "output": [
+          1,
+          128,
+          8,
+          8
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "encoder.film_btn.net",
+        "type": "Conv2d",
+        "parameters": 1024,
+        "specification": "Conv2d(3, 256, kernel_size=(1, 1), stride=(1, 1))",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            3,
+            8,
+            8
+          ]
+        ],
+        "output": [
+          1,
+          256,
+          8,
+          8
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "decoder.up3",
+        "type": "ConvTranspose2d",
+        "parameters": 49248,
+        "specification": "ConvTranspose2d(128, 96, kernel_size=(2, 2), stride=(2, 2))",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            128,
+            8,
+            8
+          ]
+        ],
+        "output": [
+          1,
+          96,
+          16,
+          16
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "decoder.dec3.conv.0",
+        "type": "Conv2d",
+        "parameters": 331776,
+        "specification": "Conv2d(192, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            192,
+            16,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          192,
+          16,
+          16
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "decoder.dec3.conv.1",
+        "type": "BatchNorm2d",
+        "parameters": 384,
+        "specification": "BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            192,
+            16,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          192,
+          16,
+          16
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "decoder.dec3.conv.2",
+        "type": "ReLU",
+        "parameters": 0,
+        "specification": "ReLU(inplace=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            192,
+            16,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          192,
+          16,
+          16
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "decoder.dec3.conv.3",
+        "type": "Dropout2d",
+        "parameters": 0,
+        "specification": "Dropout2d(p=0.1, inplace=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            192,
+            16,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          192,
+          16,
+          16
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "decoder.dec3.conv.4",
+        "type": "Conv2d",
+        "parameters": 331776,
+        "specification": "Conv2d(192, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            192,
+            16,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          192,
+          16,
+          16
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "decoder.dec3.conv.5",
+        "type": "BatchNorm2d",
+        "parameters": 384,
+        "specification": "BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            192,
+            16,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          192,
+          16,
+          16
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "decoder.dec3.se.se.0",
+        "type": "AdaptiveAvgPool2d",
+        "parameters": 0,
+        "specification": "AdaptiveAvgPool2d(output_size=1)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            192,
+            16,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          192,
+          1,
+          1
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "decoder.dec3.se.se.1",
+        "type": "Flatten",
+        "parameters": 0,
+        "specification": "Flatten(start_dim=1, end_dim=-1)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            192,
+            1,
+            1
+          ]
+        ],
+        "output": [
+          1,
+          192
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "decoder.dec3.se.se.2",
+        "type": "Linear",
+        "parameters": 4632,
+        "specification": "Linear(in_features=192, out_features=24, bias=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            192
+          ]
+        ],
+        "output": [
+          1,
+          24
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "decoder.dec3.se.se.3",
+        "type": "ReLU",
+        "parameters": 0,
+        "specification": "ReLU(inplace=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            24
+          ]
+        ],
+        "output": [
+          1,
+          24
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "decoder.dec3.se.se.4",
+        "type": "Linear",
+        "parameters": 4800,
+        "specification": "Linear(in_features=24, out_features=192, bias=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            24
+          ]
+        ],
+        "output": [
+          1,
+          192
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "decoder.dec3.se.se.5",
+        "type": "Sigmoid",
+        "parameters": 0,
+        "specification": "Sigmoid()",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            192
+          ]
+        ],
+        "output": [
+          1,
+          192
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "decoder.dec3.act",
+        "type": "ReLU",
+        "parameters": 0,
+        "specification": "ReLU(inplace=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            192,
+            16,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          192,
+          16,
+          16
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "decoder.up2",
+        "type": "ConvTranspose2d",
+        "parameters": 49216,
+        "specification": "ConvTranspose2d(192, 64, kernel_size=(2, 2), stride=(2, 2))",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            192,
+            16,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          64,
+          32,
+          32
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "decoder.dec2.conv.0",
+        "type": "Conv2d",
+        "parameters": 147456,
+        "specification": "Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            128,
+            32,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          128,
+          32,
+          32
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "decoder.dec2.conv.1",
+        "type": "BatchNorm2d",
+        "parameters": 256,
+        "specification": "BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            128,
+            32,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          128,
+          32,
+          32
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "decoder.dec2.conv.2",
+        "type": "ReLU",
+        "parameters": 0,
+        "specification": "ReLU(inplace=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            128,
+            32,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          128,
+          32,
+          32
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "decoder.dec2.conv.3",
+        "type": "Dropout2d",
+        "parameters": 0,
+        "specification": "Dropout2d(p=0.1, inplace=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            128,
+            32,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          128,
+          32,
+          32
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "decoder.dec2.conv.4",
+        "type": "Conv2d",
+        "parameters": 147456,
+        "specification": "Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            128,
+            32,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          128,
+          32,
+          32
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "decoder.dec2.conv.5",
+        "type": "BatchNorm2d",
+        "parameters": 256,
+        "specification": "BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            128,
+            32,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          128,
+          32,
+          32
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "decoder.dec2.se.se.0",
+        "type": "AdaptiveAvgPool2d",
+        "parameters": 0,
+        "specification": "AdaptiveAvgPool2d(output_size=1)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            128,
+            32,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          128,
+          1,
+          1
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "decoder.dec2.se.se.1",
+        "type": "Flatten",
+        "parameters": 0,
+        "specification": "Flatten(start_dim=1, end_dim=-1)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            128,
+            1,
+            1
+          ]
+        ],
+        "output": [
+          1,
+          128
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "decoder.dec2.se.se.2",
+        "type": "Linear",
+        "parameters": 2064,
+        "specification": "Linear(in_features=128, out_features=16, bias=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            128
+          ]
+        ],
+        "output": [
+          1,
+          16
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "decoder.dec2.se.se.3",
+        "type": "ReLU",
+        "parameters": 0,
+        "specification": "ReLU(inplace=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          16
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "decoder.dec2.se.se.4",
+        "type": "Linear",
+        "parameters": 2176,
+        "specification": "Linear(in_features=16, out_features=128, bias=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          128
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "decoder.dec2.se.se.5",
+        "type": "Sigmoid",
+        "parameters": 0,
+        "specification": "Sigmoid()",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            128
+          ]
+        ],
+        "output": [
+          1,
+          128
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "decoder.dec2.act",
+        "type": "ReLU",
+        "parameters": 0,
+        "specification": "ReLU(inplace=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            128,
+            32,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          128,
+          32,
+          32
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "decoder.up1",
+        "type": "ConvTranspose2d",
+        "parameters": 16416,
+        "specification": "ConvTranspose2d(128, 32, kernel_size=(2, 2), stride=(2, 2))",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            128,
+            32,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          32,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "decoder.dec1.conv.0",
+        "type": "Conv2d",
+        "parameters": 36864,
+        "specification": "Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          64,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "decoder.dec1.conv.1",
+        "type": "BatchNorm2d",
+        "parameters": 128,
+        "specification": "BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          64,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "decoder.dec1.conv.2",
+        "type": "ReLU",
+        "parameters": 0,
+        "specification": "ReLU(inplace=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          64,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "decoder.dec1.conv.3",
+        "type": "Dropout2d",
+        "parameters": 0,
+        "specification": "Dropout2d(p=0.1, inplace=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          64,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "decoder.dec1.conv.4",
+        "type": "Conv2d",
+        "parameters": 36864,
+        "specification": "Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          64,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "decoder.dec1.conv.5",
+        "type": "BatchNorm2d",
+        "parameters": 128,
+        "specification": "BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          64,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "decoder.dec1.se.se.0",
+        "type": "AdaptiveAvgPool2d",
+        "parameters": 0,
+        "specification": "AdaptiveAvgPool2d(output_size=1)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          64,
+          1,
+          1
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "decoder.dec1.se.se.1",
+        "type": "Flatten",
+        "parameters": 0,
+        "specification": "Flatten(start_dim=1, end_dim=-1)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64,
+            1,
+            1
+          ]
+        ],
+        "output": [
+          1,
+          64
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "decoder.dec1.se.se.2",
+        "type": "Linear",
+        "parameters": 520,
+        "specification": "Linear(in_features=64, out_features=8, bias=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          8
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "decoder.dec1.se.se.3",
+        "type": "ReLU",
+        "parameters": 0,
+        "specification": "ReLU(inplace=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            8
+          ]
+        ],
+        "output": [
+          1,
+          8
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "decoder.dec1.se.se.4",
+        "type": "Linear",
+        "parameters": 576,
+        "specification": "Linear(in_features=8, out_features=64, bias=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            8
+          ]
+        ],
+        "output": [
+          1,
+          64
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "decoder.dec1.se.se.5",
+        "type": "Sigmoid",
+        "parameters": 0,
+        "specification": "Sigmoid()",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          64
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "decoder.dec1.act",
+        "type": "ReLU",
+        "parameters": 0,
+        "specification": "ReLU(inplace=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          64,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "decoder.depth_conv",
+        "type": "Conv2d",
+        "parameters": 65,
+        "specification": "Conv2d(64, 1, kernel_size=(1, 1), stride=(1, 1))",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          1,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "decoder.logvar_conv",
+        "type": "Conv2d",
+        "parameters": 65,
+        "specification": "Conv2d(64, 1, kernel_size=(1, 1), stride=(1, 1))",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          1,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "cond_proj",
+        "type": "Conv2d",
+        "parameters": 12,
+        "specification": "Conv2d(3, 3, kernel_size=(1, 1), stride=(1, 1))",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            3,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          3,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "recon_head.kl_head.0",
+        "type": "Conv2d",
+        "parameters": 4624,
+        "specification": "Conv2d(32, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            32,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          16,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "recon_head.kl_head.1",
+        "type": "ReLU",
+        "parameters": 0,
+        "specification": "ReLU(inplace=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            16,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          16,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "recon_head.kl_head.2",
+        "type": "Conv2d",
+        "parameters": 51,
+        "specification": "Conv2d(16, 3, kernel_size=(1, 1), stride=(1, 1))",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            16,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          3,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "recon_head.al_head.0",
+        "type": "Conv2d",
+        "parameters": 4624,
+        "specification": "Conv2d(32, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            32,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          16,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "recon_head.al_head.1",
+        "type": "ReLU",
+        "parameters": 0,
+        "specification": "ReLU(inplace=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            16,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          16,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "recon_head.al_head.2",
+        "type": "Conv2d",
+        "parameters": 51,
+        "specification": "Conv2d(16, 3, kernel_size=(1, 1), stride=(1, 1))",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            16,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          3,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "Full v1",
+        "module": "gap",
+        "type": "AdaptiveAvgPool2d",
+        "parameters": 0,
+        "specification": "AdaptiveAvgPool2d(output_size=1)",
+        "executed": false,
+        "calls": 0,
+        "input": null,
+        "output": null
+      }
+    ],
+    "checkpoint": "runs/2026-11-05/nearshore_hybrid_v1/hybridbathnet.pt"
+  },
+  "Spatial uncertainty member": {
+    "parameters_registered": 2235605,
+    "parameters_in_executed_leaves": 2235540,
+    "registered_leaf_types": {
+      "Conv2d": 36,
+      "BatchNorm2d": 22,
+      "ReLU": 35,
+      "Dropout2d": 11,
+      "AdaptiveAvgPool2d": 12,
+      "Flatten": 11,
+      "Linear": 22,
+      "Sigmoid": 11,
+      "MaxPool2d": 3,
+      "ConvTranspose2d": 3,
+      "GroupNorm": 1,
+      "SiLU": 2
+    },
+    "executed_leaf_types": {
+      "Conv2d": 35,
+      "BatchNorm2d": 22,
+      "ReLU": 35,
+      "Dropout2d": 11,
+      "AdaptiveAvgPool2d": 11,
+      "Flatten": 11,
+      "Linear": 22,
+      "Sigmoid": 11,
+      "MaxPool2d": 3,
+      "ConvTranspose2d": 3,
+      "GroupNorm": 1,
+      "SiLU": 2
+    },
+    "stages": {
+      "cond_proj": {
+        "input": [
+          [
+            1,
+            3,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          3,
+          64,
+          64
+        ]
+      },
+      "encoder.stem1": {
+        "input": [
+          [
+            1,
+            16,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          32,
+          64,
+          64
+        ]
+      },
+      "encoder.res1": {
+        "input": [
+          [
+            1,
+            32,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          32,
+          64,
+          64
+        ]
+      },
+      "encoder.film1": {
+        "input": [
+          [
+            1,
+            32,
+            64,
+            64
+          ],
+          [
+            1,
+            3,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          32,
+          64,
+          64
+        ]
+      },
+      "encoder.pool1": {
+        "input": [
+          [
+            1,
+            32,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          32,
+          32,
+          32
+        ]
+      },
+      "encoder.stem2": {
+        "input": [
+          [
+            1,
+            32,
+            32,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          64,
+          32,
+          32
+        ]
+      },
+      "encoder.pool2": {
+        "input": [
+          [
+            1,
+            64,
+            32,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          64,
+          16,
+          16
+        ]
+      },
+      "encoder.stem3": {
+        "input": [
+          [
+            1,
+            64,
+            16,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          96,
+          16,
+          16
+        ]
+      },
+      "encoder.pool3": {
+        "input": [
+          [
+            1,
+            96,
+            16,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          96,
+          8,
+          8
+        ]
+      },
+      "encoder.bottleneck": {
+        "input": [
+          [
+            1,
+            96,
+            8,
+            8
+          ]
+        ],
+        "output": [
+          1,
+          128,
+          8,
+          8
+        ]
+      },
+      "encoder.film_btn": {
+        "input": [
+          [
+            1,
+            128,
+            8,
+            8
+          ],
+          [
+            1,
+            3,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          128,
+          8,
+          8
+        ]
+      },
+      "decoder.up3": {
+        "input": [
+          [
+            1,
+            128,
+            8,
+            8
+          ]
+        ],
+        "output": [
+          1,
+          96,
+          16,
+          16
+        ]
+      },
+      "decoder.dec3": {
+        "input": [
+          [
+            1,
+            192,
+            16,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          192,
+          16,
+          16
+        ]
+      },
+      "decoder.up2": {
+        "input": [
+          [
+            1,
+            192,
+            16,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          64,
+          32,
+          32
+        ]
+      },
+      "decoder.dec2": {
+        "input": [
+          [
+            1,
+            128,
+            32,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          128,
+          32,
+          32
+        ]
+      },
+      "decoder.up1": {
+        "input": [
+          [
+            1,
+            128,
+            32,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          32,
+          64,
+          64
+        ]
+      },
+      "decoder.dec1": {
+        "input": [
+          [
+            1,
+            64,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          64,
+          64,
+          64
+        ]
+      },
+      "decoder.depth_conv": {
+        "input": [
+          [
+            1,
+            64,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          1,
+          64,
+          64
+        ]
+      },
+      "decoder.uncertainty_head": {
+        "input": [
+          [
+            1,
+            64,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          1,
+          64,
+          64
+        ]
+      },
+      "recon_head": {
+        "input": [
+          [
+            1,
+            32,
+            64,
+            64
+          ],
+          [
+            1,
+            1,
+            64,
+            64
+          ],
+          [
+            1,
+            3,
+            1,
+            1
+          ]
+        ],
+        "output": [
+          [
+            1,
+            3,
+            64,
+            64
+          ],
+          [
+            1,
+            3,
+            64,
+            64
+          ],
+          [
+            1,
+            3,
+            64,
+            64
+          ]
+        ]
+      }
+    },
+    "output_shapes": {
+      "depth": [
+        1,
+        1,
+        64,
+        64
+      ],
+      "log_var": [
+        1,
+        1,
+        64,
+        64
+      ],
+      "kd_map": [
+        1,
+        1,
+        64,
+        64
+      ],
+      "kd_avg": [
+        1,
+        1
+      ],
+      "z_ext": [
+        1,
+        1
+      ],
+      "z_prior": [
+        1,
+        1,
+        64,
+        64
+      ],
+      "r_inf": [
+        1,
+        3,
+        1,
+        1
+      ],
+      "r_hat": [
+        1,
+        3,
+        64,
+        64
+      ],
+      "kl_map": [
+        1,
+        3,
+        64,
+        64
+      ],
+      "al_map": [
+        1,
+        3,
+        64,
+        64
+      ]
+    },
+    "layers": [
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.stem1.0",
+        "type": "Conv2d",
+        "parameters": 4608,
+        "specification": "Conv2d(16, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            16,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          32,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.stem1.1",
+        "type": "BatchNorm2d",
+        "parameters": 64,
+        "specification": "BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            32,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          32,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.stem1.2",
+        "type": "ReLU",
+        "parameters": 0,
+        "specification": "ReLU(inplace=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            32,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          32,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.stem1.3",
+        "type": "Dropout2d",
+        "parameters": 0,
+        "specification": "Dropout2d(p=0.1, inplace=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            32,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          32,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.stem1.4",
+        "type": "Conv2d",
+        "parameters": 9216,
+        "specification": "Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            32,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          32,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.stem1.5",
+        "type": "BatchNorm2d",
+        "parameters": 64,
+        "specification": "BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            32,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          32,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.stem1.6",
+        "type": "ReLU",
+        "parameters": 0,
+        "specification": "ReLU(inplace=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            32,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          32,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.stem1.7.se.0",
+        "type": "AdaptiveAvgPool2d",
+        "parameters": 0,
+        "specification": "AdaptiveAvgPool2d(output_size=1)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            32,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          32,
+          1,
+          1
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.stem1.7.se.1",
+        "type": "Flatten",
+        "parameters": 0,
+        "specification": "Flatten(start_dim=1, end_dim=-1)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            32,
+            1,
+            1
+          ]
+        ],
+        "output": [
+          1,
+          32
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.stem1.7.se.2",
+        "type": "Linear",
+        "parameters": 132,
+        "specification": "Linear(in_features=32, out_features=4, bias=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          4
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.stem1.7.se.3",
+        "type": "ReLU",
+        "parameters": 0,
+        "specification": "ReLU(inplace=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            4
+          ]
+        ],
+        "output": [
+          1,
+          4
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.stem1.7.se.4",
+        "type": "Linear",
+        "parameters": 160,
+        "specification": "Linear(in_features=4, out_features=32, bias=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            4
+          ]
+        ],
+        "output": [
+          1,
+          32
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.stem1.7.se.5",
+        "type": "Sigmoid",
+        "parameters": 0,
+        "specification": "Sigmoid()",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          32
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.res1.conv.0",
+        "type": "Conv2d",
+        "parameters": 9216,
+        "specification": "Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            32,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          32,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.res1.conv.1",
+        "type": "BatchNorm2d",
+        "parameters": 64,
+        "specification": "BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            32,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          32,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.res1.conv.2",
+        "type": "ReLU",
+        "parameters": 0,
+        "specification": "ReLU(inplace=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            32,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          32,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.res1.conv.3",
+        "type": "Dropout2d",
+        "parameters": 0,
+        "specification": "Dropout2d(p=0.1, inplace=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            32,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          32,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.res1.conv.4",
+        "type": "Conv2d",
+        "parameters": 9216,
+        "specification": "Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            32,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          32,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.res1.conv.5",
+        "type": "BatchNorm2d",
+        "parameters": 64,
+        "specification": "BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            32,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          32,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.res1.se.se.0",
+        "type": "AdaptiveAvgPool2d",
+        "parameters": 0,
+        "specification": "AdaptiveAvgPool2d(output_size=1)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            32,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          32,
+          1,
+          1
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.res1.se.se.1",
+        "type": "Flatten",
+        "parameters": 0,
+        "specification": "Flatten(start_dim=1, end_dim=-1)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            32,
+            1,
+            1
+          ]
+        ],
+        "output": [
+          1,
+          32
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.res1.se.se.2",
+        "type": "Linear",
+        "parameters": 132,
+        "specification": "Linear(in_features=32, out_features=4, bias=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          4
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.res1.se.se.3",
+        "type": "ReLU",
+        "parameters": 0,
+        "specification": "ReLU(inplace=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            4
+          ]
+        ],
+        "output": [
+          1,
+          4
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.res1.se.se.4",
+        "type": "Linear",
+        "parameters": 160,
+        "specification": "Linear(in_features=4, out_features=32, bias=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            4
+          ]
+        ],
+        "output": [
+          1,
+          32
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.res1.se.se.5",
+        "type": "Sigmoid",
+        "parameters": 0,
+        "specification": "Sigmoid()",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          32
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.res1.act",
+        "type": "ReLU",
+        "parameters": 0,
+        "specification": "ReLU(inplace=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            32,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          32,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.film1.net",
+        "type": "Conv2d",
+        "parameters": 256,
+        "specification": "Conv2d(3, 64, kernel_size=(1, 1), stride=(1, 1))",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            3,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          64,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.pool1",
+        "type": "MaxPool2d",
+        "parameters": 0,
+        "specification": "MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            32,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          32,
+          32,
+          32
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.stem2.0",
+        "type": "Conv2d",
+        "parameters": 18432,
+        "specification": "Conv2d(32, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            32,
+            32,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          64,
+          32,
+          32
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.stem2.1",
+        "type": "BatchNorm2d",
+        "parameters": 128,
+        "specification": "BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64,
+            32,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          64,
+          32,
+          32
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.stem2.2",
+        "type": "ReLU",
+        "parameters": 0,
+        "specification": "ReLU(inplace=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64,
+            32,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          64,
+          32,
+          32
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.stem2.3",
+        "type": "Dropout2d",
+        "parameters": 0,
+        "specification": "Dropout2d(p=0.1, inplace=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64,
+            32,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          64,
+          32,
+          32
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.stem2.4",
+        "type": "Conv2d",
+        "parameters": 36864,
+        "specification": "Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64,
+            32,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          64,
+          32,
+          32
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.stem2.5",
+        "type": "BatchNorm2d",
+        "parameters": 128,
+        "specification": "BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64,
+            32,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          64,
+          32,
+          32
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.stem2.6",
+        "type": "ReLU",
+        "parameters": 0,
+        "specification": "ReLU(inplace=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64,
+            32,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          64,
+          32,
+          32
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.stem2.7.se.0",
+        "type": "AdaptiveAvgPool2d",
+        "parameters": 0,
+        "specification": "AdaptiveAvgPool2d(output_size=1)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64,
+            32,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          64,
+          1,
+          1
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.stem2.7.se.1",
+        "type": "Flatten",
+        "parameters": 0,
+        "specification": "Flatten(start_dim=1, end_dim=-1)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64,
+            1,
+            1
+          ]
+        ],
+        "output": [
+          1,
+          64
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.stem2.7.se.2",
+        "type": "Linear",
+        "parameters": 520,
+        "specification": "Linear(in_features=64, out_features=8, bias=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          8
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.stem2.7.se.3",
+        "type": "ReLU",
+        "parameters": 0,
+        "specification": "ReLU(inplace=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            8
+          ]
+        ],
+        "output": [
+          1,
+          8
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.stem2.7.se.4",
+        "type": "Linear",
+        "parameters": 576,
+        "specification": "Linear(in_features=8, out_features=64, bias=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            8
+          ]
+        ],
+        "output": [
+          1,
+          64
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.stem2.7.se.5",
+        "type": "Sigmoid",
+        "parameters": 0,
+        "specification": "Sigmoid()",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          64
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.res2.conv.0",
+        "type": "Conv2d",
+        "parameters": 36864,
+        "specification": "Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64,
+            32,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          64,
+          32,
+          32
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.res2.conv.1",
+        "type": "BatchNorm2d",
+        "parameters": 128,
+        "specification": "BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64,
+            32,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          64,
+          32,
+          32
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.res2.conv.2",
+        "type": "ReLU",
+        "parameters": 0,
+        "specification": "ReLU(inplace=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64,
+            32,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          64,
+          32,
+          32
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.res2.conv.3",
+        "type": "Dropout2d",
+        "parameters": 0,
+        "specification": "Dropout2d(p=0.1, inplace=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64,
+            32,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          64,
+          32,
+          32
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.res2.conv.4",
+        "type": "Conv2d",
+        "parameters": 36864,
+        "specification": "Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64,
+            32,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          64,
+          32,
+          32
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.res2.conv.5",
+        "type": "BatchNorm2d",
+        "parameters": 128,
+        "specification": "BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64,
+            32,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          64,
+          32,
+          32
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.res2.se.se.0",
+        "type": "AdaptiveAvgPool2d",
+        "parameters": 0,
+        "specification": "AdaptiveAvgPool2d(output_size=1)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64,
+            32,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          64,
+          1,
+          1
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.res2.se.se.1",
+        "type": "Flatten",
+        "parameters": 0,
+        "specification": "Flatten(start_dim=1, end_dim=-1)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64,
+            1,
+            1
+          ]
+        ],
+        "output": [
+          1,
+          64
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.res2.se.se.2",
+        "type": "Linear",
+        "parameters": 520,
+        "specification": "Linear(in_features=64, out_features=8, bias=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          8
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.res2.se.se.3",
+        "type": "ReLU",
+        "parameters": 0,
+        "specification": "ReLU(inplace=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            8
+          ]
+        ],
+        "output": [
+          1,
+          8
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.res2.se.se.4",
+        "type": "Linear",
+        "parameters": 576,
+        "specification": "Linear(in_features=8, out_features=64, bias=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            8
+          ]
+        ],
+        "output": [
+          1,
+          64
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.res2.se.se.5",
+        "type": "Sigmoid",
+        "parameters": 0,
+        "specification": "Sigmoid()",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          64
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.res2.act",
+        "type": "ReLU",
+        "parameters": 0,
+        "specification": "ReLU(inplace=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64,
+            32,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          64,
+          32,
+          32
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.film2.net",
+        "type": "Conv2d",
+        "parameters": 512,
+        "specification": "Conv2d(3, 128, kernel_size=(1, 1), stride=(1, 1))",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            3,
+            32,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          128,
+          32,
+          32
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.pool2",
+        "type": "MaxPool2d",
+        "parameters": 0,
+        "specification": "MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64,
+            32,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          64,
+          16,
+          16
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.stem3.0",
+        "type": "Conv2d",
+        "parameters": 55296,
+        "specification": "Conv2d(64, 96, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64,
+            16,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          96,
+          16,
+          16
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.stem3.1",
+        "type": "BatchNorm2d",
+        "parameters": 192,
+        "specification": "BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            96,
+            16,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          96,
+          16,
+          16
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.stem3.2",
+        "type": "ReLU",
+        "parameters": 0,
+        "specification": "ReLU(inplace=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            96,
+            16,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          96,
+          16,
+          16
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.stem3.3",
+        "type": "Dropout2d",
+        "parameters": 0,
+        "specification": "Dropout2d(p=0.1, inplace=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            96,
+            16,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          96,
+          16,
+          16
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.stem3.4",
+        "type": "Conv2d",
+        "parameters": 82944,
+        "specification": "Conv2d(96, 96, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            96,
+            16,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          96,
+          16,
+          16
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.stem3.5",
+        "type": "BatchNorm2d",
+        "parameters": 192,
+        "specification": "BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            96,
+            16,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          96,
+          16,
+          16
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.stem3.6",
+        "type": "ReLU",
+        "parameters": 0,
+        "specification": "ReLU(inplace=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            96,
+            16,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          96,
+          16,
+          16
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.stem3.7.se.0",
+        "type": "AdaptiveAvgPool2d",
+        "parameters": 0,
+        "specification": "AdaptiveAvgPool2d(output_size=1)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            96,
+            16,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          96,
+          1,
+          1
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.stem3.7.se.1",
+        "type": "Flatten",
+        "parameters": 0,
+        "specification": "Flatten(start_dim=1, end_dim=-1)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            96,
+            1,
+            1
+          ]
+        ],
+        "output": [
+          1,
+          96
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.stem3.7.se.2",
+        "type": "Linear",
+        "parameters": 1164,
+        "specification": "Linear(in_features=96, out_features=12, bias=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            96
+          ]
+        ],
+        "output": [
+          1,
+          12
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.stem3.7.se.3",
+        "type": "ReLU",
+        "parameters": 0,
+        "specification": "ReLU(inplace=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            12
+          ]
+        ],
+        "output": [
+          1,
+          12
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.stem3.7.se.4",
+        "type": "Linear",
+        "parameters": 1248,
+        "specification": "Linear(in_features=12, out_features=96, bias=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            12
+          ]
+        ],
+        "output": [
+          1,
+          96
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.stem3.7.se.5",
+        "type": "Sigmoid",
+        "parameters": 0,
+        "specification": "Sigmoid()",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            96
+          ]
+        ],
+        "output": [
+          1,
+          96
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.res3.conv.0",
+        "type": "Conv2d",
+        "parameters": 82944,
+        "specification": "Conv2d(96, 96, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            96,
+            16,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          96,
+          16,
+          16
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.res3.conv.1",
+        "type": "BatchNorm2d",
+        "parameters": 192,
+        "specification": "BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            96,
+            16,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          96,
+          16,
+          16
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.res3.conv.2",
+        "type": "ReLU",
+        "parameters": 0,
+        "specification": "ReLU(inplace=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            96,
+            16,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          96,
+          16,
+          16
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.res3.conv.3",
+        "type": "Dropout2d",
+        "parameters": 0,
+        "specification": "Dropout2d(p=0.1, inplace=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            96,
+            16,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          96,
+          16,
+          16
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.res3.conv.4",
+        "type": "Conv2d",
+        "parameters": 82944,
+        "specification": "Conv2d(96, 96, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            96,
+            16,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          96,
+          16,
+          16
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.res3.conv.5",
+        "type": "BatchNorm2d",
+        "parameters": 192,
+        "specification": "BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            96,
+            16,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          96,
+          16,
+          16
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.res3.se.se.0",
+        "type": "AdaptiveAvgPool2d",
+        "parameters": 0,
+        "specification": "AdaptiveAvgPool2d(output_size=1)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            96,
+            16,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          96,
+          1,
+          1
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.res3.se.se.1",
+        "type": "Flatten",
+        "parameters": 0,
+        "specification": "Flatten(start_dim=1, end_dim=-1)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            96,
+            1,
+            1
+          ]
+        ],
+        "output": [
+          1,
+          96
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.res3.se.se.2",
+        "type": "Linear",
+        "parameters": 1164,
+        "specification": "Linear(in_features=96, out_features=12, bias=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            96
+          ]
+        ],
+        "output": [
+          1,
+          12
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.res3.se.se.3",
+        "type": "ReLU",
+        "parameters": 0,
+        "specification": "ReLU(inplace=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            12
+          ]
+        ],
+        "output": [
+          1,
+          12
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.res3.se.se.4",
+        "type": "Linear",
+        "parameters": 1248,
+        "specification": "Linear(in_features=12, out_features=96, bias=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            12
+          ]
+        ],
+        "output": [
+          1,
+          96
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.res3.se.se.5",
+        "type": "Sigmoid",
+        "parameters": 0,
+        "specification": "Sigmoid()",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            96
+          ]
+        ],
+        "output": [
+          1,
+          96
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.res3.act",
+        "type": "ReLU",
+        "parameters": 0,
+        "specification": "ReLU(inplace=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            96,
+            16,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          96,
+          16,
+          16
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.film3.net",
+        "type": "Conv2d",
+        "parameters": 768,
+        "specification": "Conv2d(3, 192, kernel_size=(1, 1), stride=(1, 1))",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            3,
+            16,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          192,
+          16,
+          16
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.pool3",
+        "type": "MaxPool2d",
+        "parameters": 0,
+        "specification": "MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            96,
+            16,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          96,
+          8,
+          8
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.bottleneck.0",
+        "type": "Conv2d",
+        "parameters": 110592,
+        "specification": "Conv2d(96, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            96,
+            8,
+            8
+          ]
+        ],
+        "output": [
+          1,
+          128,
+          8,
+          8
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.bottleneck.1",
+        "type": "BatchNorm2d",
+        "parameters": 256,
+        "specification": "BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            128,
+            8,
+            8
+          ]
+        ],
+        "output": [
+          1,
+          128,
+          8,
+          8
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.bottleneck.2",
+        "type": "ReLU",
+        "parameters": 0,
+        "specification": "ReLU(inplace=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            128,
+            8,
+            8
+          ]
+        ],
+        "output": [
+          1,
+          128,
+          8,
+          8
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.bottleneck.3",
+        "type": "Dropout2d",
+        "parameters": 0,
+        "specification": "Dropout2d(p=0.1, inplace=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            128,
+            8,
+            8
+          ]
+        ],
+        "output": [
+          1,
+          128,
+          8,
+          8
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.bottleneck.4",
+        "type": "Conv2d",
+        "parameters": 147456,
+        "specification": "Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            128,
+            8,
+            8
+          ]
+        ],
+        "output": [
+          1,
+          128,
+          8,
+          8
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.bottleneck.5",
+        "type": "BatchNorm2d",
+        "parameters": 256,
+        "specification": "BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            128,
+            8,
+            8
+          ]
+        ],
+        "output": [
+          1,
+          128,
+          8,
+          8
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.bottleneck.6",
+        "type": "ReLU",
+        "parameters": 0,
+        "specification": "ReLU(inplace=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            128,
+            8,
+            8
+          ]
+        ],
+        "output": [
+          1,
+          128,
+          8,
+          8
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.bottleneck.7.se.0",
+        "type": "AdaptiveAvgPool2d",
+        "parameters": 0,
+        "specification": "AdaptiveAvgPool2d(output_size=1)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            128,
+            8,
+            8
+          ]
+        ],
+        "output": [
+          1,
+          128,
+          1,
+          1
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.bottleneck.7.se.1",
+        "type": "Flatten",
+        "parameters": 0,
+        "specification": "Flatten(start_dim=1, end_dim=-1)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            128,
+            1,
+            1
+          ]
+        ],
+        "output": [
+          1,
+          128
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.bottleneck.7.se.2",
+        "type": "Linear",
+        "parameters": 2064,
+        "specification": "Linear(in_features=128, out_features=16, bias=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            128
+          ]
+        ],
+        "output": [
+          1,
+          16
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.bottleneck.7.se.3",
+        "type": "ReLU",
+        "parameters": 0,
+        "specification": "ReLU(inplace=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          16
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.bottleneck.7.se.4",
+        "type": "Linear",
+        "parameters": 2176,
+        "specification": "Linear(in_features=16, out_features=128, bias=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          128
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.bottleneck.7.se.5",
+        "type": "Sigmoid",
+        "parameters": 0,
+        "specification": "Sigmoid()",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            128
+          ]
+        ],
+        "output": [
+          1,
+          128
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.res_btn.conv.0",
+        "type": "Conv2d",
+        "parameters": 147456,
+        "specification": "Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            128,
+            8,
+            8
+          ]
+        ],
+        "output": [
+          1,
+          128,
+          8,
+          8
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.res_btn.conv.1",
+        "type": "BatchNorm2d",
+        "parameters": 256,
+        "specification": "BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            128,
+            8,
+            8
+          ]
+        ],
+        "output": [
+          1,
+          128,
+          8,
+          8
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.res_btn.conv.2",
+        "type": "ReLU",
+        "parameters": 0,
+        "specification": "ReLU(inplace=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            128,
+            8,
+            8
+          ]
+        ],
+        "output": [
+          1,
+          128,
+          8,
+          8
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.res_btn.conv.3",
+        "type": "Dropout2d",
+        "parameters": 0,
+        "specification": "Dropout2d(p=0.1, inplace=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            128,
+            8,
+            8
+          ]
+        ],
+        "output": [
+          1,
+          128,
+          8,
+          8
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.res_btn.conv.4",
+        "type": "Conv2d",
+        "parameters": 147456,
+        "specification": "Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            128,
+            8,
+            8
+          ]
+        ],
+        "output": [
+          1,
+          128,
+          8,
+          8
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.res_btn.conv.5",
+        "type": "BatchNorm2d",
+        "parameters": 256,
+        "specification": "BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            128,
+            8,
+            8
+          ]
+        ],
+        "output": [
+          1,
+          128,
+          8,
+          8
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.res_btn.se.se.0",
+        "type": "AdaptiveAvgPool2d",
+        "parameters": 0,
+        "specification": "AdaptiveAvgPool2d(output_size=1)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            128,
+            8,
+            8
+          ]
+        ],
+        "output": [
+          1,
+          128,
+          1,
+          1
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.res_btn.se.se.1",
+        "type": "Flatten",
+        "parameters": 0,
+        "specification": "Flatten(start_dim=1, end_dim=-1)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            128,
+            1,
+            1
+          ]
+        ],
+        "output": [
+          1,
+          128
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.res_btn.se.se.2",
+        "type": "Linear",
+        "parameters": 2064,
+        "specification": "Linear(in_features=128, out_features=16, bias=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            128
+          ]
+        ],
+        "output": [
+          1,
+          16
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.res_btn.se.se.3",
+        "type": "ReLU",
+        "parameters": 0,
+        "specification": "ReLU(inplace=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          16
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.res_btn.se.se.4",
+        "type": "Linear",
+        "parameters": 2176,
+        "specification": "Linear(in_features=16, out_features=128, bias=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          128
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.res_btn.se.se.5",
+        "type": "Sigmoid",
+        "parameters": 0,
+        "specification": "Sigmoid()",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            128
+          ]
+        ],
+        "output": [
+          1,
+          128
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.res_btn.act",
+        "type": "ReLU",
+        "parameters": 0,
+        "specification": "ReLU(inplace=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            128,
+            8,
+            8
+          ]
+        ],
+        "output": [
+          1,
+          128,
+          8,
+          8
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "encoder.film_btn.net",
+        "type": "Conv2d",
+        "parameters": 1024,
+        "specification": "Conv2d(3, 256, kernel_size=(1, 1), stride=(1, 1))",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            3,
+            8,
+            8
+          ]
+        ],
+        "output": [
+          1,
+          256,
+          8,
+          8
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "decoder.up3",
+        "type": "ConvTranspose2d",
+        "parameters": 49248,
+        "specification": "ConvTranspose2d(128, 96, kernel_size=(2, 2), stride=(2, 2))",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            128,
+            8,
+            8
+          ]
+        ],
+        "output": [
+          1,
+          96,
+          16,
+          16
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "decoder.dec3.conv.0",
+        "type": "Conv2d",
+        "parameters": 331776,
+        "specification": "Conv2d(192, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            192,
+            16,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          192,
+          16,
+          16
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "decoder.dec3.conv.1",
+        "type": "BatchNorm2d",
+        "parameters": 384,
+        "specification": "BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            192,
+            16,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          192,
+          16,
+          16
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "decoder.dec3.conv.2",
+        "type": "ReLU",
+        "parameters": 0,
+        "specification": "ReLU(inplace=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            192,
+            16,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          192,
+          16,
+          16
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "decoder.dec3.conv.3",
+        "type": "Dropout2d",
+        "parameters": 0,
+        "specification": "Dropout2d(p=0.1, inplace=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            192,
+            16,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          192,
+          16,
+          16
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "decoder.dec3.conv.4",
+        "type": "Conv2d",
+        "parameters": 331776,
+        "specification": "Conv2d(192, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            192,
+            16,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          192,
+          16,
+          16
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "decoder.dec3.conv.5",
+        "type": "BatchNorm2d",
+        "parameters": 384,
+        "specification": "BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            192,
+            16,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          192,
+          16,
+          16
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "decoder.dec3.se.se.0",
+        "type": "AdaptiveAvgPool2d",
+        "parameters": 0,
+        "specification": "AdaptiveAvgPool2d(output_size=1)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            192,
+            16,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          192,
+          1,
+          1
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "decoder.dec3.se.se.1",
+        "type": "Flatten",
+        "parameters": 0,
+        "specification": "Flatten(start_dim=1, end_dim=-1)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            192,
+            1,
+            1
+          ]
+        ],
+        "output": [
+          1,
+          192
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "decoder.dec3.se.se.2",
+        "type": "Linear",
+        "parameters": 4632,
+        "specification": "Linear(in_features=192, out_features=24, bias=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            192
+          ]
+        ],
+        "output": [
+          1,
+          24
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "decoder.dec3.se.se.3",
+        "type": "ReLU",
+        "parameters": 0,
+        "specification": "ReLU(inplace=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            24
+          ]
+        ],
+        "output": [
+          1,
+          24
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "decoder.dec3.se.se.4",
+        "type": "Linear",
+        "parameters": 4800,
+        "specification": "Linear(in_features=24, out_features=192, bias=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            24
+          ]
+        ],
+        "output": [
+          1,
+          192
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "decoder.dec3.se.se.5",
+        "type": "Sigmoid",
+        "parameters": 0,
+        "specification": "Sigmoid()",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            192
+          ]
+        ],
+        "output": [
+          1,
+          192
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "decoder.dec3.act",
+        "type": "ReLU",
+        "parameters": 0,
+        "specification": "ReLU(inplace=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            192,
+            16,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          192,
+          16,
+          16
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "decoder.up2",
+        "type": "ConvTranspose2d",
+        "parameters": 49216,
+        "specification": "ConvTranspose2d(192, 64, kernel_size=(2, 2), stride=(2, 2))",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            192,
+            16,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          64,
+          32,
+          32
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "decoder.dec2.conv.0",
+        "type": "Conv2d",
+        "parameters": 147456,
+        "specification": "Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            128,
+            32,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          128,
+          32,
+          32
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "decoder.dec2.conv.1",
+        "type": "BatchNorm2d",
+        "parameters": 256,
+        "specification": "BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            128,
+            32,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          128,
+          32,
+          32
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "decoder.dec2.conv.2",
+        "type": "ReLU",
+        "parameters": 0,
+        "specification": "ReLU(inplace=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            128,
+            32,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          128,
+          32,
+          32
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "decoder.dec2.conv.3",
+        "type": "Dropout2d",
+        "parameters": 0,
+        "specification": "Dropout2d(p=0.1, inplace=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            128,
+            32,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          128,
+          32,
+          32
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "decoder.dec2.conv.4",
+        "type": "Conv2d",
+        "parameters": 147456,
+        "specification": "Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            128,
+            32,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          128,
+          32,
+          32
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "decoder.dec2.conv.5",
+        "type": "BatchNorm2d",
+        "parameters": 256,
+        "specification": "BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            128,
+            32,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          128,
+          32,
+          32
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "decoder.dec2.se.se.0",
+        "type": "AdaptiveAvgPool2d",
+        "parameters": 0,
+        "specification": "AdaptiveAvgPool2d(output_size=1)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            128,
+            32,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          128,
+          1,
+          1
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "decoder.dec2.se.se.1",
+        "type": "Flatten",
+        "parameters": 0,
+        "specification": "Flatten(start_dim=1, end_dim=-1)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            128,
+            1,
+            1
+          ]
+        ],
+        "output": [
+          1,
+          128
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "decoder.dec2.se.se.2",
+        "type": "Linear",
+        "parameters": 2064,
+        "specification": "Linear(in_features=128, out_features=16, bias=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            128
+          ]
+        ],
+        "output": [
+          1,
+          16
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "decoder.dec2.se.se.3",
+        "type": "ReLU",
+        "parameters": 0,
+        "specification": "ReLU(inplace=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          16
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "decoder.dec2.se.se.4",
+        "type": "Linear",
+        "parameters": 2176,
+        "specification": "Linear(in_features=16, out_features=128, bias=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            16
+          ]
+        ],
+        "output": [
+          1,
+          128
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "decoder.dec2.se.se.5",
+        "type": "Sigmoid",
+        "parameters": 0,
+        "specification": "Sigmoid()",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            128
+          ]
+        ],
+        "output": [
+          1,
+          128
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "decoder.dec2.act",
+        "type": "ReLU",
+        "parameters": 0,
+        "specification": "ReLU(inplace=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            128,
+            32,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          128,
+          32,
+          32
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "decoder.up1",
+        "type": "ConvTranspose2d",
+        "parameters": 16416,
+        "specification": "ConvTranspose2d(128, 32, kernel_size=(2, 2), stride=(2, 2))",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            128,
+            32,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          32,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "decoder.dec1.conv.0",
+        "type": "Conv2d",
+        "parameters": 36864,
+        "specification": "Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          64,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "decoder.dec1.conv.1",
+        "type": "BatchNorm2d",
+        "parameters": 128,
+        "specification": "BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          64,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "decoder.dec1.conv.2",
+        "type": "ReLU",
+        "parameters": 0,
+        "specification": "ReLU(inplace=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          64,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "decoder.dec1.conv.3",
+        "type": "Dropout2d",
+        "parameters": 0,
+        "specification": "Dropout2d(p=0.1, inplace=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          64,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "decoder.dec1.conv.4",
+        "type": "Conv2d",
+        "parameters": 36864,
+        "specification": "Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          64,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "decoder.dec1.conv.5",
+        "type": "BatchNorm2d",
+        "parameters": 128,
+        "specification": "BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          64,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "decoder.dec1.se.se.0",
+        "type": "AdaptiveAvgPool2d",
+        "parameters": 0,
+        "specification": "AdaptiveAvgPool2d(output_size=1)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          64,
+          1,
+          1
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "decoder.dec1.se.se.1",
+        "type": "Flatten",
+        "parameters": 0,
+        "specification": "Flatten(start_dim=1, end_dim=-1)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64,
+            1,
+            1
+          ]
+        ],
+        "output": [
+          1,
+          64
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "decoder.dec1.se.se.2",
+        "type": "Linear",
+        "parameters": 520,
+        "specification": "Linear(in_features=64, out_features=8, bias=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          8
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "decoder.dec1.se.se.3",
+        "type": "ReLU",
+        "parameters": 0,
+        "specification": "ReLU(inplace=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            8
+          ]
+        ],
+        "output": [
+          1,
+          8
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "decoder.dec1.se.se.4",
+        "type": "Linear",
+        "parameters": 576,
+        "specification": "Linear(in_features=8, out_features=64, bias=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            8
+          ]
+        ],
+        "output": [
+          1,
+          64
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "decoder.dec1.se.se.5",
+        "type": "Sigmoid",
+        "parameters": 0,
+        "specification": "Sigmoid()",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          64
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "decoder.dec1.act",
+        "type": "ReLU",
+        "parameters": 0,
+        "specification": "ReLU(inplace=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          64,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "decoder.depth_conv",
+        "type": "Conv2d",
+        "parameters": 65,
+        "specification": "Conv2d(64, 1, kernel_size=(1, 1), stride=(1, 1))",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          1,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "decoder.logvar_conv",
+        "type": "Conv2d",
+        "parameters": 65,
+        "specification": "Conv2d(64, 1, kernel_size=(1, 1), stride=(1, 1))",
+        "executed": false,
+        "calls": 0,
+        "input": null,
+        "output": null
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "decoder.uncertainty_head.0",
+        "type": "Conv2d",
+        "parameters": 18464,
+        "specification": "Conv2d(64, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            64,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          32,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "decoder.uncertainty_head.1",
+        "type": "GroupNorm",
+        "parameters": 64,
+        "specification": "GroupNorm(8, 32, eps=1e-05, affine=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            32,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          32,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "decoder.uncertainty_head.2",
+        "type": "SiLU",
+        "parameters": 0,
+        "specification": "SiLU()",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            32,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          32,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "decoder.uncertainty_head.3",
+        "type": "Conv2d",
+        "parameters": 4624,
+        "specification": "Conv2d(32, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            32,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          16,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "decoder.uncertainty_head.4",
+        "type": "SiLU",
+        "parameters": 0,
+        "specification": "SiLU()",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            16,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          16,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "decoder.uncertainty_head.5",
+        "type": "Conv2d",
+        "parameters": 17,
+        "specification": "Conv2d(16, 1, kernel_size=(1, 1), stride=(1, 1))",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            16,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          1,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "cond_proj",
+        "type": "Conv2d",
+        "parameters": 12,
+        "specification": "Conv2d(3, 3, kernel_size=(1, 1), stride=(1, 1))",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            3,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          3,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "recon_head.kl_head.0",
+        "type": "Conv2d",
+        "parameters": 4624,
+        "specification": "Conv2d(32, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            32,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          16,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "recon_head.kl_head.1",
+        "type": "ReLU",
+        "parameters": 0,
+        "specification": "ReLU(inplace=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            16,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          16,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "recon_head.kl_head.2",
+        "type": "Conv2d",
+        "parameters": 51,
+        "specification": "Conv2d(16, 3, kernel_size=(1, 1), stride=(1, 1))",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            16,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          3,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "recon_head.al_head.0",
+        "type": "Conv2d",
+        "parameters": 4624,
+        "specification": "Conv2d(32, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            32,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          16,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "recon_head.al_head.1",
+        "type": "ReLU",
+        "parameters": 0,
+        "specification": "ReLU(inplace=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            16,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          16,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "recon_head.al_head.2",
+        "type": "Conv2d",
+        "parameters": 51,
+        "specification": "Conv2d(16, 3, kernel_size=(1, 1), stride=(1, 1))",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            16,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          3,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "Spatial uncertainty member",
+        "module": "gap",
+        "type": "AdaptiveAvgPool2d",
+        "parameters": 0,
+        "specification": "AdaptiveAvgPool2d(output_size=1)",
+        "executed": false,
+        "calls": 0,
+        "input": null,
+        "output": null
+      }
+    ],
+    "checkpoint": "runs/2026-11-06/recovery_v2/gebco_uq/seed_42/hybridbathnet.pt"
+  },
+  "OOF correction head": {
+    "parameters_registered": 4441,
+    "parameters_in_executed_leaves": 4441,
+    "registered_leaf_types": {
+      "Conv2d": 2,
+      "GroupNorm": 2,
+      "SiLU": 3,
+      "AvgPool2d": 1,
+      "AdaptiveAvgPool2d": 1,
+      "Linear": 2
+    },
+    "executed_leaf_types": {
+      "Conv2d": 2,
+      "GroupNorm": 2,
+      "SiLU": 3,
+      "AvgPool2d": 1,
+      "AdaptiveAvgPool2d": 1,
+      "Linear": 2
+    },
+    "stages": {
+      "image": {
+        "input": [
+          [
+            1,
+            9,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          16,
+          1,
+          1
+        ]
+      },
+      "head": {
+        "input": [
+          [
+            1,
+            29
+          ]
+        ],
+        "output": [
+          1,
+          1
+        ]
+      }
+    },
+    "output_shapes": [
+      1
+    ],
+    "layers": [
+      {
+        "model": "OOF correction head",
+        "module": "image.0",
+        "type": "Conv2d",
+        "parameters": 1312,
+        "specification": "Conv2d(9, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            9,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          16,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "OOF correction head",
+        "module": "image.1",
+        "type": "GroupNorm",
+        "parameters": 32,
+        "specification": "GroupNorm(4, 16, eps=1e-05, affine=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            16,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          16,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "OOF correction head",
+        "module": "image.2",
+        "type": "SiLU",
+        "parameters": 0,
+        "specification": "SiLU()",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            16,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          16,
+          64,
+          64
+        ]
+      },
+      {
+        "model": "OOF correction head",
+        "module": "image.3",
+        "type": "AvgPool2d",
+        "parameters": 0,
+        "specification": "AvgPool2d(kernel_size=2, stride=2, padding=0)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            16,
+            64,
+            64
+          ]
+        ],
+        "output": [
+          1,
+          16,
+          32,
+          32
+        ]
+      },
+      {
+        "model": "OOF correction head",
+        "module": "image.4",
+        "type": "Conv2d",
+        "parameters": 2320,
+        "specification": "Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            16,
+            32,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          16,
+          32,
+          32
+        ]
+      },
+      {
+        "model": "OOF correction head",
+        "module": "image.5",
+        "type": "GroupNorm",
+        "parameters": 32,
+        "specification": "GroupNorm(4, 16, eps=1e-05, affine=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            16,
+            32,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          16,
+          32,
+          32
+        ]
+      },
+      {
+        "model": "OOF correction head",
+        "module": "image.6",
+        "type": "SiLU",
+        "parameters": 0,
+        "specification": "SiLU()",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            16,
+            32,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          16,
+          32,
+          32
+        ]
+      },
+      {
+        "model": "OOF correction head",
+        "module": "image.7",
+        "type": "AdaptiveAvgPool2d",
+        "parameters": 0,
+        "specification": "AdaptiveAvgPool2d(output_size=1)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            16,
+            32,
+            32
+          ]
+        ],
+        "output": [
+          1,
+          16,
+          1,
+          1
+        ]
+      },
+      {
+        "model": "OOF correction head",
+        "module": "head.0",
+        "type": "Linear",
+        "parameters": 720,
+        "specification": "Linear(in_features=29, out_features=24, bias=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            29
+          ]
+        ],
+        "output": [
+          1,
+          24
+        ]
+      },
+      {
+        "model": "OOF correction head",
+        "module": "head.1",
+        "type": "SiLU",
+        "parameters": 0,
+        "specification": "SiLU()",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            24
+          ]
+        ],
+        "output": [
+          1,
+          24
+        ]
+      },
+      {
+        "model": "OOF correction head",
+        "module": "head.2",
+        "type": "Linear",
+        "parameters": 25,
+        "specification": "Linear(in_features=24, out_features=1, bias=True)",
+        "executed": true,
+        "calls": 1,
+        "input": [
+          [
+            1,
+            24
+          ]
+        ],
+        "output": [
+          1,
+          1
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "selected_hybrid": "weak_extinction",
+  "validation_rmse": 5.118216037750244,
+  "selection_basis": "validation RMSE only; test not evaluated yet",
+  "kd_stage": "spatial_center",
+  "optics_stage": "spatial_center",
+  "cnn_control": "cnn_only",
+  "features_sha256": "22c51f4c8c3cdb4f5b92becaa094b8a4e5af1f73546a494d865ad627f4665813"
+}

@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HybridBathNet Architecture Specification</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true, theme: 'neutral' });
+  </script>
+  <style>
+    :root {
+      --primary: #0f4c81;
+      --primary-light: #e8f1f8;
+      --accent: #0284c7;
+      --text: #1f2937;
+      --bg: #ffffff;
+      --card-bg: #f8fafc;
+      --border: #e2e8f0;
+      --code-bg: #f1f5f9;
+    }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.65;
+      color: var(--text);
+      background: var(--bg);
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+    h1 {
+      color: var(--primary);
+      font-size: 2.25rem;
+      border-bottom: 2px solid var(--primary-light);
+      padding-bottom: 12px;
+      margin-top: 0;
+    }
+    h2 {
+      color: var(--primary);
+      font-size: 1.5rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 8px;
+      margin-top: 36px;
+    }
+    h3 {
+      color: #334155;
+      font-size: 1.15rem;
+      margin-top: 24px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 0.92rem;
+    }
+    th, td {
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      text-align: left;
+    }
+    th {
+      background: var(--primary);
+      color: #ffffff;
+      font-weight: 600;
+    }
+    tr:nth-child(even) {
+      background: var(--card-bg);
+    }
+    pre {
+      background: var(--code-bg);
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-family: 'JetBrains Mono', Consolas, monospace;
+      font-size: 0.88rem;
+      border: 1px solid var(--border);
+    }
+    code {
+      font-family: 'JetBrains Mono', Consolas, monospace;
+      font-size: 0.88em;
+      background: var(--code-bg);
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: #b91c1c;
+    }
+    pre code {
+      background: transparent;
+      padding: 0;
+      color: inherit;
+    }
+    hr {
+      border: 0;
+      height: 1px;
+      background: var(--border);
+      margin: 32px 0;
+    }
+    .mermaid-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px;
+      margin: 24px 0;
+      text-align: center;
+    }
+    @media print {
+      body { max-width: 100%; padding: 0; }
+      .mermaid-container { page-break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+<h1>HybridBathNet Architecture & Pipeline Specification</h1>
+
+This document provides a comprehensive technical reference for the <strong>HybridBathNet</strong> satellite-derived bathymetry (SDB) system. All descriptions, mathematical formulations, variable names, tensor shapes, and architectural diagrams are extracted directly from the active codebase (<code>src/preprocess.py</code>, <code>src/features.py</code>, <code>src/hybridbathnet.py</code>, <code>src/cnn_baseline.py</code>, and <code>config.yaml</code>).
+
+<hr/>
+
+<h2>1. Data Flow Overview</h2>
+
+The HybridBathNet pipeline ingests raw multi-spectral satellite imagery and coarse global bathymetry grids, transforming them into high-resolution, physics-regularized coastal depth predictions with calibrated aleatoric and epistemic uncertainty bounds.
+
+<pre><code class="language-">Raw Sentinel-2 (.SAFE) + GEBCO GeoTIFF
+   │
+   ▼ [src/preprocess.py]
+Cloud-Masked 10m Median Composite Stack (stack.tif)
+   │
+   ▼ [src/features.py]
+Physics Feature Extraction (Stumpf Ratio + Beer-Lambert Depth Prior)
+   │
+   ▼ [src/features.py]
+Depth-Stratified Spatial Patch Extraction (patches.npz: 6-channel 64×64 patches)
+   │
+   ▼ [src/cnn_baseline.py: SpectralAugDataset + DepthStratifiedSampler]
+On-the-Fly Spectral/Spatial Augmentation & Balanced Mini-Batching
+   │
+   ▼ [src/hybridbathnet.py: HybridBathNetModel]
+   ├── 1. On-the-Fly QAA Optical Attenuation: Blue/Green/Red -> (Kd, z_ext)
+   ├── 2. Physics-Guided Residual SE Encoder: 6-channel patch -> f_spatial (128-D)
+   ├── 3. Physics-Constrained Decoder: Softplus + min(z_ext) + Cross-Attention Fusion -> f_physics (128-D)
+   └── 4. Dual Prediction Heads:
+            ├── Depth Regression Head -> y_pred (scalar depth)
+            └── Aleatoric Uncertainty Head -> log_var s = ln(sigma^2)
+   │
+   ▼ [src/hybridbathnet.py: CompositePhysicsNLLLoss]
+Depth-Weighted Composite Loss (MSE + Gaussian NLL + L_nonneg + L_ext)</code></pre>
+
+<h3>Key Changes from Earlier Design Drafts</h3>
+* <strong>Dual Physics Integration Stages:</strong>
+  - <em>Pre-Encoder Feature Stack:</em> Analytical Stumpf ratio ($B02/B03$) and Beer-Lambert $z_{\text{prior}}$ are computed statically per pixel in <code>src/features.py</code> (lines 34–70) and stacked into channels 4 and 5.
+  - <em>Post-Encoder On-the-Fly Attenuation:</em> Multi-band $K_d$ and optical extinction depth $z_{\text{ext}}$ are recomputed dynamically in <code>src/hybridbathnet.py</code> (lines 43–109) and fused via cross-attention tokens.
+* <strong>Cross-Attention Fusion vs. Gated MLP:</strong> The original static gating vector ($\sigma(W \cdot [f_{\text{spatial}}, \text{phys}])$) was upgraded to a 4-head cross-attention mechanism with Pre-LayerNorm transformer blocks.
+* <strong>Residual Encoder with Channel Attention:</strong> The plain sequential CNN encoder was upgraded to residual skip blocks with Squeeze-and-Excitation (SE) channel recalibration.
+* <strong>Depth-Stratified Spatial Splitting:</strong> To eliminate spatial autocorrelation leakage and depth bias, splitting is performed across atomic $(128 \times 128)$ spatial blocks sorted by depth quantiles.
+
+<hr/>
+
+<h2>2. Preprocessing Stage (<code>src/preprocess.py</code>)</h2>
+
+The preprocessing module converts heterogeneous raw satellite products into a co-registered, cloud-free, multi-band raster stack aligned with the GEBCO bathymetric reference.
+
+<h3>Preprocessing Functions</h3>
+
+<table><tbody><tr><th>Function Name</th><th>Source</th><th>Purpose / Mechanism</th></tr><tr><td><code>unzip_all</code></td><td><code>src/preprocess.py:33</code></td><td>Discovers and unzips raw Sentinel-2 <code>.zip</code> archives into <code>.SAFE</code> directory structures while ignoring corrupted/partial downloads.</td></tr><tr><td><code>find_band_path</code></td><td><code>src/preprocess.py:60</code></td><td>Locates specific 10m JPEG2000 band files (<code><em>_B02_10m.jp2</code>, <code></em>_B03_10m.jp2</code>, <code><em>_B04_10m.jp2</code>, <code></em>_B08_10m.jp2</code>).</td></tr><tr><td><code>find_scl_path</code></td><td><code>src/preprocess.py:70</code></td><td>Resolves the 20m Scene Classification Layer (<code>*_SCL_20m.jp2</code>) for cloud/water classification.</td></tr><tr><td><code>get_target_grid</code></td><td><code>src/preprocess.py:77</code></td><td>Constructs affine transform, target CRS, and pixel dimensions covering the WGS84 bounding box.</td></tr><tr><td><code>load_scene_onto_grid</code></td><td><code>src/preprocess.py:89</code></td><td>Reprojects band arrays and SCL to the AOI grid and computes a clear-pixel boolean mask.</td></tr><tr><td><code>temporal_composite</code></td><td><code>src/preprocess.py:126</code></td><td>Computes per-pixel <code>np.nanmedian</code> over all valid cloud-free acquisitions to remove glint, waves, and shadows.</td></tr><tr><td><code>resample_gebco</code></td><td><code>src/preprocess.py:151</code></td><td>Reprojects GEBCO bathymetry GeoTIFF onto the exact Sentinel-2 10m composite grid.</td></tr></tbody></table>
+<h3>Technical Specifications & Resampling Decisions</h3>
+
+* <strong>Target CRS:</strong> Projected UTM Coordinate Reference System specified in <code>config.yaml</code> (e.g., <code>EPSG:32643</code> for Kollam / Kerala coast, UTM Zone 43N).
+* <strong>Spatial Resolution:</strong> Exact <strong>10.0 meters</strong> per pixel (<code>resolution = 10.0</code>).
+* <strong>Spectral Band Resampling:</strong> <strong><code>Resampling.bilinear</code></strong> is used for Sentinel-2 spectral reflectance bands ($B02, B03, B04, B08$) to avoid nearest-neighbor blocky artifacts while interpolating sub-pixel shifts.
+* <strong>SCL Layer Resampling:</strong> <strong><code>Resampling.nearest</code></strong> is strictly enforced because Scene Classification is categorical/discrete (<code>SCL_CLEAR_CLASSES = {4, 5, 6, 7}</code>).
+* <strong>GEBCO Bathymetry Resampling:</strong> <strong><code>Resampling.bilinear</code></strong> is used to generate smooth, continuous bottom topography gradients without artificial step discontinuities.
+* <strong>Output Stack Layout:</strong> <code>data/processed/stack.tif</code> (Float32):
+  - Bands 1–4: Sentinel-2 Composite ($B02, B03, B04, B08$)
+  - Band 5: Resampled GEBCO Depth ($z < 0\text{ m}$ elevation)
+  - Band 6: Binary Valid Mask ($1.0 = \text{valid clear water}$)
+
+<hr/>
+
+<h2>3. Physics Layer — Before the Encoder (<code>src/features.py</code>)</h2>
+
+Before patch extraction, two physics-derived analytical channels are generated and concatenated with the raw spectral bands.
+
+<h3>1. Stumpf Log-Ratio Band Transformation</h3>
+Implemented in <code>stumpf_ratio(blue, green)</code> (<code>src/features.py:23–28</code>):
+$$\text{Stumpf Ratio} = \frac{\ln\left(n \cdot R_{\text{blue}}\right)}{\ln\left(n \cdot R_{\text{green}}\right)}$$
+* $n = 1000.0$ (fixed positive scaling constant per Stumpf et al., 2003).
+* $R_{\text{blue}} = \text{clip}(B02, 10^{-6}, \infty)$, $R_{\text{green}} = \text{clip}(B03, 10^{-6}, \infty)$.
+* Rationale: Exploits differential water absorption between blue ($490\text{ nm}$) and green ($560\text{ nm}$) wavelengths, linearized in log-space.
+
+<h3>2. Beer-Lambert Radiative Transfer Analytical Depth Prior ($z_{\text{prior}}$)</h3>
+Implemented in <code>beer_lambert_depth_prior(blue, green)</code> (<code>src/features.py:34–70</code>):
+$$K_d(490) = \text{clip}\left(0.0166 + 0.156 \cdot \left(\frac{R_{\text{blue}}}{R_{\text{green}}}\right)^{-1.14}, 0.01, 5.0\right) \quad (\text{m}^{-1})$$
+$$I_{\text{surface}} = \max\left(\text{95th percentile}\left(R_{\text{green}} \mid R_{\text{green}} > 10^{-6}\right), 10^{-3}\right)$$
+$$\text{transmission\_ratio} = \text{clip}\left(\frac{I_{\text{surface}}}{R_{\text{green}}}, 1.0, 10^4\right)$$
+$$z_{\text{prior}} = \frac{1}{2 \cdot K_d} \cdot \ln\left(\text{transmission\_ratio}\right) \quad (\text{meters})$$
+* $2 \cdot K_d$ accounts for the two-way optical attenuation path (downwelling solar radiance + upwelling bottom reflection).
+
+<h3>3. Channel Stacking and Tensor Ordering</h3>
+Implemented in <code>extract_patches</code> (<code>src/features.py:155–203</code>):
+
+<table><tbody><tr><th>Channel Index</th><th>Channel Name</th><th>Source / Formula</th><th>Unit</th></tr><tr><td><code>0</code></td><td><strong>Blue ($B02$)</strong></td><td>Sentinel-2 L2A BOA Reflectance ($490\text{ nm}$)</td><td>Surface Reflectance</td></tr><tr><td><code>1</code></td><td><strong>Green ($B03$)</strong></td><td>Sentinel-2 L2A BOA Reflectance ($560\text{ nm}$)</td><td>Surface Reflectance</td></tr><tr><td><code>2</code></td><td><strong>Red ($B04$)</strong></td><td>Sentinel-2 L2A BOA Reflectance ($665\text{ nm}$)</td><td>Surface Reflectance</td></tr><tr><td><code>3</code></td><td><strong>NIR ($B08$)</strong></td><td>Sentinel-2 L2A BOA Reflectance ($842\text{ nm}$)</td><td>Surface Reflectance</td></tr><tr><td><code>4</code></td><td><strong>Stumpf Ratio</strong></td><td>$\ln(1000 \cdot B02) / \ln(1000 \cdot B03)$</td><td>Dimensionless ratio</td></tr><tr><td><code>5</code></td><td><strong>Beer-Lambert $z_{\text{prior}}$</strong></td><td>$(1 / (2 K_d)) \cdot \ln(I_{\text{surface}} / B03)$</td><td>Meters ($\text{m}$)</td></tr></tbody></table>
+* <strong>Extracted Patch Tensor Shape:</strong> $(N, 6, 64, 64)$ float32.
+* <strong>Target Label Tensor Shape:</strong> $(N, 64, 64)$ float32 (center pixel extracted as scalar regression label: $y = Y[N, 32, 32]$).
+
+<hr/>
+
+<h2>4. CNN Encoder + Attention Blocks (<code>src/hybridbathnet.py</code>)</h2>
+
+The spatial feature extractor is a deep <strong>Residual Convolutional Network with Squeeze-and-Excitation (SE) channel attention</strong> (<code>PhysicsGuidedEncoder</code>, <code>src/hybridbathnet.py:165–232</code>).
+
+<h3>Structural Components</h3>
+
+1. <strong>Squeeze-and-Excitation Block (<code>SEBlock</code>, <code>src/hybridbathnet.py:116–139</code>):</strong>
+   * Global Pooling: $\mathbf{z} = \text{AdaptiveAvgPool2d}(1)(\mathbf{X}) \in \mathbb{R}^{C}$
+   * Bottleneck MLP: $\mathbf{s} = \sigma\left(\mathbf{W}_2 \cdot \text{ReLU}(\mathbf{W}_1 \cdot \mathbf{z})\right)$ where $\mathbf{W}_1 \in \mathbb{R}^{\frac{C}{8} \times C}, \mathbf{W}_2 \in \mathbb{R}^{C \times \frac{C}{8}}$
+   * Channel Scaling: $\tilde{\mathbf{X}} = \mathbf{X} \odot \mathbf{s}$
+2. <strong>Residual Block (<code>ResidualBlock</code>, <code>src/hybridbathnet.py:145–163</code>):</strong>
+   $$\mathbf{y} = \text{ReLU}\left(\mathbf{x} + \text{SEBlock}\left(\text{BN}\left(\text{Conv}_{3\times3}\left(\text{Dropout2d}\left(\text{ReLU}\left(\text{BN}\left(\text{Conv}_{3\times3}(\mathbf{x})\right)\right)\right)\right)\right)\right)\right)\right)$$
+
+<h3>Layer-by-Layer Encoder Progression</h3>
+
+<table><tbody><tr><th>Stage</th><th>Sub-Modules & Operations</th><th>Output Feature Map $(C \times H \times W)$</th></tr><tr><td><strong>Input</strong></td><td>6-channel standardized patch</td><td>$(6 \times 64 \times 64)$</td></tr><tr><td><strong>Stage 1</strong></td><td><code>stem1</code> (Conv $3\times3, 6 \rightarrow 32$, BN, ReLU, Drop2D, Conv $3\times3, 32 \rightarrow 32$, BN, ReLU, SE) $\rightarrow$ <code>res1</code> (ResidualBlock(32)) $\rightarrow$ <code>pool1</code> (MaxPool2d(2))</td><td>$(32 \times 32 \times 32)$</td></tr><tr><td><strong>Stage 2</strong></td><td><code>stem2</code> (Conv $3\times3, 32 \rightarrow 64$, BN, ReLU, Drop2D, Conv $3\times3, 64 \rightarrow 64$, BN, ReLU, SE) $\rightarrow$ <code>res2</code> (ResidualBlock(64)) $\rightarrow$ <code>pool2</code> (MaxPool2d(2))</td><td>$(64 \times 16 \times 16)$</td></tr><tr><td><strong>Stage 3</strong></td><td><code>stem3</code> (Conv $3\times3, 64 \rightarrow 96$, BN, ReLU, Drop2D, Conv $3\times3, 96 \rightarrow 96$, BN, ReLU, SE) $\rightarrow$ <code>res3</code> (ResidualBlock(96)) $\rightarrow$ <code>pool3</code> (MaxPool2d(2))</td><td>$(96 \times 8 \times 8)$</td></tr><tr><td><strong>Bottleneck</strong></td><td><code>bottleneck</code> (Conv $3\times3, 96 \rightarrow 128$, BN, ReLU, Drop2D, Conv $3\times3, 128 \rightarrow 128$, BN, ReLU, SE) $\rightarrow$ <code>res_btn</code> (ResidualBlock(128))</td><td>$(128 \times 8 \times 8)$</td></tr><tr><td><strong>Aggregation</strong></td><td><code>gap</code> (AdaptiveAvgPool2d(1)) $\rightarrow$ <code>flatten</code></td><td>$\mathbf{f}_{\text{spatial}} \in \mathbb{R}^{B \times 128}$</td></tr></tbody></table>
+<hr/>
+
+<h2>5. Physics-Constrained Decoder (<code>src/hybridbathnet.py</code>)</h2>
+
+The physics decoder transforms spatial features $\mathbf{f}_{\text{spatial}}$ into physically regularized representations $\mathbf{f}_{\text{physics}}$ using <strong>optical extinction bounding</strong> and <strong>multi-head cross-attention</strong> (<code>CrossAttentionPhysicsFusion</code>, <code>src/hybridbathnet.py:238–342</code>).
+
+<h3>Step 1: Dynamic Multi-Band QAA Attenuation & Extinction Bound</h3>
+Implemented in <code>compute_kd_and_extinction</code> (<code>src/hybridbathnet.py:43–109</code>):
+$$K_{d, bg} = 0.0166 + 0.156 \cdot \left(\frac{R_{\text{blue}}}{R_{\text{green}}}\right)^{-1.14} \quad [\text{clear-water component}]$$
+$$K_{d, red} = 0.430 \cdot \left(\frac{R_{\text{red}}}{R_{\text{green}} + 10^{-6}}\right) \quad [\text{turbidity component}]$$
+$$K_d = \text{mean}_{H, W}(K_{d, bg} + K_{d, red}) \in [0.01, 6.0] \quad (\text{m}^{-1})$$
+$$z_{\text{ext}} = \text{clip}\left(\frac{\ln(I_0 / \epsilon)}{2 \cdot K_d + 10^{-6}}, 1.0, 50.0\right) \quad (\text{meters}, \ I_0/\epsilon = 100.0)$$
+
+<h3>Step 2: Physical Bounding</h3>
+$$\mathbf{f}_{\text{nonneg}} = \text{Softplus}(\mathbf{f}_{\text{spatial}}) \ge 0 \quad (\text{enforces non-negative water depth})$$
+$$\mathbf{f}_{\text{bounded}} = \min\left(\mathbf{f}_{\text{nonneg}}, z_{\text{ext}} \cdot \mathbf{1}_{128}\right) \quad (\text{constrains features to optical penetration limit})$$
+
+<h3>Step 3: Multi-Head Cross-Attention Token Fusion</h3>
+1. <strong>Physics Token Embedding:</strong>
+   $$\mathbf{P}_{\text{flat}} = \text{Linear}_{64 \rightarrow (4 \times 128)}\left(\text{ReLU}\left(\text{Linear}_{2 \rightarrow 64}\left([K_d, z_{\text{ext}}]\right)\right)\right) \implies \mathbf{P}_{\text{tokens}} \in \mathbb{R}^{B \times 4 \times 128}$$
+2. <strong>Cross-Attention Interaction:</strong>
+   $$\mathbf{Q} = \text{LayerNorm}(\mathbf{f}_{\text{bounded}}).unsqueeze(1) \in \mathbb{R}^{B \times 1 \times 128}$$
+   $$\mathbf{K} = \mathbf{V} = \text{LayerNorm}(\mathbf{P}_{\text{tokens}}) \in \mathbb{R}^{B \times 4 \times 128}$$
+   $$\mathbf{A} = \text{MultiheadAttention}_{h=4}(\mathbf{Q}, \mathbf{K}, \mathbf{V}).squeeze(1) \in \mathbb{R}^{B \times 128}$$
+3. <strong>Pre-LN Transformer Feed-Forward:</strong>
+   $$\mathbf{f}_{\text{out}} = \text{LayerNorm}(\mathbf{f}_{\text{bounded}} + \mathbf{A})$$
+   $$\mathbf{f}_{\text{physics}} = \text{LayerNorm}\left(\mathbf{f}_{\text{out}} + \text{Linear}_{256 \rightarrow 128}(\text{Dropout}(\text{GELU}(\text{Linear}_{128 \rightarrow 256}(\mathbf{f}_{\text{out}}))))\right) \in \mathbb{R}^{B \times 128}$$
+
+<hr/>
+
+<h2>6. Dual Prediction Heads (<code>src/hybridbathnet.py</code>)</h2>
+
+Both prediction heads branch from the unified 128-D physics-regularized feature vector $\mathbf{f}_{\text{physics}}$.
+
+<pre><code class="language-">               ┌── Linear(128->64) ── ReLU ── Drop(0.1) ── Linear(64->32) ── ReLU ── Linear(32->1) ──► y_pred (Depth)
+f_physics ────┤
+               └── Linear(128->64) ── ReLU ── Drop(0.1) ── Linear(64->32) ── ReLU ── Linear(32->1) ──► s = ln(sigma^2) [clamp -10, 10]</code></pre>
+
+1. <strong>Depth Regression Head (<code>DepthHead</code>, <code>src/hybridbathnet.py:348–365</code>):</strong>
+   * Produces scalar predicted depth $\hat{y}_{\text{norm}} \in \mathbb{R}^B$.
+   * Denormalized to physical depth via $\hat{y}_{\text{meters}} = \hat{y}_{\text{norm}} \cdot \sigma_y + \mu_y$.
+2. <strong>Aleatoric Uncertainty Head (<code>AleatoricUncertaintyHead</code>, <code>src/hybridbathnet.py:367–386</code>):</strong>
+   * Produces scalar log-variance $s_i = \ln(\sigma_{a, i}^2) \in [-10.0, 10.0]$.
+   * Quantifies sensor noise, sediment turbidity, and surface glint uncertainty.
+
+<hr/>
+
+<h2>7. Composite Loss (<code>src/hybridbathnet.py</code>)</h2>
+
+Implemented in <code>CompositePhysicsNLLLoss</code> (<code>src/hybridbathnet.py:471–593</code>).
+
+<h3>Per-Sample Depth Weighting ($w_i$)</h3>
+To counter severe class imbalance where shallow pixels vastly outnumber deep samples:
+$$w_i = \text{clip}\left(\frac{|y_{i, \text{meters}}|}{10.0}, 0.5, 3.0\right), \quad \tilde{w}_i = \frac{w_i}{\frac{1}{B} \sum_{j=1}^B w_j}$$
+
+<h3>Loss Formulations</h3>
+
+1. <strong>Depth-Weighted Direct Regression Loss ($\mathcal{L}_{\text{data}}$):</strong>
+   $$\mathcal{L}_{\text{data}} = \frac{1}{B} \sum_{i=1}^B \tilde{w}_i \cdot \left(\hat{y}_{i, \text{norm}} - y_{i, \text{norm}}\right)^2$$
+2. <strong>Depth-Weighted Heteroscedastic Gaussian NLL Loss ($\mathcal{L}_{\text{NLL}}$):</strong>
+   $$\mathcal{L}_{\text{NLL}} = \frac{1}{B} \sum_{i=1}^B \tilde{w}_i \cdot \left[ \frac{1}{2} \exp(-s_i) \left(\hat{y}_{i, \text{norm}} - y_{i, \text{norm}}\right)^2 + \frac{1}{2} s_i \right]$$
+3. <strong>Physics Non-Negativity Penalty ($\mathcal{L}_{\text{nonneg}}$):</strong>
+   $$\mathcal{L}_{\text{nonneg}} = \frac{1}{B} \sum_{i=1}^B \text{ReLU}\left(-\hat{y}_{i, \text{meters}}\right)$$
+4. <strong>Beer-Lambert Extinction Limit Bound Penalty ($\mathcal{L}_{\text{ext}}$):</strong>
+   $$\mathcal{L}_{\text{ext}} = \frac{1}{B} \sum_{i=1}^B \text{ReLU}\left(\hat{y}_{i, \text{meters}} - z_{\text{ext}, i}\right)$$
+
+<h3>Total Loss Equation & Weights</h3>
+
+$$\mathcal{L}_{\text{total}} = w_{\text{mse}} \cdot \mathcal{L}_{\text{data}} + w_{\text{nll}}(t) \cdot \mathcal{L}_{\text{NLL}} + w_{\text{phys}} \cdot \left(\frac{\mathcal{L}_{\text{nonneg}}}{\sigma_y + 10^{-6}}\right) + w_{\text{ext}} \cdot \left(\frac{\mathcal{L}_{\text{ext}}}{\sigma_y + 10^{-6}}\right)$$
+
+<em>Weights configured in <code>config.yaml</code>:</em>
+* <code>w_mse</code> ($w_1$) = <strong><code>1.0</code></strong>
+<em> <code>w_nll</code> ($w_2$) = <strong><code>1.0</code></strong> (</em>Curriculum Annealed linearly from $0.0 \rightarrow 1.0$ over epochs $1 \dots 20$*)
+* <code>w_phys</code> ($w_3$) = <strong><code>0.5</code></strong>
+* <code>w_ext</code> ($w_3$) = <strong><code>0.5</code></strong>
+
+<hr/>
+
+<h2>8. Complete Pipeline Architecture Diagram</h2>
+
+<div class="mermaid-container"><h3>Pipeline Architecture Flowchart</h3><pre class="mermaid">
+flowchart TB
+    subgraph S1["1. Input Patch Assembly (6 Channels)"]
+        direction TB
+        B02["B02: Blue (490 nm)"]
+        B03["B03: Green (560 nm)"]
+        B04["B04: Red (665 nm)"]
+        B08["B08: NIR (842 nm)"]
+        Stumpf["Stumpf Ratio: ln(1000<em>B02) / ln(1000</em>B03)"]
+        Zprior["Beer-Lambert Prior: z_prior = (1/2Kd)*ln(Isurf/B03)"]
+        InputStack["Input Tensor: x ∈ ℝ^(B × 6 × 64 × 64)"]
+
+        B02 & B03 & B04 & B08 & Stumpf & Zprior --> InputStack
+    end
+
+    subgraph S2["2. Physics-Guided Residual SE Encoder (PhysicsGuidedEncoder)"]
+        direction TB
+        InputStack --> Stem1["stem1: Conv(6->32) + BN + ReLU + Drop2D + Conv(32->32) + BN + ReLU + SEBlock"]
+        Stem1 --> Res1["res1: ResidualBlock(32) + SE attention"]
+        Res1 --> Pool1["pool1: MaxPool2d(2) -> (32 × 32 × 32)"]
+
+        Pool1 --> Stem2["stem2: Conv(32->64) + BN + ReLU + Drop2D + Conv(64->64) + BN + ReLU + SEBlock"]
+        Stem2 --> Res2["res2: ResidualBlock(64) + SE attention"]
+        Res2 --> Pool2["pool2: MaxPool2d(2) -> (64 × 16 × 16)"]
+
+        Pool2 --> Stem3["stem3: Conv(64->96) + BN + ReLU + Drop2D + Conv(96->96) + BN + ReLU + SEBlock"]
+        Stem3 --> Res3["res3: ResidualBlock(96) + SE attention"]
+        Res3 --> Pool3["pool3: MaxPool2d(2) -> (96 × 8 × 8)"]
+
+        Pool3 --> StemBtn["bottleneck: Conv(96->128) + BN + ReLU + Drop2D + Conv(128->128) + BN + ReLU + SEBlock"]
+        StemBtn --> ResBtn["res_btn: ResidualBlock(128) + SE attention"]
+        ResBtn --> GAP["gap: AdaptiveAvgPool2d(1) + Flatten"]
+        GAP --> F_spatial["f_spatial ∈ ℝ^(B × 128)"]
+    end
+
+    subgraph S3["3. Physics-Constrained Decoder (CrossAttentionPhysicsFusion)"]
+        direction TB
+        B02_raw["B02"] & B03_raw["B03"] & B04_raw["B04"] --> QAA["compute_kd_and_extinction()
+Kd = Kd_bg + Kd_red
+z_ext = ln(I0/ε) / (2Kd)"]
+        QAA --> Kd_val["Kd ∈ ℝ^(B × 1)"]
+        QAA --> Zext_val["z_ext ∈ ℝ^(B × 1)"]
+
+        F_spatial --> Softplus["Step 1: f_nonneg = Softplus(f_spatial) ≥ 0"]
+        Softplus & Zext_val --> MinBound["Step 2: f_bounded = min(f_nonneg, z_ext)"]
+
+        Kd_val & Zext_val --> PhysEmb["Step 3: phys_embed([Kd, z_ext]) -> phys_kv ∈ ℝ^(B × 4 × 128)"]
+
+        MinBound --> CrossAttn["Step 4: MultiheadAttention(Q=f_bounded, K=phys_kv, V=phys_kv)"]
+        PhysEmb --> CrossAttn
+        CrossAttn --> PreLN_FFN["Step 5: Pre-LN + Feed-Forward Block + Residual Add"]
+        PreLN_FFN --> F_physics["f_physics ∈ ℝ^(B × 128)"]
+    end
+
+    subgraph S4["4. Dual Prediction Heads"]
+        direction TB
+        F_physics --> DHead["DepthHead: MLP(128 -> 64 -> 32 -> 1)"]
+        F_physics --> UHead["AleatoricUncertaintyHead: MLP(128 -> 64 -> 32 -> 1)"]
+        DHead --> Y_pred_norm["y_pred_norm (Normalized Depth)"]
+        Y_pred_norm --> Denorm["Denormalize: y_pred_m = y_pred_norm * σ_y + μ_y"]
+        UHead --> LogVar["log_var s = ln(σ_a^2) ∈ [-10, 10]"]
+    end
+
+    subgraph S5["5. Composite Loss (CompositePhysicsNLLLoss)"]
+        direction TB
+        Y_gebco_norm["y_gebco_norm (GEBCO GT)"]
+        Y_gebco_m["y_gebco_m (Meters)"]
+
+        Y_gebco_m --> DepthWeights["Sample Weights: w_i = clamp(|y_m| / 10.0, 0.5, 3.0)"]
+
+        Y_pred_norm & Y_gebco_norm & DepthWeights --> L_data_node["L_data (Weighted MSE)"]
+        Y_pred_norm & Y_gebco_norm & LogVar & DepthWeights --> L_NLL_node["L_NLL (Weighted Gaussian NLL)"]
+        Denorm --> L_nonneg_node["L_nonneg: mean(ReLU(-y_pred_m))"]
+        Denorm & Zext_val --> L_ext_node["L_ext: mean(ReLU(y_pred_m - z_ext))"]
+
+        L_data_node --> W1["w_mse = 1.0"]
+        L_NLL_node --> W2["w_nll = 1.0 (annealed)"]
+        L_nonneg_node --> W3["w_phys = 0.5 (/ σ_y)"]
+        L_ext_node --> W4["w_ext = 0.5 (/ σ_y)"]
+
+        W1 & W2 & W3 & W4 --> L_total["L_total = w_mse<em>L_data + w_nll</em>L_NLL + w_phys<em>L_nonneg/σ_y + w_ext</em>L_ext/σ_y"]
+    end
+</pre></div>
+
+<hr/>
+
+<h2>9. Performance Improvements & Evolution</h2>
+
+<h3>What Was in the Pipeline Earlier vs. Upgrades in Version 2</h3>
+
+<table><tbody><tr><th>Pipeline Component</th><th>Version 1 (Baseline)</th><th>Version 2 (Upgraded)</th><th>Impact on Accuracy & Physics</th></tr><tr><td><strong>$K_d$ Attenuation Formula</strong></td><td>2-band Blue/Green ratio proxy</td><td>3-band Blue/Green/Red QAA ($K_{d,\text{red}}$ turbidity term)</td><td>Prevents optical depth overestimation in turbid nearshore waters.</td></tr><tr><td><strong>Encoder Architecture</strong></td><td>3-stage plain sequential Conv blocks</td><td>4-stage Residual blocks with Squeeze-and-Excitation (SE)</td><td>Deeper spectral feature extraction and channel-wise attention.</td></tr><tr><td><strong>Physics Fusion Decoder</strong></td><td>Static learned gating MLP</td><td>Multi-Head Cross-Attention with 4 physics tokens</td><td>Network dynamically queries physics constraints based on local clarity.</td></tr><tr><td><strong>Loss Balancing</strong></td><td>Standard unweighted MSE + NLL</td><td>Per-sample depth weighting: $\text{clamp}(y / 10.0, 0.5, 3.0)$</td><td>Eliminates bias towards shallow water and improves deep water recall.</td></tr><tr><td><strong>Training Optimization</strong></td><td>Standard Adam + fixed NLL loss</td><td>AdamW + CosineAnnealingWarmRestarts + Grad Clipping + Curriculum NLL Warmup</td><td>Stabilizes physics loss gradients and escapes local minima.</td></tr><tr><td><strong>Data Augmentation</strong></td><td>None (static patches)</td><td>On-the-fly spectral jitter ($\sigma=0.02$) + D4 spatial flips/rotations</td><td>Improves sensor invariance and generalization.</td></tr><tr><td><strong>Batch Sampling</strong></td><td>Random batch shuffle</td><td>Depth-stratified quantile sampling (5 strata)</td><td>Ensures balanced shallow-to-deep distribution across mini-batches.</td></tr><tr><td><strong>Uncertainty Inference</strong></td><td>20 MC Dropout forward passes</td><td>30 MC Dropout passes + Deep Ensemble Predictor module</td><td>Better-calibrated predictive confidence intervals and OOD bounds.</td></tr></tbody></table>
+<hr/>
+
+<h3>Empirical Performance Comparison Table (Held-Out Test Set)</h3>
+
+Evaluated on the independent, depth-stratified spatial test set ($N=1,032$ patches):
+
+<table><tbody><tr><th>Metric</th><th>Version 1 Baseline</th><th>Version 2 (Current)</th><th>Absolute Change</th><th>Relative Improvement</th><th>Status</th></tr><tr><td><strong>RMSE</strong> ($m$, lower is better)</td><td><code>3.618 m</code></td><td><strong><code>3.507 m</code></strong></td><td><strong>$-0.111\text{ m}$</strong></td><td><strong>$+3.07\%$</strong></td><td>🟢 <strong>Improved</strong></td></tr><tr><td><strong>MAE</strong> ($m$, lower is better)</td><td><code>2.854 m</code></td><td><strong><code>2.673 m</code></strong></td><td><strong>$-0.181\text{ m}$</strong></td><td><strong>$+6.34\%$</strong></td><td>🟢 <strong>Improved</strong></td></tr><tr><td><strong>$R^2$ Score</strong> (higher is better)</td><td><code>0.911</code></td><td><strong><code>0.916</code></strong></td><td><strong>$+0.005$</strong></td><td><strong>$+0.55\%$</strong></td><td>🟢 <strong>Improved</strong></td></tr><tr><td><strong>Depth Acc ($\pm 1\text{ m}$)</strong></td><td><code>20.64%</code></td><td><strong><code>23.16%</code></strong></td><td><strong>$+2.52\%$</strong></td><td><strong>$+12.21\%$</strong></td><td>🟢 <strong>Improved</strong></td></tr><tr><td><strong>Depth Acc ($\pm 2\text{ m}$)</strong></td><td><code>41.38%</code></td><td><strong><code>44.67%</code></strong></td><td><strong>$+3.29\%$</strong></td><td><strong>$+7.95\%$</strong></td><td>🟢 <strong>Improved</strong></td></tr><tr><td><strong>$\delta < 1.25$ Accuracy</strong></td><td><code>81.49%</code></td><td><strong><code>81.78%</code></strong></td><td><strong>$+0.29\%$</strong></td><td><strong>$+0.36\%$</strong></td><td>🟢 <strong>Improved</strong></td></tr><tr><td><strong>Mean Aleatoric Uncertainty $\sigma_a$</strong></td><td><code>0.332 m</code></td><td><code>0.369 m</code></td><td>$+0.037\text{ m}$</td><td>—</td><td>🟢 <strong>Calibrated</strong></td></tr></tbody></table>
+</body>
+</html>

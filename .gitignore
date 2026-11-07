@@ -36,3 +36,25 @@ desktop.ini
 # Saved models in checkpoints/ are explicitly KEPT
 !checkpoints/
 !checkpoints/*
+
+# Credentials and machine-local configuration
+.env
+.env.*
+!.env.example
+.netrc
+.urs_cookies
+*token*.txt
+
+# Local experiment payloads; keep source, protocols, metrics and reports
+runs/**/*.pt
+runs/**/*.pth
+runs/**/*.h5
+runs/**/*.hdf5
+runs/**/*.jp2
+runs/**/*.parquet
+runs/**/*.zip
+runs/**/*.whl
+runs/**/*.log
+runs/**/external/
+runs/**/features/*_pixels.csv
+runs/**/original/

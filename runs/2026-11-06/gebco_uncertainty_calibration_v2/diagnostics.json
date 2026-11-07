@@ -1,0 +1,33 @@
+{
+  "validation": {
+    "raw": {
+      "mean_abs_coverage_error_pp_fixed_levels": 8.730769230769226,
+      "crps_mean_m": 1.1972243943063043
+    },
+    "gaussian_scale": {
+      "mean_abs_coverage_error_pp_fixed_levels": 7.03846153846154,
+      "crps_mean_m": 1.2187632784484053
+    },
+    "empirical_group_crude": {
+      "mean_abs_coverage_error_pp_fixed_levels": 4.73076923076923,
+      "crps_mean_m": 1.1940081488254692
+    },
+    "mean_calibrated_total_sigma_m": 2.648884749095252
+  },
+  "test": {
+    "raw": {
+      "mean_abs_coverage_error_pp_fixed_levels": 18.55701754385965,
+      "crps_mean_m": 1.3447247583097337
+    },
+    "gaussian_scale": {
+      "mean_abs_coverage_error_pp_fixed_levels": 5.675438596491233,
+      "crps_mean_m": 1.3214695258536475
+    },
+    "empirical_group_crude": {
+      "mean_abs_coverage_error_pp_fixed_levels": 6.561403508771932,
+      "crps_mean_m": 1.3474122100688384
+    },
+    "mean_calibrated_total_sigma_m": 2.8360666342033105
+  },
+  "reload": "Inference-only reconstruction exactly reproduces intervals to1e-12 without target inputs"
+}

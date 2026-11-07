@@ -1,0 +1,30 @@
+{
+  "scope": "same rgt/cycle/beam and nearest acquisition delta_time<=10microseconds; candidate photon identity, not certified source version",
+  "old_bottom_photons": 3189,
+  "matched": 3158,
+  "official_classes": {
+    "0": 2308,
+    "41": 762,
+    "40": 88
+  },
+  "interpretation": "Multiple photon returns within one pulse can share rounded delta_time and position. Nearest-time class counts cannot establish per-photon classification disagreement. Immutable public photon indices/source version are missing. Official V002 is verified provenance, not established better truth.",
+  "both_bottom_finite_n": 83,
+  "both_bottom_median_abs_depth_difference_m": 0.0970306396484375,
+  "time_and_position_within2m": {
+    "n": 3155,
+    "official_classes": {
+      "0": 2305,
+      "41": 762,
+      "40": 88
+    }
+  },
+  "median_position_difference_m": 0.7650665786270425,
+  "median_abs_surface_difference_m": 0.09105941653251648,
+  "median_abs_ortho_height_difference_m": 1.1799304783344269,
+  "candidate_ambiguity": {
+    "median_candidates": 4.0,
+    "multiple_candidates_n": 2795,
+    "any_bottom_candidate_n": 190,
+    "median_abs_height_difference_when_bottom_candidate_m": 0.03271681070327759
+  }
+}

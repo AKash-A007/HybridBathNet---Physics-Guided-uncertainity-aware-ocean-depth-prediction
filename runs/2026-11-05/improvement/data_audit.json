@@ -1,0 +1,56 @@
+{
+  "train": 2176,
+  "validation": 65,
+  "test": 65,
+  "heldout_coordinates_and_labels_unchanged": true,
+  "holdout_buffer_pixels": 32,
+  "note": "Additional patches from existing training blocks, not new independent scenes. Training patches may overlap each other.",
+  "train_idx": {
+    "min": 0.9819130301475525,
+    "max": 103.22557067871094,
+    "mean": 25.223388671875,
+    "count_over_20m": 1315
+  },
+  "val_idx": {
+    "min": 1.418494462966919,
+    "max": 47.272823333740234,
+    "mean": 23.694820404052734,
+    "count_over_20m": 39
+  },
+  "test_idx": {
+    "min": 3.2474851608276367,
+    "max": 47.2451286315918,
+    "mean": 24.013521194458008,
+    "count_over_20m": 39
+  },
+  "features_sha256": "f47665162d77a8df6a817f4ac898d353c6be7e8f0151101ca850c5cafbee6472",
+  "baseline_validation_depth_errors": [
+    {
+      "lower_m": 0,
+      "upper_m": 10,
+      "n": 8,
+      "rmse_m": 5.232601165771484,
+      "bias_m": 4.753944396972656,
+      "mean_bound_m": 5.789565086364746,
+      "sparse": true
+    },
+    {
+      "lower_m": 10,
+      "upper_m": 20,
+      "n": 18,
+      "rmse_m": 2.6628715991973877,
+      "bias_m": 1.096452236175537,
+      "mean_bound_m": 6.440702438354492,
+      "sparse": false
+    },
+    {
+      "lower_m": 20,
+      "upper_m": 10000,
+      "n": 39,
+      "rmse_m": 5.896699905395508,
+      "bias_m": -3.509434700012207,
+      "mean_bound_m": 6.314046382904053,
+      "sparse": false
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "n": 26,
+  "old_model_rmse_same_corrected_targets": 2.8981306552886963,
+  "new_model_rmse_same_corrected_targets": 2.552342176437378,
+  "new_minus_old_rmse_ci95": [
+    -1.3497317045927049,
+    0.46579110026359527
+  ],
+  "clusters": 24,
+  "scope": "common existing test coordinates, corrected reference depth <=20m; no retraining or checkpoint selection",
+  "caveat": "Small exploratory matched subset; pipelines/training domains differ. Not an architecture/component ablation or independent truth."
+}

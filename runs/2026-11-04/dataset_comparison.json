@@ -1,0 +1,354 @@
+[
+  {
+    "name": "S2B_MSIL2A_20240113T051159_N0510_R019_T43PFK_20240113T074151.SAFE",
+    "id": "538f3c36-1762-4ed1-aa90-41fc87c20fbe",
+    "catalogue_bytes": 817250822,
+    "local_zip_bytes": null,
+    "safe_exists": true,
+    "checksums": [
+      {
+        "Value": "9d9992e670fe14f2ca885a8a5a81ee92",
+        "Algorithm": "MD5",
+        "ChecksumDate": "2026-05-24T02:19:23.803313Z"
+      },
+      {
+        "Value": "e2cc22e26571e6e149b8f9dd53d865704bb4c64167cebdc1b274dbc52c35dc0c",
+        "Algorithm": "BLAKE3",
+        "ChecksumDate": "2026-05-24T02:19:25.072585Z"
+      }
+    ],
+    "modification_date": "2026-05-24T02:19:26.237454Z",
+    "size_matches": false,
+    "zip_directory_valid": false
+  },
+  {
+    "name": "S2B_MSIL2A_20240113T051159_N0510_R019_T43PFL_20240113T074151.SAFE",
+    "id": "dd180943-687d-4c13-97ca-6fc7a8986a22",
+    "catalogue_bytes": 973664331,
+    "local_zip_bytes": null,
+    "safe_exists": true,
+    "checksums": [
+      {
+        "Value": "5d7676c68cf05e59b270cb56a7173db1",
+        "Algorithm": "MD5",
+        "ChecksumDate": "2026-05-24T02:20:37.127514Z"
+      },
+      {
+        "Value": "deb27996a5f5ad66a629480a3dc3c877c2008b7dc11a5872d92e9e2d7a773753",
+        "Algorithm": "BLAKE3",
+        "ChecksumDate": "2026-05-24T02:20:38.818611Z"
+      }
+    ],
+    "modification_date": "2026-05-24T02:20:39.137654Z",
+    "size_matches": false,
+    "zip_directory_valid": false
+  },
+  {
+    "name": "S2A_MSIL2A_20240118T051131_N0510_R019_T43PFK_20240118T081358.SAFE",
+    "id": "1d997263-aa9b-4a28-9bea-9d2bf380cb05",
+    "catalogue_bytes": 774066224,
+    "local_zip_bytes": null,
+    "safe_exists": true,
+    "checksums": [
+      {
+        "Value": "e86246c1ae35dacaa70703746e046037",
+        "Algorithm": "MD5",
+        "ChecksumDate": "2026-05-24T10:46:25.837543Z"
+      },
+      {
+        "Value": "b383c41144be2bf75eab4a9af196a0088609b6bd0af680b376fb36e6baa4df09",
+        "Algorithm": "BLAKE3",
+        "ChecksumDate": "2026-05-24T10:46:27.017985Z"
+      }
+    ],
+    "modification_date": "2026-05-24T10:46:28.413630Z",
+    "size_matches": false,
+    "zip_directory_valid": false
+  },
+  {
+    "name": "S2A_MSIL2A_20240118T051131_N0510_R019_T43PFL_20240118T081358.SAFE",
+    "id": "25c15732-5e88-41d9-9f9a-05786ff8cddd",
+    "catalogue_bytes": 961198931,
+    "local_zip_bytes": null,
+    "safe_exists": true,
+    "checksums": [
+      {
+        "Value": "d07c85f529e3771c26c1933501c26078",
+        "Algorithm": "MD5",
+        "ChecksumDate": "2026-05-24T10:48:32.707935Z"
+      },
+      {
+        "Value": "643b9e0b3ccfbac08e9bc42bf8569029cafb613b62dcccf1f263b3057aff37ca",
+        "Algorithm": "BLAKE3",
+        "ChecksumDate": "2026-05-24T10:48:34.841582Z"
+      }
+    ],
+    "modification_date": "2026-05-24T10:48:35.180051Z",
+    "size_matches": false,
+    "zip_directory_valid": false
+  },
+  {
+    "name": "S2B_MSIL2A_20240123T051119_N0510_R019_T43PFL_20240123T073307.SAFE",
+    "id": "012e745d-dc4a-4369-9dd1-9b71d3bfac89",
+    "catalogue_bytes": 998329304,
+    "local_zip_bytes": null,
+    "safe_exists": true,
+    "checksums": [
+      {
+        "Value": "9c6f796858e88dbb6262c6b665ac8082",
+        "Algorithm": "MD5",
+        "ChecksumDate": "2026-05-24T00:39:25.773671Z"
+      },
+      {
+        "Value": "1831af9b76b989146727c30002d2bd7a9d29dddbd7d18a8ff8c07331835a753a",
+        "Algorithm": "BLAKE3",
+        "ChecksumDate": "2026-05-24T00:39:27.561266Z"
+      }
+    ],
+    "modification_date": "2026-05-24T00:39:27.890624Z",
+    "size_matches": false,
+    "zip_directory_valid": false
+  },
+  {
+    "name": "S2A_MSIL2A_20240128T051051_N0510_R019_T43PFK_20240128T084250.SAFE",
+    "id": "6bb3adf9-feb1-42cc-869e-601ae9c1be88",
+    "catalogue_bytes": 793678718,
+    "local_zip_bytes": null,
+    "safe_exists": true,
+    "checksums": [
+      {
+        "Value": "32b34084295078f2333ba55df7373524",
+        "Algorithm": "MD5",
+        "ChecksumDate": "2026-05-24T09:21:29.626721Z"
+      },
+      {
+        "Value": "c48432d453d8f48896057da9ce85eae10d0b3e367f61857b5a0bddda4dc48393",
+        "Algorithm": "BLAKE3",
+        "ChecksumDate": "2026-05-24T09:21:31.014264Z"
+      }
+    ],
+    "modification_date": "2026-05-24T09:21:31.317150Z",
+    "size_matches": false,
+    "zip_directory_valid": false
+  },
+  {
+    "name": "S2A_MSIL2A_20240128T051051_N0510_R019_T43PFL_20240128T084250.SAFE",
+    "id": "8bef8a12-59c0-4528-b7c4-41834f32fd3e",
+    "catalogue_bytes": 967570558,
+    "local_zip_bytes": null,
+    "safe_exists": true,
+    "checksums": [
+      {
+        "Value": "f17ef1bfac0a93cff91e07512fbe577c",
+        "Algorithm": "MD5",
+        "ChecksumDate": "2026-05-24T09:20:28.805547Z"
+      },
+      {
+        "Value": "00af124d09a7e1c92620e29a2d94716a0c15d37660e9b6228fbad075e32428ba",
+        "Algorithm": "BLAKE3",
+        "ChecksumDate": "2026-05-24T09:20:30.285393Z"
+      }
+    ],
+    "modification_date": "2026-05-24T09:20:31.405779Z",
+    "size_matches": false,
+    "zip_directory_valid": false
+  },
+  {
+    "name": "S2A_MSIL2A_20240207T051001_N0510_R019_T43PFK_20240207T085751.SAFE",
+    "id": "d5b8ef56-7b1d-43e1-a112-7bd1a3ed881b",
+    "catalogue_bytes": 822220796,
+    "local_zip_bytes": null,
+    "safe_exists": true,
+    "checksums": [
+      {
+        "Value": "5c6cb454cadb9baa0cc45bbe1ccb13d6",
+        "Algorithm": "MD5",
+        "ChecksumDate": "2026-05-23T22:11:43.518221Z"
+      },
+      {
+        "Value": "732eb1a1e5c12b3a081239c3d6f1fd61ebc262515942e2dba2d3f8b9f52a40d7",
+        "Algorithm": "BLAKE3",
+        "ChecksumDate": "2026-05-23T22:11:44.789264Z"
+      }
+    ],
+    "modification_date": "2026-05-23T22:11:45.378951Z",
+    "size_matches": false,
+    "zip_directory_valid": false
+  },
+  {
+    "name": "S2A_MSIL2A_20240207T051001_N0510_R019_T43PFL_20240207T085751.SAFE",
+    "id": "fa3820a8-12bf-4f0b-881b-d7851e3ec176",
+    "catalogue_bytes": 985830073,
+    "local_zip_bytes": null,
+    "safe_exists": true,
+    "checksums": [
+      {
+        "Value": "cfb8a2fcce139d5fc5ae09bbd62b04c3",
+        "Algorithm": "MD5",
+        "ChecksumDate": "2026-05-23T22:11:08.505324Z"
+      },
+      {
+        "Value": "eca6758e9411e89ee1098e386903ae2c007f1aa9940fc9129e368aaecb3dfa69",
+        "Algorithm": "BLAKE3",
+        "ChecksumDate": "2026-05-23T22:11:10.214047Z"
+      }
+    ],
+    "modification_date": "2026-05-23T22:11:10.945233Z",
+    "size_matches": false,
+    "zip_directory_valid": false
+  },
+  {
+    "name": "S2B_MSIL2A_20240212T050939_N0510_R019_T43PFL_20240212T074018.SAFE",
+    "id": "b41366d8-b6b7-488f-8b5a-2dc192771945",
+    "catalogue_bytes": 986582710,
+    "local_zip_bytes": null,
+    "safe_exists": true,
+    "checksums": [
+      {
+        "Value": "b9026637582bc601e2f58e4140fd7e92",
+        "Algorithm": "MD5",
+        "ChecksumDate": "2026-05-23T11:59:44.740574Z"
+      },
+      {
+        "Value": "393925ab656655665394172a4538ab8f1bb6a60919b686a40935a1bc32062923",
+        "Algorithm": "BLAKE3",
+        "ChecksumDate": "2026-05-23T11:59:46.265181Z"
+      }
+    ],
+    "modification_date": "2026-05-23T11:59:46.572013Z",
+    "size_matches": false,
+    "zip_directory_valid": false
+  },
+  {
+    "name": "S2A_MSIL2A_20240217T050901_N0510_R019_T43PFL_20240217T091753.SAFE",
+    "id": "89d83e6b-5b10-4ff9-b14b-a053c5531b1c",
+    "catalogue_bytes": 982891120,
+    "local_zip_bytes": null,
+    "safe_exists": true,
+    "checksums": [
+      {
+        "Value": "d37fc12be056bb540014657bc4288e07",
+        "Algorithm": "MD5",
+        "ChecksumDate": "2026-05-23T20:38:13.463362Z"
+      },
+      {
+        "Value": "b70dd234d446be9365eeb211338004995e693f200262e5a54302110a359ed590",
+        "Algorithm": "BLAKE3",
+        "ChecksumDate": "2026-05-23T20:38:14.993767Z"
+      }
+    ],
+    "modification_date": "2026-05-23T20:38:15.359916Z",
+    "size_matches": false,
+    "zip_directory_valid": false
+  },
+  {
+    "name": "S2B_MSIL2A_20240222T050829_N0510_R019_T43PFK_20240222T074738.SAFE",
+    "id": "9a3903f7-26fa-4a0d-8d7b-af0120b5fdda",
+    "catalogue_bytes": 903803662,
+    "local_zip_bytes": null,
+    "safe_exists": true,
+    "checksums": [
+      {
+        "Value": "fee5dc51407ce2b4b2714b9a50793108",
+        "Algorithm": "MD5",
+        "ChecksumDate": "2026-05-23T09:52:47.557187Z"
+      },
+      {
+        "Value": "dc9b441ba4d5f94649f862a48abcaf81ea769539d1aea7837c803b08f61a63b8",
+        "Algorithm": "BLAKE3",
+        "ChecksumDate": "2026-05-23T09:52:49.323284Z"
+      }
+    ],
+    "modification_date": "2026-05-23T09:52:49.711775Z",
+    "size_matches": false,
+    "zip_directory_valid": false
+  },
+  {
+    "name": "S2B_MSIL2A_20240303T050719_N0510_R019_T43PFL_20240303T073146.SAFE",
+    "id": "e146eae8-482c-49e1-9023-2ee88b5b4436",
+    "catalogue_bytes": 985155521,
+    "local_zip_bytes": null,
+    "safe_exists": true,
+    "checksums": [
+      {
+        "Value": "e4253a090f7465e3f3151ddcb28affaf",
+        "Algorithm": "MD5",
+        "ChecksumDate": "2026-05-23T16:18:47.064378Z"
+      },
+      {
+        "Value": "e4b791323ff0e51a0f8718d59fdb36e6bcabc320ff8f70676d7c12c7286fdcd0",
+        "Algorithm": "BLAKE3",
+        "ChecksumDate": "2026-05-23T16:18:48.561087Z"
+      }
+    ],
+    "modification_date": "2026-05-23T16:18:48.886943Z",
+    "size_matches": false,
+    "zip_directory_valid": false
+  },
+  {
+    "name": "S2A_MSIL2A_20240308T050651_N0510_R019_T43PFK_20240308T084749.SAFE",
+    "id": "2720d3b7-036a-42dd-9193-12e26454cbb3",
+    "catalogue_bytes": 923780731,
+    "local_zip_bytes": null,
+    "safe_exists": true,
+    "checksums": [
+      {
+        "Value": "0db8f439fb6ffcd08b5d7165e780a823",
+        "Algorithm": "MD5",
+        "ChecksumDate": "2026-05-24T13:11:36.231977Z"
+      },
+      {
+        "Value": "c88f9d348180f74cd620912bf32f9fdd1f7a1b35c075d8d77ef95cc57c852213",
+        "Algorithm": "BLAKE3",
+        "ChecksumDate": "2026-05-24T13:11:37.719338Z"
+      }
+    ],
+    "modification_date": "2026-05-24T13:11:38.092529Z",
+    "size_matches": false,
+    "zip_directory_valid": false
+  },
+  {
+    "name": "S2B_MSIL2A_20240313T050649_N0510_R019_T43PFK_20240313T145847.SAFE",
+    "id": "26220ba3-e52c-4b29-b210-91b85a1ad8c7",
+    "catalogue_bytes": 904710962,
+    "local_zip_bytes": null,
+    "safe_exists": true,
+    "checksums": [
+      {
+        "Value": "fe35cb4952639f5c1296668d382962b0",
+        "Algorithm": "MD5",
+        "ChecksumDate": "2026-05-23T14:27:10.365776Z"
+      },
+      {
+        "Value": "f3f7b12f821cf20364f0064528d590c263758496c4ec497d61d9de2a426983dd",
+        "Algorithm": "BLAKE3",
+        "ChecksumDate": "2026-05-23T14:27:11.702425Z"
+      }
+    ],
+    "modification_date": "2026-05-23T14:27:12.029911Z",
+    "size_matches": false,
+    "zip_directory_valid": false
+  },
+  {
+    "name": "S2A_MSIL2A_20240318T050651_N0510_R019_T43PFK_20240318T084852.SAFE",
+    "id": "15bd88fd-02d3-41ab-94ad-3db504a54055",
+    "catalogue_bytes": 892427103,
+    "local_zip_bytes": null,
+    "safe_exists": true,
+    "checksums": [
+      {
+        "Value": "eb4f22a1bc7ce3039b71f0a9f0cf6240",
+        "Algorithm": "MD5",
+        "ChecksumDate": "2026-05-24T05:04:33.387928Z"
+      },
+      {
+        "Value": "6e9afbaa16bc43a5db85676d90ea209162e8422c6594415dd5972240e97199b3",
+        "Algorithm": "BLAKE3",
+        "ChecksumDate": "2026-05-24T05:04:34.785239Z"
+      }
+    ],
+    "modification_date": "2026-05-24T05:04:35.669166Z",
+    "size_matches": false,
+    "zip_directory_valid": false
+  }
+]

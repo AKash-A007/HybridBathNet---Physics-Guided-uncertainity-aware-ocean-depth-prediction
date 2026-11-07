@@ -1,0 +1,13 @@
+{
+  "split_sizes": {
+    "train_idx": 2170,
+    "val_idx": 65,
+    "test_idx": 65
+  },
+  "excluded_training_by_optical_water_eligibility": 6,
+  "heldout_coordinates_unchanged": true,
+  "feature_fit": "training footprints only",
+  "labels": "native GEBCO direct interpolation",
+  "image_grid": "historical fixed grid; no resampling of imagery",
+  "note": "This is supervised joint data. Separate Sentinel-only builder never reads GEBCO."
+}

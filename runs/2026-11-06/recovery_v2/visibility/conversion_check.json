@@ -1,0 +1,6 @@
+{
+  "max_abs_probability_difference_numpy_vs_torch": 5.513429641723633e-07,
+  "weights_sha256": "749f09e062d766783aa491867cfad6a3f1368f0565d97135b2a42f86425992f9",
+  "tensorflow_runtime_used": false,
+  "scope": "documented HDF5 dense architecture equivalence; not a full original-runtime pipeline comparison"
+}

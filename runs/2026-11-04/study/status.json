@@ -1,0 +1,22 @@
+{
+  "stage": "complete",
+  "experiment": "weak_extinction",
+  "utc": "2026-11-05T05:35:17.713795+00:00",
+  "completed_validation": [
+    "compatibility_reference",
+    "explicit_raw_reference",
+    "patch_mean",
+    "center",
+    "spatial_center",
+    "blue_green_only",
+    "signal_ratio_10",
+    "signal_ratio_1000",
+    "unclipped_bound",
+    "weak_extinction",
+    "no_extinction",
+    "linear_depth",
+    "cnn_only",
+    "selected_seed_0",
+    "selected_seed_1"
+  ]
+}

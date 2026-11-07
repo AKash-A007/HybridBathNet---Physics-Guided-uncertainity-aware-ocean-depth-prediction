@@ -1,0 +1,64 @@
+{
+  "status": "downloaded_unvalidated",
+  "parameters": {
+    "poly": [
+      {
+        "lon": 76.3,
+        "lat": 8.9
+      },
+      {
+        "lon": 76.55,
+        "lat": 8.9
+      },
+      {
+        "lon": 76.55,
+        "lat": 9.2
+      },
+      {
+        "lon": 76.3,
+        "lat": 9.2
+      },
+      {
+        "lon": 76.3,
+        "lat": 8.9
+      }
+    ],
+    "t0": "2018-10-14T00:00:00Z",
+    "t1": "2024-11-07T23:59:59Z",
+    "atl24": {
+      "compact": false,
+      "class_ph": [
+        40
+      ],
+      "confidence_threshold": 0.6
+    }
+  },
+  "source": "SlideRule atl24x; compare service granule version to NSIDC CMR V002 before publication",
+  "rows": 3189,
+  "columns": [
+    "night_flag",
+    "region",
+    "class_ph",
+    "gt",
+    "sigma_tvu",
+    "surface_h",
+    "sigma_thu",
+    "rgt",
+    "ortho_h",
+    "confidence",
+    "spot",
+    "x_atc",
+    "y_atc",
+    "srcid",
+    "kd",
+    "cycle",
+    "surface_roughness",
+    "ellipse_h",
+    "quality_ph",
+    "lon_ph",
+    "lat_ph",
+    "depth_m"
+  ],
+  "depth_0_20_count": 2757,
+  "note": "Photon points are spatially correlated; do not train or score before quality, datum, temporal and split checks."
+}
